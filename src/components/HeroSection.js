@@ -29,6 +29,10 @@ const HeroSection = () => {
     },
   ];
 
+  const handleDownloadClick = () => {
+    window.open("https://app-knowyourtrips.onelink.me/b0PV/rutxsmxs", "_blank");
+  };
+
   return (
     <div className="hero-container">
       {/* LEFT CONTENT */}
@@ -40,7 +44,9 @@ const HeroSection = () => {
             EMPOWER EVERY JOURNEY WITH <br /> SAFETY
           </h1>
 
-          <button className="btn-primary">Download the App</button>
+          <button className="btn-primary" onClick={handleDownloadClick}>
+            Download the App
+          </button>
 
           {/* HORIZONTAL FEATURE CARDS */}
           <div className="features-horizontal">

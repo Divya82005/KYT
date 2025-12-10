@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
 import SafetyIntelligence from "./components/SafetyIntelligence";
 import DownloadSection from "./components/DownloadSection";
-import TestimonialCard from "./components/TestimonialCard";
+
 import CTASection from "./components/CTASection";
 import FooterSection from "./components/FooterSection";
 import PromoVideoSection from "./components/PromoVideoSection";
@@ -26,10 +26,11 @@ function App() {
           element={
             <>
               <HeroSection />
-              <SafetyIntelligence />
-              <DownloadSection />
+
               <PromoVideoSection />
-              <TestimonialCard />
+              <DownloadSection />
+              <SafetyIntelligence />
+
               <CTASection />
             </>
           }

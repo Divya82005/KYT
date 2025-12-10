@@ -21,6 +21,11 @@ const Navbar = () => {
     document.body.style.overflow = "auto";
   };
 
+  // Open the download link in a new tab
+  const handleDownloadClick = () => {
+    window.open("https://app-knowyourtrips.onelink.me/b0PV/rutxsmxs", "_blank");
+  };
+
   return (
     <>
       <nav className="nav">
@@ -50,7 +55,9 @@ const Navbar = () => {
         </ul>
 
         {/* Desktop Button */}
-        <button className="btn-primary">Download the App</button>
+        <button className="btn-primary" onClick={handleDownloadClick}>
+          Download the App
+        </button>
 
         {/* Hamburger Menu Button (Mobile only) */}
         <button
@@ -88,7 +95,13 @@ const Navbar = () => {
             </Link>
           </li>
         </ul>
-        <button className="mobile-btn" onClick={closeMenu}>
+        <button
+          className="mobile-btn"
+          onClick={() => {
+            closeMenu();
+            handleDownloadClick();
+          }}
+        >
           Download the App
         </button>
       </div>

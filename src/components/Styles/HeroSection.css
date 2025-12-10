@@ -910,22 +910,3 @@ img {
   max-width: 100%;
   height: auto;
 }
-
-/* HIDE ALL IMAGES + VISUAL ELEMENTS ON VERY SMALL SCREENS */
-@media (max-width: 380px) {
-  .hero-visual,
-  .city-img,
-  .safety-card,
-  .alert-card,
-  .map-card,
-  s .safetyImg,
-  .alertImg,
-  .map-image,
-  .big-circle,
-  .mid-circle,
-  .small-circle {
-    display: none !important;
-    opacity: 0 !important;
-    visibility: hidden !important;
-  }
-}

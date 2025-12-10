@@ -1,45 +1,40 @@
 import React from "react";
 import "./Styles/FooterSection.css";
+import QRCode from "../assets/Vector.png";
 
 const FooterSection = () => {
+  const handleDownloadClick = () => {
+    window.open("https://app-knowyourtrips.onelink.me/b0PV/rutxsmxs", "_blank");
+  };
+
   return (
     <div className="footer-wrapper">
       <div className="footer-container">
+        {/* LEFT SIDE */}
+        <div className="footer-left">
+          <div className="footer-data">
+            <h3>Data sources:</h3>
+            <p>
+              Local police reports, government travel advisories, user reports,
+              crime statistics, AI analysis. Safety scores updated hourly.
+            </p>
+          </div>
 
-        {/* LEFT: DATA SOURCES */}
-        <div className="footer-data">
-          <h3>Data sources:</h3>
-          <p>
-            Local police reports, government travel advisories, <br />
-            user reports, crime statistics, AI analysis. Safety <br />
-            scores updated hourly.
-          </p>
+          <div className="footer-links">About | Privacy | Terms | Contact</div>
+
+          <div className="footer-copy">
+            © 2025 knowyourtrips. All rights reserved.
+          </div>
         </div>
 
-        {/* RIGHT: RELATED DESTINATIONS */}
-        <div className="footer-destinations">
-          <h3>Related Destinations:</h3>
-          <ul>
-            <li>Is Madrid Safe?</li>
-            <li>Is Paris Safe?</li>
-            <li>Is Rome Safe?</li>
-            <li>Is Lisbon Safe?</li>
-          </ul>
+        {/* RIGHT SIDE: QR + BUTTON */}
+        <div className="footer-right">
+          <img src={QRCode} alt="QR Code" className="footer-qr" />
+
+          <button className="footer-btn" onClick={handleDownloadClick}>
+            Download the App
+          </button>
         </div>
-
-        {/* DOWNLOAD BUTTON */}
-        <button className="footer-btn">Download the App</button>
-
-        {/* BOTTOM LINKS */}
-        <div className="footer-links">
-          About | Privacy | Terms | Contact
-        </div>
-
-        {/* COPYRIGHT */}
-        <div className="footer-copy">
-          © 2025 knowyourtrips. All rights reserved.
-        </div>
-
       </div>
     </div>
   );

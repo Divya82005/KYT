@@ -2,6 +2,9 @@ import React from "react";
 import "./Styles/SafetyIntelligence.css";
 
 const SafetyIntelligence = () => {
+
+
+
   return (
     <section className="safety-container">
       {/* LEFT VERTICAL TITLE */}
