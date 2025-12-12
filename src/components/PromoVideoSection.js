@@ -5,7 +5,7 @@ import promoVideo from "../assets/promo_video.mp4";
 const PromoVideoSection = () => {
   return (
     <section className="promo-section">
-      {/* LEFT VIDEO BOX */}
+      {/* LEFT VIDEO BOX - WIDER */}
       <div className="promo-video-box">
         <video
           className="promo-video"
@@ -22,12 +22,15 @@ const PromoVideoSection = () => {
         <h3 className="promo-about-title">About</h3>
 
         <h2 className="promo-heading">
-          YOUR ALL-IN-ONE <br /> TRAVEL COMPANION
+          <span className="main-title">YOUR ALL-IN-ONE</span>
+          <span className="main-title">TRAVEL COMPANION</span>
         </h2>
 
         <p className="promo-description">
           Get streamlined travel planning with our user-friendly app. Effortless
           booking, personalized recommendations, and hassle-free itineraries.
+          <br />
+          
           Real-time updates, convenient flights with airport taxi booking, and
           secure payment options for a stress-free travel experience.
         </p>

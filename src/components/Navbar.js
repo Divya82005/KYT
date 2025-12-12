@@ -8,12 +8,7 @@ const Navbar = () => {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    // Prevent body scroll when menu is open
-    if (!isMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    document.body.style.overflow = !isMenuOpen ? "hidden" : "auto";
   };
 
   const closeMenu = () => {
@@ -21,7 +16,6 @@ const Navbar = () => {
     document.body.style.overflow = "auto";
   };
 
-  // Open the download link in a new tab
   const handleDownloadClick = () => {
     window.open("https://app-knowyourtrips.onelink.me/b0PV/rutxsmxs", "_blank");
   };
@@ -31,14 +25,15 @@ const Navbar = () => {
       <nav className="nav">
         <div className="logo">
           <Link to="/" className="logo-link" onClick={closeMenu}>
-            <span className="company_logo">
-              <img src={Company_Logo} alt="Company Logo" />
-            </span>
+            <img
+              src={Company_Logo}
+              alt="Company Logo"
+              className="company_logo"
+            />
             Know Your <span className="highlight">Trips</span>
           </Link>
         </div>
 
-        {/* Desktop Navigation Links */}
         <ul className="nav-links">
           <li>
             <Link to="/blogs">Blogs</Link>
@@ -54,16 +49,13 @@ const Navbar = () => {
           </li>
         </ul>
 
-        {/* Desktop Button */}
         <button className="btn-primary" onClick={handleDownloadClick}>
           Download the App
         </button>
 
-        {/* Hamburger Menu Button (Mobile only) */}
         <button
           className={`hamburger ${isMenuOpen ? "active" : ""}`}
           onClick={toggleMenu}
-          aria-label="Menu"
         >
           <span></span>
           <span></span>
@@ -71,7 +63,7 @@ const Navbar = () => {
         </button>
       </nav>
 
-      {/* Mobile Sidebar Menu */}
+      {/* MOBILE MENU */}
       <div className={`mobile-menu ${isMenuOpen ? "active" : ""}`}>
         <ul>
           <li>
@@ -95,6 +87,7 @@ const Navbar = () => {
             </Link>
           </li>
         </ul>
+
         <button
           className="mobile-btn"
           onClick={() => {

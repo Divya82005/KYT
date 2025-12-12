@@ -1,94 +1,142 @@
-/* MAIN WRAPPER */
 .download-section {
-  width: 90%;
-  margin: 100px auto;
-  border-radius: 22px;
-  background: linear-gradient(115deg, #6165d7 0%, #5351ed 50%);
-  padding: 80px 90px;
-  padding-right: 350px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  overflow: visible;
-}
+  width: 100%;
+  max-width: 1428px;
+  height: 434px;
+  margin: 150px auto;
+  padding: 40px 60px;
 
-/* LEFT CONTENT */
-.left-contents {
-  color: #fff;
-  max-width: 480px;
+  background: linear-gradient(
+    90deg,
+    rgba(97, 101, 215, 1) 0%,
+    rgba(83, 81, 237, 1) 100%
+  );
+
+  border-radius: 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+
+  overflow: visible !important;
 }
 
 .left-contents h2 {
+  font-family: "Poppins", sans-serif;
   font-size: 24px;
-  font-weight: 700;
-  line-height: 1.4;
-  margin-bottom: 20px;
+  font-weight: 500;
+  color: white;
+  width: 660px;
+  line-height: 170%;
+  margin-bottom: 10px;
 }
 
 .left-contents p {
-  font-size: 15px;
-  opacity: 0.9;
-  line-height: 1.6;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: white;
+  width: 640px;
+  line-height: 170%;
+  margin-bottom: 30px;
+}
+
+.qr-and-button {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-qr {
+  width: 158px;
+  height: 158px;
   margin-bottom: 25px;
 }
 
-/* QR + BUTTON GROUP */
-.qr-and-button {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-}
+.footer-btn {
+  width: 214px;
+  height: 65px;
 
-/* QR CODE */
-.qr-code-img {
-  width: 120px;
-  height: 120px;
-  border-radius: 10px;
-}
+  border-radius: 20px;
+  border: 1px solid rgba(83, 81, 237, 1);
 
-/* DOWNLOAD BUTTON */
-.download-btn {
-  background: #ffffff;
-  color: #4f44ff;
-  padding: 15px 32px;
-  border: none;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 600;
+  background: white;
+  color: rgba(83, 81, 237, 1);
+
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
   cursor: pointer;
-  transition: 0.2s;
-  margin-left: 10px;
+  transition: all 0.3s ease;
 }
 
-.download-btn:hover {
-  transform: translateY(-2px);
+.footer-btn:hover {
+  background: rgba(83, 81, 237, 1);
+  color: white;
 }
 
-/* RIGHT PHONE */
 .right-phone {
   position: absolute;
   right: 40px;
   bottom: -60px;
-  width: 450px;
-  height: 550px;
 }
 
 .phone-bg-circle {
-  width: 320px;
-  height: 320px;
+  width: 360px;
+  height: 360px;
   border-radius: 50%;
-  background: rgba(97, 101, 215, 1);
+  background: rgba(255, 255, 255, 0.15);
   position: absolute;
-  top: 60%;
-  left: 55%;
-  transform: translate(-50%, -50%);
+  top: 80px;
+  right: 50px;
   z-index: 1;
 }
 
 .iphone-img {
-  width: 450px;
-  position: absolute;
-  right: 0;
-  bottom: -60px;
-  z-index: 2;
+  width: 390px;
+  height: auto;
+  position: relative;
+  z-index: 3;
+}
+
+@media (max-width: 1200px) {
+  .download-section {
+    flex-direction: column;
+    height: auto;
+    padding: 50px 20px;
+  }
+
+  .right-phone {
+    position: static;
+    margin-top: 40px;
+  }
+
+  .phone-bg-circle {
+    display: none;
+  }
+
+  .iphone-img {
+    width: 300px;
+  }
+}
+
+@media (max-width: 600px) {
+  .left-contents h2 {
+    font-size: 20px;
+    width: 100%;
+  }
+
+  .left-contents p {
+    font-size: 16px;
+    width: 100%;
+  }
+
+  .footer-qr {
+    width: 120px;
+    height: 120px;
+  }
+
+  .footer-btn {
+    width: 180px;
+    height: 55px;
+  }
 }

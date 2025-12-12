@@ -1,9 +1,9 @@
 /* Styles/Navbar.css */
 .nav {
   width: 100%;
-  max-width: 1248px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 20px 40px;
+  padding: 30px 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,12 +14,12 @@
 
 .nav-links a {
   text-decoration: none;
-  color: #2d2d2d; /* or any color you want */
+  color: #2d2d2d;
   font-weight: 500;
 }
 
 .nav-links a:hover {
-  color: #4a49f1; /* hover effect */
+  color: #4a55ff;
 }
 
 .logo-link {
@@ -27,7 +27,8 @@
   color: inherit;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+  margin-left: -48px;
 }
 
 .logo-link:hover {
@@ -35,13 +36,15 @@
 }
 
 .company_logo img {
-  width: 20px;
-  height: 35px;
+  width: 27px;
+  height: 45.54px;
 }
 
 .logo {
-  font-size: 25px;
-  font-weight: 700;
+  font-family: "Poppins", sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  font-style: semi-bold;
   color: #1a1a1a;
   display: flex;
   align-items: center;
@@ -49,13 +52,9 @@
   white-space: nowrap;
 }
 
-.logo span[role="img"] {
-  font-size: 1.6rem;
-}
-
 .highlight {
   color: #4a55ff;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .nav-links {
@@ -70,12 +69,16 @@
 }
 
 .nav-links li {
-  font-size: 1rem;
-  color: #555;
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  color: #2d2d2d;
   cursor: pointer;
   transition: color 0.3s ease;
-  font-weight: 500;
+  font-weight: 800;
+  font-style: extra-bold;
   white-space: nowrap;
+  letter-spacing: 0%;
+  line-height: 100%;
 }
 
 .nav-links li:hover {
@@ -83,22 +86,45 @@
 }
 
 .nav .btn-primary {
-  background: rgba(83, 81, 237, 1);
+  background: #5351ed;
   color: white;
   padding: 22px 32px;
   border-radius: 20px;
   border: none;
-  font-size: 0.95rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   white-space: nowrap;
+  line-height: 100%;
+  margin-right: -59px;
 }
 
 .nav .btn-primary:hover {
   background: #3a45ef;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(74, 85, 255, 0.3);
+  box-shadow: 0 4px 12px rgba(83, 81, 237, 0.3);
+}
+
+/* Specific link positioning based on Figma */
+.nav-links li:nth-child(1) a {
+  /* Blogs */
+  width: 58px;
+  height: 30px;
+  margin-top: -4px; /* Adjust vertical position */
+}
+
+.nav-links li:nth-child(2) a {
+  /* About */
+  width: 61px;
+  height: 30px;
+}
+
+.nav-links li:nth-child(3) a {
+  /* Contact */
+  width: 77px;
+  height: 30px;
 }
 
 /* HAMBURGER MENU (Hidden on desktop) */
@@ -166,29 +192,34 @@
 .mobile-menu a {
   text-decoration: none;
   color: #2d2d2d;
-  font-size: 18px;
-  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  font-weight: 800;
   display: block;
   padding: 10px 0;
   transition: color 0.3s;
+  line-height: 100%;
+  letter-spacing: 0%;
 }
 
 .mobile-menu a:hover {
-  color: #4a49f1;
+  color: #4a55ff;
 }
 
 .mobile-btn {
-  background: rgba(83, 81, 237, 1);
+  background: #5351ed;
   color: white;
   padding: 15px 25px;
   border-radius: 15px;
   border: none;
-  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
   font-weight: 600;
   cursor: pointer;
   margin-top: 30px;
   width: 100%;
   transition: background 0.3s;
+  line-height: 100%;
 }
 
 .mobile-btn:hover {
@@ -216,7 +247,7 @@
 @media (max-width: 1200px) {
   .nav {
     max-width: 1000px;
-    padding: 20px 35px;
+    padding: 20px 60px;
   }
 
   .nav-links {
@@ -224,14 +255,14 @@
   }
 
   .logo {
-    font-size: 23px;
+    font-size: 28px;
   }
 }
 
 /* Tablets - Start showing hamburger */
 @media (max-width: 992px) {
   .nav {
-    padding: 18px 30px;
+    padding: 18px 40px;
     max-width: 900px;
   }
 
@@ -240,21 +271,21 @@
   }
 
   .nav-links li {
-    font-size: 0.95rem;
+    font-size: 18px;
   }
 
   .logo {
-    font-size: 22px;
+    font-size: 26px;
   }
 
   .company_logo img {
-    width: 18px;
-    height: 32px;
+    width: 24px;
+    height: 40px;
   }
 
   .nav .btn-primary {
     padding: 20px 28px;
-    font-size: 0.9rem;
+    font-size: 18px;
   }
 }
 
@@ -262,13 +293,13 @@
 @media (max-width: 768px) {
   .nav {
     flex-wrap: nowrap;
-    padding: 15px 25px;
+    padding: 15px 30px;
     justify-content: space-between;
   }
 
   .logo {
     order: 1;
-    font-size: 21px;
+    font-size: 24px;
   }
 
   /* Hide desktop nav links */
@@ -292,8 +323,8 @@
   }
 
   .company_logo img {
-    width: 16px;
-    height: 28px;
+    width: 22px;
+    height: 37px;
   }
 }
 
@@ -304,7 +335,7 @@
   }
 
   .logo {
-    font-size: 19px;
+    font-size: 22px;
     flex: 1;
   }
 
@@ -313,8 +344,8 @@
   }
 
   .company_logo img {
-    width: 15px;
-    height: 26px;
+    width: 20px;
+    height: 34px;
   }
 
   .hamburger {
@@ -322,7 +353,15 @@
   }
 
   .mobile-menu {
-    width: 250px;
+    width: 280px;
+  }
+
+  .mobile-menu a {
+    font-size: 18px;
+  }
+
+  .mobile-btn {
+    font-size: 18px;
   }
 }
 
@@ -333,12 +372,12 @@
   }
 
   .logo {
-    font-size: 18px;
+    font-size: 20px;
   }
 
   .company_logo img {
-    width: 14px;
-    height: 24px;
+    width: 18px;
+    height: 30px;
   }
 
   .hamburger span {
@@ -347,7 +386,7 @@
   }
 
   .mobile-menu {
-    width: 220px;
+    width: 250px;
     padding: 70px 20px 20px;
   }
 
@@ -357,7 +396,7 @@
 
   .mobile-btn {
     padding: 12px 20px;
-    font-size: 15px;
+    font-size: 16px;
   }
 }
 
@@ -368,16 +407,16 @@
   }
 
   .logo {
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .company_logo img {
-    width: 12px;
-    height: 21px;
+    width: 16px;
+    height: 27px;
   }
 
   .mobile-menu {
-    width: 200px;
+    width: 220px;
   }
 
   .mobile-menu a {
@@ -385,18 +424,7 @@
   }
 
   .mobile-btn {
-    font-size: 14px;
-  }
-}
-
-/* iPhone 14 Pro Max specific */
-@media (max-width: 430px) {
-  .logo {
-    font-size: 17px;
-  }
-
-  .mobile-menu {
-    width: 230px;
+    font-size: 15px;
   }
 }
 
@@ -424,25 +452,25 @@
 /* Large Screens */
 @media (min-width: 1600px) {
   .nav {
-    max-width: 1400px;
+    max-width: 1600px;
   }
 
   .logo {
-    font-size: 28px;
+    font-size: 36px;
   }
 
   .company_logo img {
-    width: 22px;
-    height: 38px;
+    width: 30px;
+    height: 51px;
   }
 
   .nav-links li {
-    font-size: 1.1rem;
+    font-size: 22px;
   }
 
   .nav .btn-primary {
     padding: 24px 36px;
-    font-size: 1rem;
+    font-size: 22px;
   }
 }
 
@@ -461,4 +489,9 @@ body {
 img {
   max-width: 100%;
   height: auto;
+}
+
+/* Add Poppins font globally */
+body {
+  font-family: "Poppins", sans-serif;
 }

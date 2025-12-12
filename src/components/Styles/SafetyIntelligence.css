@@ -1,189 +1,229 @@
-/* MAIN SCREEN SECTION */
+/* ================================
+   MAIN SECTION CONTAINER
+================================ */
+ 
 .safety-container {
-  display: flex;
-  background: #f5f7fc;
-  padding: 15px 90px;
+  width: 1523.43px;
+  height: 701px;
+  margin: 10px auto;
   position: relative;
-  min-height: 700px;
-  margin-top: 30px;
+  /* background: #f5f7fc; */
+  border-radius: 6px;
+  padding: 40px;  
+  box-sizing: border-box;
+  display: flex;
+  overflow: visible;
 }
 
-/* ---------------- LEFT VERTICAL TITLE ---------------- */
+/* ================================
+   LEFT VERTICAL TITLES
+   - centered vertically using translateY
+================================ */
 .left-title {
   position: absolute;
-  left: 80px;
-  top: 680px;
-  transform: rotate(-90deg);
-  transform-origin: left top;
+  left: -200px;
+  top: 300px;
+  transform: translateY(-50%) rotate(-90deg); /* center vertically then rotate */
+  transform-origin: center;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  gap: 18px;
 }
 
-/* "Dynamic" */
+/* "Dynamic" (Grey Text) */
 .title-dynamic {
-  font-size: 45px;
+  font-family: "Poppins", sans-serif;
+  font-size: 36px;
   font-weight: 700;
-  color: #97a6b7;
-  margin-bottom: 31px;
+  color: rgba(151, 166, 183, 1);
+  line-height: 1;
+  margin: 0;
+  margin-left: -430px;
 }
 
-/* "Safety Intelligence" */
+/* "Safety Intelligence" (Blue Text) */
 .title-safety {
-  font-size: 65px;
+  font-family: "Poppins", sans-serif;
+  font-size: 62px;
   font-weight: 700;
-  color: #5351f4;
   line-height: 0.9;
+  color: #5351f4;
+  height: 81px;
+  margin-right: 50px;
 }
 
-/* ---------------- RIGHT CONTENT ---------------- */
+/* ================================
+   RIGHT CONTENT CONTAINER
+   - centered block with controlled width
+================================ */
 .right-content {
-  margin-left: 260px;
-  width: 1166px;
+  margin-left: 220px; /* space for left vertical title */
+  width: 100%;
+  max-width: 1166px; /* matches your Figma frame */
   display: flex;
   flex-direction: column;
-  gap: 59px;
+  gap: 72px; /* vertical gap between rows */
+  padding: 0; /* inner padding is on rows/card */
+  box-sizing: border-box;
 }
 
-/* ---------------- ROW ITEMS ---------------- */
+/* ================================
+   SINGLE ROW
+================================ */
 .safety-row {
   display: flex;
-  align-items: flex-start;
-  gap: 30px;
+  align-items: center; /* center number with text vertically */
+  gap: 36px;
 }
 
-/* Numbers: 01, 02, 03 */
+/* Numbers 01, 02, 03 */
 .num {
-  font-size: 40px;
+  font-family: "Poppins", sans-serif;
+  font-size: 48px;
   font-weight: 700;
-  margin-top: 76px;
-  margin-right: 30px;
+  color: #000;
+  width: 90px; /* fixed width so text aligns consistently */
+  text-align: left;
+  line-height: 1;
+  margin: 0; /* remove top margins */
+  flex: 0 0 90px;
 }
 
-/* Titles */
+/* Row Title */
 .row-title {
-  font-size: 28px;
+  font-family: "Poppins", sans-serif;
+  font-size: 30px;
   font-weight: 700;
+  line-height: 1.05;
   color: rgba(60, 60, 60, 1);
-  margin-bottom: 10px;
+  margin: 0 0 12px 0;
 }
 
-/* Descriptions */
+/* Row Description */
 .row-desc {
-  max-width: 700px;
+  font-family: "Poppins", sans-serif;
   font-size: 18px;
-  color: #555;
+  font-weight: 400;
   line-height: 1.6;
+  color: rgba(90, 90, 90, 1);
+  max-width: 842px;
+  margin: 0;
 }
 
-/* ---------------- CARD WITH GLOW ---------------- */
+/* ================================
+   GLOW CARD (ROW 02)
+   - card takes full available width inside right-content
+================================ */
 .card {
+  width: 100%; /* full width of right-content (max-width above) */
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 42px 50px;
   background: #ffffff;
-  padding: 15px;
-  border-radius: 22px;
-  box-shadow: 25px 25px 70px rgba(130, 100, 255, 0.25),
-    10px 10px 25px rgba(130, 100, 255, 0.15);
+  border-radius: 40px;
+  border: 1px solid rgba(170, 187, 204, 1);
+
+  /* soft purple glow as in Figma */
+  box-shadow: 0 40px 90px rgba(130, 100, 255, 0.32),
+    0 18px 40px rgba(130, 100, 255, 0.18);
 }
 
-@media (max-width: 1024px) {
-  /* Container becomes vertical */
+/* inside card the "num" spacing slightly adjusted */
+.card .num {
+  flex: 0 0 90px;
+  margin-top: 4px;
+}
+
+/* ensure the content block inside rows stacks correctly */
+.safety-row > div {
+  display: block;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width: 1200px) {
   .safety-container {
-    flex-direction: column !important;
-    padding: 30px 35px !important;
-    min-height: auto !important;
+    padding: 40px 36px;
+    min-height: auto;
   }
 
-  /* Vertical title becomes horizontal + centered */
   .left-title {
-    position: relative !important;
-    top: 0 !important;
-    left: 0 !important;
-
-    transform: none !important;
-    transform-origin: unset !important;
-
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: center !important;
-    align-items: center !important;
-    gap: 8px !important;
-
-    margin-bottom: 25px !important;
-    width: 100% !important;
-    text-align: center !important;
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    flex-direction: row;
+    gap: 10px;
+    margin-bottom: 18px;
   }
 
   .title-dynamic {
-    font-size: 28px !important;
-    margin: 0 !important;
+    font-size: 24px;
   }
-
   .title-safety {
-    font-size: 36px !important;
-    margin: 0 !important;
+    font-size: 30px;
   }
 
-  /* Right content full width */
   .right-content {
-    margin-left: 0 !important;
-    width: 100% !important;
-    gap: 40px !important;
+    margin-left: 0;
+    max-width: 100%;
+    gap: 36px;
   }
 
-  /* Each row stacks */
   .safety-row {
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 10px !important;
-    text-align: center !important;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
   }
 
   .num {
-    font-size: 28px !important;
-    margin: 0 !important;
+    font-size: 34px;
+    width: auto;
+    flex: none;
   }
 
   .row-title {
-    font-size: 22px !important;
+    font-size: 22px;
   }
-
   .row-desc {
-    font-size: 16px !important;
-    max-width: 90% !important;
-    line-height: 1.4 !important;
-    margin: 0 auto !important;
+    font-size: 15px;
+    max-width: 100%;
   }
 
   .card {
-    width: 95% !important;
-    margin: 0 auto !important;
-    padding: 18px !important;
+    padding: 20px;
+    border-radius: 18px;
+    box-shadow: 0 28px 60px rgba(130, 100, 255, 0.22),
+      0 12px 30px rgba(130, 100, 255, 0.12);
   }
 }
 
 @media (max-width: 480px) {
+  .safety-container {
+    padding: 24px 18px;
+  }
   .title-dynamic {
-    font-size: 22px !important;
+    font-size: 20px;
   }
-
   .title-safety {
-    font-size: 28px !important;
+    font-size: 22px;
   }
-
   .num {
-    font-size: 22px !important;
+    font-size: 28px;
   }
-
   .row-title {
-    font-size: 18px !important;
+    font-size: 18px;
   }
-
   .row-desc {
-    font-size: 14px !important;
-    max-width: 95% !important;
+    font-size: 14px;
+    line-height: 1.5;
   }
-
   .card {
-    padding: 14px !important;
-    border-radius: 16px !important;
+    padding: 16px;
+    border-radius: 14px;
   }
 }

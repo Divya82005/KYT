@@ -1,7 +1,7 @@
 import React from "react";
 import "./Styles/DownloadSection.css";
 import IphoneImg from "../assets/iPhone 13.png";
-import QRCodeImg from "../assets/Vector.png"; // QR
+import QRCode from "../assets/Vector.png";
 
 const DownloadSection = () => {
   const handleDownloadClick = () => {
@@ -10,26 +10,21 @@ const DownloadSection = () => {
 
   return (
     <section className="download-section">
+      {/* LEFT SIDE */}
       <div className="left-contents">
-        <h2>
-          Get real-time safety alerts on your <br />
-          phone with our app
-        </h2>
-
-        <p>
-          Get real-time safety alerts on your phone <br />
-          with our app
-        </p>
+        <h2>Get real-time safety alerts on your phone with our app</h2>
+        <p>Get real-time safety alerts on your phone with our app</p>
 
         <div className="qr-and-button">
-          <img src={QRCodeImg} alt="QR Code" className="qr-code-img" />
+          <img src={QRCode} alt="QR Code" className="footer-qr" />
 
-          <button onClick={handleDownloadClick} className="download-btn">
+          <button className="footer-btn" onClick={handleDownloadClick}>
             Download the App
           </button>
         </div>
       </div>
 
+      {/* RIGHT SIDE */}
       <div className="right-phone">
         <div className="phone-bg-circle"></div>
         <img src={IphoneImg} alt="App Screenshot" className="iphone-img" />

@@ -28,7 +28,9 @@ function App() {
               <HeroSection />
 
               <PromoVideoSection />
+
               <DownloadSection />
+
               <SafetyIntelligence />
 
               <CTASection />

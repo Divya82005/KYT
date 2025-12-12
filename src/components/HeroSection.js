@@ -1,94 +1,95 @@
 import React from "react";
 import "./Styles/HeroSection.css";
-import city from "../assets/city.jpg";
+import city from "../assets/City.png";
 import map from "../assets/map.png";
-import Group from "../assets/Group.png";
-import SafetyCard from "../assets/SafetyCard.png";
-
-import security from "../assets/Img2.png";
-import Alert from "../assets/Img3.png";
-
+import SafetyCard from "../assets/Safety Card.png";
+import AlertCard from "../assets/Group.png";
 import Ai_Safety from "../assets/Img1.png";
+import Security from "../assets/Img2.png";
+import Alert from "../assets/Img3.png";
 
 const HeroSection = () => {
   const features = [
     {
-      icon: <img src={Ai_Safety} className="Ai_Safety" alt="AISafetyImg" />,
-      title: "Ai Safety Intelligence",
-      desc: "Smart Suggestions And Planning",
+      icon: <img src={Ai_Safety} alt="AI Safety Intelligence" />,
+      title: "AI Safety Intelligence",
+      desc: "Email Support with Privacy",
     },
     {
-      icon: <img src={security} className="Ai_Safety" alt="AISequrityImg" />,
+      icon: <img src={Security} alt="Risk Assessment" />,
       title: "Risk Assessment",
       desc: "Evaluate Locations Before You Go",
     },
     {
-      icon: <img src={Alert} className="Ai_Safety" alt="AIAlertImg" />,
+      icon: <img src={Alert} alt="Real-Time Incident Alerts" />,
       title: "Real-Time Incident Alerts",
-      desc: "Know Your Safety",
+      desc: "Know Your Safety Status",
     },
   ];
 
-  const handleDownloadClick = () => {
-    window.open("https://app-knowyourtrips.onelink.me/b0PV/rutxsmxs", "_blank");
-  };
-
   return (
-    <div className="hero-container">
-      {/* LEFT CONTENT */}
+    <section className="hero-wrapper">
       <div className="hero-left">
-        <div className="left-content">
-          <p className="vision">OUR VISION IS TO-</p>
+        <p className="vision-text">OUR VISION IS TO-</p>
 
-          <h1 className="hero-title">
-            EMPOWER EVERY JOURNEY WITH <br /> SAFETY
-          </h1>
+        <h1 className="hero-title">
+          EMPOWER EVERY JOURNEY WITH <br />
+          <span className="safety-text">SAFETY</span>
+        </h1>
 
-          <button className="btn-primary" onClick={handleDownloadClick}>
-            Download the App
-          </button>
+        <div className="button-row">
+          <button className="download-btns">Download the App</button>
 
-          {/* HORIZONTAL FEATURE CARDS */}
-          <div className="features-horizontal">
-            {features.map((f, index) => (
-              <div className="feature-card-horizontal" key={index}>
-                <div className="feature-icon-horizontal">{f.icon}</div>
-                <div className="feature-content-horizontal">
-                  <h3 className="feature-title-horizontal">{f.title}</h3>
-                  <span className="feature-desc-horizontal">{f.desc}</span>
-                </div>
-              </div>
-            ))}
+          {/* <button className="product-btn">Find us on Product Hunt</button> */}
+
+          <div className="product-btn">
+            <a
+              href="https://www.producthunt.com/posts/knowyourtrips?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-knowyourtrips"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=956968&theme=dark&t=1745506618137"
+                alt="KnowYourTrips - Your&#0032;Personal&#0032;Travel&#0032;Assistant&#0032; | Product Hunt"
+                
+                className="product-hunt-badge"
+              />
+            </a>
           </div>
         </div>
       </div>
 
-      {/* RIGHT VISUAL SECTION */}
-      <div className="hero-visual">
-        {/* BACKGROUND CIRCLES */}
-        <div className="big-circle"></div>
-        <div className="mid-circle"></div>
-        <div className="small-circle"></div>
+      <div className="hero-right">
+        {/* Main City Circle Image */}
+        <img src={city} className="city-main-img" alt="City view" />
 
-        {/* CENTER CITY IMAGE */}
-        <img src={city} alt="city" className="city-img" />
-
-        {/* --- CARD 1: Safety Score (Rotation 13.61°) --- */}
+        {/* Safety Score Card */}
         <div className="safety-card">
-          <img src={SafetyCard} className="safetyImg" alt="safety" />
+          <img src={SafetyCard} alt="Safety Score Card" />
         </div>
 
-        {/* --- CARD 2: Weather Alert (Rotation 8.56°) --- */}
+        {/* Weather Alert Card */}
         <div className="alert-card">
-          <img src={Group} className="alertImg" alt="alert" />
+          <img src={AlertCard} alt="Weather Alert" />
         </div>
 
-        {/* --- CARD 3: MAP CARD (Rotation 22.83°) --- */}
+        {/* Map Card */}
         <div className="map-card">
-          <img src={map} className="map-image" alt="map" />
+          <img src={map} alt="Map Location" />
         </div>
       </div>
-    </div>
+
+      {/* Bottom feature cards */}
+      <div className="feature-row">
+        {features.map((f, i) => (
+          <div className="feature-box" key={i}>
+            <div className="feature-icon">{f.icon}</div>
+            <h3>{f.title}</h3>
+            <p>{f.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 };
 

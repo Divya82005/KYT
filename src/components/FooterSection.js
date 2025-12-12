@@ -10,28 +10,26 @@ const FooterSection = () => {
   return (
     <div className="footer-wrapper">
       <div className="footer-container">
-        {/* LEFT SIDE */}
-        <div className="footer-left">
-          <div className="footer-data">
-            <h3>Data sources:</h3>
-            <p>
-              Local police reports, government travel advisories, user reports,
-              crime statistics, AI analysis. Safety scores updated hourly.
-            </p>
-          </div>
+        {/* TOP LEFT BLOCK */}
+        <div className="left-block">
+          <h3>Data sources:</h3>
+          <p>
+            Local police reports, government travel advisories, user reports,
+            crime statistics, AI analysis. Safety scores updated hourly.
+          </p>
+        </div>
 
+        {/* QR CODE */}
+        <img src={QRCode} className="qr-img" alt="QR Code" />
+
+        {/* BOTTOM BLOCK */}
+        <div className="bottom-block">
           <div className="footer-links">About | Privacy | Terms | Contact</div>
-
           <div className="footer-copy">
             © 2025 knowyourtrips. All rights reserved.
           </div>
-        </div>
 
-        {/* RIGHT SIDE: QR + BUTTON */}
-        <div className="footer-right">
-          <img src={QRCode} alt="QR Code" className="footer-qr" />
-
-          <button className="footer-btn" onClick={handleDownloadClick}>
+          <button className="download-btn" onClick={handleDownloadClick}>
             Download the App
           </button>
         </div>
