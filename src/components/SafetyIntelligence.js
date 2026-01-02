@@ -1,10 +1,6 @@
-import React from "react";
 import "./Styles/SafetyIntelligence.css";
 
 const SafetyIntelligence = () => {
-
-
-
   return (
     <section className="safety-container">
       {/* LEFT VERTICAL TITLE */}
@@ -18,7 +14,7 @@ const SafetyIntelligence = () => {
         {/* ROW 01 */}
         <div className="safety-row">
           <div className="num">01</div>
-          <div>
+          <div className="row-content">
             <h3 className="row-title">Real time incident alerts</h3>
             <p className="row-desc">
               Real-time alerts inform travellers of immediate journey
@@ -32,7 +28,7 @@ const SafetyIntelligence = () => {
         {/* ROW 02 — GLOW CARD */}
         <div className="safety-row card">
           <div className="num">02</div>
-          <div>
+          <div className="row-content">
             <h3 className="row-title">AI Safety Intelligence</h3>
             <p className="row-desc">
               AI Safety Intelligence analyzes the impact of an incident,
@@ -45,7 +41,7 @@ const SafetyIntelligence = () => {
         {/* ROW 03 */}
         <div className="safety-row">
           <div className="num">03</div>
-          <div>
+          <div className="row-content">
             <h3 className="row-title">Destination Risk Assessment</h3>
             <p className="row-desc">
               Stay vigilant against petty crime, recognize common scams, and

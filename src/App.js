@@ -1,17 +1,16 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
-import "./index.css";
-import Navbar from "./components/Navbar";
-import HeroSection from "./components/HeroSection";
-import SafetyIntelligence from "./components/SafetyIntelligence";
 import DownloadSection from "./components/DownloadSection";
+import HeroSection from "./components/HeroSection";
+import Navbar from "./components/Navbar";
+import SafetyIntelligence from "./components/SafetyIntelligence";
+import "./index.css";
 
+import Contact from "./components/Contact";
 import CTASection from "./components/CTASection";
 import FooterSection from "./components/FooterSection";
-import PromoVideoSection from "./components/PromoVideoSection";
-import Contact from "./components/Contact";
 import Privacy from "./components/Privacy";
+import PromoVideoSection from "./components/PromoVideoSection";
 
 function App() {
   return (
@@ -25,15 +24,25 @@ function App() {
           path="/"
           element={
             <>
-              <HeroSection />
+              <section id="home">
+                <HeroSection />
+              </section>
 
-              <PromoVideoSection />
+              <section id="about">
+                <PromoVideoSection />
+              </section>
 
-              <DownloadSection />
+              <section id="blogs">
+                <DownloadSection />
+              </section>
 
-              <SafetyIntelligence />
+              <section id="safety">
+                <SafetyIntelligence />
+              </section>
 
-              <CTASection />
+              <section id="cta">
+                <CTASection />
+              </section>
             </>
           }
         />

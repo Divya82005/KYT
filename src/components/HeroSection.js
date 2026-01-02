@@ -1,12 +1,8 @@
-import React from "react";
-import "./Styles/HeroSection.css";
 import city from "../assets/City.png";
-import map from "../assets/map.png";
-import SafetyCard from "../assets/Safety Card.png";
-import AlertCard from "../assets/Group.png";
 import Ai_Safety from "../assets/Img1.png";
 import Security from "../assets/Img2.png";
 import Alert from "../assets/Img3.png";
+import "./Styles/HeroSection.css";
 
 const HeroSection = () => {
   const features = [
@@ -27,20 +23,26 @@ const HeroSection = () => {
     },
   ];
 
+  const handleDownloadClick = () => {
+    console.log("🔗 Download button clicked");
+    window.open("https://app-knowyourtrips.onelink.me/b0PV/rutxsmxs", "_blank");
+  };
+
   return (
+
     <section className="hero-wrapper">
       <div className="hero-left">
         <p className="vision-text">OUR VISION IS TO-</p>
 
-        <h1 className="hero-title">
-          EMPOWER EVERY JOURNEY WITH <br />
-          <span className="safety-text">SAFETY</span>
+       <h1 className="hero-title">
+          EMPOWER EVERY <br />
+          <span className="hero-title">JOURNEY WITH SAFETY</span>
         </h1>
 
         <div className="button-row">
-          <button className="download-btns">Download the App</button>
-
-          {/* <button className="product-btn">Find us on Product Hunt</button> */}
+          <button className="download-btns" onClick={handleDownloadClick}>
+            Download the App
+          </button>
 
           <div className="product-btn">
             <a
@@ -50,44 +52,27 @@ const HeroSection = () => {
             >
               <img
                 src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=956968&theme=dark&t=1745506618137"
-                alt="KnowYourTrips - Your&#0032;Personal&#0032;Travel&#0032;Assistant&#0032; | Product Hunt"
-                
+                alt="KnowYourTrips - Your Personal Travel Assistant | Product Hunt"
                 className="product-hunt-badge"
               />
             </a>
           </div>
         </div>
+
+        {/* ✅ FEATURE ROW MOVED HERE */}
+        <div className="feature-row">
+          {features.map((f, i) => (
+            <div className="feature-box" key={i}>
+              <div className="feature-icon">{f.icon}</div>
+              <h3>{f.title}</h3>
+              <p>{f.desc}</p>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="hero-right">
-        {/* Main City Circle Image */}
         <img src={city} className="city-main-img" alt="City view" />
-
-        {/* Safety Score Card */}
-        <div className="safety-card">
-          <img src={SafetyCard} alt="Safety Score Card" />
-        </div>
-
-        {/* Weather Alert Card */}
-        <div className="alert-card">
-          <img src={AlertCard} alt="Weather Alert" />
-        </div>
-
-        {/* Map Card */}
-        <div className="map-card">
-          <img src={map} alt="Map Location" />
-        </div>
-      </div>
-
-      {/* Bottom feature cards */}
-      <div className="feature-row">
-        {features.map((f, i) => (
-          <div className="feature-box" key={i}>
-            <div className="feature-icon">{f.icon}</div>
-            <h3>{f.title}</h3>
-            <p>{f.desc}</p>
-          </div>
-        ))}
       </div>
     </section>
   );

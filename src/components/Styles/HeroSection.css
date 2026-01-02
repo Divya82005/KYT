@@ -1,150 +1,250 @@
-.hero-wrapper {
-  width: 100%;
-  padding: 60px 80px;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap');
+
+/* ================= GLOBAL ================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   background-color: #ffffff;
-}
-.hero-left {
-  width: 785px;
+  font-family: "SF Pro Rounded", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
 }
 
+/* ================= HERO WRAPPER ================= */
+/* Desktop: ALL laptops >=1024px */
+
+.hero-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  padding: 2.5rem 5rem;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0rem;
+}
+
+/* ================= HERO LEFT ================= */
+
+.hero-left {
+  max-width: 40.5rem;
+  margin-top: 3.125rem;
+}
+
+/* ================= TEXT ================= */
+
 .vision-text {
-  font-size: 36px;
+  font-size: 2rem;
   font-weight: 500;
   color: #808080;
-  width: 325px;
-  margin-bottom: 10px;
+  line-height: 2.375rem;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  font-style: normal;
 }
 
 .hero-title {
-  font-size: 48px;
+  font-size: 2.7rem;
   font-weight: 700;
-  line-height: 1.3;
-  width: 785px;
-  margin-bottom: 30px;
+  color: #000;
+  line-height: 4.5rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-style: normal;
 }
+
+.safety-text {
+  color: #5351ed;
+}
+
+/* ================= BUTTON ROW ================= */
 
 .button-row {
   display: flex;
-  gap: 22px;
+  align-items: center;
+  gap: 1.375rem;
 }
 
-/* LEFT BUTTON */
+/* ================= DOWNLOAD BUTTON ================= */
+
 .download-btns {
-  width: 250px;
-  height: 80px;
-  border-radius: 20px;
-  background: #5351f4;
-  border: none;
-  color: #fff;
-  font-size: 20px;
-  font-weight: 600;
-}
-
-/* RIGHT BUTTON */
-
-/* RIGHT SECTION */
-.hero-right {
-  position: absolute;
-  top: 160px;
-  right: 100px;
-}
-
-/* MAIN CITY CIRCLE IMAGE */
-.city-main-img {
-  width: 553px;
-  height: 553px;
-  border-radius: 50%;
-  object-fit: cover;
-  position: relative;
-  left: 60px;
-}
-
-/* Safety Score Card */
-.safety-card {
-  width: 288px;
-  height: 186px;
-  position: absolute;
-  top: 15px;
-  left: 320px;
-}
-
-/* Weather Alert Card */
-.alert-card {
-  width: 344px;
-  height: 100px;
-  position: absolute;
-  top: -16px;
-  left: -110px;
-  /* transform: rotate(-8deg); */
-}
-
-/* Map Card */
-.map-card {
-  width: 357px;
-  height: 287px;
-  position: absolute;
-  top: 385px;
-  left: 250px;
-  /* transform: rotate(22.83deg); */
-}
-
-/* FEATURE BOXES */
-.feature-row {
-  display: flex;
-  gap: 60px;
-  margin-top: 180px;
-}
-
-.feature-box {
-  width: 275px;
-  height: 226px;
-  border: 1px solid #bbbbbb;
-  border-radius: 20px;
-  text-align: center;
-  padding-top: 20px;
-
-  box-shadow: rgba(83, 81, 244, 0.1) 6px 2px 16px 0px,
-    rgba(83, 81, 244, 0.09) -6px -2px 16px 0px;
-}
-
-.feature-box img {
-  width: 70px;
-}
-
-.feature-box h3 {
-  font-size: 20px;
-  font-weight: 600;
-  margin-top: 15px;
-}
-
-.feature-box p {
-  font-size: 14px;
-  color: #777;
-  margin-top: 5px;
-}
-
-/* .download-btns {
-  background: #5351f4;
+  width: 14.625rem;
+  height: 4.2rem;
+  background: #5351ed;
   color: #ffffff;
-  padding: 15px 32px;
+  border-radius: 1.25rem;
   border: none;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 600;
+
+  font-family: "Poppins", sans-serif;
+  font-size: 1.18rem;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   cursor: pointer;
-  transition: 0.2s;
-  margin-left: 10px;
-} */
+  transition: all 0.3s ease;
+}
+
+.download-btns:hover {
+  background: #3a45ef;
+  transform: translateY(-0.125rem);
+  box-shadow: 0 0.25rem 0.75rem rgba(83, 81, 237, 0.3);
+}
+
+/* ================= PRODUCT HUNT ================= */
+
+.product-btn {
+  display: flex;
+  align-items: center;
+  height: 5.2rem;
+  width: 18rem;
+}
 
 .product-hunt-badge {
-  width: 350px;
-  height: 80px;
+  height: 5rem;
+  width: auto;
   transition: transform 0.3s ease;
 }
 
 .product-hunt-badge:hover {
-  transform: scale(1.1);
+  transform: translateY(-0.125rem);
+}
+
+/* ================= HERO RIGHT ================= */
+
+.hero-right {
+  display: flex;
+  justify-content: center;
+}
+
+.city-main-img {
+  width: 36.5625rem;
+  max-width: 36.5625rem;
+  height: 36.33363rem;
+}
+
+/* ================= FEATURES ================= */
+
+.feature-row {
+  display: flex;
+  width: 49.125rem;
+  height: 14.0625rem;
+  align-items: center;
+  gap: 1.125rem;
+  margin-top: 2.4rem;
+  flex-wrap: wrap;
+}
+
+/* ================= FEATURE BOX ================= */
+
+.feature-box {
+  width: 14.625rem;
+  height: 13.0625rem;
+  padding: 1.25rem 1rem;
+
+  border-radius: 1.25rem;
+  border: 1px solid #bbb;
+  background: #fff;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  box-shadow:
+    5.625rem 8.5rem 2.875rem 0 rgba(83, 81, 244, 0),
+    3.625rem 5.4375rem 2.625rem 0 rgba(83, 81, 244, 0.01),
+    2.0625rem 3.0625rem 2.1875rem 0 rgba(83, 81, 244, 0.05),
+    0.875rem 1.375rem 1.625rem 0 rgba(83, 81, 244, 0.09),
+    0.25rem 0.3125rem 0.875rem 0 rgba(83, 81, 244, 0.1);
+
+  transition: all 0.3s ease;
+}
+
+.feature-icon img {
+  width: 4.375rem;
+  height: auto;
+}
+
+.feature-box h3 {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0.75rem 0 0.375rem;
+}
+
+.feature-box p {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #777777;
+  line-height: 1.4;
+}
+
+.feature-box:hover {
+  transform: translateY(-0.25rem);
+}
+
+/* ================================================= */
+/* ================= TABLET & BELOW ================= */
+/* ================================================= */
+
+@media (max-width: 64rem) {
+  .hero-wrapper {
+    grid-template-columns: 1fr;
+    padding: 3rem 3rem;
+    gap: 3.75rem;
+  }
+
+  .hero-left {
+    margin-top: 0;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 5vw, 2.5rem);
+  }
+
+  .vision-text {
+    font-size: clamp(1.375rem, 3vw, 1.75rem);
+  }
+
+  .feature-row {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2.5rem;
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 48rem) {
+  .hero-wrapper {
+    padding: 2rem 1.25rem;
+  }
+
+  .hero-title {
+    font-size: 1.875rem;
+  }
+
+  .button-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .download-btns {
+    width: 100%;
+    height: 3.75rem;
+    font-size: 1rem;
+  }
+
+  .product-hunt-badge {
+    height: 3.75rem;
+  }
+  .feature-row{flex-wrap: wrap;}
 }

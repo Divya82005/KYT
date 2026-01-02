@@ -1,10 +1,11 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import "./Styles/Navbar.css";
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import Company_Logo from "../assets/Company_Logo.png";
+import "./Styles/Navbar.css";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -16,6 +17,28 @@ const Navbar = () => {
     document.body.style.overflow = "auto";
   };
 
+  // Smooth scroll to section
+  const scrollToSection = (sectionId) => {
+    closeMenu();
+    
+    // If not on home page, navigate to home first
+    if (location.pathname !== "/") {
+      window.location.href = "/#" + sectionId;
+      return;
+    }
+
+    // Smooth scroll to section
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  // Check if a link is active based on current location and scroll position
+  const isActive = (sectionId) => {
+    return location.pathname === "/" && window.location.hash === "#" + sectionId;
+  };
+
   const handleDownloadClick = () => {
     window.open("https://app-knowyourtrips.onelink.me/b0PV/rutxsmxs", "_blank");
   };
@@ -23,29 +46,79 @@ const Navbar = () => {
   return (
     <>
       <nav className="nav">
-        <div className="logo">
-          <Link to="/" className="logo-link" onClick={closeMenu}>
-            <img
-              src={Company_Logo}
-              alt="Company Logo"
-              className="company_logo"
-            />
-            Know Your <span className="highlight">Trips</span>
-          </Link>
+        <div className="logo-wrapper">
+          <img
+            src={Company_Logo}
+            alt="Company Logo"
+            className="company_logo"
+          />
+          <a 
+            href="/" 
+            className="logo-link" 
+            onClick={(e) => {
+              e.preventDefault();
+              if (location.pathname === "/") {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              } else {
+                window.location.href = "/";
+              }
+              closeMenu();
+            }}
+          >
+            KnowYour <span className="highlight">Trips</span>
+          </a>
         </div>
 
         <ul className="nav-links">
           <li>
-            <Link to="/blogs">Blogs</Link>
+            <a 
+              href="#home" 
+              className={isActive("home") ? "active" : ""}
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("home");
+              }}
+            >
+              Blogs
+            </a>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <a 
+              href="#about" 
+              className={isActive("about") ? "active" : ""}
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("about");
+              }}
+            >
+              About
+            </a>
           </li>
           <li>
-            <Link to="/contact">Contact</Link>
+            <a 
+              href="/contact" 
+              className={location.pathname === "/contact" ? "active" : ""}
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.href = "/contact";
+                closeMenu();
+              }}
+            >
+              Contact
+            </a>
           </li>
           <li>
-            <Link to="/privacy">Privacy</Link>
+            <a 
+              href="/privacy" 
+              className={location.pathname === "/privacy" ? "active" : ""}
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.href = "/privacy";
+                closeMenu();
+              }}
+            >
+              Privacy
+            </a>
           </li>
         </ul>
 
@@ -67,24 +140,52 @@ const Navbar = () => {
       <div className={`mobile-menu ${isMenuOpen ? "active" : ""}`}>
         <ul>
           <li>
-            <Link to="/blogs" onClick={closeMenu}>
+            <a 
+              href="#home" 
+              className={isActive("home") ? "active" : ""}
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("home");
+              }}
+            >
               Blogs
-            </Link>
+            </a>
           </li>
           <li>
-            <Link to="/about" onClick={closeMenu}>
+            <a 
+              href="#about" 
+              className={isActive("about") ? "active" : ""}
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("about");
+              }}
+            >
               About
-            </Link>
+            </a>
           </li>
           <li>
-            <Link to="/contact" onClick={closeMenu}>
+            <a 
+              href="/contact" 
+              className={location.pathname === "/contact" ? "active" : ""}
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.href = "/contact";
+              }}
+            >
               Contact
-            </Link>
+            </a>
           </li>
           <li>
-            <Link to="/privacy" onClick={closeMenu}>
+            <a 
+              href="/privacy" 
+              className={location.pathname === "/privacy" ? "active" : ""}
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.href = "/privacy";
+              }}
+            >
               Privacy
-            </Link>
+            </a>
           </li>
         </ul>
 

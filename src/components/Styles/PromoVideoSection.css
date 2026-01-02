@@ -1,196 +1,237 @@
 /* ============= PROMO VIDEO SECTION ============= */
 .promo-section {
-  width: 1559px;
-  height: 647px;
+  width: calc(100% - 100px);
+  max-width: 1559px;
+  height: auto;
   margin: 149px auto 0;
-  padding: 0;
+  /* padding: 0 50px; */
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 50px;
   position: relative;
-  /* left: 93px; */
 }
 
-/* LEFT VIDEO BOX - WIDER VERSION */
+/* LEFT VIDEO BOX */
 .promo-video-box {
-  width: 826px; /* INCREASED from 628px to 828px - 200px wider */
-  height: 515px; /* EXACT from design: Height: 647px */
-  background: #f5f5f7; /* Light grey background from design */
-  
-  overflow: hidden;
+  width: 826px;
+  height: 515px;
+  background: #f5f5f7;
+  aspect-ratio: 826 / 515;
+  /* overflow: hidden; */
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  /* flex-shrink: 0; */
 }
 
 .promo-video {
-  width: 826px;
-  height: 515px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   border-radius: 20px;
+  display: block;
 }
 
-/* RIGHT TEXT BOX - ADJUSTED for wider video */
+/* RIGHT TEXT BOX */
 .promo-text-box {
-  width: 629px;
-  height: 647px;
-  /* padding-top: 66px;
-  padding-left: 40px; */
+  flex: 1;
+  min-width: 0;
 }
 
-/* "ABOUT" title - ALL CAPS as shown in design */
+/* "ABOUT" title */
 .promo-about-title {
-  color: #5351f4; /* Blue color from design */
-  font-size: 60px; /* Based on design proportion */
-  font-weight: 600;
-
-  margin-bottom: -24px;
-  font-style: bold;
-  letter-spacing: 1px;
+  font-family: Poppins, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 60px;
+  line-height: 135%;
+  letter-spacing: 0;
+  color: #5351ed;
+  margin: 0;
+  margin-bottom: 20px;
 }
 
 /* Main heading */
 .promo-heading {
-  font-size: 56px; /* Large heading as per design */
+  font-family: "SF Pro Rounded", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-weight: 700;
-  line-height: 1.1;
-  margin-bottom: 25px;
-
+  font-style: normal;
+  font-size: 40px;
+  line-height: 60px;
+  letter-spacing: 0;
+  text-transform: uppercase;
   color: #000000;
+  margin: 0;
+  margin-bottom: 25px;
 }
 
-/* "YOUR ALL-IN-ONE" and "TRAVEL COMPANION" styling */
+/* Main title spans */
 .main-title {
   display: block;
-  text-transform: uppercase;
-  font-size: 40px;
-  text-transform: uppercase;
-  padding-bottom: 25px;
+  vertical-align: middle;
 }
 
 /* Description text */
 .promo-description {
-  font-size: 24px; /* Slightly smaller for better fit */
-  color: #666666;
-  line-height: 1.7;
+  font-family: Poppins, sans-serif;
   font-weight: 400;
-  margin-top: -20px;
-  font-family: poppins, sans-serif;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 40px;
+  letter-spacing: 0;
+  text-transform: capitalize;
+  color: #000000;
+  margin: 0;
+  vertical-align: middle;
 }
 
 /* ============= RESPONSIVE DESIGN ============= */
-@media (max-width: 1600px) {
+@media (max-width: 1440px) {
   .promo-section {
-    width: 90%;
-    max-width: 1400px;
-    margin: 100px auto 0;
-    left: auto;
-    height: auto;
-    min-height: 647px;
-    padding: 0 5%;
+    gap: 40px;
+    padding: 0 50px;
   }
 
   .promo-video-box {
-    width: 55%; /* Increased percentage for wider video */
-    height: 500px;
-  }
-
-  .promo-text-box {
-    width: 40%; /* Reduced percentage for text */
-    height: auto;
-    padding-top: 40px;
-    padding-left: 30px;
+    width: 826px;
+    height: 515px;
+    aspect-ratio: 826 / 515;
   }
 
   .promo-heading {
+    font-size: 36px;
+    line-height: 54px;
+  }
+
+  .promo-about-title {
     font-size: 48px;
   }
 
   .promo-description {
-    font-size: 17px;
+    font-size: 20px;
+    line-height: 32px;
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1250px) {
   .promo-section {
     flex-direction: column;
-    margin: 80px auto 0;
-    gap: 50px;
+    gap: 40px;
+    padding: 0 50px;
+    width: calc(100% - 100px);
   }
 
   .promo-video-box {
     width: 100%;
-    max-width: 900px; /* Wider on mobile */
-    height: 450px;
-  }
-
-  .promo-text-box {
-    width: 100%;
-    max-width: 800px;
-    text-align: center;
-    padding: 0 20px;
+    max-width: 600px;
+    height: auto;
+    aspect-ratio: 826 / 515;
     margin: 0 auto;
   }
 
   .promo-heading {
-    font-size: 42px;
+    font-size: 32px;
+    line-height: 48px;
   }
 
   .promo-about-title {
-    font-size: 28px;
+    font-size: 42px;
   }
 
   .promo-description {
-    font-size: 17px;
+    font-size: 18px;
+    line-height: 30px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .promo-section {
+    flex-direction: column;
+    gap: 40px;
+    padding: 0 50px;
+    width: calc(100% - 100px);
+  }
+
+  .promo-video-box {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    aspect-ratio: 826 / 515;
+    margin: 0 auto;
+  }
+
+  .promo-text-box {
+    width: 100%;
+    text-align: center;
+  }
+
+  .promo-heading {
+    font-size: 32px;
+    line-height: 48px;
+  }
+
+  .promo-about-title {
+    font-size: 42px;
+    line-height: 135%;
+  }
+
+  .promo-description {
+    font-size: 18px;
+    line-height: 32px;
   }
 }
 
 @media (max-width: 768px) {
   .promo-section {
-    margin: 60px auto 0;
-    padding: 0 20px;
+    margin: 100px auto 0;
+    gap: 30px;
+    padding: 0 50px;
   }
 
   .promo-video-box {
-    height: 400px; /* Taller video on mobile */
+    max-width: 100%;
+    aspect-ratio: 826 / 515;
   }
 
   .promo-heading {
-    font-size: 36px;
+    font-size: 28px;
+    line-height: 42px;
   }
 
   .promo-about-title {
-    font-size: 24px;
+    font-size: 36px;
+    line-height: 135%;
   }
 
   .promo-description {
     font-size: 16px;
-    line-height: 1.6;
+    line-height: 28px;
   }
 }
 
 @media (max-width: 480px) {
   .promo-section {
-    margin: 40px auto 0;
-    padding: 0 15px;
+    margin: 80px auto 0;
+    gap: 24px;
+    padding: 0 50px;
+    width: calc(100% - 100px);
   }
 
   .promo-video-box {
-    height: 300px;
-    border-radius: 15px;
-  }
-
-  .promo-video {
-    border-radius: 15px;
+    aspect-ratio: 826 / 515;
   }
 
   .promo-heading {
-    font-size: 28px;
+    font-size: 24px;
+    line-height: 36px;
   }
 
   .promo-about-title {
-    font-size: 20px;
+    font-size: 28px;
+    line-height: 135%;
   }
 
   .promo-description {
     font-size: 15px;
+    line-height: 24px;
   }
 }
