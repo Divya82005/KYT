@@ -1,5 +1,5 @@
-/* Styles/Navbar.css */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap');
+/* ============= NAVBAR RESPONSIVE STYLES ============= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 
 * {
   box-sizing: border-box;
@@ -20,9 +20,10 @@ img {
   height: auto;
 }
 
+/* ============= MAIN NAVIGATION ============= */
 .nav {
   width: 100%;
-  padding: 30px 40px;
+  padding: clamp(0.75rem, 3vw, 1.875rem) clamp(1rem, 4vw, 2.5rem);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -31,24 +32,25 @@ img {
   z-index: 1000;
 }
 
-/* LOGO SECTION */
+/* ============= LOGO SECTION ============= */
 .logo-wrapper {
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: clamp(0.75rem, 2vw, 1.375rem);
   flex-shrink: 0;
 }
 
 .company_logo {
-  width: 27px;
-  height: 45.54px;
+  width: clamp(18px, 3vw, 27px);
+  height: auto;
+  aspect-ratio: 27/45.54;
 }
 
 .logo-link {
   text-decoration: none;
   color: inherit;
   font-family: "Poppins", sans-serif;
-  font-size: 32px;
+  font-size: clamp(1.25rem, 4vw, 2rem); /* 20px - 32px */
   font-weight: 600;
   color: #1a1a1a;
   white-space: nowrap;
@@ -67,11 +69,11 @@ img {
   margin-left: 4px;
 }
 
-/* NAVIGATION LINKS */
+/* ============= NAVIGATION LINKS ============= */
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 64px;
+  gap: clamp(2rem, 5vw, 4rem);
   margin: 0;
   padding: 0;
   flex: 1;
@@ -85,7 +87,7 @@ img {
 .nav-links a {
   text-decoration: none;
   color: #2d2d2d;
-  font-size: 20px;
+  font-size: clamp(1rem, 2.5vw, 1.25rem); /* 16px - 20px */
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -95,25 +97,25 @@ img {
 
 .nav-links a:hover {
   color: #5351ed;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .nav-links a.active {
   color: #5351ed;
-  font-weight: 800;
+  font-weight: 700;
 }
 
-/* PRIMARY BUTTON */
+/* ============= PRIMARY BUTTON ============= */
 .nav .btn-primary {
   background: #5351ed;
   color: white;
-  width: 250px;
-  height: 70px;
+  width: clamp(12.5rem, 20vw, 15.625rem); /* 200px - 250px */
+  height: clamp(3.5rem, 6vw, 4.375rem); /* 56px - 70px */
   padding: 0;
-  border-radius: 20px;
+  border-radius: clamp(0.75rem, 2vw, 1.25rem);
   border: none;
   font-family: "Poppins", sans-serif;
-  font-size: 20px;
+  font-size: clamp(1rem, 2vw, 1.25rem); /* 16px - 20px */
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -130,7 +132,7 @@ img {
   box-shadow: 0 4px 12px rgba(83, 81, 237, 0.3);
 }
 
-/* HAMBURGER MENU (Hidden on desktop) */
+/* ============= HAMBURGER MENU ============= */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -143,8 +145,8 @@ img {
 }
 
 .hamburger span {
-  width: 25px;
-  height: 3px;
+  width: clamp(20px, 4vw, 25px);
+  height: clamp(2px, 0.5vw, 3px);
   background: #333;
   margin: 3px 0;
   transition: 0.3s;
@@ -163,18 +165,18 @@ img {
   transform: rotate(-45deg) translate(7px, -6px);
 }
 
-/* MOBILE SIDEBAR MENU */
+/* ============= MOBILE SIDEBAR MENU ============= */
 .mobile-menu {
   display: none;
   position: fixed;
   top: 0;
   right: -100%;
-  width: 280px;
+  width: min(280px, 80vw);
   height: 100vh;
   background: white;
   box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  padding: 80px 30px 30px;
+  padding: clamp(4rem, 8vw, 5rem) clamp(1.25rem, 4vw, 1.875rem) clamp(1.25rem, 4vw, 1.875rem);
   transition: right 0.3s ease;
   overflow-y: auto;
 }
@@ -190,14 +192,14 @@ img {
 }
 
 .mobile-menu li {
-  margin-bottom: 20px;
+  margin-bottom: clamp(1rem, 3vw, 1.25rem);
 }
 
 .mobile-menu a {
   text-decoration: none;
   color: #2d2d2d;
   font-family: "Poppins", sans-serif;
-  font-size: 20px;
+  font-size: clamp(1.125rem, 3vw, 1.25rem); /* 18px - 20px */
   font-weight: 500;
   display: block;
   padding: 10px 0;
@@ -206,26 +208,26 @@ img {
 
 .mobile-menu a:hover {
   color: #5351ed;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .mobile-menu a.active {
   color: #5351ed;
-  font-weight: 800;
+  font-weight: 700;
 }
 
-/* MOBILE BUTTON */
+/* ============= MOBILE BUTTON ============= */
 .mobile-btn {
   background: #5351ed;
   color: white;
-  padding: 15px 25px;
-  border-radius: 15px;
+  padding: clamp(0.75rem, 3vw, 0.9375rem) clamp(1.25rem, 4vw, 1.5625rem);
+  border-radius: clamp(0.75rem, 2vw, 0.9375rem);
   border: none;
   font-family: "Poppins", sans-serif;
-  font-size: 20px;
+  font-size: clamp(1rem, 3vw, 1.25rem); /* 16px - 20px */
   font-weight: 700;
   cursor: pointer;
-  margin-top: 30px;
+  margin-top: clamp(1.25rem, 4vw, 1.875rem);
   width: 100%;
   transition: background 0.3s;
 }
@@ -234,7 +236,7 @@ img {
   background: #3a45ef;
 }
 
-/* OVERLAY */
+/* ============= OVERLAY ============= */
 .overlay {
   display: none;
   position: fixed;
@@ -250,124 +252,17 @@ img {
   display: block;
 }
 
-/* ============ RESPONSIVE DESIGN ============ */
+/* ============= RESPONSIVE BREAKPOINTS ============= */
 
-/* Large Screens - 1600px and above */
-@media (min-width: 1600px) {
+/* Tablet and below - Hide desktop nav, show mobile menu */
+@media (max-width: 1023px) {
   .nav {
-    padding: 30px 80px;
-  }
-
-  .logo-link {
-    font-size: 32px;
-  }
-
-  .company_logo {
-    width: 30px;
-    height: 51px;
-  }
-
-  .nav-links {
-    gap: 80px;
-  }
-
-  .nav-links a {
-    font-size: 22px;
-  }
-
-  .nav .btn-primary {
-    width: 280px;
-    height: 80px;
-    font-size: 22px;
-  }
-}
-
-/* Large Screens - 1200px to 1599px */
-@media (max-width: 1599px) and (min-width: 1200px) {
-  .nav {
-    padding: 25px 60px;
-  }
-
-  .logo-link {
-    font-size: 32px;
-  }
-
-  .company_logo {
-    width: 27px;
-    height: 45.54px;
-  }
-
-  .nav-links {
-    gap: 64px;
-  }
-
-  .nav-links a {
-    font-size: 20px;
-  }
-
-  .nav .btn-primary {
-    width: 250px;
-    height: 70px;
-    font-size: 20px;
-  }
-}
-
-/* Tablets - 768px to 1199px */
-@media (max-width: 1199px) {
-  .nav {
-    padding: 20px 40px;
-    gap: 20px;
-  }
-
-  .logo-wrapper {
-    gap: 15px;
-  }
-
-  .logo-link {
-    font-size: 26px;
-  }
-
-  .company_logo {
-    width: 24px;
-    height: 40px;
-  }
-
-  .nav-links {
-    gap: 48px;
-  }
-
-  .nav-links a {
-    font-size: 18px;
-  }
-
-  .nav .btn-primary {
-    width: 200px;
-    height: 60px;
-    font-size: 18px;
-    padding: 0 20px;
-  }
-}
-
-/* Small Tablets - Switch to mobile menu (max-width: 767px) */
-@media (max-width: 767px) {
-  .nav {
-    padding: 15px 20px;
     justify-content: space-between;
   }
 
   .logo-wrapper {
     order: 1;
-    gap: 12px;
     margin: 0;
-  }
-
-  .logo-link {
-    font-size: 24px;
-  }
-
-  .company_logo {
-    width: 22px;
-    height: 37px;
   }
 
   /* Hide desktop nav links and button */
@@ -385,179 +280,53 @@ img {
     order: 2;
   }
 
-  .hamburger span {
-    width: 24px;
-    height: 2.5px;
-  }
-
   .mobile-menu {
     display: block;
-    width: 280px;
-    padding: 70px 25px 25px;
-  }
-
-  .mobile-menu a {
-    font-size: 18px;
-  }
-
-  .mobile-btn {
-    font-size: 18px;
-    padding: 12px 20px;
   }
 }
 
-/* Mobile Phones - 576px to 767px */
-@media (max-width: 576px) {
+/* Mobile specific adjustments */
+@media (max-width: 767px) {
   .nav {
-    padding: 12px 16px;
-  }
-
-  .logo-wrapper {
-    gap: 10px;
-  }
-
-  .logo-link {
-    font-size: 22px;
-  }
-
-  .company_logo {
-    width: 20px;
-    height: 33px;
-  }
-
-  .hamburger span {
-    width: 22px;
+    padding: clamp(0.75rem, 3vw, 1rem) clamp(1rem, 4vw, 1.25rem);
   }
 
   .mobile-menu {
-    width: 280px;
-    padding: 65px 20px 20px;
-  }
-
-  .mobile-menu li {
-    margin-bottom: 18px;
-  }
-
-  .mobile-menu a {
-    font-size: 17px;
-    padding: 8px 0;
-  }
-
-  .mobile-btn {
-    font-size: 17px;
-    margin-top: 25px;
+    width: min(260px, 85vw);
+    padding: clamp(3.5rem, 8vw, 4.375rem) clamp(1rem, 4vw, 1.25rem) clamp(1rem, 4vw, 1.25rem);
   }
 }
 
-/* Small Mobile Phones - 480px to 575px */
+/* Small mobile adjustments */
 @media (max-width: 480px) {
   .nav {
-    padding: 12px 14px;
-  }
-
-  .logo-wrapper {
-    gap: 10px;
-  }
-
-  .logo-link {
-    font-size: 20px;
-  }
-
-  .company_logo {
-    width: 18px;
-    height: 30px;
-  }
-
-  .hamburger span {
-    width: 20px;
-    height: 2.5px;
+    padding: clamp(0.625rem, 3vw, 0.75rem) clamp(0.875rem, 4vw, 1rem);
   }
 
   .mobile-menu {
-    width: 260px;
-    padding: 60px 18px 18px;
-  }
-
-  .mobile-menu li {
-    margin-bottom: 16px;
-  }
-
-  .mobile-menu a {
-    font-size: 16px;
-    padding: 8px 0;
-  }
-
-  .mobile-btn {
-    font-size: 16px;
-    padding: 12px 18px;
-    margin-top: 20px;
+    width: min(240px, 90vw);
   }
 }
 
-/* Extra Small Mobile Phones - below 480px */
-@media (max-width: 359px) {
-  .nav {
-    padding: 10px 12px;
-  }
-
-  .logo-wrapper {
-    gap: 8px;
-  }
-
-  .logo-link {
-    font-size: 18px;
-  }
-
-  .company_logo {
-    width: 16px;
-    height: 27px;
-  }
-
-  .hamburger span {
-    width: 18px;
-    height: 2px;
-  }
-
-  .mobile-menu {
-    width: 240px;
-    padding: 55px 15px 15px;
-  }
-
-  .mobile-menu li {
-    margin-bottom: 14px;
-  }
-
-  .mobile-menu a {
-    font-size: 15px;
-    padding: 6px 0;
-  }
-
-  .mobile-btn {
-    font-size: 15px;
-    padding: 10px 16px;
-    margin-top: 15px;
-  }
-}
-
-/* Landscape Mode for Mobile */
+/* Landscape mode for mobile */
 @media (max-height: 500px) and (orientation: landscape) {
   .mobile-menu {
     height: 100vh;
-    padding-top: 50px;
+    padding-top: clamp(2.5rem, 6vw, 3.125rem);
   }
 
   .mobile-menu li {
-    margin-bottom: 12px;
+    margin-bottom: clamp(0.625rem, 2vw, 0.75rem);
   }
 
   .mobile-menu a {
-    font-size: 15px;
+    font-size: clamp(0.9375rem, 2.5vw, 1rem);
     padding: 6px 0;
   }
 
   .mobile-btn {
-    margin-top: 15px;
-    padding: 10px 16px;
-    font-size: 15px;
+    margin-top: clamp(0.9375rem, 3vw, 1.25rem);
+    padding: clamp(0.625rem, 2vw, 0.75rem) clamp(1rem, 3vw, 1.25rem);
+    font-size: clamp(0.9375rem, 2.5vw, 1rem);
   }
 }

@@ -1,26 +1,39 @@
 /* ============= PROMO VIDEO SECTION ============= */
+/* NOTE: Responsive container that adapts to screen size */
+.promo-container {
+  width: 100%;
+  max-width: 1350px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
 .promo-section {
-  width: calc(100% - 100px);
-  max-width: 1559px;
+  width: 100%;
   height: auto;
-  margin: 149px auto 0;
-  /* padding: 0 50px; */
+  margin: 149px 0 0;
+  padding: 0;
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* Changed from center to flex-start to move video down slightly */
   justify-content: space-between;
   gap: 50px;
   position: relative;
+  box-sizing: border-box;
 }
 
 /* LEFT VIDEO BOX */
 .promo-video-box {
-  width: 826px;
-  height: 515px;
+  width: 50%;
+  height: auto;
+  min-height: 300px;
   background: #f5f5f7;
   aspect-ratio: 826 / 515;
-  /* overflow: hidden; */
+  overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-  /* flex-shrink: 0; */
+  flex-shrink: 0;
+  border-radius: 20px;
+  position: relative;
+  margin-top: 40px; /* Increased from 20px to make it more noticeable */
 }
 
 .promo-video {
@@ -31,9 +44,15 @@
   display: block;
 }
 
+/* Alternative: If you want to see the full video without cropping */
+.promo-video.contain {
+  object-fit: contain;
+  background: #000;
+}
+
 /* RIGHT TEXT BOX */
 .promo-text-box {
-  flex: 1;
+  width: 50%;
   min-width: 0;
 }
 
@@ -56,18 +75,17 @@
   font-weight: 700;
   font-style: normal;
   font-size: 40px;
-  line-height: 60px;
+  line-height: 45px; /* Reduced from 55px to tighten gap between lines */
   letter-spacing: 0;
   text-transform: uppercase;
   color: #000000;
   margin: 0;
-  margin-bottom: 25px;
+  margin-bottom: 22px;
 }
 
 /* Main title spans */
 .main-title {
   display: block;
-  vertical-align: middle;
 }
 
 /* Description text */
@@ -75,80 +93,88 @@
   font-family: Poppins, sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 24px;
-  line-height: 40px;
+  font-size: 20px; /* Reduced from 23px */
+  line-height: 40px; /* Reverted back to original */
   letter-spacing: 0;
   text-transform: capitalize;
   color: #000000;
   margin: 0;
-  vertical-align: middle;
 }
 
 /* ============= RESPONSIVE DESIGN ============= */
-@media (max-width: 1440px) {
+
+/* ============= DESKTOP (1024px and above) - Image 1 Layout ============= */
+@media (min-width: 1024px) {
   .promo-section {
-    gap: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
     padding: 0 50px;
+    margin: 149px auto 0;
   }
 
   .promo-video-box {
-    width: 826px;
-    height: 515px;
-    aspect-ratio: 826 / 515;
-  }
-
-  .promo-heading {
-    font-size: 36px;
-    line-height: 54px;
-  }
-
-  .promo-about-title {
-    font-size: 48px;
-  }
-
-  .promo-description {
-    font-size: 20px;
-    line-height: 32px;
-  }
-}
-
-@media (max-width: 1250px) {
-  .promo-section {
-    flex-direction: column;
-    gap: 40px;
-    padding: 0 50px;
-    width: calc(100% - 100px);
-  }
-
-  .promo-video-box {
-    width: 100%;
-    max-width: 600px;
+    width: 50%;
     height: auto;
+    min-height: 300px;
     aspect-ratio: 826 / 515;
-    margin: 0 auto;
   }
 
-  .promo-heading {
-    font-size: 32px;
-    line-height: 48px;
+  .promo-text-box {
+    width: 50%;
+    text-align: left;
   }
 
   .promo-about-title {
-    font-size: 42px;
+    font-size: 50px;
+    margin-bottom: 20px;
+  }
+
+  .promo-heading {
+    font-size: 30px;
+    line-height: 40px; /* Reduced from 60px to tighten gap */
+    margin-bottom: 25px;
   }
 
   .promo-description {
-    font-size: 18px;
-    line-height: 30px;
+    font-size: 18px; /* Reduced from 20px */
+    line-height: 40px; /* Reverted back to original */
   }
 }
 
-@media (max-width: 1024px) {
+/* ============= LARGE DESKTOP (1440px and above) ============= */
+@media (min-width: 1440px) {
   .promo-section {
+    gap: 60px;
+    padding: 0 80px;
+  }
+
+  .promo-about-title {
+    font-size: 64px;
+  }
+
+  .promo-heading {
+    font-size: 44px;
+    line-height: 50px; /* Reduced from 60px to tighten gap */
+  }
+
+  .promo-description {
+    font-size: 23px; /* Reduced from 26px */
+    line-height: 40px; /* Reverted back to original */
+  }
+}
+
+/* ============= IPAD MINI 8.3 (744px - 1023px) - Image 3 Layout ============= */
+@media (max-width: 1023px) and (min-width: 744px) {
+  .promo-section {
+    display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 40px;
-    padding: 0 50px;
-    width: calc(100% - 100px);
+    padding: 0 40px;
+    margin: 100px auto 0;
   }
 
   .promo-video-box {
@@ -162,76 +188,134 @@
   .promo-text-box {
     width: 100%;
     text-align: center;
+    max-width: 700px;
+  }
+
+  .promo-about-title {
+    font-size: 48px;
+    margin-bottom: 20px;
   }
 
   .promo-heading {
     font-size: 32px;
     line-height: 48px;
-  }
-
-  .promo-about-title {
-    font-size: 42px;
-    line-height: 135%;
+    margin-bottom: 20px;
   }
 
   .promo-description {
-    font-size: 18px;
+    font-size: 20px;
     line-height: 32px;
   }
 }
 
-@media (max-width: 768px) {
+/* ============= IPHONE MINI (390px - 743px) - Exact Reference Image Layout ============= */
+/* NOTE: Video in white grid area above, About section below with centered text */
+@media (max-width: 743px) and (min-width: 390px) {
+  .promo-container {
+    padding: 0 20px;
+    margin-top: 40px;
+  }
+
   .promo-section {
-    margin: 100px auto 0;
-    gap: 30px;
-    padding: 0 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin: 0;
+    padding: 0;
   }
 
+  /* Video in white grid area - matches reference image */
   .promo-video-box {
+    width: 100%;
     max-width: 100%;
+    height: auto;
     aspect-ratio: 826 / 515;
+    min-height: 200px;
+    background: #ffffff;
+    /* White background like in reference */
+    border: 1px solid #e0e0e0;
+    /* Light border for grid effect */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    order: 1;
+    /* Video appears first */
   }
 
-  .promo-heading {
-    font-size: 28px;
-    line-height: 42px;
+  .promo-video {
+    border-radius: 12px;
+  }
+
+  /* About section below video - matches reference image */
+  .promo-text-box {
+    width: 100%;
+    text-align: center;
+    order: 2;
+    /* Text appears second */
+    padding: 20px 0;
   }
 
   .promo-about-title {
     font-size: 36px;
-    line-height: 135%;
-  }
-
-  .promo-description {
-    font-size: 16px;
-    line-height: 28px;
-  }
-}
-
-@media (max-width: 480px) {
-  .promo-section {
-    margin: 80px auto 0;
-    gap: 24px;
-    padding: 0 50px;
-    width: calc(100% - 100px);
-  }
-
-  .promo-video-box {
-    aspect-ratio: 826 / 515;
+    margin-bottom: 20px;
+    color: #5351ED;
   }
 
   .promo-heading {
-    font-size: 24px;
-    line-height: 36px;
+    font-size: 22px;
+    line-height: 32px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    color: #000000;
+  }
+
+  .promo-description {
+    font-size: 14px;
+    line-height: 22px;
+    color: #666666;
+    max-width: 90%;
+    margin: 0 auto;
+    text-transform: none;
+    /* Remove capitalize for better readability */
+  }
+}
+
+/* ============= SMALLER PHONES (320px - 389px) ============= */
+@media (max-width: 389px) {
+  .promo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding: 0 15px;
+    margin: 60px auto 0;
+  }
+
+  .promo-video-box {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 826 / 515;
+    min-height: 180px;
+  }
+
+  .promo-text-box {
+    width: 100%;
+    text-align: center;
   }
 
   .promo-about-title {
     font-size: 28px;
-    line-height: 135%;
+    margin-bottom: 14px;
+  }
+
+  .promo-heading {
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 14px;
   }
 
   .promo-description {
-    font-size: 15px;
-    line-height: 24px;
+    font-size: 14px;
+    line-height: 22px;
   }
 }

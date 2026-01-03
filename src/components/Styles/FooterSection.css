@@ -1,109 +1,187 @@
-/* FOOTER BACKGROUND */
+/* ============= FOOTER SECTION ============= */
+
+/* ============= FOOTER WRAPPER ============= */
 .footer-wrapper {
   width: 100%;
-  background: rgba(83, 81, 244, 1);
-  padding: 65px 0;
-  display: flex;
-  justify-content: center;
+  background: #5351f4; /* Blue background matching reference */
+  padding: 0;
+  margin: 0;
 }
 
-/* MAIN CONTAINER – EXACT Figma SIZE */
+/* ============= MAIN CONTAINER ============= */
 .footer-container {
-  width: 1727px;
-  height: 557px;
-  position: relative;
-  color: #fff;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(3rem, 6vw, 4rem) clamp(2rem, 5vw, 3rem);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: clamp(2rem, 5vw, 4rem);
+  color: white;
   font-family: "Poppins", sans-serif;
 }
 
-/* LEFT SIDE TEXT BLOCK */
-.left-block {
-  width: 586px;
-  position: absolute;
-  top: 65px;
-  left: 80px;
+/* ============= LEFT CONTENT ============= */
+.footer-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 3vw, 2rem); /* Reduced from clamp(2rem, 4vw, 3rem) */
+  max-width: 600px;
 }
 
-/* TITLE: Data sources */
-.left-block h3 {
-  font-size: 24px; /* Figma value */
-  font-weight: 500; /* Medium */
-  margin-bottom: 18px;
-  line-height: 187%; /* Figma */
+/* ============= DATA SOURCES SECTION ============= */
+.data-sources h3 {
+  font-size: clamp(1.125rem, 3vw, 1.5rem); /* 18px - 24px */
+  font-weight: 500;
+  margin: 0 0 clamp(0.75rem, 2vw, 1rem) 0;
+  color: white;
+  line-height: 1.4;
 }
 
-/* PARAGRAPH TEXT */
-.left-block p {
-  font-size: 20px; /* Figma value */
-  font-weight: 400; /* Regular */
-  line-height: 187%; /* Figma */
-  max-width: 560px;
-}
-
-/* LINKS */
-.footer-links {
-  position: absolute;
-  top: 319px; /* Figma EXACT position */
-  left: 80px;
-
-  font-size: 28px; /* Figma value */
-  font-weight: 500; /* Medium */
-  line-height: 187%; /* Figma */
-}
-
-/* COPYRIGHT */
-.footer-copy {
-  position: absolute;
-  top: 385px; /* Slight shift to match Figma baseline */
-  left: 80px;
-
-  font-size: 24px; /* Looks like Figma ~24px */
+.data-sources p {
+  font-size: clamp(0.875rem, 2.5vw, 1.125rem); /* 14px - 18px */
   font-weight: 400;
-  line-height: 187%;
+  line-height: 1.6;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 500px;
 }
 
-/* QR CODE */
-.qr-img {
-  width: 178px;
-  height: 178px;
-  position: absolute;
-  top: 65px;
-  left: 1484px;
-
-  background: #fff;
-  padding: 12px;
-  border-radius: 14px;
-  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15);
+/* ============= FOOTER LINKS ============= */
+.footer-links span {
+  font-size: clamp(1rem, 3vw, 1.25rem); /* 16px - 20px */
+  font-weight: 500;
+  color: white;
+  line-height: 1.4;
 }
 
-/* BUTTON */
-.download-btn {
-  width: 250px;
-  height: 80px;
+/* ============= COPYRIGHT ============= */
+.footer-copyright span {
+  font-size: clamp(0.875rem, 2.5vw, 1rem); /* 14px - 16px */
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.4;
+}
 
-  position: absolute;
-  top: 331px;
-  left: 1412px;
+/* ============= RIGHT CONTENT ============= */
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1.5rem, 3vw, 2rem);
+  flex-shrink: 0;
+}
 
-  background: #fff;
-  border-radius: 20px;
-  border: 1px solid rgba(83, 81, 237, 1);
+/* ============= QR CODE SECTION ============= */
+.qr-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  font-size: 18px;
+.qr-code {
+  width: clamp(8rem, 15vw, 10rem); /* 128px - 160px */
+  height: clamp(8rem, 15vw, 10rem); /* 128px - 160px */
+  background: white;
+  padding: clamp(0.5rem, 1vw, 0.75rem);
+  border-radius: clamp(0.5rem, 1vw, 0.75rem);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ============= DOWNLOAD BUTTON ============= */
+.download-button {
+  background: white;
+  color: #5351f4;
+  border: none;
+  border-radius: clamp(0.75rem, 2vw, 1rem);
+  padding: clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2rem);
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(0.875rem, 2.5vw, 1rem); /* 14px - 16px */
   font-weight: 600;
-  color: #4744db;
-
   cursor: pointer;
-  box-shadow: 0px 12px 22px rgba(0, 0, 0, 0.12);
-  transition: 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  min-width: clamp(8rem, 20vw, 12rem);
+  text-align: center;
 }
 
-.download-btn:hover {
-  transform: translateY(-3px);
+.download-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  background: #f8f9fa;
 }
 
-/* FIX HORIZONTAL SCROLL */
-body,
-html {
-  overflow-x: hidden;
+/* ============= RESPONSIVE DESIGN ============= */
+
+/* Tablet Layout */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: clamp(2rem, 4vw, 3rem);
+    padding: clamp(2rem, 5vw, 3rem) clamp(1.5rem, 4vw, 2rem);
+  }
+  
+  .footer-left {
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+  }
+  
+  .data-sources p {
+    max-width: 100%;
+  }
+  
+  .footer-right {
+    width: 100%;
+    align-items: center;
+  }
+}
+
+/* Mobile Layout */
+@media (max-width: 480px) {
+  .footer-container {
+    padding: clamp(1.5rem, 4vw, 2rem) clamp(1rem, 4vw, 1.5rem);
+    gap: clamp(1.5rem, 4vw, 2rem);
+  }
+  
+  .footer-left {
+    gap: clamp(1.5rem, 4vw, 2rem);
+  }
+  
+  .qr-code {
+    width: clamp(6rem, 20vw, 8rem);
+    height: clamp(6rem, 20vw, 8rem);
+  }
+  
+  .download-button {
+    min-width: clamp(7rem, 25vw, 10rem);
+    padding: clamp(0.625rem, 2vw, 0.875rem) clamp(1.25rem, 4vw, 1.5rem);
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 360px) {
+  .footer-container {
+    padding: clamp(1.25rem, 4vw, 1.5rem) clamp(0.75rem, 4vw, 1rem);
+  }
+  
+  .data-sources h3 {
+    font-size: clamp(1rem, 4vw, 1.125rem);
+  }
+  
+  .data-sources p {
+    font-size: clamp(0.75rem, 3vw, 0.875rem);
+  }
+  
+  .footer-links span {
+    font-size: clamp(0.875rem, 3vw, 1rem);
+  }
+  
+  .footer-copyright span {
+    font-size: clamp(0.75rem, 3vw, 0.875rem);
+  }
 }

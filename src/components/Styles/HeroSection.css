@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap');
-
-/* ================= GLOBAL ================= */
+/* ============= HERO SECTION RESPONSIVE STYLES ============= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 * {
   box-sizing: border-box;
@@ -10,49 +9,59 @@
 
 body {
   background-color: #ffffff;
-  font-family: "SF Pro Rounded", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
-/* ================= HERO WRAPPER ================= */
-/* Desktop: ALL laptops >=1024px */
-
+/* ============= HERO WRAPPER ============= */
 .hero-wrapper {
   width: 100%;
   min-height: 100vh;
-  padding: 2.5rem 5rem;
-
+  padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1rem, 4vw, 5rem);
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0rem;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 5vw, 3rem);
+  align-items: center;
 }
 
-/* ================= HERO LEFT ================= */
+/* Desktop layout */
+@media (min-width: 1024px) {
+  .hero-wrapper {
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 4vw, 4rem);
+  }
+}
 
+/* ============= HERO LEFT ============= */
 .hero-left {
-  max-width: 40.5rem;
-  margin-top: 3.125rem;
+  max-width: 100%;
+  order: 2;
 }
 
-/* ================= TEXT ================= */
+@media (min-width: 1024px) {
+  .hero-left {
+    max-width: 40.5rem;
+    order: 1;
+  }
+}
 
+/* ============= TYPOGRAPHY ============= */
 .vision-text {
-  font-size: 2rem;
+  font-size: clamp(1rem, 3vw, 2rem); /* 16px - 32px */
   font-weight: 500;
   color: #808080;
-  line-height: 2.375rem;
+  line-height: 1.4;
   text-transform: uppercase;
-  margin-bottom: 0.5rem;
+  margin-bottom: clamp(0.5rem, 2vw, 0.5rem);
   font-style: normal;
 }
 
 .hero-title {
-  font-size: 2.7rem;
+  font-size: clamp(1.75rem, 5vw, 2.7rem); /* 28px - 43.2px */
   font-weight: 700;
   color: #000;
-  line-height: 4.5rem;
+  line-height: 1.3;
   text-transform: uppercase;
-  margin-bottom: 1rem;
+  margin-bottom: clamp(1rem, 3vw, 1rem);
   font-style: normal;
 }
 
@@ -60,34 +69,45 @@ body {
   color: #5351ed;
 }
 
-/* ================= BUTTON ROW ================= */
-
+/* ============= BUTTON ROW ============= */
 .button-row {
   display: flex;
-  align-items: center;
-  gap: 1.375rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(1rem, 3vw, 1.375rem);
+  margin-bottom: clamp(2rem, 4vw, 2.5rem);
 }
 
-/* ================= DOWNLOAD BUTTON ================= */
+@media (min-width: 768px) {
+  .button-row {
+    flex-direction: row;
+    align-items: center;
+  }
+}
 
+/* ============= DOWNLOAD BUTTON ============= */
 .download-btns {
-  width: 14.625rem;
-  height: 4.2rem;
+  width: 100%;
+  max-width: clamp(12rem, 25vw, 14.625rem); /* 192px - 234px */
+  height: clamp(3.5rem, 6vw, 4.2rem); /* 56px - 67.2px */
   background: #5351ed;
   color: #ffffff;
-  border-radius: 1.25rem;
+  border-radius: clamp(0.75rem, 2vw, 1.25rem);
   border: none;
-
   font-family: "Poppins", sans-serif;
-  font-size: 1.18rem;
+  font-size: clamp(1rem, 2.5vw, 1.18rem); /* 16px - 18.88px */
   font-weight: 700;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   cursor: pointer;
   transition: all 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .download-btns {
+    width: clamp(12rem, 20vw, 14.625rem);
+  }
 }
 
 .download-btns:hover {
@@ -96,17 +116,17 @@ body {
   box-shadow: 0 0.25rem 0.75rem rgba(83, 81, 237, 0.3);
 }
 
-/* ================= PRODUCT HUNT ================= */
-
+/* ============= PRODUCT HUNT ============= */
 .product-btn {
   display: flex;
   align-items: center;
-  height: 5.2rem;
-  width: 18rem;
+  height: clamp(4rem, 6vw, 5.2rem); /* 64px - 83.2px */
+  width: 100%;
+  max-width: clamp(14rem, 30vw, 18rem); /* 224px - 288px */
 }
 
 .product-hunt-badge {
-  height: 5rem;
+  height: clamp(3.5rem, 6vw, 5rem); /* 56px - 80px */
   width: auto;
   transition: transform 0.3s ease;
 }
@@ -115,136 +135,186 @@ body {
   transform: translateY(-0.125rem);
 }
 
-/* ================= HERO RIGHT ================= */
-
+/* ============= HERO RIGHT ============= */
 .hero-right {
   display: flex;
   justify-content: center;
+  order: 1;
+}
+
+@media (min-width: 1024px) {
+  .hero-right {
+    order: 2;
+  }
 }
 
 .city-main-img {
-  width: 36.5625rem;
-  max-width: 36.5625rem;
-  height: 36.33363rem;
+  width: 100%;
+  max-width: clamp(20rem, 50vw, 36.5625rem); /* 320px - 585px */
+  height: auto;
+  aspect-ratio: 585/581; /* Maintain original aspect ratio */
 }
 
-/* ================= FEATURES ================= */
-
+/* ============= FEATURES ============= */
 .feature-row {
-  display: flex;
-  width: 49.125rem;
-  height: 14.0625rem;
-  align-items: center;
-  gap: 1.125rem;
-  margin-top: 2.4rem;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(1rem, 3vw, 1.125rem);
+  width: 100%;
+  max-width: clamp(20rem, 80vw, 49.125rem); /* 320px - 786px */
+  margin-top: clamp(2rem, 4vw, 2.4rem);
 }
 
-/* ================= FEATURE BOX ================= */
+@media (min-width: 768px) {
+  .feature-row {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
 
+@media (min-width: 1024px) {
+  .feature-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============= FEATURE BOX ============= */
 .feature-box {
-  width: 14.625rem;
-  height: 13.0625rem;
-  padding: 1.25rem 1rem;
-
-  border-radius: 1.25rem;
+  width: 100%;
+  min-height: clamp(11rem, 20vw, 13.0625rem); /* 176px - 209px */
+  padding: clamp(1rem, 3vw, 1.25rem);
+  border-radius: clamp(0.75rem, 2vw, 1.25rem);
   border: 1px solid #bbb;
   background: #fff;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-
+  justify-content: center;
   box-shadow:
     5.625rem 8.5rem 2.875rem 0 rgba(83, 81, 244, 0),
     3.625rem 5.4375rem 2.625rem 0 rgba(83, 81, 244, 0.01),
     2.0625rem 3.0625rem 2.1875rem 0 rgba(83, 81, 244, 0.05),
     0.875rem 1.375rem 1.625rem 0 rgba(83, 81, 244, 0.09),
     0.25rem 0.3125rem 0.875rem 0 rgba(83, 81, 244, 0.1);
-
   transition: all 0.3s ease;
 }
 
 .feature-icon img {
-  width: 4.375rem;
+  width: clamp(3rem, 8vw, 4.375rem); /* 48px - 70px */
   height: auto;
 }
 
 .feature-box h3 {
   font-family: "Poppins", sans-serif;
-  font-size: 1rem;
+  font-size: clamp(0.875rem, 2.5vw, 1rem); /* 14px - 16px */
   font-weight: 600;
-  margin: 0.75rem 0 0.375rem;
+  margin: clamp(0.5rem, 2vw, 0.75rem) 0 clamp(0.25rem, 1vw, 0.375rem);
+  line-height: 1.3;
 }
 
 .feature-box p {
   font-family: "Poppins", sans-serif;
-  font-size: 0.8rem;
+  font-size: clamp(0.75rem, 2vw, 0.8rem); /* 12px - 12.8px */
   font-weight: 500;
   color: #777777;
   line-height: 1.4;
+  margin: 0;
 }
 
 .feature-box:hover {
   transform: translateY(-0.25rem);
 }
 
-/* ================================================= */
-/* ================= TABLET & BELOW ================= */
-/* ================================================= */
+/* ============= RESPONSIVE ADJUSTMENTS ============= */
 
-@media (max-width: 64rem) {
+/* Tablet adjustments */
+@media (max-width: 1023px) and (min-width: 768px) {
   .hero-wrapper {
-    grid-template-columns: 1fr;
-    padding: 3rem 3rem;
-    gap: 3.75rem;
-  }
-
-  .hero-left {
-    margin-top: 0;
-  }
-
-  .hero-title {
-    font-size: clamp(2rem, 5vw, 2.5rem);
-  }
-
-  .vision-text {
-    font-size: clamp(1.375rem, 3vw, 1.75rem);
+    padding: clamp(2rem, 4vw, 3rem) clamp(2rem, 4vw, 3rem);
+    gap: clamp(2.5rem, 5vw, 3.75rem);
   }
 
   .feature-row {
-    flex-wrap: wrap;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     justify-content: center;
-    margin-top: 2.5rem;
   }
 }
 
-/* ================= MOBILE ================= */
-
-@media (max-width: 48rem) {
+/* Mobile adjustments */
+@media (max-width: 767px) {
   .hero-wrapper {
-    padding: 2rem 1.25rem;
+    padding: clamp(1.5rem, 4vw, 2rem) clamp(1rem, 4vw, 1.25rem);
+    gap: clamp(2rem, 5vw, 2.5rem);
   }
 
   .hero-title {
-    font-size: 1.875rem;
+    font-size: clamp(1.5rem, 6vw, 1.875rem); /* 24px - 30px */
+    line-height: 1.2;
+  }
+
+  .vision-text {
+    font-size: clamp(0.875rem, 4vw, 1.375rem); /* 14px - 22px */
   }
 
   .button-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
+    width: 100%;
   }
 
   .download-btns {
     width: 100%;
-    height: 3.75rem;
-    font-size: 1rem;
+    max-width: none;
+    height: clamp(3rem, 8vw, 3.75rem); /* 48px - 60px */
+    font-size: clamp(0.875rem, 3vw, 1rem); /* 14px - 16px */
+  }
+
+  .product-btn {
+    width: 100%;
+    max-width: none;
+    justify-content: center;
   }
 
   .product-hunt-badge {
-    height: 3.75rem;
+    height: clamp(3rem, 8vw, 3.75rem); /* 48px - 60px */
   }
-  .feature-row{flex-wrap: wrap;}
+
+  .feature-row {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+
+  .feature-box {
+    min-height: clamp(10rem, 25vw, 12rem); /* 160px - 192px */
+  }
+}
+
+/* Extra small mobile */
+@media (max-width: 480px) {
+  .hero-wrapper {
+    padding: clamp(1rem, 4vw, 1.5rem) clamp(0.75rem, 4vw, 1rem);
+  }
+
+  .hero-title {
+    font-size: clamp(1.25rem, 7vw, 1.5rem); /* 20px - 24px */
+  }
+
+  .vision-text {
+    font-size: clamp(0.75rem, 4vw, 1rem); /* 12px - 16px */
+  }
+
+  .feature-box {
+    padding: clamp(0.75rem, 4vw, 1rem);
+    min-height: clamp(9rem, 30vw, 11rem); /* 144px - 176px */
+  }
+
+  .feature-icon img {
+    width: clamp(2.5rem, 10vw, 3rem); /* 40px - 48px */
+  }
+
+  .feature-box h3 {
+    font-size: clamp(0.75rem, 3vw, 0.875rem); /* 12px - 14px */
+  }
+
+  .feature-box p {
+    font-size: clamp(0.625rem, 2.5vw, 0.75rem); /* 10px - 12px */
+  }
 }

@@ -11,8 +11,6 @@ const PromoVideoSection = () => {
           src={promoVideo}
           autoPlay
           muted
-          // loop
-          // playsInline
         />
       </div>
 

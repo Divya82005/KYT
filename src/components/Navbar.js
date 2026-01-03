@@ -20,7 +20,7 @@ const Navbar = () => {
   // Smooth scroll to section
   const scrollToSection = (sectionId) => {
     closeMenu();
-    
+
     // If not on home page, navigate to home first
     if (location.pathname !== "/") {
       window.location.href = "/#" + sectionId;
@@ -52,9 +52,9 @@ const Navbar = () => {
             alt="Company Logo"
             className="company_logo"
           />
-          <a 
-            href="/" 
-            className="logo-link" 
+          <a
+            href="/"
+            className="logo-link"
             onClick={(e) => {
               e.preventDefault();
               if (location.pathname === "/") {
@@ -71,8 +71,8 @@ const Navbar = () => {
 
         <ul className="nav-links">
           <li>
-            <a 
-              href="#home" 
+            <a
+              href="#home"
               className={isActive("home") ? "active" : ""}
               onClick={(e) => {
                 e.preventDefault();
@@ -83,8 +83,8 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="#about" 
+            <a
+              href="#about"
               className={isActive("about") ? "active" : ""}
               onClick={(e) => {
                 e.preventDefault();
@@ -95,8 +95,8 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="/contact" 
+            <a
+              href="/contact"
               className={location.pathname === "/contact" ? "active" : ""}
               onClick={(e) => {
                 e.preventDefault();
@@ -108,8 +108,8 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="/privacy" 
+            <a
+              href="/privacy"
               className={location.pathname === "/privacy" ? "active" : ""}
               onClick={(e) => {
                 e.preventDefault();
@@ -140,8 +140,8 @@ const Navbar = () => {
       <div className={`mobile-menu ${isMenuOpen ? "active" : ""}`}>
         <ul>
           <li>
-            <a 
-              href="#home" 
+            <a
+              href="#home"
               className={isActive("home") ? "active" : ""}
               onClick={(e) => {
                 e.preventDefault();
@@ -152,8 +152,8 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="#about" 
+            <a
+              href="#about"
               className={isActive("about") ? "active" : ""}
               onClick={(e) => {
                 e.preventDefault();
@@ -164,8 +164,8 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="/contact" 
+            <a
+              href="/contact"
               className={location.pathname === "/contact" ? "active" : ""}
               onClick={(e) => {
                 e.preventDefault();
@@ -176,8 +176,8 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <a 
-              href="/privacy" 
+            <a
+              href="/privacy"
               className={location.pathname === "/privacy" ? "active" : ""}
               onClick={(e) => {
                 e.preventDefault();

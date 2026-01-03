@@ -10,39 +10,28 @@ const feedbackList = [
   {
     id: 1,
     image: ManImg,
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    name: "John Doe",
+    title: "Travel Vlogger",
+    text: "Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua. Ut Enim Ad Minim Veniam, Quis Nostrud Exercitation Ullamco Laboris Nisi Ut Aliquip Ex Ea Commodo Consequat. Duis Aute Irure Dolor In Reprehenderit In Voluptate Velit Esse Cillum Dolore Eu Fugiat Nulla Pariatur. Excepteur Sint Occaecat Cupidatat Non Proident, Sunt In Culpa Qui Officia Deserunt Mollit Anim Id Est Laborum.",
   },
   {
     id: 2,
     image: ManImg,
-    text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    name: "Jane Smith",
+    title: "Content Creator",
+    text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
   },
   {
     id: 3,
     image: ManImg,
-    text: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    name: "Mike Johnson",
+    title: "Digital Nomad",
+    text: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   },
 ];
 
 const CTASection = () => {
   const [index, setIndex] = useState(0);
-  const trackRef = useRef(null);
-
-  const CARD_WIDTH = 1123;
-
-  useEffect(() => {
-    if (trackRef.current) {
-      trackRef.current.style.transform = `translateX(-${index * CARD_WIDTH}px)`;
-    }
-  }, [index]);
-
-  // Auto-slide
-  useEffect(() => {
-    const auto = setInterval(() => {
-      setIndex((prev) => (prev + 1) % feedbackList.length);
-    }, 3000);
-    return () => clearInterval(auto);
-  }, []);
 
   const nextSlide = () => {
     setIndex((prev) => (prev + 1) % feedbackList.length);
@@ -52,43 +41,45 @@ const CTASection = () => {
     setIndex((prev) => (prev - 1 + feedbackList.length) % feedbackList.length);
   };
 
+  const currentFeedback = feedbackList[index];
+
   return (
     <section className="testimonial-section">
       <h2 className="section-heading">User Feedback</h2>
 
-      <div className="carousel-outer-wrapper">
+      <div className="feedback-container">
         {/* LEFT ARROW */}
         <button className="nav-btn left" onClick={prevSlide}>
-          <img src={arrowl} />
+          <img src={arrowl} alt="Previous" />
         </button>
 
-        {/* FIXED WIDTH CAROUSEL */}
-        <div className="carousel-container-fixed">
-          <div className="carousel-track" ref={trackRef}>
-            {feedbackList.map((item, i) => (
-              <div
-                key={item.id}
-                className={
-                  i === index ? "testimonial-card active" : "testimonial-card"
-                }
-              >
-                <div className="left-area">
-                  <div className="floating-box" />
-                  <img src={item.image} className="person-img" alt="User" />
-                </div>
-
-                <div className="right-area">
-                  <img src={quote} className="quote-icon" alt="quote" />
-                  <p className="feedback-text">{item.text}</p>
-                </div>
+        {/* MAIN FEEDBACK CARD */}
+        <div className="feedback-card">
+          <div className="feedback-content">
+            {/* LEFT SIDE - USER INFO */}
+            <div className="user-info">
+              <div className="user-avatar">
+                <img src={currentFeedback.image} alt={currentFeedback.name} />
               </div>
-            ))}
+              <div className="user-details">
+                <h3 className="user-name">{currentFeedback.name}</h3>
+                <p className="user-title">{currentFeedback.title}</p>
+              </div>
+            </div>
+
+            {/* RIGHT SIDE - FEEDBACK TEXT */}
+            <div className="feedback-text-area">
+              <div className="quote-icon-container">
+                <img src={quote} className="quote-icon" alt="quote" />
+              </div>
+              <p className="feedback-text">{currentFeedback.text}</p>
+            </div>
           </div>
         </div>
 
         {/* RIGHT ARROW */}
         <button className="nav-btn right" onClick={nextSlide}>
-          <img src={arrowr} />
+          <img src={arrowr} alt="Next" />
         </button>
       </div>
     </section>
