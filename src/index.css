@@ -271,8 +271,9 @@ Large Desktop: 1440px+
 *[data-symbol="grey"],
 *[class*="grey-marker"] {
   display: none !important;
-}/
-* Hide scroll indicators and navigation symbols */
+}
+
+/* Hide scroll indicators and navigation symbols */
 ::-webkit-scrollbar-button,
 ::-webkit-scrollbar-track-piece,
 ::-webkit-scrollbar-corner,
