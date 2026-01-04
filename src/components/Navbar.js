@@ -123,6 +123,8 @@ const Navbar = () => {
         </ul>
 
         <button className="btn-primary" onClick={handleDownloadClick}>
+          <span className="diamond-top-left">✦</span>
+          <span className="diamond-bottom-right">✦</span>
           Download the App
         </button>
 
@@ -196,6 +198,8 @@ const Navbar = () => {
             handleDownloadClick();
           }}
         >
+          <span className="diamond-top-left">✦</span>
+          <span className="diamond-bottom-right">✦</span>
           Download the App
         </button>
       </div>

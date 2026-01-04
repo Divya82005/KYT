@@ -35,6 +35,8 @@ const FooterSection = () => {
             <img src={QRCode} className="qr-code" alt="QR Code" />
           </div>
           <button className="download-button" onClick={handleDownloadClick}>
+            <span className="diamond-top-left">✦</span>
+            <span className="diamond-bottom-right">✦</span>
             Download the App
           </button>
         </div>

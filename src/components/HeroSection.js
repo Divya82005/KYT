@@ -7,17 +7,17 @@ import "./Styles/HeroSection.css";
 const HeroSection = () => {
   const features = [
     {
-      icon: <img src={Ai_Safety} alt="AI Safety Intelligence" />,
+      icon: <img src={Ai_Safety} alt="AI Safety Intelligence" loading="eager" />,
       title: "AI Safety Intelligence",
-      desc: "Email Support with Privacy",
+      desc: "Smart Suggestions and Planning",
     },
     {
-      icon: <img src={Security} alt="Risk Assessment" />,
+      icon: <img src={Security} alt="Risk Assessment" loading="eager" />,
       title: "Risk Assessment",
       desc: "Evaluate Locations Before You Go",
     },
     {
-      icon: <img src={Alert} alt="Real-Time Incident Alerts" />,
+      icon: <img src={Alert} alt="Real-Time Incident Alerts" loading="eager" />,
       title: "Real-Time Incident Alerts",
       desc: "Know Your Safety Status",
     },
@@ -34,13 +34,15 @@ const HeroSection = () => {
       <div className="hero-left">
         <p className="vision-text">OUR VISION IS TO-</p>
 
-       <h1 className="hero-title">
+        <h1 className="hero-title">
           EMPOWER EVERY <br />
           <span className="hero-title">JOURNEY WITH SAFETY</span>
         </h1>
 
         <div className="button-row">
           <button className="download-btns" onClick={handleDownloadClick}>
+            <span className="diamond-top-left">✦</span>
+            <span className="diamond-bottom-right">✦</span>
             Download the App
           </button>
 
@@ -72,7 +74,12 @@ const HeroSection = () => {
       </div>
 
       <div className="hero-right">
-        <img src={city} className="city-main-img" alt="City view" />
+        <img
+          src={city}
+          className="city-main-img hero-image"
+          alt="City view"
+          loading="eager"
+        />
       </div>
     </section>
   );

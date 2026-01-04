@@ -21,6 +21,8 @@ body {
   grid-template-columns: 1fr;
   gap: clamp(2rem, 5vw, 3rem);
   align-items: center;
+  transform: scale(0.95); /* Slight zoom out */
+  transform-origin: center;
 }
 
 /* Desktop layout */
@@ -102,6 +104,25 @@ body {
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease;
+  position: relative; /* For positioning the diamonds */
+}
+
+.diamond-top-left {
+  position: absolute;
+  top: clamp(0.25rem, 1vw, 0.375rem);
+  left: clamp(0.25rem, 1vw, 0.375rem);
+  font-size: clamp(0.75rem, 1.5vw, 1rem);
+  color: #FFD700; /* Gold color */
+  opacity: 0.9;
+}
+
+.diamond-bottom-right {
+  position: absolute;
+  bottom: clamp(0.25rem, 1vw, 0.375rem);
+  right: clamp(0.25rem, 1vw, 0.375rem);
+  font-size: clamp(0.75rem, 1.5vw, 1rem);
+  color: #FFD700; /* Gold color */
+  opacity: 0.9;
 }
 
 @media (min-width: 768px) {
@@ -196,7 +217,9 @@ body {
     2.0625rem 3.0625rem 2.1875rem 0 rgba(83, 81, 244, 0.05),
     0.875rem 1.375rem 1.625rem 0 rgba(83, 81, 244, 0.09),
     0.25rem 0.3125rem 0.875rem 0 rgba(83, 81, 244, 0.1);
-  transition: all 0.3s ease;
+  /* Removed all transition properties to prevent grey line fading */
+  position: relative;
+  z-index: 1;
 }
 
 .feature-icon img {
@@ -221,11 +244,104 @@ body {
   margin: 0;
 }
 
-.feature-box:hover {
-  transform: translateY(-0.25rem);
+/* Hover effect only for devices that support hover (desktop/mouse) */
+@media (hover: hover) {
+  .feature-box:hover {
+    /* Completely removed all hover effects to prevent grey line fading */
+    /* Keep the cards static to maintain clean appearance */
+  }
+}
+
+/* For touch devices, provide subtle feedback without movement */
+@media (hover: none) {
+  .feature-box:active {
+    /* Removed active effects to prevent any visual artifacts */
+  }
 }
 
 /* ============= RESPONSIVE ADJUSTMENTS ============= */
+
+/* Small Laptops (1024px - 1366px) */
+@media (min-width: 1024px) and (max-width: 1366px) {
+  .hero-wrapper {
+    padding: clamp(2rem, 4vw, 2.5rem) clamp(2rem, 4vw, 3rem);
+    gap: clamp(2rem, 3vw, 3rem);
+  }
+  
+  .hero-title {
+    font-size: clamp(2rem, 4vw, 2.4rem);
+  }
+  
+  .vision-text {
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  }
+  
+  .download-btns {
+    max-width: clamp(12rem, 18vw, 14rem);
+    height: clamp(3.5rem, 5vw, 4rem);
+  }
+  
+  .feature-row {
+    gap: clamp(1rem, 2vw, 1.5rem);
+  }
+  
+  .feature-box {
+    min-height: clamp(11rem, 18vw, 12.5rem);
+    padding: clamp(1rem, 2.5vw, 1.5rem);
+  }
+}
+
+/* Medium Laptops (1367px - 1600px) */
+@media (min-width: 1367px) and (max-width: 1600px) {
+  .hero-wrapper {
+    padding: clamp(2.5rem, 4vw, 3rem) clamp(3rem, 4vw, 4rem);
+    gap: clamp(3rem, 3vw, 3.5rem);
+  }
+  
+  .hero-title {
+    font-size: clamp(2.2rem, 4vw, 2.6rem);
+  }
+  
+  .vision-text {
+    font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  }
+  
+  .download-btns {
+    max-width: clamp(13rem, 18vw, 15rem);
+    height: clamp(3.8rem, 5vw, 4.2rem);
+  }
+  
+  .feature-box {
+    min-height: clamp(12rem, 18vw, 13rem);
+    padding: clamp(1.2rem, 2.5vw, 1.8rem);
+  }
+}
+
+/* Large Laptops and Desktops (1601px+) */
+@media (min-width: 1601px) {
+  .hero-wrapper {
+    padding: clamp(3rem, 4vw, 4rem) clamp(4rem, 4vw, 5rem);
+    gap: clamp(3.5rem, 3vw, 4rem);
+  }
+  
+  .hero-title {
+    font-size: clamp(2.4rem, 4vw, 2.7rem);
+  }
+  
+  .vision-text {
+    font-size: clamp(1.6rem, 2.5vw, 2rem);
+  }
+  
+  .download-btns {
+    max-width: clamp(14rem, 18vw, 15.5rem);
+    height: clamp(4rem, 5vw, 4.5rem);
+  }
+  
+  .feature-box {
+    min-height: clamp(12.5rem, 18vw, 14rem);
+    padding: clamp(1.5rem, 2.5vw, 2rem);
+  }
+}
 
 /* Tablet adjustments */
 @media (max-width: 1023px) and (min-width: 768px) {
@@ -317,4 +433,29 @@ body {
   .feature-box p {
     font-size: clamp(0.625rem, 2.5vw, 0.75rem); /* 10px - 12px */
   }
+}/*
+ ============= IMAGE OPTIMIZATION ============= */
+.image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.optimized-image {
+  transition: opacity 0.3s ease-in-out;
+  will-change: opacity;
+}
+
+.optimized-image.loading {
+  opacity: 0.7;
+  filter: blur(2px);
+}
+
+.optimized-image.loaded {
+  opacity: 1;
+  filter: none;
+}
+
+/* Ensure hero image loads immediately */
+.hero-image {
+  /* Removed invalid loading property - loading is an HTML attribute, not CSS */
 }

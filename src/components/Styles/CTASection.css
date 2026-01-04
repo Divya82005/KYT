@@ -3,16 +3,18 @@
 /* ============= MAIN SECTION ============= */
 .testimonial-section {
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 4vw, 2rem);
+  max-width: 1400px; /* Increased from 1200px */
+  margin: -40px auto 0; /* Removed the left margin positioning */
+  padding: clamp(1rem, 3vw, 2rem) clamp(1rem, 4vw, 2rem);
   text-align: center;
+  transform: scale(0.85); /* Slightly increased from 0.8 to make width changes more visible */
+  transform-origin: center;
 }
 
 /* ============= SECTION HEADING ============= */
 .section-heading {
   font-family: "Poppins", sans-serif;
-  font-size: clamp(2.5rem, 6vw, 4rem); /* 40px - 64px */
+  font-size: clamp(2.2rem, 5.5vw, 3.5rem); /* Reduced from clamp(2.5rem, 6vw, 4rem) */
   font-weight: 700;
   color: #5351f4;
   margin-bottom: clamp(2rem, 6vw, 4rem);
@@ -25,30 +27,30 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 1000px;
+  max-width: 1400px; /* Increased from 1000px to accommodate wider card */
   margin: 0 auto;
 }
 
 /* ============= MAIN FEEDBACK CARD ============= */
 .feedback-card {
   width: 100%;
-  max-width: 800px;
-  min-height: 350px; /* Changed back to min-height to allow expansion */
+  max-width: 1500px; /* Further increased width from 1300px to 1500px for more left-side space */
+  height: 380px; /* Reduced back to 380px as you don't want more length/height */
   background: #ffffff;
-  border: 2px solid #e5e7eb;
+  border: 2px solid #d1d5db; /* Made border more prominent with darker color */
   border-radius: clamp(1.5rem, 4vw, 2.5rem);
   padding: 0; /* Remove padding, we'll handle spacing internally */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); /* Increased shadow for more prominence */
   transition: all 0.3s ease;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden; /* Prevent any scrolling within the card */
 }
 
 .feedback-card:hover {
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-  transform: translateY(-2px);
+  /* Removed hover effects to prevent movement when touching the box */
 }
 
 /* ============= FEEDBACK CONTENT ============= */
@@ -60,10 +62,11 @@
   text-align: center;
   width: 100%;
   height: 100%; /* Take full height of card */
-  padding: clamp(2rem, 5vw, 3rem) clamp(5rem, 8vw, 7rem); /* Internal padding for arrow space */
+  padding: clamp(2rem, 5vw, 3rem) clamp(6rem, 10vw, 8rem); /* Increased right padding from 7rem to 8rem */
   box-sizing: border-box;
   justify-content: center;
   position: relative;
+  overflow: hidden; /* Prevent any scrolling within the content */
 }
 
 @media (min-width: 768px) {
@@ -166,9 +169,9 @@
 /* ============= FEEDBACK TEXT ============= */
 .feedback-text {
   font-family: "Poppins", sans-serif;
-  font-size: clamp(0.875rem, 2.5vw, 1.125rem); /* 14px - 18px */
+  font-size: clamp(0.8rem, 2.2vw, 1rem); /* Reduced from clamp(0.875rem, 2.5vw, 1.125rem) */
   font-weight: 400;
-  line-height: 1.7;
+  line-height: 1.6; /* Reduced from 1.7 to 1.6 for more compact text */
   color: #374151;
   margin: 0;
   text-align: center;
@@ -200,11 +203,11 @@
 }
 
 .nav-btn.left {
-  left: clamp(1.5rem, 3vw, 2.5rem); /* More space from edge */
+  left: clamp(60px, 8vw, 120px); /* Responsive positioning for different laptop sizes */
 }
 
 .nav-btn.right {
-  right: clamp(1.5rem, 3vw, 2.5rem); /* More space from edge */
+  right: clamp(60px, 8vw, 120px); /* Responsive positioning for different laptop sizes */
 }
 
 .nav-btn:hover {
@@ -220,6 +223,39 @@
 }
 
 /* ============= RESPONSIVE ADJUSTMENTS ============= */
+
+/* Tablet and Small Laptops */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .nav-btn.left {
+    left: clamp(50px, 6vw, 80px);
+  }
+  
+  .nav-btn.right {
+    right: clamp(50px, 6vw, 80px);
+  }
+}
+
+/* Medium Laptops */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .nav-btn.left {
+    left: clamp(80px, 7vw, 100px);
+  }
+  
+  .nav-btn.right {
+    right: clamp(80px, 7vw, 100px);
+  }
+}
+
+/* Large Laptops and Desktops */
+@media (min-width: 1441px) {
+  .nav-btn.left {
+    left: clamp(100px, 8vw, 120px);
+  }
+  
+  .nav-btn.right {
+    right: clamp(100px, 8vw, 120px);
+  }
+}
 
 /* Mobile Layout */
 @media (max-width: 767px) {

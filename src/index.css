@@ -296,3 +296,46 @@ html::-webkit-scrollbar-button:vertical:start:decrement,
 html::-webkit-scrollbar-button:vertical:end:increment {
   display: none !important;
 }
+/* =
+============ IMAGE OPTIMIZATION ============= */
+/* Optimize image loading and rendering performance */
+img {
+  /* Enable hardware acceleration for images */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  
+  /* Optimize image rendering */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  
+  /* Prevent layout shift during loading */
+  height: auto;
+  
+  /* Enable lazy loading for better performance */
+  loading: lazy;
+}
+
+/* Critical images that should load immediately */
+.hero-image,
+.city-main-img,
+.logo,
+.navbar-logo {
+  /* Removed invalid loading property - loading is an HTML attribute, not CSS */
+}
+
+/* Add smooth transitions for image loading */
+img {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+img.loaded,
+img[src] {
+  opacity: 1;
+}
+
+/* Optimize video loading */
+video {
+  preload: metadata;
+  loading: lazy;
+}

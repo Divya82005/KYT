@@ -6,6 +6,7 @@
   background: #5351f4; /* Blue background matching reference */
   padding: 0;
   margin: 0;
+  margin-bottom: 80px; /* Add white space after footer */
 }
 
 /* ============= MAIN CONTAINER ============= */
@@ -20,6 +21,8 @@
   gap: clamp(2rem, 5vw, 4rem);
   color: white;
   font-family: "Poppins", sans-serif;
+  transform: scale(0.85); /* Scale down only the content, not the background */
+  transform-origin: center;
 }
 
 /* ============= LEFT CONTENT ============= */
@@ -105,6 +108,25 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   min-width: clamp(8rem, 20vw, 12rem);
   text-align: center;
+  position: relative; /* For positioning the diamonds */
+}
+
+.download-button .diamond-top-left {
+  position: absolute;
+  top: clamp(0.25rem, 1vw, 0.375rem);
+  left: clamp(0.25rem, 1vw, 0.375rem);
+  font-size: clamp(0.75rem, 1.5vw, 1rem);
+  color: #FFD700; /* Gold color */
+  opacity: 0.9;
+}
+
+.download-button .diamond-bottom-right {
+  position: absolute;
+  bottom: clamp(0.25rem, 1vw, 0.375rem);
+  right: clamp(0.25rem, 1vw, 0.375rem);
+  font-size: clamp(0.75rem, 1.5vw, 1rem);
+  color: #FFD700; /* Gold color */
+  opacity: 0.9;
 }
 
 .download-button:hover {
@@ -114,6 +136,96 @@
 }
 
 /* ============= RESPONSIVE DESIGN ============= */
+
+/* Small Laptops (1024px - 1366px) */
+@media (min-width: 1024px) and (max-width: 1366px) {
+  .footer-container {
+    transform: scale(0.8);
+    padding: clamp(2.5rem, 5vw, 3.5rem) clamp(1.8rem, 4vw, 2.5rem);
+  }
+  
+  .data-sources h3 {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+  }
+  
+  .data-sources p {
+    font-size: clamp(0.8rem, 2vw, 1rem);
+  }
+  
+  .footer-links span {
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  }
+  
+  .qr-code {
+    width: clamp(7rem, 12vw, 9rem);
+    height: clamp(7rem, 12vw, 9rem);
+  }
+  
+  .download-button {
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    padding: clamp(0.7rem, 2vw, 0.9rem) clamp(1.3rem, 3vw, 1.8rem);
+  }
+}
+
+/* Medium Laptops (1367px - 1600px) */
+@media (min-width: 1367px) and (max-width: 1600px) {
+  .footer-container {
+    transform: scale(0.83);
+    padding: clamp(3rem, 5vw, 3.8rem) clamp(2rem, 4vw, 2.8rem);
+  }
+  
+  .data-sources h3 {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  }
+  
+  .data-sources p {
+    font-size: clamp(0.85rem, 2vw, 1.1rem);
+  }
+  
+  .footer-links span {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+  }
+  
+  .qr-code {
+    width: clamp(7.5rem, 13vw, 9.5rem);
+    height: clamp(7.5rem, 13vw, 9.5rem);
+  }
+  
+  .download-button {
+    font-size: clamp(0.85rem, 2vw, 1.1rem);
+    padding: clamp(0.75rem, 2vw, 0.95rem) clamp(1.4rem, 3vw, 1.9rem);
+  }
+}
+
+/* Large Laptops and Desktops (1601px+) */
+@media (min-width: 1601px) {
+  .footer-container {
+    transform: scale(0.85);
+    padding: clamp(3rem, 6vw, 4rem) clamp(2rem, 5vw, 3rem);
+  }
+  
+  .data-sources h3 {
+    font-size: clamp(1.125rem, 3vw, 1.5rem);
+  }
+  
+  .data-sources p {
+    font-size: clamp(0.875rem, 2.5vw, 1.125rem);
+  }
+  
+  .footer-links span {
+    font-size: clamp(1rem, 3vw, 1.25rem);
+  }
+  
+  .qr-code {
+    width: clamp(8rem, 15vw, 10rem);
+    height: clamp(8rem, 15vw, 10rem);
+  }
+  
+  .download-button {
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+    padding: clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2rem);
+  }
+}
 
 /* Tablet Layout */
 @media (max-width: 768px) {

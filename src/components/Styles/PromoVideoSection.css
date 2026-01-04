@@ -2,45 +2,62 @@
 /* NOTE: Responsive container that adapts to screen size */
 .promo-container {
   width: 100%;
-  max-width: 1350px;
+  max-width: 1200px;
+  /* Reduced from 1350px to make it less zoomed */
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 40px;
+  /* Increased padding for more breathing room */
   box-sizing: border-box;
 }
 
 .promo-section {
   width: 100%;
   height: auto;
-  margin: 149px 0 0;
+  margin: 80px 0 0;
+  /* Increased from 60px to 80px for more downward movement */
   padding: 0;
   display: flex;
-  align-items: flex-start; /* Changed from center to flex-start to move video down slightly */
+  align-items: flex-start;
+  /* Changed from center to flex-start to move video down slightly */
   justify-content: space-between;
-  gap: 50px;
+  gap: 60px;
+  /* Increased gap for more space between elements */
   position: relative;
   box-sizing: border-box;
+  transform: scale(0.9);
+  /* Reduce overall scale to make it less zoomed */
+  transform-origin: center;
 }
 
 /* LEFT VIDEO BOX */
 .promo-video-box {
-  width: 50%;
+  width: 45%;
+  /* Reduced from 50% to make it smaller */
   height: auto;
-  min-height: 300px;
-  background: #f5f5f7;
+  min-height: 280px;
+  /* Reduced from 300px */
+  background: #f0f0f0;
+  /* Light grey background like in reference */
   aspect-ratio: 826 / 515;
   overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
+  /* Remove shadow for cleaner look */
   flex-shrink: 0;
-  border-radius: 20px;
+  border-radius: 12px;
+  /* Slightly smaller border radius */
   position: relative;
-  margin-top: 40px; /* Increased from 20px to make it more noticeable */
+  margin-top: 40px;
+  border: 1px solid #e0e0e0;
+  /* Add subtle border */
+  margin-left: -30px; /* Move video slightly to the left */
 }
 
 .promo-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 20px;
+  border-radius: 12px;
+  /* Match container border radius */
   display: block;
 }
 
@@ -52,7 +69,8 @@
 
 /* RIGHT TEXT BOX */
 .promo-text-box {
-  width: 50%;
+  width: 55%;
+  /* Increased from 50% to balance the reduced video width */
   min-width: 0;
 }
 
@@ -75,7 +93,8 @@
   font-weight: 700;
   font-style: normal;
   font-size: 40px;
-  line-height: 45px; /* Reduced from 55px to tighten gap between lines */
+  line-height: 45px;
+  /* Reduced from 55px to tighten gap between lines */
   letter-spacing: 0;
   text-transform: uppercase;
   color: #000000;
@@ -93,8 +112,8 @@
   font-family: Poppins, sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 20px; /* Reduced from 23px */
-  line-height: 40px; /* Reverted back to original */
+  font-size: 22px; /* Increased from 21px by 1px */
+  line-height: 1.8; /* Increased from 40px to 1.8 for better line spacing */
   letter-spacing: 0;
   text-transform: capitalize;
   color: #000000;
@@ -102,6 +121,108 @@
 }
 
 /* ============= RESPONSIVE DESIGN ============= */
+
+/* Small Laptops (1024px - 1366px) */
+@media (min-width: 1024px) and (max-width: 1366px) {
+  .promo-section {
+    transform: scale(0.85);
+    gap: 45px;
+    padding: 0 40px;
+    margin: 70px auto 0;
+  }
+  
+  .promo-video-box {
+    width: 48%;
+    min-height: 270px;
+    margin-left: -25px;
+  }
+  
+  .promo-text-box {
+    width: 52%;
+  }
+  
+  .promo-about-title {
+    font-size: 55px;
+  }
+  
+  .promo-heading {
+    font-size: 36px;
+    line-height: 42px;
+  }
+  
+  .promo-description {
+    font-size: 21px;
+    line-height: 1.8;
+  }
+}
+
+/* Medium Laptops (1367px - 1600px) */
+@media (min-width: 1367px) and (max-width: 1600px) {
+  .promo-section {
+    transform: scale(0.88);
+    gap: 55px;
+    padding: 0 45px;
+    margin: 75px auto 0;
+  }
+  
+  .promo-video-box {
+    width: 46%;
+    min-height: 275px;
+    margin-left: -28px;
+  }
+  
+  .promo-text-box {
+    width: 54%;
+  }
+  
+  .promo-about-title {
+    font-size: 58px;
+  }
+  
+  .promo-heading {
+    font-size: 38px;
+    line-height: 43px;
+  }
+  
+  .promo-description {
+    font-size: 22px;
+    line-height: 1.8;
+  }
+}
+
+/* Large Laptops and Desktops (1601px+) */
+@media (min-width: 1601px) {
+  .promo-section {
+    transform: scale(0.9);
+    gap: 60px;
+    padding: 0 50px;
+    margin: 80px auto 0;
+  }
+  
+  .promo-video-box {
+    width: 50%; /* Increased from 45% */
+    min-height: 280px;
+    margin-left: -50px; /* Increased from -30px */
+  }
+  
+  .promo-text-box {
+    width: 50%; /* Adjusted from 55% */
+  }
+  
+  .promo-about-title {
+    font-size: 60px;
+  }
+  
+  .promo-heading {
+    font-size: 40px;
+    line-height: 45px;
+  }
+  
+  .promo-description {
+    font-size: 22px;
+    line-height: 1.8;
+  }
+}
 
 /* ============= DESKTOP (1024px and above) - Image 1 Layout ============= */
 @media (min-width: 1024px) {
@@ -112,7 +233,8 @@
     justify-content: space-between;
     gap: 50px;
     padding: 0 50px;
-    margin: 149px auto 0;
+    margin: 80px auto 0;
+    /* Increased for more downward movement */
   }
 
   .promo-video-box {
@@ -134,13 +256,14 @@
 
   .promo-heading {
     font-size: 30px;
-    line-height: 40px; /* Reduced from 60px to tighten gap */
+    line-height: 40px;
+    /* Reduced from 60px to tighten gap */
     margin-bottom: 25px;
   }
 
   .promo-description {
-    font-size: 18px; /* Reduced from 20px */
-    line-height: 40px; /* Reverted back to original */
+    font-size: 20px; /* Increased from 19px by 1px */
+    line-height: 1.8; /* Consistent line spacing across breakpoints */
   }
 }
 
@@ -157,12 +280,13 @@
 
   .promo-heading {
     font-size: 44px;
-    line-height: 50px; /* Reduced from 60px to tighten gap */
+    line-height: 50px;
+    /* Reduced from 60px to tighten gap */
   }
 
   .promo-description {
-    font-size: 23px; /* Reduced from 26px */
-    line-height: 40px; /* Reverted back to original */
+    font-size: 25px; /* Increased from 24px by 1px */
+    line-height: 1.8; /* Consistent line spacing for large desktop */
   }
 }
 
@@ -175,6 +299,7 @@
     gap: 40px;
     padding: 0 40px;
     margin: 100px auto 0;
+    /* Increased from 80px to 100px for more downward movement */
   }
 
   .promo-video-box {
@@ -204,7 +329,8 @@
 
   .promo-description {
     font-size: 20px;
-    line-height: 32px;
+    line-height: 1.7;
+    /* Slightly tighter for tablet */
   }
 }
 
@@ -271,7 +397,8 @@
 
   .promo-description {
     font-size: 14px;
-    line-height: 22px;
+    line-height: 1.7;
+    /* Good spacing for mobile */
     color: #666666;
     max-width: 90%;
     margin: 0 auto;
@@ -288,7 +415,8 @@
     align-items: center;
     gap: 25px;
     padding: 0 15px;
-    margin: 60px auto 0;
+    margin: 40px auto 0;
+    /* Reduced from 60px to 40px */
   }
 
   .promo-video-box {

@@ -30,6 +30,8 @@ img {
   background: transparent;
   position: relative;
   z-index: 1000;
+  transform: scale(0.95); /* Slight zoom out */
+  transform-origin: center;
 }
 
 /* ============= LOGO SECTION ============= */
@@ -124,6 +126,25 @@ img {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  position: relative; /* For positioning the diamonds */
+}
+
+.nav .btn-primary .diamond-top-left {
+  position: absolute;
+  top: clamp(0.25rem, 1vw, 0.375rem);
+  left: clamp(0.25rem, 1vw, 0.375rem);
+  font-size: clamp(0.75rem, 1.5vw, 1rem);
+  color: #FFD700; /* Gold color */
+  opacity: 0.9;
+}
+
+.nav .btn-primary .diamond-bottom-right {
+  position: absolute;
+  bottom: clamp(0.25rem, 1vw, 0.375rem);
+  right: clamp(0.25rem, 1vw, 0.375rem);
+  font-size: clamp(0.75rem, 1.5vw, 1rem);
+  color: #FFD700; /* Gold color */
+  opacity: 0.9;
 }
 
 .nav .btn-primary:hover {
@@ -230,6 +251,25 @@ img {
   margin-top: clamp(1.25rem, 4vw, 1.875rem);
   width: 100%;
   transition: background 0.3s;
+  position: relative; /* For positioning the diamonds */
+}
+
+.mobile-btn .diamond-top-left {
+  position: absolute;
+  top: clamp(0.25rem, 1vw, 0.375rem);
+  left: clamp(0.25rem, 1vw, 0.375rem);
+  font-size: clamp(0.75rem, 1.5vw, 1rem);
+  color: #FFD700; /* Gold color */
+  opacity: 0.9;
+}
+
+.mobile-btn .diamond-bottom-right {
+  position: absolute;
+  bottom: clamp(0.25rem, 1vw, 0.375rem);
+  right: clamp(0.25rem, 1vw, 0.375rem);
+  font-size: clamp(0.75rem, 1.5vw, 1rem);
+  color: #FFD700; /* Gold color */
+  opacity: 0.9;
 }
 
 .mobile-btn:hover {
@@ -253,6 +293,69 @@ img {
 }
 
 /* ============= RESPONSIVE BREAKPOINTS ============= */
+
+/* Small Laptops (1024px - 1366px) */
+@media (min-width: 1024px) and (max-width: 1366px) {
+  .nav {
+    padding: clamp(1rem, 3vw, 1.5rem) clamp(2rem, 4vw, 2.5rem);
+  }
+  
+  .logo-link {
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+  }
+  
+  .nav-links a {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+  }
+  
+  .nav .btn-primary {
+    width: clamp(12rem, 18vw, 14rem);
+    height: clamp(3.5rem, 5vw, 4rem);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+  }
+}
+
+/* Medium Laptops (1367px - 1600px) */
+@media (min-width: 1367px) and (max-width: 1600px) {
+  .nav {
+    padding: clamp(1.2rem, 3vw, 1.8rem) clamp(2.2rem, 4vw, 2.8rem);
+  }
+  
+  .logo-link {
+    font-size: clamp(1.6rem, 3vw, 1.9rem);
+  }
+  
+  .nav-links a {
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+  }
+  
+  .nav .btn-primary {
+    width: clamp(13rem, 18vw, 15rem);
+    height: clamp(3.8rem, 5vw, 4.2rem);
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+  }
+}
+
+/* Large Laptops and Desktops (1601px+) */
+@media (min-width: 1601px) {
+  .nav {
+    padding: clamp(1.5rem, 3vw, 2rem) clamp(2.5rem, 4vw, 3rem);
+  }
+  
+  .logo-link {
+    font-size: clamp(1.8rem, 3vw, 2rem);
+  }
+  
+  .nav-links a {
+    font-size: clamp(1.2rem, 2vw, 1.4rem);
+  }
+  
+  .nav .btn-primary {
+    width: clamp(14rem, 18vw, 16rem);
+    height: clamp(4rem, 5vw, 4.5rem);
+    font-size: clamp(1.2rem, 2vw, 1.4rem);
+  }
+}
 
 /* Tablet and below - Hide desktop nav, show mobile menu */
 @media (max-width: 1023px) {

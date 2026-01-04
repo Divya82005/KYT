@@ -27,4 +27,51 @@
     opacity: 0;
     color: white;
     font-family: 'Poppins', sans-serif !important;
+}/* 
+============= IMAGE LOADING OPTIMIZATION ============= */
+/* Simple CSS-based image optimization without complex JavaScript */
+
+/* Optimize all images for better performance */
+img {
+  /* Hardware acceleration */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  
+  /* Better image rendering */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  
+  /* Smooth loading transition */
+  transition: opacity 0.3s ease-in-out;
+  
+  /* Default lazy loading */
+  loading: lazy;
+}
+
+/* Critical images load immediately */
+.hero-image,
+.city-main-img,
+.navbar-logo,
+.feature-icon img {
+  /* Removed invalid loading property - loading is an HTML attribute, not CSS */
+}
+
+/* Loading state for images */
+img[loading="lazy"] {
+  opacity: 0.8;
+}
+
+img[loading="lazy"]:not([src=""]) {
+  opacity: 1;
+}
+
+/* Prevent layout shift during image loading */
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+/* Optimize video loading */
+video {
+  preload: metadata;
 }
