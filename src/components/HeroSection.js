@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import city from "../assets/City.png";
 import Ai_Safety from "../assets/Img1.png";
 import Security from "../assets/Img2.png";
@@ -5,6 +6,11 @@ import Alert from "../assets/Img3.png";
 import "./Styles/HeroSection.css";
 
 const HeroSection = () => {
+  // Simple preloading that worked better before
+  useEffect(() => {
+    const img = new Image();
+    img.src = city;
+  }, []);
 
   const features = [
     {
