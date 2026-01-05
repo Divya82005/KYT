@@ -12,16 +12,32 @@
   <!-- Immediate image download - starts before DOM loads -->
   <script>
     (function() {
-      // Try multiple paths immediately
-      var paths = ['/static/media/City.png', './static/media/City.png', '/assets/City.png'];
-      paths.forEach(function(path) {
+      // Aggressive preloading for incognito mode
+      var imagePaths = [
+        '/static/media/City.png', 
+        './static/media/City.png', 
+        '/assets/City.png',
+        '/static/media/Img1.png',
+        '/static/media/Img2.png', 
+        '/static/media/Img3.png'
+      ];
+      
+      imagePaths.forEach(function(path) {
         var img = new Image();
+        img.fetchPriority = 'high';
+        img.loading = 'eager';
         img.src = path;
       });
       
-      // Also try with fetch for aggressive caching
+      // Fetch with cache for better incognito performance
       if (window.fetch) {
-        fetch('/static/media/City.png', {mode: 'no-cors'}).catch(function(){});
+        imagePaths.forEach(function(path) {
+          fetch(path, {
+            mode: 'no-cors',
+            cache: 'force-cache',
+            priority: 'high'
+          }).catch(function(){});
+        });
       }
     })();
   </script>
@@ -30,8 +46,11 @@
   <link rel="dns-prefetch" href="//fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   
-  <!-- Simple preload for hero image -->
-  <link rel="preload" href="/static/media/City.png" as="image">
+  <!-- Preload critical images with high priority -->
+  <link rel="preload" href="/static/media/City.png" as="image" fetchpriority="high">
+  <link rel="preload" href="/static/media/Img1.png" as="image" fetchpriority="high">
+  <link rel="preload" href="/static/media/Img2.png" as="image" fetchpriority="high">
+  <link rel="preload" href="/static/media/Img3.png" as="image" fetchpriority="high">
   
   <!--
       manifest.json provides metadata used when your web app is installed on a

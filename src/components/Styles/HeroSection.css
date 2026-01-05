@@ -464,5 +464,31 @@ body {
 
 /* Ensure hero image loads immediately */
 .hero-image {
-  /* Removed invalid loading property - loading is an HTML attribute, not CSS */
+  /* Force hardware acceleration for smoother transitions */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  /* Optimize for loading performance */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+.hero-image.loading {
+  opacity: 0.7;
+  filter: blur(1px);
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.hero-image.loaded {
+  opacity: 1;
+  filter: none;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+/* Feature icons optimization */
+.feature-icon img {
+  /* Force hardware acceleration */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  /* Smooth transitions */
+  transition: opacity 0.3s ease;
 }

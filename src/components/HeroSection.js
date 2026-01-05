@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import city from "../assets/City.png";
 import Ai_Safety from "../assets/Img1.png";
 import Security from "../assets/Img2.png";
@@ -6,43 +6,71 @@ import Alert from "../assets/Img3.png";
 import "./Styles/HeroSection.css";
 
 const HeroSection = () => {
-  // Multiple preloading attempts
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  
+  // Optimized preloading for incognito mode
   useEffect(() => {
-    // Method 1: Standard preload
-    const img1 = new Image();
-    img1.src = city;
-    
-    // Method 2: Force immediate priority
-    const img2 = new Image();
-    img2.loading = 'eager';
-    img2.src = city;
-    
-    // Method 3: Create actual DOM element for caching
-    const hiddenImg = document.createElement('img');
-    hiddenImg.src = city;
-    hiddenImg.style.cssText = 'position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;';
-    document.body.appendChild(hiddenImg);
-    
-    return () => {
-      if (document.body.contains(hiddenImg)) {
-        document.body.removeChild(hiddenImg);
+    const preloadImages = async () => {
+      const imageUrls = [city, Ai_Safety, Security, Alert];
+      
+      try {
+        // Create promises for all images
+        const imagePromises = imageUrls.map((src) => {
+          return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.onload = () => resolve(img);
+            img.onerror = reject;
+            // Set high priority and eager loading
+            img.fetchPriority = 'high';
+            img.loading = 'eager';
+            img.src = src;
+          });
+        });
+        
+        // Wait for all images to load
+        await Promise.all(imagePromises);
+        setImagesLoaded(true);
+      } catch (error) {
+        console.warn('Some images failed to preload:', error);
+        // Still set loaded to true to prevent infinite loading
+        setImagesLoaded(true);
       }
     };
+    
+    preloadImages();
   }, []);
 
   const features = [
     {
-      icon: <img src={Ai_Safety} alt="AI Safety Intelligence" loading="eager" />,
+      icon: <img 
+        src={Ai_Safety} 
+        alt="AI Safety Intelligence" 
+        loading="eager"
+        fetchPriority="high"
+        style={{ opacity: imagesLoaded ? 1 : 0.7 }}
+      />,
       title: "AI Safety Intelligence",
       desc: "Smart Suggestions and Planning",
     },
     {
-      icon: <img src={Security} alt="Risk Assessment" loading="eager" />,
+      icon: <img 
+        src={Security} 
+        alt="Risk Assessment" 
+        loading="eager"
+        fetchPriority="high"
+        style={{ opacity: imagesLoaded ? 1 : 0.7 }}
+      />,
       title: "Risk Assessment",
       desc: "Evaluate Locations Before You Go",
     },
     {
-      icon: <img src={Alert} alt="Real-Time Incident Alerts" loading="eager" />,
+      icon: <img 
+        src={Alert} 
+        alt="Real-Time Incident Alerts" 
+        loading="eager"
+        fetchPriority="high"
+        style={{ opacity: imagesLoaded ? 1 : 0.7 }}
+      />,
       title: "Real-Time Incident Alerts",
       desc: "Know Your Safety Status",
     },
@@ -101,11 +129,19 @@ const HeroSection = () => {
       <div className="hero-right">
         <img
           src={city}
-          className="city-main-img hero-image"
+          className={`city-main-img hero-image ${imagesLoaded ? 'loaded' : 'loading'}`}
           alt="City view"
           loading="eager"
+          fetchPriority="high"
+          style={{ 
+            opacity: imagesLoaded ? 1 : 0.7,
+            filter: imagesLoaded ? 'none' : 'blur(1px)',
+            transition: 'opacity 0.3s ease, filter 0.3s ease'
+          }}
           onLoad={(e) => {
             e.target.classList.add('loaded');
+            e.target.style.opacity = '1';
+            e.target.style.filter = 'none';
           }}
         />
       </div>
