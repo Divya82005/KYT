@@ -12,8 +12,17 @@
   <!-- Immediate image download - starts before DOM loads -->
   <script>
     (function() {
-      var img = new Image();
-      img.src = '/static/media/City.png';
+      // Try multiple paths immediately
+      var paths = ['/static/media/City.png', './static/media/City.png', '/assets/City.png'];
+      paths.forEach(function(path) {
+        var img = new Image();
+        img.src = path;
+      });
+      
+      // Also try with fetch for aggressive caching
+      if (window.fetch) {
+        fetch('/static/media/City.png', {mode: 'no-cors'}).catch(function(){});
+      }
     })();
   </script>
   

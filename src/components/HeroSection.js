@@ -6,10 +6,28 @@ import Alert from "../assets/Img3.png";
 import "./Styles/HeroSection.css";
 
 const HeroSection = () => {
-  // Simple preloading that worked better before
+  // Multiple preloading attempts
   useEffect(() => {
-    const img = new Image();
-    img.src = city;
+    // Method 1: Standard preload
+    const img1 = new Image();
+    img1.src = city;
+    
+    // Method 2: Force immediate priority
+    const img2 = new Image();
+    img2.loading = 'eager';
+    img2.src = city;
+    
+    // Method 3: Create actual DOM element for caching
+    const hiddenImg = document.createElement('img');
+    hiddenImg.src = city;
+    hiddenImg.style.cssText = 'position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;';
+    document.body.appendChild(hiddenImg);
+    
+    return () => {
+      if (document.body.contains(hiddenImg)) {
+        document.body.removeChild(hiddenImg);
+      }
+    };
   }, []);
 
   const features = [
