@@ -1,23 +1,23 @@
 /* ============= DOWNLOAD SECTION ============= */
 /* NOTE: Desktop layout matches reference image exactly - purple gradient, QR left, phone right */
 .download-section {
-  width: 100%;
-  max-width: 1000px; /* Reduced for better proportions like reference */
-  height: 380px !important; /* Increased from 300px to 380px to extend bottom */
-  margin: 120px auto 0; /* Keep top margin same */
-  padding: 40px 50px 60px 50px; /* Increased bottom padding */
+  width: calc(100vw - 120px) !important; /* Reduced width with 60px margin on each side */
+  max-width: none !important; /* Remove max-width constraint with !important */
+  height: 380px !important; /* Reduced from 420px to make the lower part smaller */
+  margin: 60px 60px 0 60px; /* Reduced top margin from 120px to 60px to decrease gap */
+  padding: 50px 80px 40px 80px; /* Reduced bottom padding from 70px to 40px */
 
   background: linear-gradient(99.15deg, #6165d7 2.14%, #5351ed 99.68%);
-  border-radius: 20px;
+  border-radius: 32px; /* Increased from 20px to match reference image */
 
   display: flex;
   justify-content: space-between;
-  align-items: flex-start; /* Changed to flex-start to keep content at top */
+  align-items: center; /* Changed to center to match reference positioning */
   position: relative;
   overflow: visible; /* Changed back to visible so phone can extend outside */
-  margin-bottom: 80px;
+  margin-bottom: 40px; /* Reduced from 80px to decrease gap with Safety Intelligence section */
   box-sizing: border-box;
-  transform: scale(0.95); /* Add slight zoom out while keeping all other dimensions */
+  /* Removed transform: scale(0.95) that was making it smaller */
   transform-origin: center;
 }
 
@@ -28,6 +28,10 @@
   z-index: 2;
   max-width: 60%; /* Reduced to give phone more space */
   margin-left: 30px; /* Reduced margin for better balance */
+  margin-top: 0; /* Removed top margin to move content to the top */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 /* MAIN HEADING - First line */
@@ -77,8 +81,8 @@
   height: 140px;
   /* Reduced from 158px */
   background: white;
-  border-radius: 12px;
-  /* UPDATED: Slight border radius like reference */
+  border-radius: 8px; /* Reduced from 20px to be more square like reference */
+  /* UPDATED: Less rounded corners to match reference */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -98,11 +102,12 @@
 
 /* DOWNLOAD BUTTON */
 .footer-btn {
-  width: 200px;
+  width: 220px !important; /* Further reduced width to make it narrower on left and right */
   /* Reduced from 220px */
-  height: 60px;
+  height: 60px !important; /* Reduced height for better proportions */
   /* Reduced from 65px */
-  border-radius: 20px;
+  border-radius: 20px !important; /* Moderate rounding to match reference - rounded corners but not pill-shaped */
+  /* UPDATED: More rounded for pill shape */
   border: none;
   /* UPDATED: Remove border */
   background: white;
@@ -159,11 +164,12 @@
 /* Small Laptops (1024px - 1366px) */
 @media (min-width: 1024px) and (max-width: 1366px) {
   .download-section {
-    width: 85%;
-    max-width: 900px;
-    height: 350px;
-    padding: 35px 45px 55px 45px;
-    transform: scale(0.9);
+    width: calc(100vw - 100px) !important; /* Consistent with main design */
+    max-width: none !important;
+    height: 380px !important; /* Match main section height */
+    margin: 60px 50px 0 50px; /* Match reduced top margin */
+    padding: 45px 65px 35px 65px; /* Consistent padding */
+    margin-bottom: 40px; /* Match reduced bottom margin */
   }
   
   .left-contents h2 {
@@ -178,6 +184,7 @@
   .qr-box {
     width: 130px;
     height: 130px;
+    border-radius: 8px !important; /* Match main QR box style */
   }
   
   .footer-qr {
@@ -186,8 +193,9 @@
   }
   
   .footer-btn {
-    width: 190px;
-    height: 55px;
+    width: 220px !important; /* Match main button width */
+    height: 60px !important; /* Match main button height */
+    border-radius: 20px !important; /* Match main button border-radius */
   }
   
   .right-phone {
@@ -201,11 +209,11 @@
 /* Medium Laptops (1367px - 1600px) */
 @media (min-width: 1367px) and (max-width: 1600px) {
   .download-section {
-    width: 90%;
-    max-width: 950px;
-    height: 370px;
-    padding: 38px 48px 58px 48px;
-    transform: scale(0.93);
+    width: calc(100vw - 110px) !important; /* Reduced width with 55px margin on each side */
+    max-width: none !important;
+    height: 400px; /* Increased height */
+    margin: 120px 55px 0 55px; /* Moderate margins */
+    padding: 48px 70px 38px 70px; /* Reduced bottom padding from 68px to 38px */
   }
   
   .left-contents h2 {
@@ -243,11 +251,11 @@
 /* Large Laptops and Desktops (1601px+) */
 @media (min-width: 1601px) {
   .download-section {
-    width: 95%;
-    max-width: 1000px;
-    height: 380px;
-    padding: 40px 50px 60px 50px;
-    transform: scale(0.95);
+    width: calc(100vw - 120px) !important; /* Reduced width with 60px margin on each side */
+    max-width: none !important;
+    height: 420px; /* Increased height */
+    margin: 120px 60px 0 60px; /* Moderate margins */
+    padding: 50px 80px 40px 80px; /* Reduced bottom padding from 70px to 40px */
   }
   
   .left-contents h2 {
@@ -361,7 +369,7 @@
   }
 
   .qr-box {
-    border-radius: 12px;
+    border-radius: 18px; /* Maintain rounded corners on smaller screens */
   }
 
   .right-phone {
@@ -433,7 +441,7 @@
     width: 200px;
     /* FIXED: Wider button for full visibility */
     height: 50px;
-    border-radius: 15px;
+    border-radius: 25px; /* Maintain rounded corners */
     flex-shrink: 0;
   }
 

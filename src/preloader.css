@@ -29,7 +29,7 @@
     font-family: 'Poppins', sans-serif !important;
 }/* 
 ============= IMAGE LOADING OPTIMIZATION ============= */
-/* Simple CSS-based image optimization without complex JavaScript */
+/* Enhanced image loading with skeleton placeholders */
 
 /* Optimize all images for better performance */
 img {
@@ -48,12 +48,58 @@ img {
   loading: lazy;
 }
 
-/* Critical images load immediately */
+/* Critical images load immediately with skeleton effect */
 .hero-image,
-.city-main-img,
-.navbar-logo,
+.city-main-img {
+  /* Immediate loading for hero image */
+  loading: eager;
+  
+  /* Skeleton placeholder while loading */
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  
+  /* Ensure proper dimensions during loading */
+  min-height: 300px;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Skeleton loading animation */
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* When image is loaded, remove skeleton */
+.hero-image[src]:not([src=""]),
+.city-main-img[src]:not([src=""]) {
+  background: none;
+  animation: none;
+}
+
+/* Feature icons load eagerly */
 .feature-icon img {
-  /* Removed invalid loading property - loading is an HTML attribute, not CSS */
+  loading: eager;
+  /* Small skeleton for feature icons */
+  background: linear-gradient(90deg, #f8f8f8 25%, #eeeeee 50%, #f8f8f8 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1s infinite;
+  border-radius: 8px;
+}
+
+.feature-icon img[src]:not([src=""]) {
+  background: none;
+  animation: none;
+}
+
+/* Navbar logo loads immediately */
+.navbar-logo {
+  loading: eager;
 }
 
 /* Loading state for images */
@@ -74,4 +120,19 @@ img {
 /* Optimize video loading */
 video {
   preload: metadata;
+}
+
+/* Responsive skeleton heights */
+@media (max-width: 768px) {
+  .hero-image,
+  .city-main-img {
+    min-height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-image,
+  .city-main-img {
+    min-height: 200px;
+  }
 }
