@@ -6,13 +6,49 @@ import Alert from "../assets/Img3.png";
 import "./Styles/HeroSection.css";
 
 const HeroSection = () => {
-  // Preload critical images immediately
+  // Preload critical images immediately and aggressively
   useEffect(() => {
     const preloadImages = [city, Ai_Safety, Security, Alert];
+    
+    // Method 1: Create Image objects
     preloadImages.forEach(src => {
       const img = new Image();
       img.src = src;
+      // Force immediate loading
+      img.loading = 'eager';
     });
+    
+    // Method 2: Create link preload elements
+    preloadImages.forEach(src => {
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'image';
+      link.href = src;
+      link.importance = 'high';
+      document.head.appendChild(link);
+    });
+    
+    // Method 3: Create hidden img elements in DOM
+    const preloadContainer = document.createElement('div');
+    preloadContainer.style.display = 'none';
+    preloadContainer.style.position = 'absolute';
+    preloadContainer.style.left = '-9999px';
+    
+    preloadImages.forEach(src => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.loading = 'eager';
+      preloadContainer.appendChild(img);
+    });
+    
+    document.body.appendChild(preloadContainer);
+    
+    // Cleanup on unmount
+    return () => {
+      if (document.body.contains(preloadContainer)) {
+        document.body.removeChild(preloadContainer);
+      }
+    };
   }, []);
 
   const features = [
