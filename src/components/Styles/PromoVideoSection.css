@@ -13,7 +13,7 @@
 .promo-section {
   width: 100%;
   height: auto;
-  margin: 40px 0 0; /* Reduced from 80px to 40px to decrease gap with hero section */
+  margin: 20px 0 0; /* Reduced from 40px to 20px to decrease gap with hero section */
   padding: 0;
   display: flex;
   align-items: flex-start;

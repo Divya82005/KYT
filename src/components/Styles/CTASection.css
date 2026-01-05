@@ -1,23 +1,25 @@
+
 /* ============= USER FEEDBACK SECTION ============= */
 
 /* ============= MAIN SECTION ============= */
 .testimonial-section {
   width: 100%;
-  max-width: 1400px; /* Increased from 1200px */
-  margin: -40px auto 0; /* Removed the left margin positioning */
-  padding: clamp(1rem, 3vw, 2rem) clamp(1rem, 4vw, 2rem);
+  max-width: 2000px; /* Increased from 1600px for much wider layout */
+  margin: -40px auto 0;
+  padding: clamp(0.75rem, 2.5vw, 1.5rem) clamp(0.75rem, 3vw, 1.5rem);
   text-align: center;
-  transform: scale(0.85); /* Slightly increased from 0.8 to make width changes more visible */
+  transform: scale(0.88); /* Reduced from 0.95 to zoom out slightly */
   transform-origin: center;
+  margin-bottom: clamp(3rem, 5vw, 5rem); /* Add gap between CTA and footer */
 }
 
 /* ============= SECTION HEADING ============= */
 .section-heading {
   font-family: "Poppins", sans-serif;
-  font-size: clamp(2.2rem, 5.5vw, 3.5rem); /* Reduced from clamp(2.5rem, 6vw, 4rem) */
+  font-size: clamp(1.75rem, 4.5vw, 2.75rem); /* Reduced from clamp(2rem, 5vw, 3rem) */
   font-weight: 700;
   color: #5351f4;
-  margin-bottom: clamp(2rem, 6vw, 4rem);
+  margin-bottom: clamp(1.5rem, 5vw, 3rem); /* Reduced margin */
   line-height: 1.2;
 }
 
@@ -27,26 +29,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 1400px; /* Increased from 1000px to accommodate wider card */
+  max-width: 2000px; /* Increased from 1600px for much wider container */
   margin: 0 auto;
 }
 
 /* ============= MAIN FEEDBACK CARD ============= */
 .feedback-card {
   width: 100%;
-  max-width: 1500px; /* Further increased width from 1300px to 1500px for more left-side space */
-  height: 380px; /* Reduced back to 380px as you don't want more length/height */
+  max-width: 1600px; /* Increased from 1300px to make it much wider */
+  height: auto; /* Allow natural height */
+  min-height: 400px; /* Increased from 320px to make it much taller */
   background: #ffffff;
-  border: 2px solid #d1d5db; /* Made border more prominent with darker color */
-  border-radius: clamp(1.5rem, 4vw, 2.5rem);
-  padding: 0; /* Remove padding, we'll handle spacing internally */
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); /* Increased shadow for more prominence */
+  border: 1.5px solid #c7d2fe; /* Light blue border */
+  border-radius: clamp(1.5rem, 3vw, 2.5rem);
+  padding: 0;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04); /* Subtle shadow */
   transition: all 0.3s ease;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden; /* Prevent any scrolling within the card */
+  overflow: hidden;
 }
 
 .feedback-card:hover {
@@ -57,16 +60,16 @@
 .feedback-content {
   display: flex;
   flex-direction: column;
-  gap: clamp(1.5rem, 4vw, 2.5rem);
+  gap: clamp(1.25rem, 3vw, 2rem); /* Reduced gap */
   align-items: center;
   text-align: center;
   width: 100%;
-  height: 100%; /* Take full height of card */
-  padding: clamp(2rem, 5vw, 3rem) clamp(6rem, 10vw, 8rem); /* Increased right padding from 7rem to 8rem */
+  height: 100%;
+  padding: clamp(2.5rem, 5vw, 3.5rem) clamp(2rem, 5vw, 3rem); /* Increased vertical padding */
   box-sizing: border-box;
   justify-content: center;
   position: relative;
-  overflow: hidden; /* Prevent any scrolling within the content */
+  overflow: hidden;
 }
 
 @media (min-width: 768px) {
@@ -74,7 +77,8 @@
     flex-direction: row;
     text-align: left;
     align-items: center;
-    gap: clamp(2rem, 4vw, 3rem);
+    gap: clamp(1.5rem, 3vw, 2.5rem); /* Reduced gap to bring left and right content closer */
+    padding: clamp(3rem, 5vw, 4rem) clamp(2.5rem, 5vw, 3.5rem);
   }
 }
 
@@ -92,6 +96,7 @@
   .user-info {
     align-items: flex-start;
     width: 200px; /* Keep fixed width */
+    margin-left: clamp(2rem, 4vw, 3rem); /* Add left margin to move user info to the right */
   }
 }
 
@@ -152,29 +157,57 @@
 .quote-icon-container {
   display: flex;
   justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 45px; /* Increased from 25px to move it further down */
+  left: 42%; /* Positioned right where text starts on desktop */
+  transform: translateX(-50%); /* Center the icon itself */
+  z-index: 2;
+  background: transparent;
+  border-radius: 0;
+  width: auto;
+  height: auto;
+  box-shadow: none;
 }
 
 @media (min-width: 768px) {
   .quote-icon-container {
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50px; /* Increased from 30px to move it further down on desktop */
+    left: 42%; /* Positioned right where text starts on desktop */
+    transform: translateX(-50%); /* Center the icon itself */
+    width: auto;
+    height: auto;
   }
 }
 
 .quote-icon {
-  width: clamp(2rem, 5vw, 3rem); /* 32px - 48px */
+  width: clamp(1.5rem, 3vw, 2rem); /* Reduced size to match reference */
   height: auto;
-  opacity: 0.7;
+  opacity: 1; /* Full opacity for clear visibility */
 }
 
 /* ============= FEEDBACK TEXT ============= */
 .feedback-text {
   font-family: "Poppins", sans-serif;
-  font-size: clamp(0.8rem, 2.2vw, 1rem); /* Reduced from clamp(0.875rem, 2.5vw, 1.125rem) */
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem); /* Increased font size */
   font-weight: 400;
-  line-height: 1.6; /* Reduced from 1.7 to 1.6 for more compact text */
+  line-height: 1.6;
   color: #374151;
   margin: 0;
   text-align: center;
+  padding-top: clamp(2.5rem, 4vw, 3.5rem); /* Top padding for quote icon */
+  padding-left: clamp(1rem, 2vw, 1.5rem); /* Reduced left padding */
+}
+
+@media (min-width: 768px) {
+  .feedback-text {
+    text-align: left;
+    padding-top: clamp(3rem, 4vw, 4rem); /* More top padding on desktop */
+    padding-left: clamp(1.5rem, 2vw, 2rem); /* Moderate left padding on desktop */
+  }
 }
 
 @media (min-width: 768px) {
@@ -188,8 +221,8 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: clamp(3rem, 8vw, 4rem); /* 48px - 64px */
-  height: clamp(3rem, 8vw, 4rem); /* 48px - 64px */
+  width: clamp(3rem, 8vw, 4rem);
+  height: clamp(3rem, 8vw, 4rem);
   background: #5351f4;
   border: none;
   border-radius: 50%;
@@ -200,14 +233,29 @@
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(83, 81, 244, 0.3);
   z-index: 10;
+  /* Position relative to the feedback-card, not the container */
+}
+
+/* Create proper chevron arrows using CSS borders */
+.nav-btn::before {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border-left: 3px solid white;
+  border-bottom: 3px solid white;
+  transform: rotate(45deg); /* Left arrow by default */
+}
+
+.nav-btn.right::before {
+  transform: rotate(-135deg); /* Right arrow */
 }
 
 .nav-btn.left {
-  left: clamp(60px, 8vw, 120px); /* Responsive positioning for different laptop sizes */
+  left: 7rem; /* Pull much closer to the card */
 }
 
 .nav-btn.right {
-  right: clamp(60px, 8vw, 120px); /* Responsive positioning for different laptop sizes */
+  right: 7rem; /* Pull much closer to the card */
 }
 
 .nav-btn:hover {
@@ -217,9 +265,7 @@
 }
 
 .nav-btn img {
-  width: clamp(1rem, 3vw, 1.5rem); /* 16px - 24px */
-  height: auto;
-  filter: brightness(0) invert(1); /* Make arrows white */
+  display: none; /* Hide the image arrows since we're using CSS arrows */
 }
 
 /* ============= RESPONSIVE ADJUSTMENTS ============= */
@@ -227,44 +273,44 @@
 /* Tablet and Small Laptops */
 @media (min-width: 768px) and (max-width: 1024px) {
   .nav-btn.left {
-    left: clamp(50px, 6vw, 80px);
+    left: 7rem; /* Pull much closer to the card */
   }
   
   .nav-btn.right {
-    right: clamp(50px, 6vw, 80px);
+    right: 7rem; /* Pull much closer to the card */
   }
 }
 
 /* Medium Laptops */
 @media (min-width: 1025px) and (max-width: 1440px) {
   .nav-btn.left {
-    left: clamp(80px, 7vw, 100px);
+    left: 7rem; /* Pull much closer to the card */
   }
   
   .nav-btn.right {
-    right: clamp(80px, 7vw, 100px);
+    right: 7rem; /* Pull much closer to the card */
   }
 }
 
 /* Large Laptops and Desktops */
 @media (min-width: 1441px) {
   .nav-btn.left {
-    left: clamp(100px, 8vw, 120px);
+    left: 7rem; /* Pull much closer to the card */
   }
   
   .nav-btn.right {
-    right: clamp(100px, 8vw, 120px);
+    right: 7rem; /* Pull much closer to the card */
   }
 }
 
 /* Mobile Layout */
 @media (max-width: 767px) {
   .nav-btn.left {
-    left: clamp(0.5rem, 2vw, 1rem);
+    left: -1rem; /* Closer to the card for mobile */
   }
   
   .nav-btn.right {
-    right: clamp(0.5rem, 2vw, 1rem);
+    right: -1rem; /* Closer to the card for mobile */
   }
 }
 

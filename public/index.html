@@ -3,54 +3,53 @@
 
 <head>
   <meta charset="utf-8" />
+  
+  <!-- CRITICAL: Load images first, before anything else -->
+  <link rel="preload" href="/static/media/City.png" as="image" fetchpriority="high">
+  <link rel="preload" href="/static/media/Img1.png" as="image" fetchpriority="high">
+  <link rel="preload" href="/static/media/Img2.png" as="image" fetchpriority="high">
+  <link rel="preload" href="/static/media/Img3.png" as="image" fetchpriority="high">
+  
   <link rel="icon" href="./logo.svg" type="image/svg" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
   <meta name="description" content="KnowYourTrips - Your Personal Travel Assistant" />
   
-  <!-- Immediate image download - starts before DOM loads -->
+  <!-- SUPER AGGRESSIVE IMAGE PRELOADING FOR INCOGNITO -->
   <script>
+    // Start downloading images IMMEDIATELY - no waiting
     (function() {
-      // Aggressive preloading for incognito mode
-      var imagePaths = [
-        '/static/media/City.png', 
-        './static/media/City.png', 
-        '/assets/City.png',
-        '/static/media/Img1.png',
-        '/static/media/Img2.png', 
+      // Create hidden div to force immediate loading
+      var div = document.createElement('div');
+      div.style.cssText = 'position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;';
+      
+      var images = [
+        '/static/media/City.png',
+        '/static/media/Img1.png', 
+        '/static/media/Img2.png',
         '/static/media/Img3.png'
       ];
       
-      imagePaths.forEach(function(path) {
-        var img = new Image();
-        img.fetchPriority = 'high';
+      images.forEach(function(src) {
+        // Method 1: Hidden img elements for immediate caching
+        var img = document.createElement('img');
+        img.src = src;
         img.loading = 'eager';
-        img.src = path;
+        div.appendChild(img);
+        
+        // Method 2: Image objects
+        var imgObj = new Image();
+        imgObj.src = src;
       });
       
-      // Fetch with cache for better incognito performance
-      if (window.fetch) {
-        imagePaths.forEach(function(path) {
-          fetch(path, {
-            mode: 'no-cors',
-            cache: 'force-cache',
-            priority: 'high'
-          }).catch(function(){});
-        });
-      }
+      document.head.appendChild(div);
     })();
   </script>
   
   <!-- DNS prefetch for faster loading -->
   <link rel="dns-prefetch" href="//fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  
-  <!-- Preload critical images with high priority -->
-  <link rel="preload" href="/static/media/City.png" as="image" fetchpriority="high">
-  <link rel="preload" href="/static/media/Img1.png" as="image" fetchpriority="high">
-  <link rel="preload" href="/static/media/Img2.png" as="image" fetchpriority="high">
-  <link rel="preload" href="/static/media/Img3.png" as="image" fetchpriority="high">
   
   <!--
       manifest.json provides metadata used when your web app is installed on a

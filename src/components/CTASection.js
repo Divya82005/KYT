@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import "./Styles/CTASection.css";
 
 import ManImg from "../assets/Man_Img.png";
@@ -12,21 +12,21 @@ const feedbackList = [
     image: ManImg,
     name: "John Doe",
     title: "Travel Vlogger",
-    text: "Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua. Ut Enim Ad Minim Veniam, Quis Nostrud Exercitation Ullamco Laboris Nisi Ut Aliquip Ex Ea Commodo Consequat. Duis Aute Irure Dolor In Reprehenderit In Voluptate Velit Esse Cillum Dolore Eu Fugiat Nulla Pariatur. Excepteur Sint Occaecat Cupidatat Non Proident, Sunt In Culpa Qui Officia Deserunt Mollit Anim Id Est Laborum.",
+    text: "Highlight recommend it for solo travellers - The real time incident alerts when in a new country helps me to navigate the city easily. However one feedback is, the app currently is pushing too many notification, if you could tone it down to major alerts happening around me.",
   },
   {
     id: 2,
     image: ManImg,
     name: "Jane Smith",
     title: "Content Creator",
-    text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    text: "Brillant App - Finally a app which actually apps travellers, a must use app for all the travellers.",
   },
   {
     id: 3,
     image: ManImg,
     name: "Mike Johnson",
     title: "Digital Nomad",
-    text: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    text: "Safety Feature - Real time safety alerts when in new country helps me to stay on top of my journey.",
   },
 ];
 
