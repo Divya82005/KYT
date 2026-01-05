@@ -1,28 +1,10 @@
-import { useEffect } from "react";
 import city from "../assets/City.png";
 import Ai_Safety from "../assets/Img1.png";
 import Security from "../assets/Img2.png";
 import Alert from "../assets/Img3.png";
 import "./Styles/HeroSection.css";
 
-// Preload images immediately when module loads (before component renders)
-const preloadImages = [city, Ai_Safety, Security, Alert];
-preloadImages.forEach(src => {
-  const img = new Image();
-  img.src = src;
-});
-
 const HeroSection = () => {
-  // Additional preloading when component mounts
-  useEffect(() => {
-    // Force immediate loading with highest priority
-    preloadImages.forEach(src => {
-      const img = new Image();
-      img.src = src;
-      img.loading = 'eager';
-      img.fetchPriority = 'high';
-    });
-  }, []);
 
   const features = [
     {

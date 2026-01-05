@@ -9,59 +9,9 @@
   <meta name="theme-color" content="#000000" />
   <meta name="description" content="KnowYourTrips - Your Personal Travel Assistant" />
   
-  <!-- DNS prefetch for faster image loading -->
+  <!-- DNS prefetch for faster loading -->
   <link rel="dns-prefetch" href="//fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  
-  <!-- Aggressive resource hints for images -->
-  <link rel="prefetch" href="/static/media/City.png">
-  <link rel="prefetch" href="/static/media/Img1.png">
-  <link rel="prefetch" href="/static/media/Img2.png">
-  <link rel="prefetch" href="/static/media/Img3.png">
-  
-  <!-- High priority preload for critical hero image -->
-  <link rel="preload" href="/static/media/City.png" as="image" fetchpriority="high">
-  
-  <!-- Service Worker for aggressive caching -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/sw.js')
-          .then(function(registration) {
-            console.log('SW registered: ', registration);
-          })
-          .catch(function(registrationError) {
-            console.log('SW registration failed: ', registrationError);
-          });
-      });
-    }
-  </script>
-  
-  <!-- Preload critical images for faster loading -->
-  <script>
-    // Ultra-aggressive preloading - start immediately
-    (function() {
-      const images = [
-        '/static/media/City.png',
-        '/static/media/Img1.png',
-        '/static/media/Img2.png',
-        '/static/media/Img3.png'
-      ];
-      
-      // Method 1: Immediate Image objects
-      images.forEach(function(src) {
-        const img = new Image();
-        img.src = src;
-      });
-      
-      // Method 2: Force browser cache with fetch
-      images.forEach(function(src) {
-        if (window.fetch) {
-          fetch(src, { mode: 'no-cors' }).catch(function() {});
-        }
-      });
-    })();
-  </script>
   
   <!--
       manifest.json provides metadata used when your web app is installed on a
