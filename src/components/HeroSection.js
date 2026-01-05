@@ -98,6 +98,9 @@ const HeroSection = () => {
           className="city-main-img hero-image"
           alt="City view"
           loading="eager"
+          onLoad={(e) => {
+            e.target.classList.add('loaded');
+          }}
         />
       </div>
     </section>

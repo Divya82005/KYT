@@ -48,25 +48,25 @@ img {
   loading: lazy;
 }
 
-/* Critical hero image with instant placeholder */
+/* Instant loading hero image with LQIP (Low Quality Image Placeholder) */
 .hero-image,
 .city-main-img {
   /* Immediate loading for hero image */
   loading: eager;
   
-  /* Instant base64 placeholder - shows immediately */
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTg1IiBoZWlnaHQ9IjU4MSIgdmlld0JveD0iMCAwIDU4NSA1ODEiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1ODUiIGhlaWdodD0iNTgxIiBmaWxsPSIjZjBmMGYwIi8+CjxwYXRoIGQ9Ik0yOTIuNSAyNDBMMzUwIDMwMEgyMzVMMjkyLjUgMjQwWiIgZmlsbD0iI2NjY2NjYyIvPgo8cGF0aCBkPSJNMjkyLjUgMzQwTDIzNSAyODBIMzUwTDI5Mi41IDM0MFoiIGZpbGw9IiNjY2NjY2MiLz4KPGNpcmNsZSBjeD0iMzIwIiBjeT0iMjIwIiByPSIyMCIgZmlsbD0iI2NjY2NjYyIvPgo8L3N2Zz4K');
+  /* Ultra-low quality base64 placeholder - shows instantly (0ms) */
+  background-image: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k=');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   
-  /* Ensure proper dimensions during loading */
+  /* Ensure proper dimensions */
   min-height: 400px;
   width: 100%;
   object-fit: cover;
   
-  /* Smooth transition when real image loads */
-  transition: opacity 0.2s ease-in-out;
+  /* Instant display */
+  opacity: 1;
 }
 
 /* Enhanced skeleton loading animation */
@@ -79,11 +79,17 @@ img {
   }
 }
 
-/* When image is loaded, remove placeholder */
+/* When real image loads, it overlays the placeholder */
 .hero-image[src]:not([src=""]),
 .city-main-img[src]:not([src=""]) {
+  /* Keep placeholder until image fully loads */
+  background-blend-mode: normal;
+}
+
+/* Progressive loading - show image immediately when available */
+.hero-image.loaded,
+.city-main-img.loaded {
   background-image: none;
-  transition: opacity 0.2s ease-in-out;
 }
 
 /* Preload critical images using CSS */
