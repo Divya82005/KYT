@@ -9,6 +9,14 @@
   <meta name="theme-color" content="#000000" />
   <meta name="description" content="KnowYourTrips - Your Personal Travel Assistant" />
   
+  <!-- Immediate image download - starts before DOM loads -->
+  <script>
+    (function() {
+      var img = new Image();
+      img.src = '/static/media/City.png';
+    })();
+  </script>
+  
   <!-- DNS prefetch for faster loading -->
   <link rel="dns-prefetch" href="//fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
