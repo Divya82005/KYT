@@ -48,35 +48,25 @@ img {
   loading: lazy;
 }
 
-/* Critical hero image with enhanced loading */
+/* Critical hero image with instant placeholder */
 .hero-image,
 .city-main-img {
   /* Immediate loading for hero image */
   loading: eager;
   
-  /* Enhanced skeleton placeholder while loading */
-  background: linear-gradient(
-    90deg,
-    #f0f0f0 0%,
-    #e8e8e8 20%,
-    #e0e0e0 40%,
-    #e8e8e8 60%,
-    #f0f0f0 80%,
-    #f8f8f8 100%
-  );
-  background-size: 300% 100%;
-  animation: enhanced-skeleton-loading 2s infinite linear;
+  /* Instant base64 placeholder - shows immediately */
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTg1IiBoZWlnaHQ9IjU4MSIgdmlld0JveD0iMCAwIDU4NSA1ODEiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1ODUiIGhlaWdodD0iNTgxIiBmaWxsPSIjZjBmMGYwIi8+CjxwYXRoIGQ9Ik0yOTIuNSAyNDBMMzUwIDMwMEgyMzVMMjkyLjUgMjQwWiIgZmlsbD0iI2NjY2NjYyIvPgo8cGF0aCBkPSJNMjkyLjUgMzQwTDIzNSAyODBIMzUwTDI5Mi41IDM0MFoiIGZpbGw9IiNjY2NjY2MiLz4KPGNpcmNsZSBjeD0iMzIwIiBjeT0iMjIwIiByPSIyMCIgZmlsbD0iI2NjY2NjYyIvPgo8L3N2Zz4K');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   
   /* Ensure proper dimensions during loading */
   min-height: 400px;
   width: 100%;
   object-fit: cover;
   
-  /* Better contrast while loading */
-  filter: contrast(0.8) brightness(1.1);
-  
-  /* Prevent flash of unstyled content */
-  opacity: 0.9;
+  /* Smooth transition when real image loads */
+  transition: opacity 0.2s ease-in-out;
 }
 
 /* Enhanced skeleton loading animation */
@@ -89,14 +79,11 @@ img {
   }
 }
 
-/* When image is loaded, remove skeleton and enhance appearance */
+/* When image is loaded, remove placeholder */
 .hero-image[src]:not([src=""]),
 .city-main-img[src]:not([src=""]) {
-  background: none;
-  animation: none;
-  filter: none;
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out;
+  background-image: none;
+  transition: opacity 0.2s ease-in-out;
 }
 
 /* Preload critical images using CSS */
@@ -114,21 +101,19 @@ img {
   z-index: -1;
 }
 
-/* Feature icons load eagerly with better skeleton */
+/* Feature icons load instantly with simple placeholder */
 .feature-icon img {
   loading: eager;
-  /* Enhanced skeleton for feature icons */
-  background: linear-gradient(90deg, #f8f8f8 25%, #eeeeee 50%, #f8f8f8 75%);
-  background-size: 200% 100%;
-  animation: skeleton-loading 1.5s infinite;
+  /* Simple placeholder for feature icons */
+  background: #f8f8f8;
   border-radius: 8px;
   min-height: 60px;
   min-width: 60px;
+  transition: opacity 0.1s ease;
 }
 
 .feature-icon img[src]:not([src=""]) {
   background: none;
-  animation: none;
 }
 
 /* Navbar logo loads immediately */
