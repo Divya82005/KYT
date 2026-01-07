@@ -1,0 +1,11 @@
+# Netlify Headers for Image Optimization
+/static/media/*
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+
+# Preload critical images
+/*
+  Link: </static/media/City.png>; rel=preload; as=image; fetchpriority=high
+  Link: </static/media/Img1.png>; rel=preload; as=image; fetchpriority=high  
+  Link: </static/media/Img2.png>; rel=preload; as=image; fetchpriority=high
+  Link: </static/media/Img3.png>; rel=preload; as=image; fetchpriority=high

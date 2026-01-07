@@ -1,18 +1,32 @@
-import { useEffect } from "react";
-import city from "../assets/City.png";
+import { useEffect, useState } from "react";
+import city from "../assets/City_optimized.png";
 import Ai_Safety from "../assets/Img1.png";
 import Security from "../assets/Img2.png";
 import Alert from "../assets/Img3.png";
 import "./Styles/HeroSection.css";
 
 const HeroSection = () => {
-  // Immediate aggressive preloading - don't wait
+  // Load images immediately without any delays
   useEffect(() => {
-    // Start loading immediately, don't wait for anything
     const imageUrls = [city, Ai_Safety, Security, Alert];
+    
+    // Immediate preloading with multiple strategies
     imageUrls.forEach(src => {
-      const img = new Image();
-      img.src = src;
+      // Strategy 1: Multiple Image objects for browser cache
+      for (let i = 0; i < 2; i++) {
+        const img = new Image();
+        img.src = src;
+        img.loading = 'eager';
+        img.decoding = 'sync';
+      }
+      
+      // Strategy 2: Hidden DOM elements for immediate caching
+      const hiddenImg = document.createElement('img');
+      hiddenImg.src = src;
+      hiddenImg.style.cssText = 'position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0;';
+      hiddenImg.loading = 'eager';
+      hiddenImg.decoding = 'sync';
+      document.body.appendChild(hiddenImg);
     });
   }, []);
 
@@ -22,6 +36,15 @@ const HeroSection = () => {
         src={Ai_Safety} 
         alt="AI Safety Intelligence" 
         loading="eager"
+        decoding="sync"
+        fetchpriority="high"
+        style={{ 
+          imageRendering: 'crisp-edges',
+          display: 'block',
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'transparent'
+        }}
       />,
       title: "AI Safety Intelligence",
       desc: "Smart Suggestions and Planning",
@@ -31,6 +54,15 @@ const HeroSection = () => {
         src={Security} 
         alt="Risk Assessment" 
         loading="eager"
+        decoding="sync"
+        fetchpriority="high"
+        style={{ 
+          imageRendering: 'crisp-edges',
+          display: 'block',
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'transparent'
+        }}
       />,
       title: "Risk Assessment",
       desc: "Evaluate Locations Before You Go",
@@ -40,6 +72,15 @@ const HeroSection = () => {
         src={Alert} 
         alt="Real-Time Incident Alerts" 
         loading="eager"
+        decoding="sync"
+        fetchpriority="high"
+        style={{ 
+          imageRendering: 'crisp-edges',
+          display: 'block',
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'transparent'
+        }}
       />,
       title: "Real-Time Incident Alerts",
       desc: "Know Your Safety Status",
@@ -52,7 +93,6 @@ const HeroSection = () => {
   };
 
   return (
-
     <section className="hero-wrapper">
       <div className="hero-left">
         <p className="vision-text">OUR VISION IS TO-</p>
@@ -79,6 +119,8 @@ const HeroSection = () => {
                 src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=956968&theme=dark&t=1745506618137"
                 alt="KnowYourTrips - Your Personal Travel Assistant | Product Hunt"
                 className="product-hunt-badge"
+                loading="lazy"
+                fetchpriority="low"
               />
             </a>
           </div>
@@ -102,6 +144,15 @@ const HeroSection = () => {
           className="city-main-img hero-image"
           alt="City view"
           loading="eager"
+          decoding="sync"
+          fetchpriority="high"
+          style={{ 
+            imageRendering: 'crisp-edges',
+            display: 'block',
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'transparent'
+          }}
         />
       </div>
     </section>

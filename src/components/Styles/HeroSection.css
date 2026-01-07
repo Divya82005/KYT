@@ -12,26 +12,37 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+/* Hide scrollbar for webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+html {
+  scrollbar-width: none;
+}
+
 /* ============= HERO WRAPPER ============= */
 .hero-wrapper {
   width: 100%;
   min-height: 100vh;
-  padding: clamp(0.5rem, 2vw, 1rem) clamp(1rem, 4vw, 5rem); /* Much smaller top padding */
+  padding: clamp(0.8rem, 1vw, 1.2rem) clamp(3rem, 2vw, 5rem); /* Tighter control */
   display: grid;
   grid-template-columns: 1fr;
-  gap: clamp(1rem, 3vw, 2rem); /* Smaller gap */
-  align-items: start; /* Changed from center to start */
-  padding-top: clamp(2rem, 5vw, 4rem); /* Add specific top padding */
-  transform: scale(0.95); /* Slight zoom out */
+  gap: clamp(1.5rem, 1vw, 2.5rem); /* Tighter control */
+  align-items: start;
+  padding-top: clamp(3rem, 1.5vw, 4rem); /* Tighter control */
+  transform: scale(0.95);
   transform-origin: center;
-  overflow-x: visible; /* Allow horizontal overflow for feature cards */
+  overflow-x: visible;
+  overflow-y: hidden;
 }
 
 /* Desktop layout */
 @media (min-width: 1024px) {
   .hero-wrapper {
     grid-template-columns: 1fr 1fr;
-    gap: clamp(1rem, 2vw, 2rem); /* Much smaller gap */
+    gap: clamp(1.5rem, 1vw, 2rem); /* Tighter control */
   }
 }
 
@@ -96,7 +107,7 @@ body {
   width: 100%;
   max-width: clamp(12rem, 25vw, 14.625rem); /* 192px - 234px */
   height: clamp(3.5rem, 6vw, 4.2rem); /* 56px - 67.2px */
-  background: #5351ed;
+  background: linear-gradient(90deg, #AA80F9 0%, #5351F4 100%);
   color: #ffffff;
   border-radius: clamp(0.75rem, 2vw, 1.25rem);
   border: none;
@@ -136,7 +147,7 @@ body {
 }
 
 .download-btns:hover {
-  background: #3a45ef;
+  background: linear-gradient(90deg, #9A70E9 0%, #4341E4 100%); /* Slightly darker gradient on hover */
   transform: translateY(-0.125rem);
   box-shadow: 0 0.25rem 0.75rem rgba(83, 81, 237, 0.3);
 }
@@ -147,7 +158,7 @@ body {
   align-items: center;
   height: clamp(4rem, 6vw, 5.2rem); /* 64px - 83.2px */
   width: 100%;
-  max-width: clamp(14rem, 30vw, 18rem); /* 224px - 288px */
+  max-width: clamp(14rem, 28vw, 17rem); /* Slightly reduced from 18rem to 17rem */
 }
 
 .product-hunt-badge {
@@ -278,6 +289,75 @@ body {
 }
 
 /* ============= RESPONSIVE ADJUSTMENTS ============= */
+
+/* iPad Mini and similar tablets (744px - 1023px) */
+@media (min-width: 744px) and (max-width: 1023px) {
+  .hero-wrapper {
+    /* Keep the same desktop grid structure */
+    grid-template-columns: 1fr 1fr; /* Same as desktop */
+    gap: clamp(1.5rem, 3vw, 2rem);
+    padding: clamp(1.5rem, 3vw, 2rem) clamp(2rem, 3vw, 2.5rem);
+    transform: scale(0.85); /* Scale down to fit iPad Mini */
+    align-items: center; /* Keep centered alignment like desktop */
+  }
+  
+  .hero-left {
+    order: 1; /* Same as desktop */
+    max-width: none;
+  }
+  
+  .hero-right {
+    order: 2; /* Same as desktop */
+  }
+  
+  /* Scale down text sizes proportionally */
+  .vision-text {
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+  }
+  
+  .hero-title {
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  }
+  
+  .download-btns {
+    max-width: clamp(10rem, 16vw, 12rem);
+    height: clamp(3rem, 4vw, 3.5rem);
+    font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+  }
+  
+  .product-hunt-badge {
+    height: clamp(2.8rem, 4vw, 3.2rem);
+  }
+  
+  .city-main-img {
+    max-width: clamp(16rem, 32vw, 22rem);
+  }
+  
+  /* Keep feature cards but scale them down */
+  .feature-row {
+    grid-template-columns: repeat(3, 1fr); /* Same as desktop */
+    gap: clamp(0.5rem, 1.5vw, 0.75rem);
+    width: clamp(32rem, 45vw, 40rem);
+    margin-top: clamp(1.5rem, 3vw, 2rem);
+  }
+  
+  .feature-box {
+    min-height: clamp(7rem, 12vw, 8.5rem);
+    padding: clamp(0.6rem, 1.5vw, 0.8rem);
+  }
+  
+  .feature-icon img {
+    width: clamp(2rem, 4vw, 2.8rem);
+  }
+  
+  .feature-box h3 {
+    font-size: clamp(0.75rem, 1.8vw, 0.9rem);
+  }
+  
+  .feature-box p {
+    font-size: clamp(0.6rem, 1.5vw, 0.7rem);
+  }
+}
 
 /* Small Laptops (1024px - 1366px) */
 @media (min-width: 1024px) and (max-width: 1366px) {
@@ -514,4 +594,43 @@ body {
   backface-visibility: hidden;
   /* Smooth transitions */
   transition: opacity 0.3s ease;
+}
+
+/* ============= IMMEDIATE IMAGE DISPLAY ============= */
+.hero-image, .feature-icon img {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  transition: none !important;
+  animation: none !important;
+}
+
+/* Force immediate display without loading states */
+.city-main-img {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  background-color: transparent !important;
+  min-height: auto !important;
+}
+
+/* Prevent any loading animations or transitions */
+.hero-right img, .feature-icon img {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+  animation: none !important;
+  will-change: auto !important;
+}
+
+/* Ensure images are always visible */
+img[src*="City.png"], 
+img[src*="Img1.png"], 
+img[src*="Img2.png"], 
+img[src*="Img3.png"] {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  transition: none !important;
+  animation: none !important;
 }

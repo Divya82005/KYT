@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
-import Company_Logo from "../assets/Company_Logo.png";
+import Company_Logo from "../assets/logo.svg";
 import "./Styles/Navbar.css";
 
 const Navbar = () => {

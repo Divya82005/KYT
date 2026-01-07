@@ -23,33 +23,23 @@
   line-height: 1.2;
 }
 
-/* ============= FEEDBACK CONTAINER ============= */
-.feedback-container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 2000px; /* Increased from 1600px for much wider container */
-  margin: 0 auto;
-}
-
 /* ============= MAIN FEEDBACK CARD ============= */
 .feedback-card {
   width: 100%;
   max-width: 1600px; /* Increased from 1300px to make it much wider */
-  height: auto; /* Allow natural height */
-  min-height: 400px; /* Increased from 320px to make it much taller */
+  height: 350px; /* Fixed height instead of auto */
   background: #ffffff;
   border: 1.5px solid #c7d2fe; /* Light blue border */
   border-radius: clamp(1.5rem, 3vw, 2.5rem);
   padding: 0;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04); /* Subtle shadow */
   transition: all 0.3s ease;
-  position: relative;
+  position: relative; /* For arrow positioning */
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow: visible; /* Allow arrows to show outside the card */
+  margin: 0 auto; /* Center the card */
 }
 
 .feedback-card:hover {
@@ -100,30 +90,42 @@
   }
 }
 
-/* ============= USER AVATAR ============= */
-.user-avatar {
-  width: clamp(4rem, 12vw, 6rem); /* 64px - 96px */
-  height: clamp(4rem, 12vw, 6rem); /* 64px - 96px */
-  border-radius: 50%;
-  overflow: hidden;
+/* ============= RATING CONTAINER ============= */
+.rating-container {
+  background: #ffffff;
+  border-radius: clamp(1rem, 2vw, 1.5rem);
+  padding: clamp(0.75rem, 2vw, 1rem) clamp(1rem, 3vw, 1.5rem);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: clamp(0.25rem, 1vw, 0.5rem); /* Reduced spacing between star container and name */
+  display: flex;
+  justify-content: center; /* Always center the container */
+  align-items: center;
+  min-height: clamp(2.5rem, 5vw, 3rem);
+  transform: translateX(-20px); /* Move star container more to the left */
 }
 
-.user-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+/* ============= STAR RATING ============= */
+.star-rating {
+  display: flex;
+  justify-content: center; /* Always center the stars */
+  align-items: center;
+  gap: 4px; /* Slightly increased gap between stars */
+}
+
+.star {
+  font-size: clamp(1.5rem, 3.5vw, 2rem); /* Increased star size */
+  color: #ddd;
+  transition: color 0.2s ease;
+  line-height: 1;
+}
+
+.star.filled {
+  color: #FFD700; /* Gold color for filled stars */
 }
 
 /* ============= USER DETAILS ============= */
 .user-details {
-  text-align: center;
-}
-
-@media (min-width: 768px) {
-  .user-details {
-    text-align: left;
-  }
+  text-align: left; /* Left-align so name and subtitle start from same point */
 }
 
 .user-name {
@@ -131,17 +133,19 @@
   font-size: clamp(1.25rem, 3vw, 1.75rem); /* 20px - 28px */
   font-weight: 700;
   color: #1f2937;
-  margin: 0 0 clamp(0.25rem, 1vw, 0.5rem) 0;
+  margin: 0 0 clamp(0.25rem, 1vw, 0.5rem) 0; /* Keep original spacing between name and subtitle */
   line-height: 1.2;
+  text-align: left; /* Left-align the name */
 }
 
 .user-title {
   font-family: "Poppins", sans-serif;
-  font-size: clamp(0.875rem, 2.5vw, 1.125rem); /* 14px - 18px */
+  font-size: clamp(1rem, 2.8vw, 1.25rem); /* Increased from clamp(0.875rem, 2.5vw, 1.125rem) */
   font-weight: 400;
   color: #6b7280;
   margin: 0;
   line-height: 1.4;
+  text-align: left; /* Left-align the subtitle */
 }
 
 /* ============= FEEDBACK TEXT AREA ============= */
@@ -232,7 +236,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(83, 81, 244, 0.3);
-  z-index: 10;
+  z-index: 1000; /* Very high z-index to appear above everything */
   /* Position relative to the feedback-card, not the container */
 }
 
@@ -251,11 +255,11 @@
 }
 
 .nav-btn.left {
-  left: 7rem; /* Pull much closer to the card */
+  left: -40px; /* Move closer to the card */
 }
 
 .nav-btn.right {
-  right: 7rem; /* Pull much closer to the card */
+  right: -40px; /* Move closer to the card */
 }
 
 .nav-btn:hover {
@@ -270,49 +274,7 @@
 
 /* ============= RESPONSIVE ADJUSTMENTS ============= */
 
-/* Tablet and Small Laptops */
-@media (min-width: 768px) and (max-width: 1024px) {
-  .nav-btn.left {
-    left: 7rem; /* Pull much closer to the card */
-  }
-  
-  .nav-btn.right {
-    right: 7rem; /* Pull much closer to the card */
-  }
-}
-
-/* Medium Laptops */
-@media (min-width: 1025px) and (max-width: 1440px) {
-  .nav-btn.left {
-    left: 7rem; /* Pull much closer to the card */
-  }
-  
-  .nav-btn.right {
-    right: 7rem; /* Pull much closer to the card */
-  }
-}
-
-/* Large Laptops and Desktops */
-@media (min-width: 1441px) {
-  .nav-btn.left {
-    left: 7rem; /* Pull much closer to the card */
-  }
-  
-  .nav-btn.right {
-    right: 7rem; /* Pull much closer to the card */
-  }
-}
-
-/* Mobile Layout */
-@media (max-width: 767px) {
-  .nav-btn.left {
-    left: -1rem; /* Closer to the card for mobile */
-  }
-  
-  .nav-btn.right {
-    right: -1rem; /* Closer to the card for mobile */
-  }
-}
+/* Remove all responsive overrides - use consistent percentage positioning */
 
 /* Small Mobile */
 @media (max-width: 480px) {

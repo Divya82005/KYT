@@ -109,7 +109,7 @@ img {
 
 /* ============= PRIMARY BUTTON ============= */
 .nav .btn-primary {
-  background: #5351ed;
+  background: linear-gradient(90deg, #AA80F9 0%, #5351F4 100%);
   color: white;
   width: clamp(12.5rem, 20vw, 15.625rem); /* 200px - 250px */
   height: clamp(3.5rem, 6vw, 4.375rem); /* 56px - 70px */
@@ -239,7 +239,7 @@ img {
 
 /* ============= MOBILE BUTTON ============= */
 .mobile-btn {
-  background: #5351ed;
+  background: linear-gradient(90deg, #AA80F9 0%, #5351F4 100%);
   color: white;
   padding: clamp(0.75rem, 3vw, 0.9375rem) clamp(1.25rem, 4vw, 1.5625rem);
   border-radius: clamp(0.75rem, 2vw, 0.9375rem);
@@ -293,6 +293,51 @@ img {
 }
 
 /* ============= RESPONSIVE BREAKPOINTS ============= */
+
+/* iPad Mini and similar tablets (744px - 1023px) */
+@media (min-width: 744px) and (max-width: 1023px) {
+  .nav {
+    padding: clamp(1rem, 2.5vw, 1.5rem) clamp(1.5rem, 3vw, 2rem);
+    transform: scale(0.9); /* Slight scale down for iPad Mini */
+  }
+  
+  .logo-wrapper {
+    gap: clamp(0.75rem, 1.5vw, 1rem);
+  }
+  
+  .company_logo {
+    width: clamp(20px, 2.5vw, 24px);
+  }
+  
+  .logo-link {
+    font-size: clamp(1.3rem, 2.8vw, 1.6rem);
+  }
+  
+  .nav-links {
+    display: flex; /* Keep nav links visible on iPad Mini */
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  
+  .nav-links a {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+  }
+  
+  .nav .btn-primary {
+    display: flex; /* Keep button visible on iPad Mini */
+    width: clamp(10rem, 15vw, 12rem);
+    height: clamp(3rem, 4vw, 3.5rem);
+    font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+  }
+  
+  /* Hide hamburger menu on iPad Mini */
+  .hamburger {
+    display: none;
+  }
+  
+  .mobile-menu {
+    display: none;
+  }
+}
 
 /* Small Laptops (1024px - 1366px) */
 @media (min-width: 1024px) and (max-width: 1366px) {

@@ -13,7 +13,7 @@
 .promo-section {
   width: 100%;
   height: auto;
-  margin: -20px 0 0; /* Negative margin to overlap and reduce gap with hero section */
+  margin: -60px 0 0; /* Further increased negative margin to reduce gap more */
   padding: 0;
   display: flex;
   align-items: flex-start;
@@ -127,7 +127,7 @@
     transform: scale(0.85);
     gap: 45px;
     padding: 0 40px;
-    margin: 70px auto 0;
+    margin: 30px auto 0; /* Further reduced from 50px to decrease gap more */
   }
   
   .promo-video-box {
@@ -161,7 +161,7 @@
     transform: scale(0.88);
     gap: 55px;
     padding: 0 45px;
-    margin: 75px auto 0;
+    margin: 35px auto 0; /* Further reduced from 55px to decrease gap more */
   }
   
   .promo-video-box {
@@ -195,7 +195,7 @@
     transform: scale(0.9);
     gap: 60px;
     padding: 0 50px;
-    margin: 80px auto 0;
+    margin: 40px auto 0; /* Further reduced from 60px to decrease gap more */
   }
   
   .promo-video-box {
@@ -232,7 +232,7 @@
     justify-content: space-between;
     gap: 50px;
     padding: 0 50px;
-    margin: 80px auto 0;
+    margin: 40px auto 0; /* Further reduced from 60px to decrease gap more */
     /* Increased for more downward movement */
   }
 

@@ -5,10 +5,15 @@
   <meta charset="utf-8" />
   
   <!-- CRITICAL: Load images first, before anything else -->
-  <link rel="preload" href="/static/media/City.png" as="image" fetchpriority="high">
-  <link rel="preload" href="/static/media/Img1.png" as="image" fetchpriority="high">
-  <link rel="preload" href="/static/media/Img2.png" as="image" fetchpriority="high">
-  <link rel="preload" href="/static/media/Img3.png" as="image" fetchpriority="high">
+  <link rel="preload" href="/static/media/City_optimized.png" as="image" fetchpriority="high" crossorigin>
+  <link rel="preload" href="/static/media/Img1.png" as="image" fetchpriority="high" crossorigin>
+  <link rel="preload" href="/static/media/Img2.png" as="image" fetchpriority="high" crossorigin>
+  <link rel="preload" href="/static/media/Img3.png" as="image" fetchpriority="high" crossorigin>
+  
+  <!-- Netlify-specific optimizations -->
+  <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   
   <link rel="icon" href="./logo.svg" type="image/svg" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -16,40 +21,48 @@
   <meta name="theme-color" content="#000000" />
   <meta name="description" content="KnowYourTrips - Your Personal Travel Assistant" />
   
-  <!-- SUPER AGGRESSIVE IMAGE PRELOADING FOR INCOGNITO -->
+  <!-- IMMEDIATE IMAGE PRELOADING FOR INSTANT DISPLAY -->
   <script>
-    // Start downloading images IMMEDIATELY - no waiting
+    // Immediate image loading - no delays
     (function() {
-      // Create hidden div to force immediate loading
-      var div = document.createElement('div');
-      div.style.cssText = 'position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;';
-      
       var images = [
-        '/static/media/City.png',
+        '/static/media/City_optimized.png',
         '/static/media/Img1.png', 
         '/static/media/Img2.png',
         '/static/media/Img3.png'
       ];
       
+      // Strategy 1: Immediate Image objects
       images.forEach(function(src) {
-        // Method 1: Hidden img elements for immediate caching
+        var img = new Image();
+        img.src = src;
+      });
+      
+      // Strategy 2: Immediate DOM insertion
+      var container = document.createElement('div');
+      container.style.cssText = 'position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0;';
+      
+      images.forEach(function(src) {
         var img = document.createElement('img');
         img.src = src;
         img.loading = 'eager';
-        div.appendChild(img);
-        
-        // Method 2: Image objects
-        var imgObj = new Image();
-        imgObj.src = src;
+        img.decoding = 'sync';
+        container.appendChild(img);
       });
       
-      document.head.appendChild(div);
+      if (document.body) {
+        document.body.appendChild(container);
+      } else {
+        document.addEventListener('DOMContentLoaded', function() {
+          document.body.appendChild(container);
+        });
+      }
     })();
   </script>
   
   <!-- DNS prefetch for faster loading -->
   <link rel="dns-prefetch" href="//fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
   
   <!--
       manifest.json provides metadata used when your web app is installed on a
