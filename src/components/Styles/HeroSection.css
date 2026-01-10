@@ -293,69 +293,134 @@ html {
 /* iPad Mini and similar tablets (744px - 1023px) */
 @media (min-width: 744px) and (max-width: 1023px) {
   .hero-wrapper {
-    /* Keep the same desktop grid structure */
-    grid-template-columns: 1fr 1fr; /* Same as desktop */
-    gap: clamp(1.5rem, 3vw, 2rem);
-    padding: clamp(1.5rem, 3vw, 2rem) clamp(2rem, 3vw, 2.5rem);
-    transform: scale(0.85); /* Scale down to fit iPad Mini */
-    align-items: center; /* Keep centered alignment like desktop */
+    /* Adjust columns to allow text to fit in 2 lines */
+    grid-template-columns: 1.3fr 1fr; /* Give more space to text for 2 lines */
+    gap: clamp(0.3rem, 0.8vw, 0.6rem); /* Significantly reduced gap */
+    padding: clamp(1rem, 2vw, 1.5rem) clamp(1.5rem, 3vw, 2rem);
+    padding-top: clamp(1.5rem, 2.5vw, 2rem);
+    transform: scale(1); /* No scaling for clear image */
+    align-items: start; /* Keep content aligned at top */
+    min-height: auto;
   }
   
   .hero-left {
     order: 1; /* Same as desktop */
     max-width: none;
+    padding-right: 0; /* No extra padding */
   }
   
   .hero-right {
     order: 2; /* Same as desktop */
+    padding-left: 0; /* No extra padding */
+    display: flex;
+    align-items: flex-start; /* Align image to top */
+    justify-content: center;
+    transform: translate(5%, -8%); /* Move image slightly up and right */
   }
   
-  /* Scale down text sizes proportionally */
+  /* Text sizing optimized for two lines */
   .vision-text {
-    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    font-size: clamp(1.2rem, 2.4vw, 1.6rem); /* Increased font size */
+    margin-bottom: clamp(0.4rem, 0.8vw, 0.6rem);
+    text-align: left;
+    margin-left: 0; /* Ensure alignment */
+    padding-left: 0; /* Ensure alignment */
   }
   
   .hero-title {
-    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    font-size: clamp(1.9rem, 3.8vw, 2.4rem); /* Slightly smaller to fit two lines better */
+    margin-bottom: clamp(1.5rem, 3vw, 2rem);
+    text-align: left;
+    line-height: 1.6; /* Much more line spacing between the two lines */
+    word-spacing: normal;
+    color: #000;
+    font-weight: 700;
+    max-width: none;
+    white-space: normal; /* Allow natural text wrapping */
+    margin-left: 0; /* Ensure alignment */
+    padding-left: 0; /* Ensure alignment */
+  }
+  
+  .button-row {
+    margin-bottom: clamp(0.8rem, 1.5vw, 1.2rem);
+    gap: clamp(0.8rem, 1.5vw, 1.2rem);
+    margin-left: 0; /* Ensure alignment */
+    padding-left: 0; /* Ensure alignment */
   }
   
   .download-btns {
     max-width: clamp(10rem, 16vw, 12rem);
     height: clamp(3rem, 4vw, 3.5rem);
-    font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+    font-size: clamp(0.75rem, 1.5vw, 0.9rem); /* Reduced font size */
+    position: relative; /* Ensure positioning context for diamonds */
+  }
+  
+  /* Diamond positioning for iPad Mini - further inside corners */
+  .download-btns .diamond-top-left {
+    position: absolute;
+    top: clamp(0.4rem, 0.8vw, 0.6rem); /* Further inside from top edge */
+    left: clamp(0.4rem, 0.8vw, 0.6rem); /* Further inside from left edge */
+    font-size: clamp(0.8rem, 1.5vw, 1rem);
+    color: #FFD700;
+    opacity: 0.9;
+  }
+  
+  .download-btns .diamond-bottom-right {
+    position: absolute;
+    bottom: clamp(0.4rem, 0.8vw, 0.6rem); /* Further inside from bottom edge */
+    right: clamp(0.4rem, 0.8vw, 0.6rem); /* Further inside from right edge */
+    font-size: clamp(0.8rem, 1.5vw, 1rem);
+    color: #FFD700;
+    opacity: 0.9;
+  }
+  
+  .product-btn {
+    max-width: clamp(12rem, 20vw, 15rem);
   }
   
   .product-hunt-badge {
     height: clamp(2.8rem, 4vw, 3.2rem);
+    transition: all 0.3s ease;
+  }
+  
+  /* Hover effect for Product Hunt badge on iPad Mini */
+  .product-hunt-badge:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
   }
   
   .city-main-img {
-    max-width: clamp(16rem, 32vw, 22rem);
+    max-width: clamp(32rem, 55vw, 38rem); /* Further increased image size */
+    width: 100%;
+    height: auto;
+    image-rendering: -webkit-optimize-contrast; /* Keep image clarity */
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+    backface-visibility: hidden;
+    transform: translateZ(0);
   }
   
-  /* Keep feature cards but scale them down */
+  /* Hide feature cards for iPad Mini */
   .feature-row {
-    grid-template-columns: repeat(3, 1fr); /* Same as desktop */
-    gap: clamp(0.5rem, 1.5vw, 0.75rem);
-    width: clamp(32rem, 45vw, 40rem);
-    margin-top: clamp(1.5rem, 3vw, 2rem);
+    display: none;
   }
   
   .feature-box {
-    min-height: clamp(7rem, 12vw, 8.5rem);
-    padding: clamp(0.6rem, 1.5vw, 0.8rem);
+    min-height: clamp(6rem, 10vw, 7rem); /* Smaller height for iPad Mini */
+    padding: clamp(0.5rem, 1vw, 0.75rem); /* Reduced padding */
   }
   
   .feature-icon img {
-    width: clamp(2rem, 4vw, 2.8rem);
+    width: clamp(2rem, 4vw, 2.5rem); /* Smaller icons */
   }
   
   .feature-box h3 {
-    font-size: clamp(0.75rem, 1.8vw, 0.9rem);
+    font-size: clamp(0.75rem, 1.5vw, 0.9rem); /* Smaller text */
+    margin: clamp(0.25rem, 0.5vw, 0.375rem) 0 clamp(0.125rem, 0.25vw, 0.1875rem);
   }
   
   .feature-box p {
-    font-size: clamp(0.6rem, 1.5vw, 0.7rem);
+    font-size: clamp(0.625rem, 1.2vw, 0.75rem); /* Smaller text */
   }
 }
 

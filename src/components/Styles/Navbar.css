@@ -40,6 +40,9 @@ img {
   align-items: center;
   gap: clamp(0.75rem, 2vw, 1.375rem);
   flex-shrink: 0;
+  border: none; /* Remove any border */
+  outline: none; /* Remove any outline */
+  box-shadow: none; /* Remove any box shadow */
 }
 
 .company_logo {
@@ -59,10 +62,16 @@ img {
   display: flex;
   align-items: center;
   transition: opacity 0.3s ease;
+  border: none; /* Remove any border */
+  outline: none; /* Remove any outline */
+  box-shadow: none; /* Remove any box shadow */
 }
 
 .logo-link:hover {
   opacity: 0.9;
+  border: none; /* Ensure no border on hover */
+  outline: none; /* Ensure no outline on hover */
+  box-shadow: none; /* Ensure no box shadow on hover */
 }
 
 .highlight {
@@ -298,35 +307,35 @@ img {
 @media (min-width: 744px) and (max-width: 1023px) {
   .nav {
     padding: clamp(1rem, 2.5vw, 1.5rem) clamp(1.5rem, 3vw, 2rem);
-    transform: scale(0.9); /* Slight scale down for iPad Mini */
+    transform: scale(1); /* No scaling for clearer text */
   }
   
   .logo-wrapper {
-    gap: clamp(0.75rem, 1.5vw, 1rem);
+    gap: clamp(0.5rem, 1.2vw, 0.8rem); /* Reduced gap */
   }
   
   .company_logo {
-    width: clamp(20px, 2.5vw, 24px);
+    width: clamp(18px, 2.2vw, 22px); /* Slightly smaller */
   }
   
   .logo-link {
-    font-size: clamp(1.3rem, 2.8vw, 1.6rem);
+    font-size: clamp(1.1rem, 2.2vw, 1.4rem); /* Reduced font size */
   }
   
   .nav-links {
     display: flex; /* Keep nav links visible on iPad Mini */
-    gap: clamp(1.5rem, 3vw, 2.5rem);
+    gap: clamp(1.8rem, 3.5vw, 2.8rem); /* Increased gap between nav items */
   }
   
   .nav-links a {
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    font-size: clamp(0.8rem, 1.6vw, 1rem); /* Reduced font size */
   }
   
   .nav .btn-primary {
     display: flex; /* Keep button visible on iPad Mini */
-    width: clamp(10rem, 15vw, 12rem);
-    height: clamp(3rem, 4vw, 3.5rem);
-    font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+    width: clamp(9rem, 14vw, 11rem); /* Slightly smaller */
+    height: clamp(2.8rem, 3.5vw, 3.2rem); /* Slightly smaller */
+    font-size: clamp(0.7rem, 1.4vw, 0.85rem); /* Reduced font size */
   }
   
   /* Hide hamburger menu on iPad Mini */
@@ -403,7 +412,7 @@ img {
 }
 
 /* Tablet and below - Hide desktop nav, show mobile menu */
-@media (max-width: 1023px) {
+@media (max-width: 743px) {
   .nav {
     justify-content: space-between;
   }

@@ -13,7 +13,7 @@
 .promo-section {
   width: 100%;
   height: auto;
-  margin: -60px 0 0; /* Further increased negative margin to reduce gap more */
+  margin: -100px 0 0; /* Increased negative margin to reduce gap even more */
   padding: 0;
   display: flex;
   align-items: flex-start;
@@ -297,8 +297,10 @@
     align-items: center;
     gap: 40px;
     padding: 0 40px;
-    margin: 100px auto 0;
-    /* Increased from 80px to 100px for more downward movement */
+    margin: 20px auto 0; /* Reduced negative margin to prevent cutting off the top */
+    margin-bottom: 0px !important; /* Remove bottom margin to reduce gap with download section */
+    transform: scale(0.9); /* Zoom out slightly for iPad Mini */
+    transform-origin: center;
   }
 
   .promo-video-box {
@@ -312,24 +314,35 @@
   .promo-text-box {
     width: 100%;
     text-align: center;
-    max-width: 700px;
+    max-width: 600px; /* Reduced from 700px */
+    margin-bottom: 0px !important; /* Remove bottom margin to reduce gap with download section */
   }
 
   .promo-about-title {
-    font-size: 48px;
+    font-size: 42px; /* Reduced from 48px */
     margin-bottom: 20px;
   }
 
   .promo-heading {
-    font-size: 32px;
-    line-height: 48px;
+    font-size: 28px; /* Reduced from 32px */
+    line-height: 42px; /* Increased from 36px to add more space between lines */
     margin-bottom: 20px;
+    max-width: 600px; /* Increased from 500px to allow "for" on first line */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .promo-heading .main-title {
+    display: block; /* Force each span to be on its own line */
   }
 
   .promo-description {
-    font-size: 20px;
-    line-height: 1.7;
-    /* Slightly tighter for tablet */
+    font-size: 16px; /* Reduced from 18px */
+    line-height: 1.7; /* Increased from 1.5 to add more line spacing */
+    max-width: 550px; /* Reduced from 650px */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0px !important; /* Remove bottom margin to reduce gap with download section */
   }
 }
 
@@ -439,10 +452,16 @@
     font-size: 20px;
     line-height: 30px;
     margin-bottom: 14px;
+    max-width: 400px; /* Limit width to force "TRAVELLERS" to second line */
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .promo-description {
     font-size: 14px;
-    line-height: 22px;
+    line-height: 20px; /* Tighter line height like second image */
+    max-width: 500px; /* Limit width for better text wrapping */
+    margin-left: auto;
+    margin-right: auto;
   }
 }

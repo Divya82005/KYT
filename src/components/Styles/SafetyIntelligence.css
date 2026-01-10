@@ -431,6 +431,77 @@
   }
 }
 
+/* ============= IPAD MINI 8.3 (744px - 1023px) - Match Reference Image ============= */
+@media (max-width: 1023px) and (min-width: 744px) {
+  .safety-container {
+    transform: scale(0.85) !important; /* Zoom out the entire section for iPad Mini */
+    transform-origin: center !important; /* Scale from center */
+    margin: -40px auto 0 !important; /* Reduced negative margin to decrease gap */
+  }
+
+  .left-title {
+    flex-direction: column !important; /* Stack vertically like reference image */
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important; /* Small gap between Dynamic and Safety Intelligence */
+    text-align: center !important;
+    margin-bottom: 40px !important;
+    user-select: none !important; /* Prevent text selection */
+    -webkit-user-select: none !important; /* Safari */
+    -moz-user-select: none !important; /* Firefox */
+    -ms-user-select: none !important; /* IE/Edge */
+    pointer-events: none !important; /* Prevent any pointer interactions */
+  }
+
+  .title-dynamic {
+    font-size: 36px !important; /* Increased size to match reference */
+    font-weight: 600 !important; /* Medium-bold weight like reference */
+    color: #9CA3AF !important; /* More grey color like reference image */
+    line-height: 1.1 !important;
+    margin: 0 !important;
+    user-select: none !important; /* Prevent text selection */
+    -webkit-user-select: none !important; /* Safari */
+    -moz-user-select: none !important; /* Firefox */
+    -ms-user-select: none !important; /* IE/Edge */
+    pointer-events: none !important; /* Prevent dragging */
+    position: relative !important; /* Fix position */
+    letter-spacing: -0.5px !important; /* Slight letter spacing like reference */
+  }
+
+  .title-safety {
+    font-size: 52px !important; /* Increased size to match reference */
+    font-weight: 700 !important; /* Bold weight like reference */
+    color: #4F46E5 !important; /* Exact blue color like reference */
+    line-height: 1.3 !important; /* Increased from 1.1 to 1.3 to show full letters */
+    margin: 0 !important;
+    user-select: none !important; /* Prevent text selection */
+    -webkit-user-select: none !important; /* Safari */
+    -moz-user-select: none !important; /* Firefox */
+    -ms-user-select: none !important; /* IE/Edge */
+    pointer-events: none !important; /* Prevent dragging */
+    position: relative !important; /* Fix position */
+    letter-spacing: -0.5px !important; /* Slight letter spacing like reference */
+  }
+
+  /* Enable hover interactions for safety rows */
+  .safety-row {
+    pointer-events: auto !important; /* Enable hover interactions */
+    cursor: pointer !important; /* Show pointer cursor */
+  }
+
+  /* Hover effect for safety rows - match desktop version exactly */
+  .safety-row:hover {
+    background: #ffffff !important; /* White background like desktop */
+    border: 1px solid rgba(170, 187, 204, 1) !important; /* Exact same border as desktop */
+    box-shadow:
+      0 clamp(1.5rem, 4vw, 2.5rem) clamp(3rem, 6vw, 5.625rem) rgba(130, 100, 255, 0.32),
+      0 clamp(0.75rem, 2vw, 1.125rem) clamp(1.5rem, 3vw, 2.5rem) rgba(130, 100, 255, 0.18) !important; /* Exact same shadow as desktop */
+    position: relative !important; /* Ensure proper stacking context like desktop */
+    z-index: 1 !important; /* Keep above other elements like desktop */
+    transition: all 0.3s ease !important; /* Smooth transition */
+  }
+}
+
 /* Mobile tablets */
 @media (max-width: 767px) {
   .safety-container {

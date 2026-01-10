@@ -20,8 +20,15 @@ const FooterSection = () => {
             </p>
           </div>
 
-          <div className="footer-links">
-            <span>About | Privacy | Terms | Contact</span>
+          {/* DESKTOP: Links in horizontal line */}
+          <div className="footer-links desktop-links">
+            <span>About</span>
+            <span>|</span>
+            <span>Privacy</span>
+            <span>|</span>
+            <span>Terms</span>
+            <span>|</span>
+            <span>Contact</span>
           </div>
 
           <div className="footer-copyright">
@@ -29,15 +36,24 @@ const FooterSection = () => {
           </div>
         </div>
 
-        {/* RIGHT CONTENT */}
+        {/* RIGHT CONTENT - QR CODE AND DOWNLOAD BUTTON */}
         <div className="footer-right">
           <div className="qr-section">
-            <img src={QRCode} className="qr-code" alt="QR Code" />
+            <img src={QRCode} alt="QR Code" className="qr-code" />
           </div>
+          
+          {/* iPad Mini: Links in vertical stack */}
+          <div className="footer-links ipad-links">
+            <span>About</span>
+            <span>Privacy</span>
+            <span>Terms</span>
+            <span>Contact</span>
+          </div>
+          
           <button className="download-button" onClick={handleDownloadClick}>
             <span className="diamond-top-left">✦</span>
-            <span className="diamond-bottom-right">✦</span>
             Download the App
+            <span className="diamond-bottom-right">✦</span>
           </button>
         </div>
       </div>

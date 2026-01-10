@@ -1,3 +1,4 @@
+
 /* ============= FOOTER SECTION ============= */
 
 /* ============= FOOTER WRAPPER ============= */
@@ -19,8 +20,14 @@
   align-items: flex-start;
   color: white;
   font-family: "Poppins", sans-serif;
-  transform: scale(0.85);
-  transform-origin: center;
+}
+
+/* Desktop scaling - only for larger screens */
+@media (min-width: 1024px) {
+  .footer-container {
+    transform: scale(0.85);
+    transform-origin: center;
+  }
 }
 
 /* ============= LEFT CONTENT ============= */
@@ -52,11 +59,38 @@
 }
 
 /* ============= FOOTER LINKS ============= */
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Space between links and separators */
+}
+
 .footer-links span {
   font-size: clamp(1.5rem, 5vw, 2.25rem); /* Increased from clamp(1.375rem, 4.5vw, 2rem) */
   font-weight: 500;
   color: white;
   line-height: 1.4;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.footer-links span:not(:nth-child(even)):hover {
+  opacity: 0.8;
+}
+
+.footer-links span:nth-child(even) {
+  opacity: 0.7; /* Make separators (|) slightly dimmer */
+  cursor: default;
+}
+
+/* Hide iPad links on desktop */
+.ipad-links {
+  display: none;
+}
+
+/* Show desktop links on desktop */
+.desktop-links {
+  display: flex;
 }
 
 /* ============= COPYRIGHT ============= */
@@ -111,24 +145,30 @@
   min-width: clamp(8rem, 20vw, 12rem);
   text-align: center;
   position: relative; /* For positioning the diamonds */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 .download-button .diamond-top-left {
   position: absolute;
-  top: clamp(0.25rem, 1vw, 0.375rem);
-  left: clamp(0.25rem, 1vw, 0.375rem);
-  font-size: clamp(0.75rem, 1.5vw, 1rem);
-  color: #FFD700; /* Gold color */
-  opacity: 0.9;
+  top: clamp(0.125rem, 0.5vw, 0.25rem);
+  left: clamp(0.25rem, 0.8vw, 0.375rem);
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: #FFD700; /* Gold/yellow color */
+  opacity: 1;
+  transform: rotate(0deg);
 }
 
 .download-button .diamond-bottom-right {
   position: absolute;
-  bottom: clamp(0.25rem, 1vw, 0.375rem);
-  right: clamp(0.25rem, 1vw, 0.375rem);
-  font-size: clamp(0.75rem, 1.5vw, 1rem);
-  color: #FFD700; /* Gold color */
-  opacity: 0.9;
+  bottom: clamp(0.125rem, 0.5vw, 0.25rem);
+  right: clamp(0.25rem, 0.8vw, 0.375rem);
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: #FFD700; /* Gold/yellow color */
+  opacity: 1;
+  transform: rotate(0deg);
 }
 
 .download-button:hover {
@@ -137,7 +177,225 @@
   background: #f8f9fa;
 }
 
+.download-button:hover .diamond-top-left,
+.download-button:hover .diamond-bottom-right {
+  animation: sparkle 0.6s ease-in-out;
+}
+
+@keyframes sparkle {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.2); }
+}
+
 /* ============= RESPONSIVE DESIGN ============= */
+
+/* iPad Mini specific styles (744px - 1023px) */
+@media (max-width: 1023px) and (min-width: 744px), 
+       (max-width: 1200px) and (min-width: 600px) and (orientation: landscape),
+       screen and (min-device-width: 744px) and (max-device-width: 1024px) {
+  /* Force footer wrapper to be visible */
+  .footer-wrapper {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: auto !important;
+    min-height: 800px !important;
+    background: #5351f4 !important;
+    overflow: visible !important;
+    padding: clamp(4.5rem, 9vw, 5.5rem) clamp(3rem, 6vw, 4rem) clamp(3rem, 6vw, 4rem) clamp(2rem, 4vw, 2.5rem) !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+    z-index: 1 !important;
+  }
+  
+  /* Remove scaling and ensure container is visible */
+  .footer-container {
+    transform: none !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    padding: 0 !important;
+    position: static !important;
+    min-height: 600px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+    z-index: 2 !important;
+  }
+  
+  /* Left section - Data sources at top left */
+  .footer-left {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    float: left !important;
+    width: 60% !important;
+    padding-right: 1rem !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Right section - Navigation and button at top right */
+  .footer-right {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    float: right !important;
+    width: 35% !important;
+    text-align: right !important;
+    padding-right: 1rem !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Data sources section - visible at top left */
+  .data-sources {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    margin-bottom: clamp(1.5rem, 3vw, 2rem) !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+  
+  .data-sources h3 {
+    font-size: clamp(1.1rem, 2.8vw, 1.4rem) !important;
+    color: white !important;
+    margin: 0 0 clamp(0.5rem, 1.5vw, 0.75rem) 0 !important;
+    font-weight: 500 !important;
+    text-align: left !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+  
+  .data-sources p {
+    font-size: clamp(0.65rem, 1.4vw, 0.75rem) !important;
+    color: rgba(255, 255, 255, 0.95) !important;
+    line-height: 1.6 !important;
+    margin: 0 !important;
+    max-width: 85% !important;
+    text-align: left !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+  
+  /* Hide desktop links on iPad Mini */
+  .desktop-links {
+    display: none !important;
+  }
+  
+  /* Show and style iPad links - top right, stacked vertically */
+  .ipad-links {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    margin-bottom: clamp(1.5rem, 3vw, 2rem) !important;
+    overflow: visible !important;
+  }
+  
+  .ipad-links span {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    font-size: clamp(0.9rem, 2.2vw, 1.1rem) !important;
+    color: white !important;
+    font-weight: 400 !important;
+    text-align: right !important;
+    margin-bottom: clamp(0.5rem, 1.5vw, 0.75rem) !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+  }
+  
+  .ipad-links span:last-child {
+    margin-bottom: 0 !important;
+  }
+  
+  /* Download button - positioned below navigation links on right */
+  .download-button {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background: white !important;
+    color: #5351f4 !important;
+    border-radius: clamp(1rem, 2vw, 1.3rem) !important;
+    padding: clamp(0.35rem, 0.9vw, 0.5rem) clamp(0.9rem, 2.2vw, 1.2rem) !important;
+    font-size: clamp(0.65rem, 1.6vw, 0.8rem) !important;
+    font-weight: 600 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    border: none !important;
+    white-space: nowrap !important;
+    margin-right: -0.5rem !important;
+  }
+  
+  .download-button .diamond-top-left,
+  .download-button .diamond-bottom-right {
+    display: inline !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    font-size: clamp(0.8rem, 2vw, 1rem) !important;
+  }
+  
+  /* Position copyright at bottom left - clear floats first */
+  .footer-copyright {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    clear: both !important;
+    padding-top: clamp(1.5rem, 3vw, 2rem) !important;
+    padding-bottom: 0 !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    margin-bottom: clamp(0.25rem, 0.5vw, 0.5rem) !important;
+  }
+  
+  .footer-copyright span {
+    font-size: clamp(0.9rem, 2.3vw, 1.1rem) !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    display: block !important;
+    text-align: left !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+  
+  /* Hide QR code */
+  .qr-section {
+    display: none !important;
+  }
+}
+
+/* Additional iPad Mini coverage for different zoom levels */
+@media (max-width: 1100px) and (min-width: 700px) {
+  .footer-wrapper {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background: #5351f4 !important;
+    overflow: visible !important;
+  }
+  
+  .footer-container {
+    transform: none !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Catch-all for iPad Mini at any zoom level */
+@media screen and (min-device-width: 744px) and (max-device-width: 1024px) {
+  .footer-wrapper {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background: #5351f4 !important;
+  }
+  
+  .footer-container {
+    transform: none !important;
+  }
+}
 
 /* Small Laptops (1024px - 1366px) */
 @media (min-width: 1024px) and (max-width: 1366px) {

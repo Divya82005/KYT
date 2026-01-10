@@ -319,3 +319,66 @@
     max-width: 900px;
   }
 }
+
+/* ============= iPad Mini specific styles (744px - 1023px) ============= */
+@media (max-width: 1023px) and (min-width: 744px) {
+  /* Force CTA section to be visible with proper height */
+  .testimonial-section {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: static !important;
+    z-index: auto !important;
+    width: 100% !important;
+    max-width: 2000px !important;
+    margin: -40px auto 0 !important;
+    padding: clamp(0.75rem, 2.5vw, 1.5rem) clamp(3rem, 5vw, 4rem) !important;
+    text-align: center !important;
+    transform: scale(0.88) !important;
+    transform-origin: center !important;
+    margin-bottom: clamp(3rem, 5vw, 5rem) !important;
+    min-height: 500px !important;
+  }
+  
+  /* Ensure section heading is visible */
+  .section-heading {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    font-family: "Poppins", sans-serif !important;
+    font-size: clamp(1.75rem, 4.5vw, 2.75rem) !important;
+    font-weight: 700 !important;
+    color: #5351f4 !important;
+    margin-bottom: clamp(1.5rem, 5vw, 3rem) !important;
+    line-height: 1.2 !important;
+  }
+  
+  /* Ensure feedback card is visible */
+  .feedback-card {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+    position: relative !important;
+    width: 100% !important;
+    max-width: 1600px !important;
+    height: 350px !important;
+    background: #ffffff !important;
+    border: 1.5px solid #c7d2fe !important;
+    border-radius: clamp(1.5rem, 3vw, 2.5rem) !important;
+    padding: 0 !important;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04) !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 auto !important;
+  }
+  
+  /* Adjust arrow positioning for iPad Mini */
+  .nav-btn.left {
+    left: -35px !important;
+  }
+  
+  .nav-btn.right {
+    right: -35px !important;
+  }
+}
