@@ -419,6 +419,45 @@
   }
 }
 
+/* ============= MOBILE SPECIFIC GAP REDUCTION (max-width: 767px) ============= */
+@media (max-width: 767px) {
+  .promo-section {
+    margin-top: -1rem !important; /* Reduced negative margin to move promo section down slightly more */
+    padding: 0 clamp(1rem, 4vw, 1.5rem) !important; /* Add horizontal padding to prevent video cutoff */
+  }
+  
+  .promo-video-box {
+    margin-left: 0 !important; /* Remove any negative left margin that might cause cutoff */
+    margin-right: 0 !important; /* Ensure no right margin issues */
+    width: 100% !important; /* Ensure full width within container */
+  }
+  
+  /* Show mobile title, hide desktop title */
+  .desktop-title {
+    display: none !important;
+  }
+  
+  .mobile-title {
+    display: block !important;
+  }
+  
+  /* Increase line spacing in paragraph for mobile */
+  .promo-description {
+    line-height: 2.2 !important; /* Increased line spacing for better readability on mobile */
+  }
+}
+
+/* Desktop and iPad Mini - show desktop title, hide mobile title */
+@media (min-width: 768px) {
+  .desktop-title {
+    display: block !important;
+  }
+  
+  .mobile-title {
+    display: none !important;
+  }
+}
+
 /* ============= SMALLER PHONES (320px - 389px) ============= */
 @media (max-width: 389px) {
   .promo-section {

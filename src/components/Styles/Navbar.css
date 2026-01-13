@@ -445,12 +445,66 @@ img {
 /* Mobile specific adjustments */
 @media (max-width: 767px) {
   .nav {
-    padding: clamp(0.75rem, 3vw, 1rem) clamp(1rem, 4vw, 1.25rem);
+    padding: clamp(1.5rem, 4vw, 2rem) clamp(1rem, 4vw, 1.25rem) !important; /* Moderate top padding to move navbar down slightly */
   }
 
   .mobile-menu {
     width: min(260px, 85vw);
     padding: clamp(3.5rem, 8vw, 4.375rem) clamp(1rem, 4vw, 1.25rem) clamp(1rem, 4vw, 1.25rem);
+  }
+}
+
+/* Extra specific mobile rule to ensure navbar moves down slightly */
+@media screen and (max-width: 767px) {
+  nav.nav {
+    padding-top: clamp(1rem, 2.5vw, 1.5rem) !important; /* Reduced top padding to minimize blank space */
+    margin-top: 0 !important; /* Remove top margin */
+    margin-bottom: 0 !important; /* Remove bottom margin */
+  }
+  
+  /* Mobile-specific styling for logo text */
+  .logo-link {
+    font-size: clamp(1.3rem, 4vw, 1.9rem) !important; /* Slightly increased font size */
+  }
+  
+  /* Show mobile text, hide desktop text */
+  .logo-text-mobile {
+    display: inline !important;
+  }
+  
+  .logo-text-desktop {
+    display: none !important;
+  }
+  
+  /* Blue hamburger menu for mobile */
+  .hamburger span {
+    background: #5351F4 !important; /* Blue color for hamburger lines */
+    height: clamp(4px, 1vw, 6px) !important; /* Make lines thicker */
+    border-radius: clamp(3px, 1vw, 5px) !important; /* More rounded edges */
+    width: clamp(28px, 6vw, 32px) !important; /* Slightly wider lines */
+  }
+  
+  .hamburger.active span:nth-child(1) {
+    background: #5351F4 !important;
+  }
+  
+  .hamburger.active span:nth-child(2) {
+    background: #5351F4 !important;
+  }
+  
+  .hamburger.active span:nth-child(3) {
+    background: #5351F4 !important;
+  }
+}
+
+/* Desktop and iPad Mini - show desktop text, hide mobile text */
+@media screen and (min-width: 768px) {
+  .logo-text-mobile {
+    display: none !important;
+  }
+  
+  .logo-text-desktop {
+    display: inline !important;
   }
 }
 

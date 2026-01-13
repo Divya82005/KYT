@@ -65,7 +65,8 @@ const Navbar = () => {
               closeMenu();
             }}
           >
-            KnowYour <span className="highlight">Trips</span>
+            <span className="logo-text-mobile">Know Your <span className="highlight">Trips</span></span>
+            <span className="logo-text-desktop">KnowYour <span className="highlight">Trips</span></span>
           </a>
         </div>
 

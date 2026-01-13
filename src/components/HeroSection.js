@@ -123,6 +123,22 @@ const HeroSection = () => {
                 fetchpriority="low"
               />
             </a>
+            {/* Mobile Product Hunt Button */}
+            <a
+              href="https://www.producthunt.com/posts/knowyourtrips"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="product-hunt-mobile-btn"
+            >
+              <span style={{ marginLeft: 'clamp(2rem, 6vw, 2.5rem)' }}>
+                <div style={{ fontSize: 'clamp(0.5rem, 1.8vw, 0.65rem)', fontWeight: '400', lineHeight: '1' }}>
+                  FIND US ON
+                </div>
+                <div style={{ fontSize: 'clamp(0.75rem, 2.8vw, 0.95rem)', fontWeight: '700', lineHeight: '1.1', marginTop: '2px' }}>
+                  Product Hunt
+                </div>
+              </span>
+            </a>
           </div>
         </div>
 

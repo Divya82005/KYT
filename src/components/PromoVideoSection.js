@@ -19,8 +19,10 @@ const PromoVideoSection = () => {
         <h3 className="promo-about-title">About</h3>
 
         <h2 className="promo-heading">
-          <span className="main-title">Real-time Safety Intelligence for</span>
-          <span className="main-title">Travellers</span>
+          <span className="main-title desktop-title">Real-time Safety Intelligence for</span>
+          <span className="main-title desktop-title">Travellers</span>
+          <span className="main-title mobile-title">REAL-TIME SAFETY</span>
+          <span className="main-title mobile-title">INTELLIGENCE FOR TRAVELLERS</span>
         </h2>
 
         <p className="promo-description">

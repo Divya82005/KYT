@@ -171,6 +171,11 @@ html {
   transform: translateY(-0.125rem);
 }
 
+/* Hide mobile Product Hunt button on desktop */
+.product-hunt-mobile-btn {
+  display: none;
+}
+
 /* ============= HERO RIGHT ============= */
 .hero-right {
   display: flex;
@@ -534,47 +539,175 @@ html {
 /* Mobile adjustments */
 @media (max-width: 767px) {
   .hero-wrapper {
-    padding: clamp(1.5rem, 4vw, 2rem) clamp(1rem, 4vw, 1.25rem);
-    gap: clamp(2rem, 5vw, 2.5rem);
+    padding: clamp(1rem, 3vw, 1.5rem) clamp(1.5rem, 5vw, 2rem) 0; /* Removed bottom padding to eliminate blank space */
+    gap: clamp(1rem, 3vw, 1.5rem); /* Reduced gap */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-height: auto; /* Changed from 80vh to auto to prevent extra space */
+    justify-content: flex-start; /* Changed from center to flex-start */
+    margin-top: 0; /* Remove any top margin */
   }
 
-  .hero-title {
-    font-size: clamp(1.5rem, 6vw, 1.875rem); /* 24px - 30px */
-    line-height: 1.2;
+  .hero-left {
+    order: 1;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 0; /* Remove top margin */
+  }
+
+  .hero-right {
+    display: none !important; /* Completely hide the city image on mobile */
   }
 
   .vision-text {
-    font-size: clamp(0.875rem, 4vw, 1.375rem); /* 14px - 22px */
+    font-size: clamp(0.875rem, 4vw, 1.125rem); /* 14px - 18px */
+    color: #808080;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: clamp(1rem, 3vw, 1.5rem);
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: clamp(1.75rem, 7vw, 2.25rem); /* 28px - 36px */
+    line-height: 1.3;
+    font-weight: 700;
+    color: #000;
+    text-transform: uppercase;
+    margin-bottom: clamp(2rem, 6vw, 3rem);
+    text-align: center;
+    max-width: 100%;
   }
 
   .button-row {
     width: 100%;
+    display: flex;
+    flex-direction: row; /* Changed to horizontal layout */
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.75rem, 3vw, 1rem); /* Reduced gap for side-by-side layout */
+    margin-bottom: 0; /* Remove bottom margin completely to eliminate blank space */
   }
 
   .download-btns {
-    width: 100%;
+    width: clamp(8rem, 40vw, 10rem); /* Reduced width for side-by-side layout */
     max-width: none;
-    height: clamp(3rem, 8vw, 3.75rem); /* 48px - 60px */
-    font-size: clamp(0.875rem, 3vw, 1rem); /* 14px - 16px */
+    height: clamp(3rem, 7vw, 3.5rem); /* Slightly reduced height */
+    font-size: clamp(0.75rem, 3vw, 0.9rem); /* Reduced font size to fit */
+    font-weight: 700;
+    background: linear-gradient(90deg, #AA80F9 0%, #5351F4 100%);
+    color: #ffffff;
+    border-radius: clamp(0.75rem, 3vw, 1rem);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
   }
 
+  .download-btns .diamond-top-left {
+    position: absolute;
+    top: clamp(0.25rem, 1vw, 0.375rem);
+    left: clamp(0.25rem, 1vw, 0.375rem);
+    font-size: clamp(0.5rem, 1.5vw, 0.75rem); /* Smaller diamonds */
+    color: #FFD700;
+    opacity: 0.9;
+  }
+
+  .download-btns .diamond-bottom-right {
+    position: absolute;
+    bottom: clamp(0.25rem, 1vw, 0.375rem);
+    right: clamp(0.25rem, 1vw, 0.375rem);
+    font-size: clamp(0.5rem, 1.5vw, 0.75rem); /* Smaller diamonds */
+    color: #FFD700;
+    opacity: 0.9;
+  }
+
+  /* New Product Hunt Button for Mobile */
   .product-btn {
-    width: 100%;
-    max-width: none;
+    width: clamp(8rem, 40vw, 10rem); /* Same width as download button */
+    height: clamp(3rem, 7vw, 3.5rem); /* Same height as download button */
+    display: flex;
+    align-items: center;
     justify-content: center;
+    position: relative;
+  }
+
+  .product-hunt-mobile-btn {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #2d2d2d; /* Dark background like in the image */
+    border: none; /* Remove border */
+    border-radius: clamp(0.75rem, 3vw, 1rem);
+    color: white; /* White text */
+    font-family: "Poppins", sans-serif;
+    font-size: clamp(0.65rem, 2.5vw, 0.8rem);
+    font-weight: 600; /* Slightly less bold */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    text-align: left;
+    line-height: 1.2;
+    padding: clamp(0.5rem, 2vw, 0.75rem);
+    position: relative;
+  }
+
+  .product-hunt-mobile-btn:hover {
+    background: #1a1a1a; /* Darker on hover */
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  .product-hunt-mobile-btn::before {
+    content: "P";
+    position: absolute;
+    left: clamp(0.5rem, 2vw, 0.75rem);
+    top: 50%;
+    transform: translateY(-50%);
+    width: clamp(1.2rem, 4vw, 1.5rem);
+    height: clamp(1.2rem, 4vw, 1.5rem);
+    background: white;
+    color: #2d2d2d;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: clamp(0.6rem, 2vw, 0.75rem);
+  }
+
+  .product-hunt-mobile-btn::after {
+    content: "▲ 19";
+    position: absolute;
+    right: clamp(0.5rem, 2vw, 0.75rem);
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: clamp(0.6rem, 2vw, 0.75rem);
+    font-weight: 600;
+    color: white;
   }
 
   .product-hunt-badge {
-    height: clamp(3rem, 8vw, 3.75rem); /* 48px - 60px */
+    display: none; /* Hide the original badge */
   }
 
+  /* Hide feature cards on mobile */
   .feature-row {
-    grid-template-columns: 1fr;
-    max-width: 100%;
+    display: none;
   }
 
   .feature-box {
-    min-height: clamp(8rem, 20vw, 9rem); /* Reduced from 10rem-12rem */
+    min-height: clamp(8rem, 20vw, 9rem);
   }
 }
 
