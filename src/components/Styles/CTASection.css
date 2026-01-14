@@ -276,40 +276,140 @@
 
 /* Remove all responsive overrides - use consistent percentage positioning */
 
-/* Small Mobile */
-@media (max-width: 480px) {
+/* ============= MOBILE SPECIFIC LAYOUT (max-width: 767px) ============= */
+@media (max-width: 767px) {
   .testimonial-section {
-    padding: clamp(2rem, 6vw, 3rem) clamp(0.75rem, 4vw, 1rem);
+    margin: -20px auto 0 !important; /* Negative margin to reduce gap with download section */
+    padding: clamp(1rem, 3vw, 2rem) clamp(1.5rem, 4vw, 2rem) !important; /* Moderate horizontal padding */
+    margin-bottom: clamp(3rem, 5vw, 5rem) !important;
+    transform: scale(1) !important; /* Remove scaling to show full size */
+    overflow: visible !important; /* Ensure content is not clipped */
   }
-  
+
+  .section-heading {
+    font-size: clamp(2rem, 6vw, 3rem) !important; /* Much larger font size */
+    margin-bottom: clamp(2rem, 5vw, 3rem) !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    text-align: center !important;
+    font-weight: 700 !important;
+    color: #5351f4 !important;
+    line-height: 1.2 !important;
+    padding-top: 1rem !important; /* Add top padding to prevent cutoff */
+  }
+
   .feedback-card {
-    min-height: 300px; /* Changed back to min-height for mobile */
+    height: 250px !important; /* Reduced height from 350px to 250px */
+    margin: 0 auto !important; /* Center the card */
+    max-width: calc(100% - 1rem) !important; /* Slightly reduce width to make minimal space for arrows */
   }
-  
+
   .feedback-content {
-    gap: clamp(1rem, 3vw, 1.5rem);
-    padding: clamp(1.5rem, 4vw, 2rem) clamp(4rem, 6vw, 5rem);
+    flex-direction: row !important; /* Change to row for left-right layout */
+    text-align: left !important;
+    align-items: center !important; /* Center vertically */
+    gap: clamp(1.5rem, 4vw, 2rem) !important;
+    padding: clamp(2rem, 4vw, 2.5rem) clamp(1.5rem, 4vw, 2rem) !important;
+    justify-content: space-between !important;
   }
-  
+
   .user-info {
-    width: 150px; /* Smaller fixed width for mobile */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important; /* Center align horizontally */
+    justify-content: center !important; /* Center vertically */
+    gap: clamp(1rem, 3vw, 1.5rem) !important; /* Increased gap between stars and name */
+    width: 35% !important; /* Left side takes 35% */
+    order: 1 !important; /* Left side */
+    height: 100% !important; /* Take full height to enable vertical centering */
   }
-  
+
+  .rating-container {
+    background: white !important; /* White background like reference */
+    border-radius: clamp(2rem, 5vw, 3rem) !important; /* More rounded like reference */
+    padding: clamp(0.5rem, 2vw, 0.75rem) clamp(1rem, 3vw, 1.5rem) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+    margin-bottom: 0 !important; /* Remove margin since gap handles spacing */
+    transform: none !important;
+    order: 1 !important; /* Stars at top of left side */
+    width: fit-content !important;
+  }
+
+  .star-rating {
+    justify-content: center !important; /* Center stars in container */
+    gap: 4px !important;
+  }
+
+  .star {
+    font-size: clamp(1.25rem, 3.5vw, 1.5rem) !important; /* Smaller stars */
+  }
+
+  .user-details {
+    text-align: center !important; /* Center align */
+    order: 2 !important; /* Name and title below stars */
+  }
+
+  .user-name {
+    text-align: center !important; /* Center align */
+    margin-bottom: clamp(0.25rem, 1vw, 0.5rem) !important;
+    font-size: clamp(1rem, 3vw, 1.25rem) !important;
+  }
+
+  .user-title {
+    text-align: center !important; /* Center align */
+    font-size: clamp(0.875rem, 2.5vw, 1rem) !important;
+  }
+
   .feedback-text-area {
-    max-width: 350px; /* Increased for mobile to show more text */
+    order: 2 !important; /* Right side */
+    max-width: 60% !important; /* Right side takes 60% */
+    margin-top: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: clamp(0.75rem, 2vw, 1rem) !important;
   }
-  
-  .nav-btn {
-    width: clamp(2.5rem, 7vw, 3rem);
-    height: clamp(2.5rem, 7vw, 3rem);
+
+  .quote-icon-container {
+    position: static !important; /* Remove absolute positioning */
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    order: 1 !important; /* Quote icon at top of right side */
+    margin: 0 !important;
+    transform: none !important;
   }
-  
+
+  .quote-icon {
+    width: clamp(1.5rem, 4vw, 2rem) !important; /* Reduced logo size from clamp(2rem, 5vw, 2.5rem) */
+  }
+
+  .feedback-text {
+    text-align: left !important; /* Left align text */
+    padding-top: 0 !important;
+    padding-left: 0 !important;
+    font-size: clamp(0.7rem, 2vw, 0.85rem) !important; /* Reduced font size from clamp(0.75rem, 2.2vw, 0.9rem) */
+    line-height: 1.6 !important;
+    order: 2 !important; /* Text below quote icon */
+  }
+
+  /* Move navigation arrows to middle sides like reference */
   .nav-btn.left {
-    left: clamp(1rem, 2vw, 1.5rem);
+    left: clamp(-1.5rem, -4vw, -2rem) !important; /* Outside the card on left */
+    bottom: auto !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: clamp(2.5rem, 7vw, 3.5rem) !important; /* Reduced size */
+    height: clamp(2.5rem, 7vw, 3.5rem) !important; /* Reduced size */
   }
-  
+
   .nav-btn.right {
-    right: clamp(1rem, 2vw, 1.5rem);
+    right: clamp(-1.5rem, -4vw, -2rem) !important; /* Outside the card on right */
+    bottom: auto !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: clamp(2.5rem, 7vw, 3.5rem) !important; /* Reduced size */
+    height: clamp(2.5rem, 7vw, 3.5rem) !important; /* Reduced size */
   }
 }
 

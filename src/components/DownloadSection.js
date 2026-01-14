@@ -12,6 +12,7 @@ const DownloadSection = () => {
       {/* LEFT SIDE */}
       <div className="left-contents">
         <h2>Get real-time safety alerts on your phone with our app</h2>
+        <p className="subtext">Get real-time safety alerts on your phone with our app</p>
 
         <div className="qr-and-button">
           <div className="qr-box">
