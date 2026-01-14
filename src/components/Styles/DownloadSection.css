@@ -604,20 +604,21 @@
 /* ============= MOBILE SPECIFIC LAYOUT (max-width: 767px) ============= */
 @media (max-width: 767px) {
   .download-section {
-    width: calc(100vw - 0.5rem) !important; /* Much wider - only 0.25rem margin on each side */
-    max-width: none !important;
-    height: 250px !important; /* Increased height from 200px to 250px */
-    min-height: 250px !important; /* Increased min-height to match */
-    padding: 40px 20px 30px 20px !important; /* Reduced padding */
-    margin: 180px 0.25rem 0 0.25rem !important; /* Adjusted margins to match new width */
+    width: 100% !important; /* Changed from calc(100vw - 0.5rem) to 100% to fix zoom issues */
+    max-width: 100% !important;
+    height: 250px !important;
+    min-height: 250px !important;
+    padding: 40px 20px 30px 20px !important;
+    margin: 180px 0 0 0 !important; /* Removed side margins since we're using 100% width */
     margin-bottom: 40px !important;
     flex-direction: column !important;
-    justify-content: flex-end !important; /* Push content to bottom */
+    justify-content: flex-end !important;
     align-items: center !important;
     text-align: center !important;
     position: relative !important;
     overflow: visible !important;
-    border-radius: 0 !important; /* Remove curved edges - make it completely rectangular */
+    border-radius: 0 !important;
+    box-sizing: border-box !important; /* Ensure padding is included in width */
   }
 
   .left-contents {

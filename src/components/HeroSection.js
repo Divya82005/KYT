@@ -159,9 +159,9 @@ const HeroSection = () => {
           src={city}
           className="city-main-img hero-image"
           alt="City view"
-          loading="eager"
-          decoding="sync"
-          fetchpriority="high"
+          loading={window.innerWidth <= 767 ? "lazy" : "eager"} // Lazy load on mobile
+          decoding={window.innerWidth <= 767 ? "async" : "sync"} // Async decode on mobile
+          fetchpriority={window.innerWidth <= 767 ? "low" : "high"} // Low priority on mobile
           style={{ 
             imageRendering: 'crisp-edges',
             display: 'block',
