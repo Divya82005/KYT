@@ -2,23 +2,14 @@
   publish = "build"
   command = "npm run build"
 
-# Image optimization
+# Image optimization and caching
 [[headers]]
   for = "/static/media/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
     X-Content-Type-Options = "nosniff"
 
-# Preload critical resources
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Link = '''</static/media/City.png>; rel=preload; as=image; fetchpriority=high,
-              </static/media/Img1.png>; rel=preload; as=image; fetchpriority=high,
-              </static/media/Img2.png>; rel=preload; as=image; fetchpriority=high,
-              </static/media/Img3.png>; rel=preload; as=image; fetchpriority=high'''
-
-# Enable compression
+# Enable compression and security headers
 [[headers]]
   for = "/*"
   [headers.values]

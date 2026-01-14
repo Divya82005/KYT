@@ -4,14 +4,10 @@
 <head>
   <meta charset="utf-8" />
   
-  <!-- CRITICAL: Load images first, before anything else -->
-  <link rel="preload" href="/static/media/City_optimized.png" as="image" fetchpriority="high" crossorigin>
-  <link rel="preload" href="/static/media/Img1.png" as="image" fetchpriority="high" crossorigin>
-  <link rel="preload" href="/static/media/Img2.png" as="image" fetchpriority="high" crossorigin>
-  <link rel="preload" href="/static/media/Img3.png" as="image" fetchpriority="high" crossorigin>
+  <!-- Preload hero image with stable path -->
+  <link rel="preload" href="/city-hero.webp" as="image" type="image/webp" fetchpriority="high">
   
-  <!-- Netlify-specific optimizations -->
-  <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable">
+  <!-- Preconnect to improve loading speed -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   
@@ -20,45 +16,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
   <meta name="description" content="KnowYourTrips - Your Personal Travel Assistant" />
-  
-  <!-- IMMEDIATE IMAGE PRELOADING FOR INSTANT DISPLAY -->
-  <script>
-    // Immediate image loading - no delays
-    (function() {
-      var images = [
-        '/static/media/City_optimized.png',
-        '/static/media/Img1.png', 
-        '/static/media/Img2.png',
-        '/static/media/Img3.png'
-      ];
-      
-      // Strategy 1: Immediate Image objects
-      images.forEach(function(src) {
-        var img = new Image();
-        img.src = src;
-      });
-      
-      // Strategy 2: Immediate DOM insertion
-      var container = document.createElement('div');
-      container.style.cssText = 'position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0;';
-      
-      images.forEach(function(src) {
-        var img = document.createElement('img');
-        img.src = src;
-        img.loading = 'eager';
-        img.decoding = 'sync';
-        container.appendChild(img);
-      });
-      
-      if (document.body) {
-        document.body.appendChild(container);
-      } else {
-        document.addEventListener('DOMContentLoaded', function() {
-          document.body.appendChild(container);
-        });
-      }
-    })();
-  </script>
   
   <!-- DNS prefetch for faster loading -->
   <link rel="dns-prefetch" href="//fonts.googleapis.com">

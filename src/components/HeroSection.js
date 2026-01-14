@@ -1,86 +1,46 @@
-import { useEffect, useState } from "react";
-import city from "../assets/City_optimized.png";
 import Ai_Safety from "../assets/Img1.png";
 import Security from "../assets/Img2.png";
 import Alert from "../assets/Img3.png";
 import "./Styles/HeroSection.css";
 
 const HeroSection = () => {
-  // Load images immediately without any delays
-  useEffect(() => {
-    const imageUrls = [city, Ai_Safety, Security, Alert];
-    
-    // Immediate preloading with multiple strategies
-    imageUrls.forEach(src => {
-      // Strategy 1: Multiple Image objects for browser cache
-      for (let i = 0; i < 2; i++) {
-        const img = new Image();
-        img.src = src;
-        img.loading = 'eager';
-        img.decoding = 'sync';
-      }
-      
-      // Strategy 2: Hidden DOM elements for immediate caching
-      const hiddenImg = document.createElement('img');
-      hiddenImg.src = src;
-      hiddenImg.style.cssText = 'position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0;';
-      hiddenImg.loading = 'eager';
-      hiddenImg.decoding = 'sync';
-      document.body.appendChild(hiddenImg);
-    });
-  }, []);
 
   const features = [
     {
       icon: <img 
-        src={Ai_Safety} 
+        src={Ai_Safety}
         alt="AI Safety Intelligence" 
         loading="eager"
-        decoding="sync"
-        fetchpriority="high"
-        style={{ 
-          imageRendering: 'crisp-edges',
-          display: 'block',
-          width: '100%',
-          height: '100%',
-          backgroundColor: 'transparent'
-        }}
+        fetchPriority="high"
+        decoding="async"
+        width="100"
+        height="100"
       />,
       title: "AI Safety Intelligence",
       desc: "Smart Suggestions and Planning",
     },
     {
       icon: <img 
-        src={Security} 
+        src={Security}
         alt="Risk Assessment" 
         loading="eager"
-        decoding="sync"
-        fetchpriority="high"
-        style={{ 
-          imageRendering: 'crisp-edges',
-          display: 'block',
-          width: '100%',
-          height: '100%',
-          backgroundColor: 'transparent'
-        }}
+        fetchPriority="high"
+        decoding="async"
+        width="100"
+        height="100"
       />,
       title: "Risk Assessment",
       desc: "Evaluate Locations Before You Go",
     },
     {
       icon: <img 
-        src={Alert} 
+        src={Alert}
         alt="Real-Time Incident Alerts" 
         loading="eager"
-        decoding="sync"
-        fetchpriority="high"
-        style={{ 
-          imageRendering: 'crisp-edges',
-          display: 'block',
-          width: '100%',
-          height: '100%',
-          backgroundColor: 'transparent'
-        }}
+        fetchPriority="high"
+        decoding="async"
+        width="100"
+        height="100"
       />,
       title: "Real-Time Incident Alerts",
       desc: "Know Your Safety Status",
@@ -156,19 +116,11 @@ const HeroSection = () => {
 
       <div className="hero-right">
         <img
-          src={city}
+          src="/city-hero.webp"
           className="city-main-img hero-image"
           alt="City view"
-          loading="eager"
-          decoding="sync"
-          fetchpriority="high"
-          style={{ 
-            imageRendering: 'crisp-edges',
-            display: 'block',
-            width: '100%',
-            height: '100%',
-            backgroundColor: 'transparent'
-          }}
+          width="1200"
+          height="800"
         />
       </div>
     </section>
