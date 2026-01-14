@@ -2,9 +2,6 @@ import promoVideo from "../assets/promo_video.mp4";
 import "./Styles/PromoVideoSection.css";
 
 const PromoVideoSection = () => {
-  // Detect if mobile device
-  const isMobile = window.innerWidth <= 767;
-  
   return (
     <section className="promo-section">
       {/* LEFT VIDEO BOX */}
@@ -14,9 +11,6 @@ const PromoVideoSection = () => {
           src={promoVideo}
           autoPlay
           muted
-          preload={isMobile ? "none" : "auto"} // Don't preload on mobile
-          loading="lazy" // Lazy load video
-          playsInline // Better mobile support
         />
       </div>
 
