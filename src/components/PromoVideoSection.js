@@ -1,4 +1,3 @@
-import promoVideo from "../assets/promo_video.mp4";
 import "./Styles/PromoVideoSection.css";
 
 const PromoVideoSection = () => {
@@ -8,9 +7,12 @@ const PromoVideoSection = () => {
       <div className="promo-video-box">
         <video
           className="promo-video"
-          src={promoVideo}
+          src="/promo-video.webm"
           autoPlay
           muted
+          loop
+          playsInline
+          preload="auto"
         />
       </div>
 
