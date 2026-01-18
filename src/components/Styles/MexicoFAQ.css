@@ -1,0 +1,89 @@
+/* Container for the entire section */
+.faq-container {
+  padding: 60px 20px;
+  background-color: #ffffff;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Header styling */
+.faq-header {
+  margin-bottom: 40px;
+}
+
+.faq-header h1 {
+  font-size: 2.2rem;
+  color: #555;
+  margin: 0 0 10px 0;
+  letter-spacing: 0.5px;
+}
+
+.faq-divider {
+  border: none;
+  height: 4px;
+  background-color: #5d5dff; /* Signature blue color */
+  width: 100%;
+  margin: 0;
+}
+
+/* Stacked list layout */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Individual FAQ Card */
+.faq-card {
+  border: 1px solid #e0e0ff;
+  border-left: 8px solid #5d5dff; /* Thick blue left border */
+  border-radius: 12px;
+  padding: 30px 25px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Question layout with red '?' icon */
+.faq-question-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.faq-q-icon {
+  color: #ff4d4d; /* Red color for the question mark */
+  font-weight: bold;
+  font-size: 1.4rem;
+  margin-right: 12px;
+}
+
+.faq-card h3 {
+  color: #5d5dff; /* Blue color for the question text */
+  font-size: 1.25rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+/* Answer text styling */
+.faq-answer {
+  color: #666;
+  line-height: 1.7;
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .faq-header h1 {
+    font-size: 1.6rem;
+  }
+  
+  .faq-card {
+    padding: 20px;
+  }
+  
+  .faq-card h3 {
+    font-size: 1.1rem;
+  }
+}

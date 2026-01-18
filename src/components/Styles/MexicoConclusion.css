@@ -1,0 +1,139 @@
+.conclusion-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #444;
+}
+
+/* Upper Text Layout */
+.conclusion-text-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.conclusion-title {
+  font-size: 2.2rem;
+  color: #555;
+  margin: 0 0 10px 0;
+  letter-spacing: 0.5px;
+}
+
+.conclusion-divider {
+  border: none;
+  height: 4px;
+  background-color: #5d5dff;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.conclusion-body p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  max-width: 950px;
+}
+
+.brand-link {
+  color: #5d5dff;
+  font-weight: 700;
+}
+
+/* CTA Banner Styles (Blue Box) */
+.cta-banner {
+  background-color: #5d5dff;
+  padding: 80px 20px;
+  overflow: hidden; /* Clips the phones if they overflow */
+}
+
+.cta-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+/* Visual Mockup Styling */
+.phone-mockups {
+  display: flex;
+  gap: 20px;
+  position: relative;
+  width: 50%;
+}
+
+.mockup-placeholder {
+  width: 220px;
+  height: 450px;
+  background-color: #1a1a1a; /* Dark phone frame color */
+  border-radius: 36px;
+  border: 8px solid #333;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  overflow: hidden;
+  transform: rotate(-10deg); /* Mimics the angle in the image */
+}
+
+.phone-2 {
+  margin-top: 60px;
+  margin-left: -80px;
+  transform: rotate(5deg);
+}
+
+.screen-content {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+/* CTA Right Side Styling */
+.cta-text-box {
+  width: 45%;
+  text-align: center;
+}
+
+.cta-text-box h2 {
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.download-btn {
+  background-color: white;
+  color: #5d5dff;
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.download-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
+  .cta-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .phone-mockups {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 50px;
+  }
+  
+  .cta-text-box {
+    width: 100%;
+  }
+  
+  .cta-text-box h2 {
+    font-size: 2rem;
+  }
+}

@@ -1,0 +1,80 @@
+.tips-container {
+  background-color: #ffffff;
+  padding: 60px 20px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tips-header {
+  margin-bottom: 40px;
+}
+
+.tips-header h1 {
+  font-size: 2.2rem;
+  color: #555;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.header-line {
+  border: none;
+  height: 4px;
+  background-color: #5d5dff;
+  width: 100%;
+  margin: 0;
+}
+
+/* 3-column grid for desktop */
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.tip-card {
+  background: white;
+  border: 1px solid #d0d0ff;
+  border-left: 8px solid #5d5dff; /* The thick purple accent line */
+  border-radius: 12px;
+  padding: 30px 25px;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease;
+}
+
+.tip-card:hover {
+  box-shadow: 0 4px 15px rgba(93, 93, 255, 0.1);
+}
+
+.tip-card h3 {
+  color: #5d5dff;
+  font-size: 1.2rem;
+  margin: 0 0 20px 0;
+  font-weight: 700;
+}
+
+.tip-card p {
+  color: #666;
+  line-height: 1.6;
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .tips-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .tips-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .tips-header h1 {
+    font-size: 1.6rem;
+  }
+}

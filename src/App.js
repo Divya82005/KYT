@@ -12,6 +12,17 @@ import CTASection from "./components/CTASection";
 import FooterSection from "./components/FooterSection";
 import Privacy from "./components/Privacy";
 import PromoVideoSection from "./components/PromoVideoSection";
+import Blogs from "./components/Blogs";
+import MexicoIntro from "./components/MexicoIntro";
+import MexicoSafe from "./components/MexicoSafe";
+import MexicoSP from "./components/MexicoSP";
+import MexicoConcerns from "./components/MexicoConcerns";
+import MexicoTips from "./components/MexicoTips";
+import MexicoFemaleTravel from "./components/MexicoFemaleTravel";
+import MexicoFAQ from "./components/MexicoFAQ";
+import MexicoConclusion from "./components/MexicoConclusion";
+import ReactGA from "react-ga4";
+
 
 // Component to handle scroll restoration and redirect to home on refresh
 const ScrollToTop = () => {
@@ -40,11 +51,26 @@ const ScrollToTop = () => {
 
   return null;
 };
+// Component to track page views in Google Analytics
+const AnalyticsTracker = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: location.pathname,
+    });
+  }, [location]);
+
+  return null;
+};
+
 
 function App() {
   return (
     <Router>
       <ScrollToTop />
+      <AnalyticsTracker />
       {/* Header always visible */}
       <Navbar />
 
@@ -82,6 +108,23 @@ function App() {
 
         {/* PRIVACY PAGE */}
         <Route path="/privacy" element={<Privacy />} />
+
+        {/* BLOGS PAGE */}
+        <Route path="/blogs" element={<Blogs />} />
+
+        {/* MEXICO PAGE */}
+        <Route path="/mexico" element={
+          <>
+            <MexicoIntro />
+            <MexicoSafe />
+            <MexicoSP />
+            <MexicoConcerns />
+            <MexicoTips />
+            <MexicoFemaleTravel />
+            <MexicoFAQ />
+            <MexicoConclusion />
+          </>
+        } />
       </Routes>
 
       {/* Footer always visible */}

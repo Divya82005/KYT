@@ -1,0 +1,128 @@
+.mexico-female-container {
+  font-family: 'Arial', sans-serif;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* Solo Female Travel Styles */
+.solo-section {
+  padding: 60px 10%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  color: #555;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.title-underline {
+  border: none;
+  height: 4px;
+  background-color: #5d5dff;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.intro-text {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.safety-list {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.safety-list li {
+  margin-bottom: 15px;
+  font-size: 1.05rem;
+}
+
+.safety-list li::marker {
+  color: #5d5dff;
+}
+
+.list-highlight {
+  color: #5d5dff;
+  font-weight: bold;
+}
+
+/* App Enhancement (Blue Box) Styles */
+.app-enhancement-box {
+  background-color: #5d5dff;
+  color: white;
+  padding: 60px 10%;
+  margin-top: 40px;
+}
+
+.app-title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.app-underline {
+  border: none;
+  height: 4px;
+  background-color: white;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.app-description {
+  font-size: 1.1rem;
+  margin-bottom: 50px;
+  max-width: 900px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.feature-card {
+  border: 2px solid white;
+  border-left: 8px solid white; /* Thicker left accent */
+  border-radius: 12px;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.feature-icon {
+  font-size: 1.2rem;
+  margin-right: 10px;
+}
+
+.feature-card h3 {
+  font-size: 1.2rem;
+  margin: 0;
+  font-weight: bold;
+}
+
+.feature-card p {
+  font-size: 0.95rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .section-title, .app-title {
+    font-size: 1.8rem;
+  }
+}

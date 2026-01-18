@@ -73,11 +73,12 @@ const Navbar = () => {
         <ul className="nav-links">
           <li>
             <a
-              href="#home"
-              className={isActive("home") ? "active" : ""}
+              href="/blogs"
+              className={location.pathname === "/blogs" ? "active" : ""}
               onClick={(e) => {
                 e.preventDefault();
-                scrollToSection("home");
+                window.location.href = "/blogs";
+                closeMenu();
               }}
             >
               Blogs
@@ -144,11 +145,11 @@ const Navbar = () => {
         <ul>
           <li>
             <a
-              href="#home"
-              className={isActive("home") ? "active" : ""}
+              href="/blogs"
+              className={location.pathname === "/blogs" ? "active" : ""}
               onClick={(e) => {
                 e.preventDefault();
-                scrollToSection("home");
+                window.location.href = "/blogs";
               }}
             >
               Blogs
