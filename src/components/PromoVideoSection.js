@@ -3,6 +3,9 @@ import "./Styles/PromoVideoSection.css";
 const PromoVideoSection = () => {
   return (
     <section className="promo-section">
+      {/* ABOUT TITLE - Now positioned outside containers */}
+      <h3 className="promo-about-title">About</h3>
+
       {/* LEFT VIDEO BOX */}
       <div className="promo-video-box">
         <video
@@ -21,8 +24,6 @@ const PromoVideoSection = () => {
 
       {/* RIGHT TEXT CONTENT */}
       <div className="promo-text-box">
-        <h3 className="promo-about-title">About</h3>
-
         <h2 className="promo-heading">
           <span className="main-title">REAL-TIME SAFETY</span>
           <span className="main-title">INTELLIGENCE FOR TRAVELLERS</span>
