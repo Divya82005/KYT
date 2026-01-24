@@ -3,7 +3,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Styles/Blogs.css';
 import searchIcon from '../assets/searchicon.jpeg';
-import mexicoImg from '../assets/Mexico.jpg';
+import mexicoImg from '../assets/Mexico.webp';
 
 const cities = [
   { id: 1, name: "Mexico", img: mexicoImg, desc: "Mexico, a land of vibrant culture, stunning landscapes", link: "/mexico" },
