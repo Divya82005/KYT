@@ -1,128 +1,167 @@
-.mexico-female-container {
-  font-family: 'Arial', sans-serif;
-  color: #444;
-  line-height: 1.6;
-}
-
-/* Solo Female Travel Styles */
-.solo-section {
-  padding: 60px 10%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.section-title {
-  font-size: 2.5rem;
-  color: #555;
-  margin-bottom: 5px;
-  text-transform: uppercase;
-}
-
-.title-underline {
-  border: none;
-  height: 4px;
-  background-color: #5d5dff;
+.mexico-female-travel-container {
   width: 100%;
-  margin-bottom: 30px;
 }
 
-.intro-text {
-  font-size: 1.1rem;
-  margin-bottom: 20px;
-}
-
-.safety-list {
-  list-style-type: disc;
-  padding-left: 20px;
-}
-
-.safety-list li {
-  margin-bottom: 15px;
-  font-size: 1.05rem;
-}
-
-.safety-list li::marker {
-  color: #5d5dff;
-}
-
-.list-highlight {
-  color: #5d5dff;
-  font-weight: bold;
-}
-
-/* App Enhancement (Blue Box) Styles */
-.app-enhancement-box {
-  background-color: #5d5dff;
-  color: white;
-  padding: 60px 10%;
-  margin-top: 40px;
-}
-
-.app-title {
-  font-size: 2.2rem;
-  font-weight: bold;
-  margin-bottom: 5px;
-  text-transform: uppercase;
-}
-
-.app-underline {
-  border: none;
-  height: 4px;
+/* White Section - Solo Female Travel */
+.mexico-female-travel-white-section {
   background-color: white;
+  padding: clamp(40px, 8vw, 80px) clamp(10px, 2vw, 20px);
+}
+
+.mexico-female-travel-content {
+  max-width: clamp(900px, 90vw, 1100px);
+  margin: 0 auto;
+  padding: 0 clamp(30px, 6vw, 60px);
+}
+
+.mexico-female-travel-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 700;
+  color: #666666;
+  text-transform: uppercase;
+  margin-bottom: clamp(15px, 2vw, 20px);
+  text-align: left;
+  position: relative;
+  padding-bottom: clamp(10px, 1.5vw, 15px);
+}
+
+.mexico-female-travel-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
   width: 100%;
-  margin-bottom: 30px;
+  height: clamp(3px, 0.4vw, 4px);
+  background-color: #5D5DFF;
 }
 
-.app-description {
-  font-size: 1.1rem;
-  margin-bottom: 50px;
-  max-width: 900px;
+.mexico-female-travel-intro {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(14px, 1.8vw, 16px);
+  line-height: 1.6;
+  color: #666666;
+  margin-bottom: clamp(22px, 3vw, 30px);
+  text-align: left;
 }
 
-.features-grid {
+.mexico-female-travel-tips {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mexico-female-travel-tips li {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(14px, 1.8vw, 16px);
+  line-height: 1.4;
+  color: #666666;
+  margin-bottom: clamp(12px, 1.5vw, 15px);
+  padding-left: clamp(15px, 2vw, 20px);
+  position: relative;
+}
+
+.mexico-female-travel-tips li::before {
+  content: '•';
+  color: #5D5DFF;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.tip-title {
+  color: #5D5DFF;
+  font-weight: 600;
+}
+
+/* Blue Section - KnowYourTrips */
+.mexico-female-travel-blue-section {
+  background: linear-gradient(99.15deg, #6165D7 2.14%, #5351ED 99.68%);
+  padding: clamp(40px, 8vw, 80px) clamp(10px, 2vw, 20px);
+  color: white;
+}
+
+.mexico-female-travel-blue-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  margin-bottom: clamp(15px, 2vw, 20px);
+  text-align: left;
+  position: relative;
+  padding-bottom: clamp(15px, 2vw, 20px);
+}
+
+.mexico-female-travel-blue-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: clamp(3px, 0.4vw, 4px);
+  background-color: white;
+}
+
+.mexico-female-travel-blue-intro {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(14px, 1.8vw, 16px);
+  line-height: 1.6;
+  color: white;
+  margin-top: clamp(15px, 2vw, 20px);
+  margin-bottom: clamp(35px, 5vw, 50px);
+  text-align: left;
+}
+
+.mexico-female-travel-features {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
+  gap: clamp(20px, 3vw, 30px);
 }
 
-.feature-card {
-  border: 2px solid white;
-  border-left: 8px solid white; /* Thicker left accent */
-  border-radius: 12px;
-  padding: 25px;
-  background: rgba(255, 255, 255, 0.1);
+/* Mobile responsive - single column */
+@media (max-width: 768px) {
+  .mexico-female-travel-features {
+    grid-template-columns: 1fr;
+  }
 }
 
-.card-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
+.mexico-female-travel-feature-card {
+  background-color: transparent;
+  border: clamp(1px, 0.2vw, 2px) solid rgba(255, 255, 255, 0.2);
+  border-left: clamp(6px, 0.8vw, 8px) solid white;
+  border-radius: clamp(12px, 1.5vw, 15px);
+  padding: clamp(22px, 3vw, 30px);
+  text-align: left;
+  min-height: clamp(250px, 29vw, 290px);
 }
 
 .feature-icon {
-  font-size: 1.2rem;
-  margin-right: 10px;
+  font-size: clamp(16px, 2vw, 20px);
+  margin-right: clamp(8px, 1vw, 10px);
 }
 
-.feature-card h3 {
-  font-size: 1.2rem;
+.feature-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: clamp(12px, 1.5vw, 15px);
+}
+
+.mexico-female-travel-feature-card h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(10px, 1.4vw, 14px);
+  font-weight: 600;
+  color: white;
   margin: 0;
-  font-weight: bold;
 }
 
-.feature-card p {
-  font-size: 0.95rem;
-  margin: 0;
-  line-height: 1.5;
+.mexico-female-travel-feature-card p {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(12px, 1.4vw, 14px);
+  line-height: 2.0;
+  color: white;
+  margin: clamp(18px, 2.2vw, 22px) 0 0 0;
+  padding: 0 clamp(8px, 1vw, 12px) 0 0;
 }
 
-/* Responsive Design */
-@media (max-width: 900px) {
-  .features-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .section-title, .app-title {
-    font-size: 1.8rem;
-  }
-}
+/* Fixed layout for all screen sizes - no responsive design */

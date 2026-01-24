@@ -1,61 +1,58 @@
-.safe-section-wrapper {
-  background-color: #f1f3ff; /* Matching the light lavender/blue tint */
-  padding: 30px 40px;
-  width: 100%;
+.mexico-safe-container {
+  background-color: #EDEFFF;
+  padding: clamp(40px, 8vw, 80px) 0 clamp(20px, 4vw, 40px) 0;
+  min-height: 60vh;
   display: flex;
+  align-items: center;
   justify-content: center;
-  box-sizing: border-box;
 }
 
-.safe-content-container {
-  max-width: 1100px;
+.mexico-safe-content {
+  max-width: clamp(900px, 90vw, 1100px);
   width: 100%;
-  text-align: left; /* Text is left-aligned within the centered container */
+  margin: 0 auto;
+  padding: 0 clamp(30px, 6vw, 60px);
 }
 
-.safe-main-title {
+.mexico-safe-title {
   font-family: 'Poppins', sans-serif;
+  font-size: clamp(24px, 3.5vw, 32px);
   font-weight: 700;
-  font-size: 42px;
+  font-style: normal;
   line-height: 100%;
   letter-spacing: 0%;
-  text-transform: uppercase;
-  color: #555555;
-  margin-bottom: 40px;
-}
-
-.safe-sub-title {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  font-size: 1.9rem;
-  line-height: 100%;
-  letter-spacing: 0%;
-  text-transform: capitalize;
-  color: #777777; /* Slightly lighter gray than main title */
-  margin-bottom: 40px;
-}
-
-.safe-text-body p {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.05rem;
-  line-height: 1.7;
   color: #333333;
-  margin-bottom: 20px;
+  text-transform: uppercase;
+  margin-bottom: clamp(25px, 4vw, 40px);
+  text-align: left;
+}
+
+.mexico-safe-subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 700;
+  font-style: normal;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #888888;
+  text-transform: capitalize;
+  margin-bottom: clamp(25px, 4vw, 40px);
+  text-align: left;
+}
+
+.mexico-safe-text {
+  text-align: left;
+}
+
+.mexico-safe-text p {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(14px, 1.8vw, 16px);
   font-weight: 400;
+  font-style: normal;
+  line-height: 180%;
+  letter-spacing: 0%;
+  color: #333333;
+  margin-bottom: clamp(15px, 2vw, 20px);
 }
 
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-  .safe-main-title {
-    font-size: 1.8rem;
-  }
-  
-  .safe-sub-title {
-    font-size: 1.3rem;
-    margin-bottom: 30px;
-  }
-
-  .safe-section-wrapper {
-    padding: 50px 20px;
-  }
-}
+/* Fixed layout for all screen sizes - no responsive design */

@@ -1,145 +1,109 @@
-/* Container and Typography */
-.mexico-container {
-  font-family: 'Poppins', sans-serif;
-  line-height: 1.6;
-  color: #333;
-  width: 100%;
-  position: relative;
-  margin-top: -100px;
-  padding-top: 100px;
-  background-color: #f7f9fc;
-}
-
-.mexico-container::before {
-  content: '';
-  position: absolute;
-  top: -100px;
-  left: 50%;
-  transform: translateX(-50%);
+.mexico-intro-container {
+  background-color: #EDEFFF;
+  padding: 0;
+  margin: 0;
+  height: 280px;
   width: 100vw;
-  height: 500px;
-  background-color: #2E3FE6 !important;
-  z-index: -1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 20px;
+  position: static;
+  transform: none;
+  overflow: hidden;
 }
 
-/* Header Section with light lavender background */
-.mexico-header {
-  background-color: transparent !important;
-  background: transparent !important;
-  padding: 120px 20px 10px 20px;
+.mexico-intro-content {
+  max-width: 1000px;
+  width: 100%;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
+  justify-content: flex-start;
+  gap: 5px;
+  margin: 0;
+  padding: 30px 0 0 0;
 }
 
-.mexico-header * {
-  border: none !important;
-  border-bottom: none !important;
-  text-decoration: none !important;
-  box-shadow: none !important;
-}
-
-.mexico-title {
+.mexico-intro-title {
   font-family: 'Poppins', sans-serif;
-  font-size: 64px;
+  font-size: clamp(28px, 3.8vw, 38px);
   font-weight: 700;
-  line-height: 140%;
+  font-style: normal;
+  line-height: 160%;
   letter-spacing: 0%;
   text-align: center;
   text-transform: uppercase;
-  color: #4a4a4a;
+  color: #333333;
   max-width: 900px;
-  margin-bottom: 120px;
-  border: none;
-  border-bottom: none;
-  text-decoration: none;
-  box-shadow: none;
+  margin: 0 auto;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  pointer-events: none;
+  position: static;
+  transform: none;
+  transition: none;
 }
 
-.mexico-title::before,
-.mexico-title::after {
-  display: none !important;
-  content: none !important;
-}
-
-.mexico-header::before,
-.mexico-header::after {
-  display: none !important;
-  content: none !important;
-}
-
-/* Button Styling */
-.insight-button {
-  background-color: #5351ED;
+.mexico-intro-button {
+  background-color: #5D5DFF;
   color: white;
   border: none;
-  padding: 18px 40px;
-  border-radius: 15px;
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(12px, 1.4vw, 14px);
   font-weight: 600;
-  font-size: 0.9rem;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  box-shadow: 0 4px 15px rgba(83, 81, 237, 0.3);
-  position: relative;
-  z-index: 10;
-  margin-bottom: 20px;
-  margin-top: 80px;
+  margin: 45px 0 0 0;
+  position: static;
+  top: auto;
+  transform: none;
+  transition: none;
 }
 
-.insight-button:hover {
-  background-color: #5351ED;
+.mexico-intro-button:hover {
+  background-color: #4A4AE6;
 }
 
-.sparkle-icon {
-  font-size: 1.2rem;
-  position: relative;
-}
-
-.sparkle-icon::before {
-  content: '✦';
-  position: absolute;
-  right: -6px;
-  top: 1px;
-  font-size: 0.5rem;
-  color: white;
-}
-
-/* Content Section */
-.mexico-content {
-  background-color: #ffffff;
-  padding: 60px 60px 60px 60px;
-  max-width: 100%;
+.mexico-intro-text-section {
+  background-color: white;
   width: 100%;
-  margin: -100px 0 0 0;
+  padding: 80px 0 40px 0;
+  margin: 0;
+  margin-top: 0;
+}
+
+.mexico-intro-text-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 60px;
   text-align: left;
 }
 
-.mexico-content p {
+.mexico-intro-text-section p {
   font-family: 'Poppins', sans-serif;
+  font-size: clamp(14px, 1.6vw, 16px);
   font-weight: 400;
-  font-size: 18px;
+  font-style: normal;
   line-height: 187%;
   letter-spacing: 0%;
-  color: #333;
+  color: #333333;
   margin-bottom: 20px;
-  max-width: 1100px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
-/* Responsive adjustments */
+/* Fixed layout for all screen sizes - no responsive design */
+
+/* Mobile responsive height for button visibility */
 @media (max-width: 768px) {
-  .mexico-title {
-    font-size: 1.8rem;
-  }
-  
-  .insight-button {
-    font-size: 0.9rem;
-    padding: 14px 28px;
+  .mexico-intro-container {
+    height: 350px !important;
   }
 }

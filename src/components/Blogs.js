@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Styles/Blogs.css';
@@ -5,10 +6,10 @@ import searchIcon from '../assets/searchicon.jpeg';
 import mexicoImg from '../assets/Mexico.jpg';
 
 const cities = [
-  { id: 1, name: "Mexico", img: mexicoImg, desc: "Experience the serene turquoise lakes and mountain trails.", link: "/mexico" },
+  { id: 1, name: "Mexico", img: mexicoImg, desc: "Mexico, a land of vibrant culture, stunning landscapes", link: "/mexico" },
   { id: 2, name: "Sitges", img: "", desc: "A beautiful coastal town known for its beaches and festivals.", link: "#" },
   { id: 3, name: "Mumbai", img: "", desc: "The bustling 'City of Dreams' with a vibrant nightlife.", link: "#" },
-  { id: 4, name: "Amsterdam", img: "", desc: "Famous for its artistic heritage and elaborate canal system.", link: "#" },
+  { id: 4, name: "Amsterdam", img: "", desc: "Famous for its artistic heritage and elaborate canal.", link: "#" },
   // Add more city objects as needed to fill the grid
 ];
 

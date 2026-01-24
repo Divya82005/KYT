@@ -1,89 +1,73 @@
-/* Container for the entire section */
-.faq-container {
-  padding: 60px 20px;
-  background-color: #ffffff;
-  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  max-width: 1000px;
+.mexico-faq-container {
+  background-color: white;
+  padding: clamp(40px, 8vw, 80px) clamp(10px, 2vw, 20px);
+  min-height: 80vh;
+}
+
+.mexico-faq-content {
+  max-width: clamp(850px, 87vw, 1050px);
   margin: 0 auto;
+  padding: 0 clamp(30px, 6vw, 60px);
 }
 
-/* Header styling */
-.faq-header {
-  margin-bottom: 40px;
+.mexico-faq-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 700;
+  color: #666666;
+  text-transform: uppercase;
+  margin-bottom: clamp(35px, 5vw, 50px);
+  text-align: left;
+  position: relative;
+  padding-bottom: clamp(10px, 1.5vw, 15px);
 }
 
-.faq-header h1 {
-  font-size: 2.2rem;
-  color: #555;
-  margin: 0 0 10px 0;
-  letter-spacing: 0.5px;
-}
-
-.faq-divider {
-  border: none;
-  height: 4px;
-  background-color: #5d5dff; /* Signature blue color */
+.mexico-faq-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
   width: 100%;
-  margin: 0;
+  height: clamp(3px, 0.4vw, 4px);
+  background-color: #5D5DFF;
 }
 
-/* Stacked list layout */
-.faq-list {
+.mexico-faq-list {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: clamp(20px, 3vw, 30px);
 }
 
-/* Individual FAQ Card */
-.faq-card {
-  border: 1px solid #e0e0ff;
-  border-left: 8px solid #5d5dff; /* Thick blue left border */
-  border-radius: 12px;
-  padding: 30px 25px;
-  background-color: #ffffff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+.mexico-faq-card {
+  background-color: white;
+  border: clamp(1px, 0.2vw, 2px) solid #A8A6FF;
+  border-left: clamp(8px, 1vw, 10px) solid #5D5DFF;
+  border-radius: clamp(12px, 1.5vw, 15px);
+  padding: clamp(30px, 4vw, 40px) clamp(22px, 3vw, 30px) clamp(22px, 3vw, 30px) clamp(22px, 3vw, 30px);
+  min-height: clamp(160px, 20vw, 200px);
 }
 
-/* Question layout with red '?' icon */
-.faq-question-row {
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
+.mexico-faq-question {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(14px, 1.8vw, 18px);
+  font-weight: 600;
+  color: #5D5DFF;
+  margin-bottom: clamp(12px, 1.5vw, 15px);
+  line-height: 1.3;
 }
 
-.faq-q-icon {
-  color: #ff4d4d; /* Red color for the question mark */
-  font-weight: bold;
-  font-size: 1.4rem;
-  margin-right: 12px;
+.question-mark {
+  color: #FF0000;
 }
 
-.faq-card h3 {
-  color: #5d5dff; /* Blue color for the question text */
-  font-size: 1.25rem;
-  margin: 0;
-  font-weight: 700;
+.mexico-faq-answer {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(12px, 1.6vw, 14px);
+  line-height: 1.8;
+  color: #666666;
+  margin: clamp(8px, 1vw, 10px) 0 0 0;
+  padding: 0 clamp(15px, 2vw, 20px);
+  word-spacing: clamp(2px, 0.3vw, 3px);
 }
 
-/* Answer text styling */
-.faq-answer {
-  color: #666;
-  line-height: 1.7;
-  font-size: 1.05rem;
-  margin: 0;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .faq-header h1 {
-    font-size: 1.6rem;
-  }
-  
-  .faq-card {
-    padding: 20px;
-  }
-  
-  .faq-card h3 {
-    font-size: 1.1rem;
-  }
-}
+/* Fixed layout for all screen sizes - no responsive design */

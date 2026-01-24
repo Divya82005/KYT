@@ -1,92 +1,149 @@
-/* Container Background */
-.mexico-container {
-  background-color: #f0f2ff;
-  padding: 40px 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #444;
-  min-height: 100vh;
+.mexico-sp-container {
+  background-color: #EDEFFF;
+  padding: clamp(20px, 4vw, 40px) 0 clamp(30px, 6vw, 60px) 0;
+  min-height: 80vh;
 }
 
-/* Header Section */
-.mexico-header {
-  max-width: 1000px;
-  margin: 0 auto 40px auto;
-}
-
-.mexico-header h1 {
-  font-size: 2.5rem;
-  color: #555;
-  margin-bottom: 10px;
-  letter-spacing: 1px;
-  border-bottom: 4px solid #5d5dff;
-  display: inline-block;
-  padding-bottom: 10px;
-}
-
-.mexico-header p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-top: 20px;
-}
-
-/* Grid Layout */
-.destinations-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 25px;
-  max-width: 1000px;
+.mexico-sp-content {
+  max-width: clamp(900px, 90vw, 1100px);
   margin: 0 auto;
+  padding: 0 clamp(30px, 6vw, 60px);
 }
 
-/* Card Styling */
-.card {
-  background: white;
-  border: 2px solid #a3a3ff;
-  border-radius: 15px;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
+.mexico-sp-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 700;
+  color: #333333;
+  text-transform: uppercase;
+  margin-bottom: clamp(10px, 1.5vw, 15px);
+  text-align: left;
+  position: relative;
+  padding-bottom: clamp(8px, 1vw, 12px);
 }
 
-.card-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
+.mexico-sp-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: clamp(2px, 0.3vw, 3px);
+  background-color: #5D5DFF;
 }
 
-.icon {
-  font-size: 2rem;
-  margin-right: 15px;
+.mexico-sp-intro {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(14px, 1.8vw, 16px);
+  line-height: 1.5;
+  color: #666666;
+  margin-bottom: clamp(25px, 3.5vw, 35px);
+  text-align: left;
 }
 
-.card h2 {
-  font-size: 1.8rem;
-  color: #777;
-  margin: 0;
+.mexico-sp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: clamp(-10px, -1vw, -5px);
+  row-gap: clamp(25px, 4vw, 40px);
+  margin-bottom: clamp(15px, 2.5vw, 25px);
+  justify-items: center;
 }
 
-.card p {
-  line-height: 1.6;
-  font-size: 1rem;
-  margin: 0;
-}
-
-/* Specific Layout Rules */
-.full-width {
-  grid-column: span 2;
-}
-
-/* Responsive Design for Mobile */
+/* Mobile responsive - single column */
 @media (max-width: 768px) {
-  .destinations-grid {
+  .mexico-sp-grid {
     grid-template-columns: 1fr;
+    column-gap: 0;
   }
   
-  .full-width {
-    grid-column: span 1;
+  .mexico-sp-card:nth-child(even) {
+    margin-left: 0;
   }
-
-  .mexico-header h1 {
-    font-size: 1.8rem;
+  
+  .mexico-sp-card-full {
+    margin: 0 auto;
   }
 }
+
+.mexico-sp-card {
+  background-color: white;
+  border: clamp(1px, 0.2vw, 2px) solid #5D5DFF;
+  border-radius: clamp(15px, 2vw, 20px);
+  padding: clamp(50px, 7vw, 70px) clamp(25px, 3.5vw, 35px) clamp(30px, 4vw, 40px) clamp(25px, 3.5vw, 35px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  min-height: clamp(350px, 45vw, 450px);
+  height: auto;
+  width: 100%;
+  max-width: clamp(320px, 42vw, 420px);
+}
+
+.mexico-sp-card:nth-child(even) {
+  margin-left: clamp(-80px, -10vw, -100px);
+}
+
+.mexico-sp-card-full:nth-child(even) {
+  margin-left: 0;
+}
+
+.mexico-sp-card-full {
+  grid-column: 1 / -1;
+  min-height: clamp(250px, 30vw, 300px);
+  max-width: clamp(700px, 87vw, 865px);
+  margin: 0 auto 0 clamp(20px, 2.5vw, 25px);
+  padding: clamp(30px, 4vw, 40px) clamp(60px, 8vw, 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.mexico-sp-card-header {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: clamp(18px, 2.5vw, 25px);
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.mexico-sp-icon {
+  font-size: clamp(24px, 3.2vw, 32px);
+  margin-right: clamp(12px, 1.5vw, 15px);
+  margin-top: clamp(2px, 0.3vw, 3px);
+}
+
+.mexico-sp-icon-image {
+  width: clamp(24px, 3.2vw, 32px);
+  height: clamp(24px, 3.2vw, 32px);
+  margin-right: clamp(15px, 2vw, 20px);
+  margin-top: clamp(2px, 0.3vw, 3px);
+  border-radius: clamp(3px, 0.4vw, 4px);
+  object-fit: cover;
+}
+
+.mexico-sp-card h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(20px, 2.6vw, 26px);
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-transform: capitalize;
+  color: #888888;
+  margin: clamp(6px, 0.8vw, 8px) 0 0 0;
+}
+
+.mexico-sp-card p {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(12px, 1.4vw, 14px);
+  font-weight: 400;
+  line-height: 187%;
+  letter-spacing: 0%;
+  color: #333333;
+  margin: 0;
+  text-align: left;
+}
+
+/* Fixed layout for all screen sizes - no responsive design */

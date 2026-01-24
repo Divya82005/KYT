@@ -1,5 +1,6 @@
 /* ============= HERO SECTION RESPONSIVE STYLES ============= */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&display=swap');
 
 * {
   box-sizing: border-box;
@@ -25,24 +26,24 @@ html {
 /* ============= HERO WRAPPER ============= */
 .hero-wrapper {
   width: 100%;
-  min-height: 100vh;
-  padding: clamp(0.8rem, 1vw, 1.2rem) clamp(3rem, 2vw, 5rem); /* Tighter control */
+  padding: clamp(0.8rem, 1vw, 1.2rem) clamp(3rem, 2vw, 5rem);
+  padding-top: clamp(3rem, 1.5vw, 4rem);
+  padding-bottom: 60px; /* Fixed consistent padding */
   display: grid;
   grid-template-columns: 1fr;
-  gap: clamp(1.5rem, 1vw, 2.5rem); /* Tighter control */
+  gap: clamp(1.5rem, 1vw, 2.5rem);
   align-items: start;
-  padding-top: clamp(3rem, 1.5vw, 4rem); /* Tighter control */
-  transform: scale(0.95);
+  box-sizing: border-box;
+  transform: scale(0.95); /* Scale down slightly for better fit */
   transform-origin: center;
-  overflow-x: visible;
-  overflow-y: hidden;
 }
 
 /* Desktop layout */
 @media (min-width: 1024px) {
   .hero-wrapper {
     grid-template-columns: 1fr 1fr;
-    gap: clamp(1.5rem, 1vw, 2rem); /* Tighter control */
+    gap: clamp(1.5rem, 1vw, 2rem);
+    padding-bottom: 60px; /* Same consistent padding */
   }
 }
 
@@ -63,23 +64,33 @@ html {
 
 /* ============= TYPOGRAPHY ============= */
 .vision-text {
-  font-size: clamp(1rem, 3vw, 2rem); /* 16px - 32px */
-  font-weight: 500;
-  color: #808080;
-  line-height: 1.4;
-  text-transform: uppercase;
-  margin-bottom: clamp(0.5rem, 1.5vw, 0.8rem); /* Reduced margin */
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
   font-style: normal;
+  font-size: 18px;
+  line-height: 38px;
+  letter-spacing: 0px;
+  vertical-align: middle;
+  color: #777777; /* More greyish */
+  text-transform: none;
+  margin-bottom: clamp(0.5rem, 1.5vw, 0.8rem);
+  margin-top: -1.2rem; /* Move subtitle up very slightly more */
+  white-space: nowrap; /* Force text to appear on single line */
 }
 
 .hero-title {
-  font-size: clamp(1.75rem, 5vw, 2.7rem); /* 28px - 43.2px */
-  font-weight: 700;
-  color: #000;
-  line-height: 1.5; /* Increased line height to add more space between the two lines */
-  text-transform: uppercase;
-  margin-bottom: clamp(0.75rem, 2vw, 1rem); /* Reduced margin */
+  font-family: "SF Pro Rounded", "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 800; /* Reduced from 900 to 800 for moderate boldness */
   font-style: normal;
+  font-size: 40px;
+  line-height: 80px;
+  letter-spacing: 0px;
+  vertical-align: middle;
+  text-transform: uppercase;
+  color: #000000;
+  margin-bottom: clamp(1.5rem, 3vw, 2rem);
+  -webkit-font-smoothing: antialiased; /* Better font rendering */
+  white-space: nowrap; /* Force text to appear on single line */
 }
 
 .safety-text {
@@ -176,6 +187,23 @@ html {
   display: none;
 }
 
+/* Show desktop Product Hunt link on desktop */
+.product-hunt-desktop-link {
+  display: inline-block !important;
+}
+
+@media (max-width: 767px) {
+  /* Show mobile Product Hunt button on mobile */
+  .product-hunt-mobile-btn {
+    display: flex !important;
+  }
+  
+  /* Hide desktop Product Hunt link on mobile */
+  .product-hunt-desktop-link {
+    display: none !important;
+  }
+}
+
 /* ============= HERO RIGHT ============= */
 .hero-right {
   display: flex;
@@ -199,7 +227,7 @@ html {
 /* ============= FEATURES ============= */
 .feature-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Very slightly reduced from 260px to 250px */
   gap: clamp(0.75rem, 2vw, 1rem);
   width: 100%;
   max-width: none; /* Remove max-width constraint */
@@ -209,7 +237,7 @@ html {
 
 @media (min-width: 768px) {
   .feature-row {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Slightly increased from 200px to 220px */
     gap: clamp(0.75rem, 2vw, 1rem);
     max-width: clamp(30rem, 55vw, 40rem);
   }
@@ -220,7 +248,7 @@ html {
     grid-template-columns: repeat(3, 1fr);
     gap: clamp(0.75rem, 2vw, 1rem);
     /* Extend just slightly beyond the left column */
-    width: clamp(38rem, 55vw, 48rem);
+    width: clamp(40rem, 56vw, 50rem); /* Very slightly reduced from 52rem to 50rem */
     max-width: none;
   }
 }
@@ -228,15 +256,15 @@ html {
 /* ============= FEATURE BOX ============= */
 .feature-box {
   width: 100%;
-  min-height: clamp(8.5rem, 15vw, 10rem); /* Reduced from 11rem-13rem to 8.5rem-10rem */
-  padding: clamp(0.75rem, 2vw, 1rem); /* Reduced padding */
+  min-height: clamp(10rem, 16vw, 12rem); /* Further reduced height */
+  padding: clamp(1.5rem, 3vw, 2rem); /* Increased padding for more internal space */
   border-radius: clamp(0.75rem, 2vw, 1.25rem);
   border: 1px solid #bbb;
   background: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
+  text-align: left; /* Change from center to left */
   justify-content: center;
   box-shadow:
     5.625rem 8.5rem 2.875rem 0 rgba(83, 81, 244, 0),
@@ -257,19 +285,24 @@ html {
 
 .feature-box h3 {
   font-family: "Poppins", sans-serif;
-  font-size: clamp(0.875rem, 2.2vw, 1rem); /* Slightly reduced */
+  font-size: clamp(0.75rem, 2vw, 0.9rem); /* Decreased font size for better fit */
   font-weight: 600;
   margin: clamp(0.375rem, 1.5vw, 0.5rem) 0 clamp(0.125rem, 0.5vw, 0.25rem); /* Reduced margins */
   line-height: 1.2; /* Tighter line height */
+  white-space: nowrap; /* Prevent line breaks */
 }
 
 .feature-box p {
   font-family: "Poppins", sans-serif;
-  font-size: clamp(0.7rem, 1.8vw, 0.8rem); /* Slightly reduced */
+  font-size: clamp(0.65rem, 1.6vw, 0.75rem); /* Slightly reduced from 0.7rem to 0.65rem and 0.8rem to 0.75rem */
   font-weight: 500;
   color: #777777;
   line-height: 1.3; /* Tighter line height */
   margin: 0;
+  margin-top: 0.5rem; /* Add space above the subtext to move it down */
+  margin-left: -0.5rem; /* Move text slightly to the left */
+  white-space: nowrap; /* Keep text on one line */
+  text-align: left; /* Move text to left */
 }
 
 /* Hover effect only for devices that support hover (desktop/mouse) */
@@ -325,7 +358,7 @@ html {
   
   /* Text sizing optimized for two lines */
   .vision-text {
-    font-size: clamp(1.2rem, 2.4vw, 1.6rem); /* Increased font size */
+    font-size: 18px; /* Back to 18px for iPad Mini */
     margin-bottom: clamp(0.4rem, 0.8vw, 0.6rem);
     text-align: left;
     margin-left: 0; /* Ensure alignment */
@@ -333,7 +366,7 @@ html {
   }
   
   .hero-title {
-    font-size: clamp(1.9rem, 3.8vw, 2.4rem); /* Slightly smaller to fit two lines better */
+    font-size: 40px; /* Updated to 40px for iPad Mini */
     margin-bottom: clamp(1.5rem, 3vw, 2rem);
     text-align: left;
     line-height: 1.6; /* Much more line spacing between the two lines */
@@ -411,7 +444,7 @@ html {
   }
   
   .feature-box {
-    min-height: clamp(6rem, 10vw, 7rem); /* Smaller height for iPad Mini */
+    min-height: clamp(10rem, 16vw, 12rem); /* Further reduced height for iPad Mini */
     padding: clamp(0.5rem, 1vw, 0.75rem); /* Reduced padding */
   }
   
@@ -437,11 +470,11 @@ html {
   }
   
   .hero-title {
-    font-size: clamp(2rem, 4vw, 2.4rem);
+    font-size: 40px; /* Updated to 40px for small laptops */
   }
   
   .vision-text {
-    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    font-size: 18px; /* Back to 18px for small laptops */
   }
   
   .download-btns {
@@ -452,11 +485,11 @@ html {
   .feature-row {
     gap: clamp(0.75rem, 1.5vw, 1rem);
     /* Adjust width for small laptops */
-    width: clamp(36rem, 52vw, 44rem);
+    width: clamp(38rem, 54vw, 46rem); /* Very slightly reduced */
   }
   
   .feature-box {
-    min-height: clamp(8.5rem, 14vw, 9.5rem);
+    min-height: clamp(10rem, 16vw, 12rem);
     padding: clamp(0.75rem, 2vw, 1rem);
   }
 }
@@ -469,11 +502,11 @@ html {
   }
   
   .hero-title {
-    font-size: clamp(2.2rem, 4vw, 2.6rem);
+    font-size: 40px; /* Updated to 40px for medium laptops */
   }
   
   .vision-text {
-    font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+    font-size: 18px; /* Back to 18px for medium laptops */
   }
   
   .download-btns {
@@ -482,13 +515,13 @@ html {
   }
   
   .feature-box {
-    min-height: clamp(10rem, 16vw, 11.5rem);
+    min-height: clamp(10rem, 16vw, 12rem);
     padding: clamp(1.25rem, 2.5vw, 1.5rem);
   }
   
   .feature-row {
     /* Adjust width for medium laptops */
-    width: clamp(40rem, 56vw, 50rem);
+    width: clamp(42rem, 58vw, 52rem); /* Very slightly reduced */
   }
 }
 
@@ -500,11 +533,11 @@ html {
   }
   
   .hero-title {
-    font-size: clamp(2.4rem, 4vw, 2.7rem);
+    font-size: 40px; /* Updated to 40px for large desktops */
   }
   
   .vision-text {
-    font-size: clamp(1.6rem, 2.5vw, 2rem);
+    font-size: 18px; /* Back to 18px for large desktops */
   }
   
   .download-btns {
@@ -519,7 +552,7 @@ html {
   
   .feature-row {
     /* Adjust width for large desktops */
-    width: clamp(42rem, 58vw, 52rem);
+    width: clamp(44rem, 60vw, 54rem); /* Very slightly reduced */
   }
 }
 
@@ -531,7 +564,7 @@ html {
   }
 
   .feature-row {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Slightly increased from 220px to 240px */
     justify-content: center;
   }
 }
@@ -539,15 +572,16 @@ html {
 /* Mobile adjustments */
 @media (max-width: 767px) {
   .hero-wrapper {
-    padding: clamp(1rem, 3vw, 1.5rem) clamp(1.5rem, 5vw, 2rem) 0; /* Removed bottom padding to eliminate blank space */
-    gap: clamp(1rem, 3vw, 1.5rem); /* Reduced gap */
+    padding: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 60px; /* Same consistent padding */
+    gap: 0.8rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    min-height: auto; /* Changed from 80vh to auto to prevent extra space */
-    justify-content: flex-start; /* Changed from center to flex-start */
-    margin-top: 0; /* Remove any top margin */
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .hero-left {
@@ -557,7 +591,7 @@ html {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-top: 0; /* Remove top margin */
+    margin-top: 0;
   }
 
   .hero-right {
@@ -565,44 +599,48 @@ html {
   }
 
   .vision-text {
-    font-size: clamp(0.875rem, 4vw, 1.125rem); /* 14px - 18px */
-    color: #808080;
-    font-weight: 500;
-    text-transform: uppercase;
-    margin-bottom: clamp(1rem, 3vw, 1.5rem);
+    font-size: 12px; /* Fixed small font size */
+    color: #777777;
+    font-weight: 400;
+    text-transform: none;
+    margin-top: 0.8rem; /* Reduced space above to move subtext up */
+    margin-bottom: 2rem; /* Increased space below for gap with buttons */
     text-align: center;
+    white-space: normal; /* Allow text to wrap */
+    line-height: 1.5; /* Better line spacing for readability */
   }
 
   .hero-title {
-    font-size: clamp(1.75rem, 7vw, 2.25rem); /* 28px - 36px */
-    line-height: 1.3;
-    font-weight: 700;
+    font-size: 20px; /* Fixed smaller font size */
+    line-height: 1.1;
+    font-weight: 800;
     color: #000;
     text-transform: uppercase;
-    margin-bottom: clamp(2rem, 6vw, 3rem);
+    margin-bottom: 1.5rem; /* Space between bold text and subtext */
     text-align: center;
     max-width: 100%;
+    white-space: normal;
   }
 
   .button-row {
     width: 100%;
     display: flex;
-    flex-direction: row; /* Changed to horizontal layout */
+    flex-direction: row; /* Changed from column to row for horizontal layout */
     align-items: center;
     justify-content: center;
-    gap: clamp(0.75rem, 3vw, 1rem); /* Reduced gap for side-by-side layout */
-    margin-bottom: 0; /* Remove bottom margin completely to eliminate blank space */
+    gap: 0.6rem; /* Fixed small gap */
+    margin-bottom: 0.8rem; /* Fixed small margin */
   }
 
   .download-btns {
-    width: clamp(8rem, 40vw, 10rem); /* Reduced width for side-by-side layout */
+    width: 12rem; /* Fixed width */
     max-width: none;
-    height: clamp(3rem, 7vw, 3.5rem); /* Slightly reduced height */
-    font-size: clamp(0.75rem, 3vw, 0.9rem); /* Reduced font size to fit */
+    height: 2.8rem; /* Fixed height */
+    font-size: 0.9rem; /* Fixed font size */
     font-weight: 700;
     background: linear-gradient(90deg, #AA80F9 0%, #5351F4 100%);
     color: #ffffff;
-    border-radius: clamp(0.75rem, 3vw, 1rem);
+    border-radius: 0.75rem;
     border: none;
     display: flex;
     align-items: center;
@@ -614,26 +652,25 @@ html {
 
   .download-btns .diamond-top-left {
     position: absolute;
-    top: clamp(0.25rem, 1vw, 0.375rem);
-    left: clamp(0.25rem, 1vw, 0.375rem);
-    font-size: clamp(0.5rem, 1.5vw, 0.75rem); /* Smaller diamonds */
+    top: clamp(0.3rem, 1.5vw, 0.5rem);
+    left: clamp(0.3rem, 1.5vw, 0.5rem);
+    font-size: clamp(0.6rem, 2vw, 0.8rem);
     color: #FFD700;
     opacity: 0.9;
   }
 
   .download-btns .diamond-bottom-right {
     position: absolute;
-    bottom: clamp(0.25rem, 1vw, 0.375rem);
-    right: clamp(0.25rem, 1vw, 0.375rem);
-    font-size: clamp(0.5rem, 1.5vw, 0.75rem); /* Smaller diamonds */
+    bottom: clamp(0.3rem, 1.5vw, 0.5rem);
+    right: clamp(0.3rem, 1.5vw, 0.5rem);
+    font-size: clamp(0.6rem, 2vw, 0.8rem);
     color: #FFD700;
     opacity: 0.9;
   }
 
-  /* New Product Hunt Button for Mobile */
   .product-btn {
-    width: clamp(8rem, 40vw, 10rem); /* Same width as download button */
-    height: clamp(3rem, 7vw, 3.5rem); /* Same height as download button */
+    width: 12rem; /* Fixed width same as download button */
+    height: 2.8rem; /* Fixed height same as download button */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -645,25 +682,24 @@ html {
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    background: #2d2d2d; /* Dark background like in the image */
-    border: none; /* Remove border */
-    border-radius: clamp(0.75rem, 3vw, 1rem);
-    color: white; /* White text */
+    justify-content: center;
+    background: #2d2d2d;
+    border: none;
+    border-radius: 0.75rem;
+    color: white;
     font-family: "Poppins", sans-serif;
-    font-size: clamp(0.65rem, 2.5vw, 0.8rem);
-    font-weight: 600; /* Slightly less bold */
+    font-size: 0.8rem; /* Fixed font size */
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
     text-decoration: none;
-    text-align: left;
-    line-height: 1.2;
-    padding: clamp(0.5rem, 2vw, 0.75rem);
+    padding: 0.5rem;
     position: relative;
+    white-space: nowrap; /* Force text to appear on single line */
   }
 
   .product-hunt-mobile-btn:hover {
-    background: #1a1a1a; /* Darker on hover */
+    background: #1a1a1a;
     color: white;
     transform: translateY(-2px);
   }
@@ -671,11 +707,11 @@ html {
   .product-hunt-mobile-btn::before {
     content: "P";
     position: absolute;
-    left: clamp(0.5rem, 2vw, 0.75rem);
+    left: clamp(0.75rem, 3vw, 1rem);
     top: 50%;
     transform: translateY(-50%);
-    width: clamp(1.2rem, 4vw, 1.5rem);
-    height: clamp(1.2rem, 4vw, 1.5rem);
+    width: clamp(1.5rem, 5vw, 2rem);
+    height: clamp(1.5rem, 5vw, 2rem);
     background: white;
     color: #2d2d2d;
     border-radius: 50%;
@@ -683,31 +719,27 @@ html {
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    font-size: clamp(0.6rem, 2vw, 0.75rem);
+    font-size: clamp(0.7rem, 2.5vw, 0.9rem);
   }
 
   .product-hunt-mobile-btn::after {
     content: "▲ 19";
     position: absolute;
-    right: clamp(0.5rem, 2vw, 0.75rem);
+    right: clamp(0.75rem, 3vw, 1rem);
     top: 50%;
     transform: translateY(-50%);
-    font-size: clamp(0.6rem, 2vw, 0.75rem);
+    font-size: clamp(0.7rem, 2.5vw, 0.9rem);
     font-weight: 600;
     color: white;
   }
 
   .product-hunt-badge {
-    display: none; /* Hide the original badge */
+    display: none;
   }
 
   /* Hide feature cards on mobile */
   .feature-row {
     display: none;
-  }
-
-  .feature-box {
-    min-height: clamp(8rem, 20vw, 9rem);
   }
 }
 
@@ -718,16 +750,16 @@ html {
   }
 
   .hero-title {
-    font-size: clamp(1.25rem, 7vw, 1.5rem); /* 20px - 24px */
+    font-size: 35px; /* Smaller size for extra small mobile */
   }
 
   .vision-text {
-    font-size: clamp(0.75rem, 4vw, 1rem); /* 12px - 16px */
+    font-size: 18px; /* Back to 18px for extra small mobile */
   }
 
   .feature-box {
     padding: clamp(0.75rem, 4vw, 1rem);
-    min-height: clamp(7.5rem, 25vw, 8.5rem); /* Reduced from 9rem-11rem */
+    min-height: clamp(10rem, 16vw, 12rem); /* Further reduced height */
   }
 
   .feature-icon img {
@@ -831,4 +863,33 @@ img[src*="Img3.png"] {
   display: block !important;
   transition: none !important;
   animation: none !important;
+}
+/* ============= BROAD TABLET DETECTION - SHOULD CATCH IPAD ============= */
+@media screen and (min-width: 600px) and (max-width: 1200px) {
+  .hero-wrapper {
+    padding-bottom: 60px;
+  }
+  
+  .hero-title {
+    margin-bottom: clamp(0.5rem, 1.5vw, 0.8rem);
+  }
+  
+  .button-row {
+    margin-bottom: clamp(0.3rem, 0.8vw, 0.5rem);
+  }
+}
+
+/* ============= IPAD ONLY - HERO BOTTOM SPACING REDUCTION ============= */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .hero-wrapper {
+    padding-bottom: 60px;
+  }
+  
+  .hero-title {
+    margin-bottom: clamp(0.5rem, 1.5vw, 0.8rem);
+  }
+  
+  .button-row {
+    margin-bottom: clamp(0.3rem, 0.8vw, 0.5rem);
+  }
 }

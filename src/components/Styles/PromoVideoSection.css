@@ -1,63 +1,52 @@
+/* SF Pro Rounded font import */
+@import url('https://fonts.cdnfonts.com/css/sf-pro-rounded');
+
 /* ============= PROMO VIDEO SECTION ============= */
 /* NOTE: Responsive container that adapts to screen size */
 .promo-container {
   width: 100%;
-  max-width: 1200px;
-  /* Reduced from 1350px to make it less zoomed */
+  max-width: clamp(1000px, 85vw, 1200px); /* Responsive max-width */
   margin: 0 auto;
-  padding: 0 40px;
-  /* Increased padding for more breathing room */
+  padding: 0 clamp(30px, 4vw, 40px); /* Responsive padding */
   box-sizing: border-box;
 }
 
 .promo-section {
   width: 100%;
-  height: auto;
-  margin: -100px 0 0; /* Increased negative margin to reduce gap even more */
-  padding: 0;
+  max-width: clamp(1000px, 85vw, 1200px); /* Responsive max-width */
+  margin: 0 auto;
+  margin-top: clamp(30px, 4vw, 40px); /* Responsive top margin */
+  padding: clamp(80px, 8vw, 100px) clamp(30px, 4vw, 40px) clamp(50px, 6vw, 60px) clamp(30px, 4vw, 40px); /* Responsive padding */
   display: flex;
   align-items: flex-start;
-  /* Changed from center to flex-start to move video down slightly */
   justify-content: space-between;
-  gap: 80px;
-  /* Increased gap for more space between video and text */
-  position: relative;
+  gap: clamp(15px, 2vw, 20px); /* Responsive gap */
   box-sizing: border-box;
-  transform: scale(0.9);
-  /* Reduce overall scale to make it less zoomed */
-  transform-origin: center;
 }
 
 /* LEFT VIDEO BOX */
 .promo-video-box {
-  width: 45%;
-  /* Reduced from 50% to make it smaller */
-  height: auto;
-  min-height: 280px;
-  /* Reduced from 300px */
-  background: #f0f0f0;
-  /* Light grey background like in reference */
-  aspect-ratio: 826 / 515;
+  width: clamp(600px, 50vw, 740px); /* Same width as text container */
+  height: clamp(400px, 35vw, 500px); /* Exact same height as text container */
+  background: transparent;
   overflow: hidden;
-  box-shadow: none;
-  /* Remove shadow for cleaner look */
   flex-shrink: 0;
-  border-radius: 12px;
-  /* Slightly smaller border radius */
+  border-radius: clamp(10px, 1.2vw, 12px); /* Responsive border radius */
   position: relative;
-  margin-top: 40px;
+  box-sizing: border-box;
   border: 1px solid #e0e0e0;
-  /* Add subtle border */
-  margin-left: -30px; /* Move video slightly to the left */
+  margin-left: clamp(-35px, -3vw, -30px); /* Responsive left margin */
 }
 
 .promo-video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  border-radius: 12px;
-  /* Match container border radius */
+  object-fit: cover; /* Video fills entire container height and width */
+  border-radius: clamp(10px, 1.2vw, 12px); /* Responsive border radius */
   display: block;
+  background: transparent;
+  object-position: center center;
+  transform: none; /* Remove scaling to let video fit naturally */
 }
 
 /* Alternative: If you want to see the full video without cropping */
@@ -68,37 +57,50 @@
 
 /* RIGHT TEXT BOX */
 .promo-text-box {
-  width: 55%;
-  /* Increased from 50% to balance the reduced video width */
+  width: clamp(600px, 50vw, 740px); /* Responsive width that adapts to screen size */
+  height: clamp(400px, 35vw, 500px); /* Responsive height that adapts to screen size */
   min-width: 0;
+  padding: clamp(40px, 4vw, 60px) clamp(40px, 4vw, 50px) clamp(40px, 4vw, 60px) clamp(60px, 6vw, 80px); /* Responsive padding */
+  background: #F4F4F4; /* Subtly greyish background */
+  border-radius: clamp(20px, 2.4vw, 24px); /* Responsive border radius */
+  border: none; /* Remove border */
+  box-sizing: border-box; /* Ensure consistent sizing */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Changed from center to flex-start to move content up */
+  padding-top: clamp(60px, 6vw, 80px); /* Responsive top padding */
+  text-align: center; /* Center align all text */
 }
 
 /* "ABOUT" title */
 .promo-about-title {
-  font-family: Poppins, sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-style: normal;
-  font-size: 60px;
-  line-height: 135%;
+  font-size: clamp(42px, 4.8vw, 48px); /* Responsive font size */
+  line-height: 1.2;
   letter-spacing: 0;
   color: #5351ed;
   margin: 0;
-  margin-bottom: 20px;
+  text-align: left;
+  position: absolute;
+  top: 0; /* Position at the top of the section */
+  left: clamp(30px, 4vw, 40px); /* Responsive left position */
 }
 
 /* Main heading */
 .promo-heading {
-  font-family: "SF Pro Rounded", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-weight: 700;
+  font-family: "SF Pro Rounded", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 660; /* Set to 660 as requested */
   font-style: normal;
-  font-size: 40px;
-  line-height: 45px;
-  /* Reduced from 55px to tighten gap between lines */
-  letter-spacing: 0;
+  font-size: clamp(22px, 2.2vw, 28px); /* Slightly reduced font size */
+  line-height: 1; /* Reset line-height to 1 for individual control */
+  letter-spacing: 0px;
+  vertical-align: middle;
   text-transform: uppercase;
   color: #000000;
-  margin: 0;
-  margin-bottom: 22px;
+  margin: clamp(-8px, -0.5vw, -5px) 0 clamp(20px, 2vw, 30px) clamp(18px, 2vw, 20px); /* Responsive margins */
+  text-align: left;
 }
 
 /* Main title spans */
@@ -106,17 +108,29 @@
   display: block;
 }
 
+/* First line - move up to create space */
+.main-title:first-child {
+  margin-bottom: clamp(8px, 1vw, 10px); /* Responsive space after first line */
+  transform: translateY(clamp(-6px, -0.5vw, -5px)); /* Responsive transform */
+}
+
+/* Second line - keep in place */
+.main-title:last-child {
+  margin-top: 0;
+}
+
 /* Description text */
 .promo-description {
-  font-family: Poppins, sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 22px; /* Increased from 21px by 1px */
-  line-height: 1.8; /* Increased from 40px to 1.8 for better line spacing */
+  font-size: clamp(16px, 1.6vw, 23px); /* Responsive font size */
+  line-height: 1.4; /* Changed line spacing to 1.4 */
   letter-spacing: 0;
-  text-transform: capitalize;
-  color: #000000;
-  margin: 0;
+  color: #333333;
+  margin: 0 0 0 clamp(18px, 2vw, 20px); /* Responsive left margin */
+  text-align: left;
+  text-transform: none;
 }
 
 /* ============= RESPONSIVE DESIGN ============= */
@@ -124,33 +138,35 @@
 /* Small Laptops (1024px - 1366px) */
 @media (min-width: 1024px) and (max-width: 1366px) {
   .promo-section {
-    transform: scale(0.85);
-    gap: 45px;
-    padding: 0 40px;
-    margin: 30px auto 0; /* Further reduced from 50px to decrease gap more */
+    transform: scale(0.85); /* Apply consistent scaling across all desktop sizes */
+    gap: clamp(40px, 4vw, 45px);
+    padding: 0 clamp(30px, 4vw, 40px);
+    margin: 0 auto 0; /* Consistent zero top margin */
   }
   
   .promo-video-box {
-    width: 48%;
-    min-height: 270px;
-    margin-left: -25px;
+    width: clamp(45%, 48vw, 48%);
+    min-height: clamp(250px, 25vw, 270px);
+    height: clamp(250px, 25vw, 270px); /* Match text container height */
+    margin-left: clamp(-30px, -2.5vw, -25px);
   }
   
   .promo-text-box {
-    width: 52%;
+    width: clamp(50%, 52vw, 52%);
+    height: clamp(250px, 25vw, 270px); /* Set explicit height */
   }
   
   .promo-about-title {
-    font-size: 55px;
+    font-size: clamp(50px, 5vw, 55px);
   }
   
   .promo-heading {
-    font-size: 36px;
-    line-height: 42px;
+    font-size: clamp(32px, 3.5vw, 36px);
+    line-height: clamp(38px, 4vw, 42px);
   }
   
   .promo-description {
-    font-size: 21px;
+    font-size: clamp(20px, 2.2vw, 23px);
     line-height: 1.8;
   }
 }
@@ -158,33 +174,35 @@
 /* Medium Laptops (1367px - 1600px) */
 @media (min-width: 1367px) and (max-width: 1600px) {
   .promo-section {
-    transform: scale(0.88);
-    gap: 55px;
-    padding: 0 45px;
-    margin: 35px auto 0; /* Further reduced from 55px to decrease gap more */
+    gap: clamp(15px, 2vw, 20px); /* Responsive gap */
+    padding: 0 clamp(15px, 2vw, 20px); /* Responsive padding */
+    margin: 0 auto 0; /* Consistent zero top margin */
+    transform: scale(0.85); /* Apply consistent scaling across all desktop sizes */
   }
   
   .promo-video-box {
-    width: 46%;
-    min-height: 275px;
-    margin-left: -28px;
+    width: clamp(650px, 45vw, 740px); /* Responsive width */
+    height: clamp(450px, 35vw, 500px); /* Responsive height */
+    margin-left: clamp(-35px, -2.5vw, -30px); /* Responsive margin */
+    border: 1px solid #e0e0e0; /* Add same border as text container */
   }
   
   .promo-text-box {
-    width: 54%;
+    width: clamp(650px, 50vw, 740px); /* Same width as video container */
+    height: clamp(450px, 35vw, 500px); /* Same height as video container */
   }
   
   .promo-about-title {
-    font-size: 58px;
+    font-size: clamp(52px, 4vw, 58px);
   }
   
   .promo-heading {
-    font-size: 38px;
-    line-height: 43px;
+    font-size: clamp(34px, 2.8vw, 38px);
+    line-height: clamp(39px, 3.2vw, 43px);
   }
   
   .promo-description {
-    font-size: 22px;
+    font-size: clamp(20px, 1.8vw, 23px);
     line-height: 1.8;
   }
 }
@@ -192,33 +210,35 @@
 /* Large Laptops and Desktops (1601px+) */
 @media (min-width: 1601px) {
   .promo-section {
-    transform: scale(0.9);
-    gap: 60px;
-    padding: 0 50px;
-    margin: 40px auto 0; /* Further reduced from 60px to decrease gap more */
+    gap: clamp(15px, 1.5vw, 20px); /* Responsive gap */
+    padding: 0 clamp(15px, 1.5vw, 20px); /* Responsive padding */
+    margin: 0 auto 0; /* Consistent zero top margin */
+    transform: scale(0.85); /* Apply consistent scaling across all desktop sizes */
   }
   
   .promo-video-box {
-    width: 50%; /* Increased from 45% */
-    min-height: 280px;
-    margin-left: -50px; /* Increased from -30px */
+    width: clamp(700px, 42vw, 740px); /* Same width as text container */
+    height: clamp(450px, 32vw, 500px); /* Same height as text container */
+    margin-left: clamp(-35px, -2vw, -30px); /* Responsive margin */
+    border: 1px solid #e0e0e0; /* Add same border as text container */
   }
   
   .promo-text-box {
-    width: 50%; /* Adjusted from 55% */
+    width: clamp(700px, 45vw, 740px); /* Same width as video container */
+    height: clamp(450px, 32vw, 500px); /* Same height as video container */
   }
   
   .promo-about-title {
-    font-size: 60px;
+    font-size: clamp(55px, 3.5vw, 60px);
   }
   
   .promo-heading {
-    font-size: 40px;
-    line-height: 45px;
+    font-size: clamp(36px, 2.5vw, 40px);
+    line-height: clamp(41px, 2.8vw, 45px);
   }
   
   .promo-description {
-    font-size: 22px;
+    font-size: clamp(21px, 1.6vw, 23px);
     line-height: 1.8;
   }
 }
@@ -228,64 +248,83 @@
   .promo-section {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
-    gap: 50px;
-    padding: 0 50px;
-    margin: 40px auto 0; /* Further reduced from 60px to decrease gap more */
-    /* Increased for more downward movement */
+    gap: 20px; /* Reduced gap to accommodate fixed widths */
+    padding: 100px 40px 60px 40px; /* Increased top padding to move layouts down */
+    margin: 0 auto;
+    margin-top: 40px; /* Add space between "About" title and layouts */
+    max-width: 1600px; /* Increased to accommodate larger containers */
+    position: relative;
+    transform: scale(0.85); /* Apply consistent scaling across all desktop sizes */
   }
 
   .promo-video-box {
-    width: 50%;
-    height: auto;
-    min-height: 300px;
-    aspect-ratio: 826 / 515;
+    width: clamp(650px, 50vw, 740px); /* Same width as text container */
+    height: clamp(450px, 35vw, 500px); /* Same height as text container */
+    background: transparent;
+    box-sizing: border-box;
+    border: 1px solid #e0e0e0;
+    margin-left: clamp(-35px, -2.5vw, -30px);
   }
 
   .promo-text-box {
-    width: 50%;
-    text-align: left;
+    width: clamp(650px, 50vw, 740px); /* Responsive width */
+    height: clamp(450px, 35vw, 500px); /* Responsive height */
+    padding: clamp(30px, 3vw, 40px) clamp(25px, 2.5vw, 30px);
+    background: #F4F4F4; /* Subtly greyish background */
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .promo-about-title {
-    font-size: 50px;
-    margin-bottom: 20px;
+    font-size: clamp(42px, 4vw, 48px);
+    position: absolute;
+    top: 0;
+    left: clamp(30px, 4vw, 40px);
+    margin: 0;
   }
 
   .promo-heading {
-    font-size: 30px;
-    line-height: 40px;
-    /* Reduced from 60px to tighten gap */
-    margin-bottom: 25px;
+    font-size: 26px; /* Reduced from 28px */
+    line-height: 1.3;
+    margin-bottom: 20px;
+    margin-left: 20px; /* Add moderate left margin */
   }
 
   .promo-description {
-    font-size: 20px; /* Increased from 19px by 1px */
-    line-height: 1.8; /* Consistent line spacing across breakpoints */
+    font-size: 18px; /* Changed to 18px */
+    line-height: 1.8; /* Changed to 1.8 */
+    margin-left: 20px; /* Add moderate left margin */
   }
 }
 
 /* ============= LARGE DESKTOP (1440px and above) ============= */
 @media (min-width: 1440px) {
   .promo-section {
-    gap: 60px;
-    padding: 0 80px;
+    gap: clamp(50px, 4vw, 60px);
+    padding: 0 clamp(60px, 5vw, 80px);
+    margin: 0 auto 0; /* Consistent zero top margin */
+    transform: scale(0.85); /* Apply consistent scaling across all desktop sizes */
   }
 
   .promo-about-title {
-    font-size: 64px;
+    font-size: clamp(58px, 4vw, 64px);
   }
 
   .promo-heading {
-    font-size: 44px;
-    line-height: 50px;
-    /* Reduced from 60px to tighten gap */
+    font-size: clamp(40px, 3vw, 44px);
+    line-height: clamp(46px, 3.5vw, 50px);
+    /* Responsive line height */
   }
 
   .promo-description {
-    font-size: 25px; /* Increased from 24px by 1px */
-    line-height: 1.8; /* Consistent line spacing for large desktop */
+    font-size: clamp(21px, 1.6vw, 23px);
+    line-height: 1.8;
   }
 }
 
@@ -297,9 +336,9 @@
     align-items: center;
     gap: 40px;
     padding: 0 40px;
-    margin: 20px auto 0; /* Reduced negative margin to prevent cutting off the top */
+    margin: 0 auto 0 !important; /* Consistent zero top margin for iPad */
     margin-bottom: 0px !important; /* Remove bottom margin to reduce gap with download section */
-    transform: scale(0.9); /* Zoom out slightly for iPad Mini */
+    transform: scale(0.85); /* Apply consistent scaling same as desktop */
     transform-origin: center;
   }
 
@@ -422,14 +461,64 @@
 /* ============= MOBILE SPECIFIC GAP REDUCTION (max-width: 767px) ============= */
 @media (max-width: 767px) {
   .promo-section {
-    margin-top: -1rem !important; /* Reduced negative margin to move promo section down slightly more */
-    padding: 0 clamp(1rem, 4vw, 1.5rem) !important; /* Add horizontal padding to prevent video cutoff */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(1.5rem, 4vw, 2rem);
+    padding: clamp(1rem, 4vw, 1.5rem);
+    margin: 0 auto 0; /* Remove top margin completely to close gap with hero section */
+    max-width: 100%;
   }
   
   .promo-video-box {
-    margin-left: 0 !important; /* Remove any negative left margin that might cause cutoff */
-    margin-right: 0 !important; /* Ensure no right margin issues */
-    width: 100% !important; /* Ensure full width within container */
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9; /* Standard video aspect ratio */
+    min-height: clamp(200px, 50vw, 300px);
+    background: transparent;
+    border-radius: 12px;
+    overflow: hidden;
+    order: 1;
+    margin: 0 auto; /* Center the video */
+  }
+
+  .promo-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    transform: none; /* Remove any scaling on mobile */
+  }
+  
+  .promo-text-box {
+    width: 100%;
+    max-width: 100%;
+    padding: clamp(1rem, 4vw, 1.5rem);
+    background: transparent; /* Remove white background on mobile */
+    border: none; /* Remove border on mobile */
+    border-radius: 0;
+    text-align: center;
+    order: 2;
+    height: auto;
+    display: block;
+  }
+
+  .promo-about-title {
+    font-size: clamp(28px, 7vw, 36px);
+    color: #5351ED;
+    margin-bottom: clamp(1rem, 3vw, 1.5rem);
+    text-align: center;
+    position: static; /* Remove absolute positioning */
+  }
+
+  .promo-heading {
+    font-size: clamp(20px, 5vw, 24px);
+    line-height: 1.3;
+    margin-bottom: clamp(1rem, 3vw, 1.5rem);
+    text-transform: uppercase;
+    color: #000000;
+    text-align: center;
   }
   
   /* Show mobile title, hide desktop title */
@@ -441,9 +530,13 @@
     display: block !important;
   }
   
-  /* Increase line spacing in paragraph for mobile */
   .promo-description {
-    line-height: 2.2 !important; /* Increased line spacing for better readability on mobile */
+    font-size: clamp(14px, 3.5vw, 16px);
+    line-height: 1.6;
+    color: #666666;
+    text-align: center;
+    max-width: 100%;
+    margin: 0;
   }
 }
 
@@ -464,43 +557,69 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px;
-    padding: 0 15px;
-    margin: 40px auto 0;
-    /* Reduced from 60px to 40px */
+    gap: clamp(1rem, 4vw, 1.5rem);
+    padding: clamp(0.75rem, 3vw, 1rem);
+    margin: clamp(1.5rem, 4vw, 2rem) auto 0;
   }
 
   .promo-video-box {
     width: 100%;
     height: auto;
-    aspect-ratio: 826 / 515;
+    aspect-ratio: 16 / 9;
     min-height: 180px;
+    background: transparent;
+    border-radius: 8px;
+  }
+
+  .promo-video {
+    transform: none; /* Remove any scaling */
   }
 
   .promo-text-box {
     width: 100%;
     text-align: center;
+    padding: clamp(0.75rem, 3vw, 1rem);
+    background: transparent;
+    border: none;
   }
 
   .promo-about-title {
-    font-size: 28px;
-    margin-bottom: 14px;
+    font-size: clamp(24px, 6vw, 28px);
+    margin-bottom: clamp(0.75rem, 2vw, 1rem);
+    position: static;
   }
 
   .promo-heading {
-    font-size: 20px;
-    line-height: 30px;
-    margin-bottom: 14px;
-    max-width: 400px; /* Limit width to force "TRAVELLERS" to second line */
-    margin-left: auto;
-    margin-right: auto;
+    font-size: clamp(18px, 4.5vw, 20px);
+    line-height: 1.3;
+    margin-bottom: clamp(0.75rem, 2vw, 1rem);
   }
 
   .promo-description {
-    font-size: 14px;
-    line-height: 20px; /* Tighter line height like second image */
-    max-width: 500px; /* Limit width for better text wrapping */
-    margin-left: auto;
-    margin-right: auto;
+    font-size: clamp(13px, 3vw, 14px);
+    line-height: 1.5;
+    max-width: 100%;
+    margin: 0;
+  }
+}
+
+/* ============= COMPREHENSIVE IPAD OVERRIDE - ALL SIZES ============= */
+@media only screen and (min-width: 768px) and (max-width: 1366px) and (pointer: coarse) {
+  .promo-section {
+    margin-top: -40px !important;
+  }
+}
+
+/* ============= ALTERNATIVE IPAD OVERRIDE - DEVICE DETECTION ============= */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 1) {
+  .promo-section {
+    margin-top: -40px !important;
+  }
+}
+
+/* ============= FINAL IPAD OVERRIDE - CLEAN AND SPECIFIC ============= */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .promo-section {
+    margin-top: -40px !important;
   }
 }

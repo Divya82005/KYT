@@ -103,14 +103,24 @@ body {
   display: inline;
 }
 
+.city-description {
+  font-size: 14px;
+  color: var(--text-gray);
+  line-height: 1.4;
+  margin-bottom: 8px;
+  text-align: left;
+  padding: 0;
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+}
+
 .read-more {
   color: var(--primary-purple);
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.85rem;
-  display: inline;
-  margin-left: 10px;
-  text-align: left;
+  font-size: 14px;
+  margin-left: 5px;
 }
 
 /* Load More */

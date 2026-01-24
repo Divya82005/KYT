@@ -1,3 +1,25 @@
+/* ============= MEXICO PAGE SPECIFIC STYLES ============= */
+.mexico-page-wrapper {
+  background-color: #EDEFFF;
+  min-height: 100vh;
+}
+
+/* Mexico page navbar styling */
+body.mexico-page .nav {
+  background-color: #EDEFFF !important;
+  width: 100vw !important;
+  margin: 0 !important;
+  padding-left: clamp(1rem, 4vw, 2.5rem) !important;
+  padding-right: clamp(1rem, 4vw, 2.5rem) !important;
+}
+
+/* Mexico page body styling */
+body.mexico-page {
+  background-color: #EDEFFF !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 /* ============= GLOBAL BASE ============= */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
@@ -40,15 +62,9 @@ html, body {
 @media (max-width: 1023px) and (min-width: 744px), 
        (max-width: 1200px) and (min-width: 600px) and (orientation: landscape),
        screen and (min-device-width: 744px) and (max-device-width: 1024px) {
-  html {
-    overflow: hidden !important;
-    height: 100vh !important;
-  }
-  
   body {
     overflow-x: hidden !important;
     overflow-y: auto !important;
-    height: 100vh !important;
     position: relative !important;
   }
   

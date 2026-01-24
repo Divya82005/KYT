@@ -7,13 +7,16 @@ const PromoVideoSection = () => {
       <div className="promo-video-box">
         <video
           className="promo-video"
-          src="/promo-video.webm"
           autoPlay
           muted
           loop
           playsInline
           preload="auto"
-        />
+        >
+          <source src="/promo-video.webm" type="video/webm" />
+          <source src="/promo-video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </div>
 
       {/* RIGHT TEXT CONTENT */}
@@ -21,10 +24,8 @@ const PromoVideoSection = () => {
         <h3 className="promo-about-title">About</h3>
 
         <h2 className="promo-heading">
-          <span className="main-title desktop-title">Real-time Safety Intelligence for</span>
-          <span className="main-title desktop-title">Travellers</span>
-          <span className="main-title mobile-title">REAL-TIME SAFETY</span>
-          <span className="main-title mobile-title">INTELLIGENCE FOR TRAVELLERS</span>
+          <span className="main-title">REAL-TIME SAFETY</span>
+          <span className="main-title">INTELLIGENCE FOR TRAVELLERS</span>
         </h2>
 
         <p className="promo-description">

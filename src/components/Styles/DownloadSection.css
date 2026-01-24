@@ -1,10 +1,11 @@
+
 /* ============= DOWNLOAD SECTION ============= */
 /* NOTE: Desktop layout matches reference image exactly - purple gradient, QR left, phone right */
 .download-section {
   width: calc(100vw - 120px) !important; /* Reduced width with 60px margin on each side */
   max-width: none !important; /* Remove max-width constraint with !important */
   height: 380px !important; /* Reduced from 420px to make the lower part smaller */
-  margin: 60px 60px 0 60px; /* Reduced top margin from 120px to 60px to decrease gap */
+  margin: 120px 60px 0 60px; /* Increased top margin from 80px to 120px to create more gap with promo video section */
   padding: 50px 80px 40px 80px; /* Reduced bottom padding from 70px to 40px */
 
   background: linear-gradient(99.15deg, #6165d7 2.14%, #5351ed 99.68%);
@@ -77,26 +78,25 @@
 
 /* QR BOX */
 .qr-box {
-  width: 140px;
-  /* Reduced from 158px */
-  height: 140px;
-  /* Reduced from 158px */
+  width: 200px;
+  /* Increased to match reference image */
+  height: 200px;
+  /* Increased to match reference image */
   background: white;
-  border-radius: 8px; /* Reduced from 20px to be more square like reference */
-  /* UPDATED: Less rounded corners to match reference */
+  border-radius: 12px; /* Slightly more rounded to match reference */
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  /* UPDATED: Add shadow */
+  padding: 10px; /* Small padding for minimal white space */
 }
 
 .footer-qr {
-  width: 115px;
-  /* Reduced from 128px */
-  height: 115px;
-  /* Reduced from 128px */
+  width: 180px;
+  /* Slightly smaller to show thin white border */
+  height: 180px;
+  /* Slightly smaller to show thin white border */
   object-fit: contain;
   display: block;
 }
@@ -168,7 +168,7 @@
     width: calc(100vw - 100px) !important; /* Consistent with main design */
     max-width: none !important;
     height: 380px !important; /* Match main section height */
-    margin: 60px 50px 0 50px; /* Match reduced top margin */
+    margin: 120px 50px 0 50px; /* Increased top margin from 80px to 120px to create more gap with promo video section */
     padding: 45px 65px 35px 65px; /* Consistent padding */
     margin-bottom: 40px; /* Match reduced bottom margin */
   }
@@ -213,7 +213,7 @@
     width: calc(100vw - 110px) !important; /* Reduced width with 55px margin on each side */
     max-width: none !important;
     height: 400px; /* Increased height */
-    margin: 120px 55px 0 55px; /* Moderate margins */
+    margin: 120px 55px 0 55px; /* Increased top margin from 80px to 120px to create more gap with promo video section */
     padding: 48px 70px 38px 70px; /* Reduced bottom padding from 68px to 38px */
   }
   
@@ -255,7 +255,7 @@
     width: calc(100vw - 120px) !important; /* Reduced width with 60px margin on each side */
     max-width: none !important;
     height: 420px; /* Increased height */
-    margin: 120px 60px 0 60px; /* Moderate margins */
+    margin: 120px 60px 0 60px; /* Increased top margin from 80px to 120px to create more gap with promo video section */
     padding: 50px 80px 40px 80px; /* Reduced bottom padding from 70px to 40px */
   }
   
@@ -297,7 +297,7 @@
   .download-section {
     width: 90%;
     max-width: 1428px;
-    margin: 200px auto 0;
+    margin: 120px auto 0;
     height: auto;
     min-height: 320px;
     padding: 50px 60px;
@@ -340,7 +340,7 @@
     height: 320px;
     /* Set fixed height instead of auto */
     padding: 50px 40px;
-    margin: 150px auto 0;
+    margin: 120px auto 0;
     margin-bottom: 100px;
     /* Reduced gap */
   }
@@ -514,7 +514,7 @@
   .download-section {
     width: 80%;
     padding: 40px 30px;
-    margin: 120px auto 0;
+    margin: 80px auto 0;
     margin-bottom: 80px;
     /* Reduced gap for mobile */
   }

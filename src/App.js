@@ -47,10 +47,30 @@ const ScrollToTop = () => {
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual';
     }
+
+    // Add/remove Mexico page class to body
+    if (location.pathname === '/mexico') {
+      document.body.classList.add('mexico-page');
+    } else {
+      document.body.classList.remove('mexico-page');
+    }
   }, [navigate, location.pathname]);
 
   return null;
 };
+
+// Component to conditionally render footer
+const ConditionalFooter = () => {
+  const location = useLocation();
+  
+  // Don't render footer on Mexico page
+  if (location.pathname === '/mexico') {
+    return null;
+  }
+  
+  return <FooterSection />;
+};
+
 // Component to track page views in Google Analytics
 const AnalyticsTracker = () => {
   const location = useLocation();
@@ -114,7 +134,7 @@ function App() {
 
         {/* MEXICO PAGE */}
         <Route path="/mexico" element={
-          <>
+          <div className="mexico-page-wrapper">
             <MexicoIntro />
             <MexicoSafe />
             <MexicoSP />
@@ -123,12 +143,12 @@ function App() {
             <MexicoFemaleTravel />
             <MexicoFAQ />
             <MexicoConclusion />
-          </>
+          </div>
         } />
       </Routes>
 
-      {/* Footer always visible */}
-      <FooterSection />
+      {/* Footer conditionally rendered (not on Mexico page) */}
+      <ConditionalFooter />
     </Router>
   );
 }

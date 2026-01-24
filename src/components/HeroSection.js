@@ -55,12 +55,11 @@ const HeroSection = () => {
   return (
     <section className="hero-wrapper">
       <div className="hero-left">
-        <p className="vision-text">OUR VISION IS TO-</p>
-
         <h1 className="hero-title">
-          EMPOWER EVERY <br />
-          <span className="hero-title">JOURNEY WITH SAFETY</span>
+          YOUR SAFETY, OUR PRIORITY
         </h1>
+
+        <p className="vision-text">Real time intelligence for peace of mind where ever you are</p>
 
         <div className="button-row">
           <button className="download-btns" onClick={handleDownloadClick}>
@@ -74,6 +73,8 @@ const HeroSection = () => {
               href="https://www.producthunt.com/posts/knowyourtrips?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-knowyourtrips"
               target="_blank"
               rel="noopener noreferrer"
+              style={{ display: 'none' }}
+              className="product-hunt-desktop-link"
             >
               <img
                 src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=956968&theme=dark&t=1745506618137"
@@ -90,7 +91,7 @@ const HeroSection = () => {
               rel="noopener noreferrer"
               className="product-hunt-mobile-btn"
             >
-              <span style={{ marginLeft: 'clamp(2rem, 6vw, 2.5rem)' }}>
+              <span style={{ marginLeft: '0.5rem' }}>
                 <div style={{ fontSize: 'clamp(0.5rem, 1.8vw, 0.65rem)', fontWeight: '400', lineHeight: '1' }}>
                   FIND US ON
                 </div>
