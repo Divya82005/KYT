@@ -1,5 +1,5 @@
 import { Route, BrowserRouter as Router, Routes, useNavigate, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import DownloadSection from "./components/DownloadSection";
 import HeroSection from "./components/HeroSection";
