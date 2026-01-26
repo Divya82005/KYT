@@ -15,11 +15,13 @@ body {
   padding: 40px 20px;
 }
 
-/* Hero Section */
+/* Hero Section - Manager's settings: Smart animate, Ease out, 800ms */
 .hero-section {
   text-align: center;
   margin-bottom: 60px;
   padding-top: 40px;
+  animation: smartFadeIn 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards !important;
+  animation-fill-mode: both !important;
 }
 
 .hero-section h1 {
@@ -64,12 +66,35 @@ body {
   color: #999;
 }
 
-/* Grid Layout */
+/* Grid Layout - Manager's settings: Smart animate, Ease out, 800ms */
 .city-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 30px;
   margin-bottom: 40px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  transition-delay: 400ms !important;
+}
+
+.city-grid.in-view {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Load More - Manager's settings: Smart animate, Ease out, 800ms */
+.load-more-container {
+  text-align: center;
+  margin: 40px 0 80px 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+.load-more-container.in-view {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
 
 .city-card {
@@ -123,12 +148,6 @@ body {
   margin-left: 5px;
 }
 
-/* Load More */
-.load-more-container {
-  text-align: center;
-  margin: 40px 0 80px 0;
-}
-
 .load-more-btn {
   padding: 10px 30px;
   border-radius: 10px;
@@ -136,66 +155,4 @@ body {
   background: white;
   cursor: pointer;
   font-weight: 500;
-}
-
-/* Footer Section */
-.footer {
-  background-color: var(--primary-purple);
-  color: white;
-  padding: 60px 40px;
-  border-radius: 0 0 10px 10px;
-  margin-top: 50px;
-}
-
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 30px;
-}
-
-.footer-left {
-  max-width: 500px;
-}
-
-.footer-left h4 {
-  margin-bottom: 10px;
-}
-
-.footer-links {
-  margin: 30px 0;
-}
-
-.footer-links a {
-  color: white;
-  text-decoration: none;
-  margin: 0 10px;
-}
-
-.footer-right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 20px;
-}
-
-.qr-box {
-  width: 100px;
-  height: 100px;
-  background: white;
-  color: black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-}
-
-.download-app-btn {
-  background: white;
-  color: var(--primary-purple);
-  border: none;
-  padding: 12px 25px;
-  border-radius: 10px;
-  font-weight: bold;
-  cursor: pointer;
 }

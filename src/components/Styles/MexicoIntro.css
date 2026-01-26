@@ -2,28 +2,42 @@
   background-color: #EDEFFF;
   padding: 0;
   margin: 0;
-  height: 280px;
+  min-height: clamp(280px, 35vh, 400px);
   width: 100vw;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding-top: 20px;
-  position: static;
-  transform: none;
-  overflow: hidden;
+  padding-top: clamp(20px, 2.5vh, 30px);
+  padding-bottom: clamp(20px, 2.5vh, 30px);
+  position: relative;
+  overflow: visible;
+}
+
+/* Smart Animate for all internal elements - animate immediately like hero section */
+.mexico-intro-container .mexico-intro-title,
+.mexico-intro-container .mexico-intro-button {
+  animation: smartFadeIn 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  animation-fill-mode: both !important;
+}
+
+/* Text section animates with slight delay like hero section */
+.mexico-intro-text-section p {
+  animation: smartFadeIn 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  animation-fill-mode: both !important;
+  animation-delay: 200ms !important;
 }
 
 .mexico-intro-content {
-  max-width: 1000px;
+  max-width: clamp(800px, 90vw, 1000px);
   width: 100%;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 5px;
+  gap: clamp(5px, 1vh, 10px);
   margin: 0;
-  padding: 30px 0 0 0;
+  padding: clamp(20px, 4vh, 30px) 0 0 0;
 }
 
 .mexico-intro-title {
@@ -38,35 +52,32 @@
   color: #333333;
   max-width: 900px;
   margin: 0 auto;
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  pointer-events: none;
-  position: static;
-  transform: none;
-  transition: none;
 }
 
 .mexico-intro-button {
   background-color: #5D5DFF;
   color: white;
   border: none;
-  padding: 16px 32px;
-  border-radius: 12px;
+  padding: clamp(12px, 1.5vw, 16px) clamp(16px, 2vw, 22px);
+  border-radius: clamp(12px, 1.5vw, 16px);
   font-family: 'Poppins', sans-serif;
-  font-size: clamp(12px, 1.4vw, 14px);
+  font-size: clamp(10px, 1.1vw, 13px);
   font-weight: 600;
   cursor: pointer;
-  margin: 45px 0 0 0;
-  position: static;
-  top: auto;
-  transform: none;
-  transition: none;
+  margin: clamp(45px, 6vh, 60px) 0 0 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(5px, 0.7vw, 8px);
+  width: fit-content;
+  transition: all 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .mexico-intro-button:hover {
   background-color: #4A4AE6;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(93, 93, 255, 0.3);
 }
 
 .mexico-intro-text-section {
@@ -75,6 +86,7 @@
   padding: 80px 0 40px 0;
   margin: 0;
   margin-top: 0;
+  overflow: visible;
 }
 
 .mexico-intro-text-content {
@@ -82,6 +94,7 @@
   margin: 0 auto;
   padding: 0 60px;
   text-align: left;
+  overflow: visible;
 }
 
 .mexico-intro-text-section p {
@@ -97,13 +110,15 @@
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+  overflow: visible;
+  height: auto;
 }
 
 /* Fixed layout for all screen sizes - no responsive design */
 
-/* Mobile responsive height for button visibility */
+/* Responsive design - adapts automatically to all screen sizes */
 @media (max-width: 768px) {
   .mexico-intro-container {
-    height: 350px !important;
+    height: clamp(320px, 45vh, 400px) !important;
   }
 }

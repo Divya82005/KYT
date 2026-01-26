@@ -2,6 +2,40 @@
   width: 100%;
 }
 
+/* Smart Animate for white section elements - Manager's settings: Smart animate, Ease out, 800ms */
+.mexico-female-travel-white-section .mexico-female-travel-title,
+.mexico-female-travel-white-section .mexico-female-travel-intro,
+.mexico-female-travel-white-section .mexico-female-travel-tips li {
+  animation: smartFadeIn 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  animation-fill-mode: both !important;
+  animation-play-state: paused !important;
+}
+
+.mexico-female-travel-container.in-view .mexico-female-travel-white-section .mexico-female-travel-title,
+.mexico-female-travel-container.in-view .mexico-female-travel-white-section .mexico-female-travel-intro,
+.mexico-female-travel-container.in-view .mexico-female-travel-white-section .mexico-female-travel-tips li {
+  animation-play-state: running !important;
+}
+
+/* Smart Animate for blue section elements - Manager's settings: Smart animate, Ease out, 800ms */
+.mexico-female-travel-blue-section .mexico-female-travel-blue-title,
+.mexico-female-travel-blue-section .mexico-female-travel-blue-intro,
+.mexico-female-travel-blue-section .mexico-female-travel-feature-card,
+.mexico-female-travel-blue-section .mexico-female-travel-feature-card h3,
+.mexico-female-travel-blue-section .mexico-female-travel-feature-card p {
+  animation: smartFadeIn 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  animation-fill-mode: both !important;
+  animation-play-state: paused !important;
+}
+
+.mexico-female-travel-blue-section.in-view .mexico-female-travel-blue-title,
+.mexico-female-travel-blue-section.in-view .mexico-female-travel-blue-intro,
+.mexico-female-travel-blue-section.in-view .mexico-female-travel-feature-card,
+.mexico-female-travel-blue-section.in-view .mexico-female-travel-feature-card h3,
+.mexico-female-travel-blue-section.in-view .mexico-female-travel-feature-card p {
+  animation-play-state: running !important;
+}
+
 /* White Section - Solo Female Travel */
 .mexico-female-travel-white-section {
   background-color: white;

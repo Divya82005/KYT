@@ -2,6 +2,25 @@
   width: 100%;
 }
 
+/* Smart Animate for all internal elements - Manager's settings: Smart animate, Ease out, 800ms */
+.mexico-conclusion-container .mexico-conclusion-title,
+.mexico-conclusion-container .mexico-conclusion-text p,
+.mexico-conclusion-container .mexico-conclusion-cta-title,
+.mexico-conclusion-container .mexico-conclusion-download-btn,
+.mexico-conclusion-container .phone-mockup img {
+  animation: smartFadeIn 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  animation-fill-mode: both !important;
+  animation-play-state: paused !important;
+}
+
+.mexico-conclusion-container.in-view .mexico-conclusion-title,
+.mexico-conclusion-container.in-view .mexico-conclusion-text p,
+.mexico-conclusion-container.in-view .mexico-conclusion-cta-title,
+.mexico-conclusion-container.in-view .mexico-conclusion-download-btn,
+.mexico-conclusion-container.in-view .phone-mockup img {
+  animation-play-state: running !important;
+}
+
 /* White Section - Conclusion Text */
 .mexico-conclusion-white-section {
   background-color: white;

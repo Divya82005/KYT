@@ -19,7 +19,7 @@ const MexicoSP = () => {
         </p>
         
         <div className="mexico-sp-grid">
-          <div className="mexico-sp-card">
+          <div className="mexico-sp-card mexico-sp-row-1">
             <div className="mexico-sp-card-header">
               <img src={MeridaImage} alt="Mérida" className="mexico-sp-icon-image" />
               <h3>Mérida, Yucatán</h3>
@@ -33,7 +33,7 @@ const MexicoSP = () => {
             </p>
           </div>
           
-          <div className="mexico-sp-card">
+          <div className="mexico-sp-card mexico-sp-row-1">
             <div className="mexico-sp-card-header">
               <img src={PuertoImage} alt="Puerto Vallarta" className="mexico-sp-icon-image" />
               <h3>Puerto Vallarta</h3>
@@ -46,7 +46,7 @@ const MexicoSP = () => {
             </p>
           </div>
           
-          <div className="mexico-sp-card">
+          <div className="mexico-sp-card mexico-sp-row-2">
             <div className="mexico-sp-card-header">
               <img src={SanMiguelImage} alt="San Miguel De Allende" className="mexico-sp-icon-image" />
               <h3>San Miguel De Allende</h3>
@@ -59,7 +59,7 @@ const MexicoSP = () => {
             </p>
           </div>
           
-          <div className="mexico-sp-card">
+          <div className="mexico-sp-card mexico-sp-row-2">
             <div className="mexico-sp-card-header">
               <img src={HuatulcoImage} alt="Huatulco" className="mexico-sp-icon-image" />
               <h3>Huatulco</h3>
@@ -72,7 +72,7 @@ const MexicoSP = () => {
             </p>
           </div>
           
-          <div className="mexico-sp-card mexico-sp-card-full">
+          <div className="mexico-sp-card mexico-sp-card-full mexico-sp-row-3">
             <div className="mexico-sp-card-header">
               <img src={PuertoImage} alt="Playa Del Carmen" className="mexico-sp-icon-image" />
               <h3>Playa Del Carmen</h3>

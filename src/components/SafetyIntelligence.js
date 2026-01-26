@@ -1,4 +1,5 @@
-import "./Styles/SafetyIntelligence.css";
+import React from 'react';
+import './Styles/SafetyIntelligence.css';
 
 const SafetyIntelligence = () => {
   return (

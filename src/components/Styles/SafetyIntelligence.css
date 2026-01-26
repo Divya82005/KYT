@@ -1,5 +1,24 @@
 /* ============= SAFETY INTELLIGENCE SECTION RESPONSIVE STYLES ============= */
 
+/* ============= FORCE TEXT ORIENTATION - MAXIMUM SPECIFICITY ============= */
+.safety-container .left-title .title-dynamic,
+.safety-container .left-title span.title-dynamic {
+  writing-mode: vertical-rl !important;
+  text-orientation: mixed !important;
+  transform: rotate(180deg) !important;
+  transition: none !important;
+  white-space: nowrap !important;
+}
+
+.safety-container .left-title .title-safety,
+.safety-container .left-title span.title-safety {
+  writing-mode: vertical-rl !important;
+  text-orientation: mixed !important;
+  transform: rotate(180deg) !important;
+  transition: none !important;
+  white-space: nowrap !important;
+}
+
 /* ============= MAIN SECTION CONTAINER ============= */
 .safety-container {
   width: 100%;
@@ -68,14 +87,14 @@
     font-size: 48px; /* Increased from 44px */
     font-weight: 700;
     color: #9ca3af;
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    transform: rotate(180deg);
+    writing-mode: vertical-rl !important;
+    text-orientation: mixed !important;
     white-space: nowrap;
     line-height: 1.4; /* Increased from 1.2 to 1.4 for consistency */
     height: auto;
     overflow: visible;
     padding: 10px 0; /* Add padding to ensure characters don't get cut off */
+    transform: rotate(180deg) !important;
   }
 }
 
@@ -96,14 +115,14 @@
     font-size: 62px; /* Increased from 58px */
     font-weight: 700; /* Increased from 600 to 700 for bolder appearance */
     color: #6366f1;
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    transform: rotate(180deg);
+    writing-mode: vertical-rl !important;
+    text-orientation: mixed !important;
     white-space: nowrap;
     line-height: 1.4; /* Increased from 1.2 to 1.4 to prevent character cutoff */
     height: auto;
     overflow: visible;
     padding: 10px 0; /* Add padding to ensure characters don't get cut off */
+    transform: rotate(180deg) !important;
   }
 }
 
@@ -299,10 +318,16 @@
   
   .title-dynamic {
     font-size: 44px;
+    writing-mode: vertical-lr !important;
+    text-orientation: mixed !important;
+    transform: none !important;
   }
   
   .title-safety {
     font-size: 58px;
+    writing-mode: vertical-lr !important;
+    text-orientation: mixed !important;
+    transform: none !important;
   }
   
   .right-content {
@@ -332,10 +357,16 @@
   
   .title-dynamic {
     font-size: 46px;
+    writing-mode: vertical-lr !important;
+    text-orientation: mixed !important;
+    transform: none !important;
   }
   
   .title-safety {
     font-size: 60px;
+    writing-mode: vertical-lr !important;
+    text-orientation: mixed !important;
+    transform: none !important;
   }
   
   .right-content {
@@ -365,10 +396,16 @@
   
   .title-dynamic {
     font-size: 48px;
+    writing-mode: vertical-lr !important;
+    text-orientation: mixed !important;
+    transform: none !important;
   }
   
   .title-safety {
     font-size: 62px;
+    writing-mode: vertical-lr !important;
+    text-orientation: mixed !important;
+    transform: none !important;
   }
   
   .right-content {
