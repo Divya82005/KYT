@@ -76,10 +76,6 @@ const CTASection = () => {
     return () => clearInterval(interval);
   }, [isPaused, index]);
 
-  const handleCardClick = () => {
-    // Remove click to pause functionality
-  };
-
   const handleMouseEnter = () => {
     setIsPaused(true); // Pause auto-slide when hovering
   };
