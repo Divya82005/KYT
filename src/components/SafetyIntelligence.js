@@ -6,8 +6,8 @@ const SafetyIntelligence = () => {
     <section className="safety-container">
       {/* LEFT VERTICAL TITLE */}
       <div className="left-title">
-        <span className="title-dynamic">Dynamic</span>
-        <span className="title-safety">Safety Intelligence</span>
+        <span className="title-dynamic bottom-to-top-text-jan27" style={{ writingMode: 'vertical-rl', textOrientation: 'mixed', transform: 'none', direction: 'ltr', display: 'block' }}>Dynamic</span>
+        <span className="title-safety bottom-to-top-text-jan27" style={{ writingMode: 'vertical-rl', textOrientation: 'mixed', transform: 'none', direction: 'ltr', display: 'block' }}>Safety Intelligence</span>
       </div>
 
       {/* RIGHT CONTENT BLOCK */}

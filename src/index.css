@@ -4,23 +4,7 @@
 /* Individual section animations are now handled in their respective CSS files */
 
 /* ============= SAFETY INTELLIGENCE TEXT ORIENTATION FIX ============= */
-.safety-container .left-title .title-dynamic,
-.safety-container .left-title span.title-dynamic {
-  writing-mode: horizontal-tb !important;
-  text-orientation: mixed !important;
-  transform: rotate(-90deg) !important;
-  transform-origin: center !important;
-  transition: none !important;
-}
-
-.safety-container .left-title .title-safety,
-.safety-container .left-title span.title-safety {
-  writing-mode: horizontal-tb !important;
-  text-orientation: mixed !important;
-  transform: rotate(-90deg) !important;
-  transform-origin: center !important;
-  transition: none !important;
-}
+/* Removed overrides - let component handle its own styling */
 
 /* ============= SMART ANIMATE SYSTEM ============= */
 /* Animation: Smart animate, Curve: Ease out, Duration: 800ms */
@@ -29,11 +13,16 @@
 /* Removed global * transition rule to prevent unwanted movement */
 
 /* Override global transition for safety intelligence text */
+/* REMOVE ALL ANIMATIONS FOR SAFETY INTELLIGENCE */
+.safety-container,
+.safety-container *,
+.safety-container .left-title,
 .safety-container .left-title .title-dynamic,
 .safety-container .left-title span.title-dynamic,
 .safety-container .left-title .title-safety,
 .safety-container .left-title span.title-safety {
   transition: none !important;
+  animation: none !important;
 }
 
 /* CRITICAL: Exclude ALL Mexico section elements from global animations */
@@ -75,6 +64,7 @@ section#home .hero-title,
 section#home p, section#home span, section#home .vision-text,
 section#home button, section#home .download-btns, 
 section#home .download-button, section#home a,
+section#home .product-btn, section#home .product-hunt-mobile-btn, section#home .product-hunt-desktop-link,
 section#home img, section#home video, section#home .qr-code,
 section#home .feature-box, section#home .city-card {
   animation: smartFadeIn 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;

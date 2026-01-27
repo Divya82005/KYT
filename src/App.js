@@ -33,9 +33,9 @@ const useScrollAnimation = () => {
       
       sections.forEach(section => {
         const rect = section.getBoundingClientRect();
-        const isFullyVisible = rect.bottom < window.innerHeight * 1.2 && rect.top < window.innerHeight * 0.3;
+        const isVisible = rect.top < window.innerHeight * 0.4; // Animate when section reaches 40% of viewport
         
-        if (isFullyVisible && !section.classList.contains('in-view')) {
+        if (isVisible && !section.classList.contains('in-view')) {
           section.classList.add('in-view');
         }
       });
@@ -157,7 +157,7 @@ const useScrollAnimation = () => {
               mexicoSpContainer.classList.add('in-view');
             }
 
-            // Handle ALL rows - REMOVE .in-view class immediately after adding it
+            // Handle ALL rows - ONLY check unlocked cards
             const allRows = [
               { selector: '.mexico-sp-row-1', class: 'mexico-sp-row-1' },
               { selector: '.mexico-sp-row-2', class: 'mexico-sp-row-2' }, 
@@ -165,50 +165,54 @@ const useScrollAnimation = () => {
             ];
 
             allRows.forEach(row => {
+              // CRITICAL: Only select cards that are NOT locked
               const rowElements = document.querySelectorAll(row.selector + ':not([data-locked])');
-              if (rowElements.length > 0) {
-                const firstCard = rowElements[0];
-                const cardRect = firstCard.getBoundingClientRect();
-                const isRowVisible = cardRect.top < window.innerHeight * 0.7;
+              
+              // If no unlocked cards, skip this row entirely
+              if (rowElements.length === 0) return;
+              
+              const firstCard = rowElements[0];
+              const cardRect = firstCard.getBoundingClientRect();
+              const isRowVisible = cardRect.top < window.innerHeight * 0.7;
 
-                if (isRowVisible) {
-                  rowElements.forEach((card, index) => {
-                    if (!card.hasAttribute('data-locked')) {
-                      // Add in-view to trigger animation
-                      card.classList.add('in-view');
+              if (isRowVisible) {
+                rowElements.forEach((card, index) => {
+                  // Double-check card is not locked
+                  if (!card.hasAttribute('data-locked')) {
+                    // Mark as locked IMMEDIATELY to prevent re-processing
+                    card.setAttribute('data-locked', 'true');
+                    
+                    // Add in-view to trigger animation
+                    card.classList.add('in-view');
+                    
+                    // Remove in-view class after animation starts
+                    setTimeout(() => {
+                      card.classList.remove('in-view');
+                    }, 50);
+                    
+                    // Apply final locked styles after animation completes
+                    setTimeout(() => {
+                      card.style.cssText = `
+                        opacity: 1 !important;
+                        transform: translateY(0px) !important;
+                        transition: none !important;
+                        animation: none !important;
+                      `;
                       
-                      // IMMEDIATELY remove in-view class after 50ms (animation has started)
-                      setTimeout(() => {
-                        card.classList.remove('in-view');
-                      }, 50);
-                      
-                      // Set data-locked attribute immediately
-                      card.setAttribute('data-locked', 'true');
-                      
-                      // Apply final locked styles after animation completes
-                      setTimeout(() => {
-                        card.style.cssText = `
+                      const children = card.querySelectorAll('*');
+                      children.forEach(child => {
+                        child.style.cssText += `
                           opacity: 1 !important;
                           transform: translateY(0px) !important;
                           transition: none !important;
                           animation: none !important;
                         `;
-                        
-                        const children = card.querySelectorAll('*');
-                        children.forEach(child => {
-                          child.style.cssText += `
-                            opacity: 1 !important;
-                            transform: translateY(0px) !important;
-                            transition: none !important;
-                            animation: none !important;
-                          `;
-                        });
-                        
-                        console.log(`MexicoSP ${row.class}-${index} LOCKED`);
-                      }, 850);
-                    }
-                  });
-                }
+                      });
+                      
+                      console.log(`MexicoSP ${row.class}-${index} LOCKED`);
+                    }, 850);
+                  }
+                });
               }
             });
           }
@@ -224,7 +228,7 @@ const useScrollAnimation = () => {
               mexicoTipsContainer.classList.add('in-view');
             }
 
-            // Handle ALL rows - REMOVE .in-view class immediately after adding it
+            // Handle ALL rows - ONLY check unlocked cards
             const tipsRows = [
               { selector: '.mexico-tips-row-1', class: 'mexico-tips-row-1' },
               { selector: '.mexico-tips-row-2', class: 'mexico-tips-row-2' }, 
@@ -233,50 +237,54 @@ const useScrollAnimation = () => {
             ];
 
             tipsRows.forEach(row => {
+              // CRITICAL: Only select cards that are NOT locked
               const rowElements = document.querySelectorAll(row.selector + ':not([data-locked])');
-              if (rowElements.length > 0) {
-                const firstCard = rowElements[0];
-                const cardRect = firstCard.getBoundingClientRect();
-                const isRowVisible = cardRect.top < window.innerHeight * 0.7;
+              
+              // If no unlocked cards, skip this row entirely
+              if (rowElements.length === 0) return;
+              
+              const firstCard = rowElements[0];
+              const cardRect = firstCard.getBoundingClientRect();
+              const isRowVisible = cardRect.top < window.innerHeight * 0.7;
 
-                if (isRowVisible) {
-                  rowElements.forEach((card, index) => {
-                    if (!card.hasAttribute('data-locked')) {
-                      // Add in-view to trigger animation
-                      card.classList.add('in-view');
+              if (isRowVisible) {
+                rowElements.forEach((card, index) => {
+                  // Double-check card is not locked
+                  if (!card.hasAttribute('data-locked')) {
+                    // Mark as locked IMMEDIATELY to prevent re-processing
+                    card.setAttribute('data-locked', 'true');
+                    
+                    // Add in-view to trigger animation
+                    card.classList.add('in-view');
+                    
+                    // Remove in-view class after animation starts
+                    setTimeout(() => {
+                      card.classList.remove('in-view');
+                    }, 50);
+                    
+                    // Apply final locked styles after animation completes
+                    setTimeout(() => {
+                      card.style.cssText = `
+                        opacity: 1 !important;
+                        transform: translateY(0px) !important;
+                        transition: none !important;
+                        animation: none !important;
+                      `;
                       
-                      // IMMEDIATELY remove in-view class after 50ms (animation has started)
-                      setTimeout(() => {
-                        card.classList.remove('in-view');
-                      }, 50);
-                      
-                      // Set data-locked attribute immediately
-                      card.setAttribute('data-locked', 'true');
-                      
-                      // Apply final locked styles after animation completes
-                      setTimeout(() => {
-                        card.style.cssText = `
+                      const children = card.querySelectorAll('*');
+                      children.forEach(child => {
+                        child.style.cssText += `
                           opacity: 1 !important;
                           transform: translateY(0px) !important;
                           transition: none !important;
                           animation: none !important;
                         `;
-                        
-                        const children = card.querySelectorAll('*');
-                        children.forEach(child => {
-                          child.style.cssText += `
-                            opacity: 1 !important;
-                            transform: translateY(0px) !important;
-                            transition: none !important;
-                            animation: none !important;
-                          `;
-                        });
-                        
-                        console.log(`MexicoTips ${row.class}-${index} LOCKED`);
-                      }, 850);
-                    }
-                  });
-                }
+                      });
+                      
+                      console.log(`MexicoTips ${row.class}-${index} LOCKED`);
+                    }, 850);
+                  }
+                });
               }
             });
           }
