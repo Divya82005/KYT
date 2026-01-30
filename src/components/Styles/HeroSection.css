@@ -305,25 +305,44 @@ html {
   text-align: left; /* Move text to left */
 }
 
-/* Hover effect only for devices that support hover (desktop/mouse) */
-@media (hover: hover) {
-  .feature-box:hover {
-    transform: translateY(-4px);
-    box-shadow: 
-      5.625rem 8.5rem 2.875rem 0 rgba(83, 81, 244, 0.02),
-      3.625rem 5.4375rem 2.625rem 0 rgba(83, 81, 244, 0.03),
-      2.0625rem 3.0625rem 2.1875rem 0 rgba(83, 81, 244, 0.08),
-      0.875rem 1.375rem 1.625rem 0 rgba(83, 81, 244, 0.12),
-      0.25rem 0.3125rem 0.875rem 0 rgba(83, 81, 244, 0.15);
-    transition: all 0.3s ease;
-  }
+/* Smooth hover effect for feature cards with floating animation */
+.feature-box {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  cursor: pointer !important;
+  will-change: transform, box-shadow !important;
+  position: relative !important;
+  z-index: 2 !important;
 }
 
-/* For touch devices, provide subtle feedback without movement */
-@media (hover: none) {
-  .feature-box:active {
-    /* Removed active effects to prevent any visual artifacts */
-  }
+/* Override any global animation disabling rules for feature boxes */
+.feature-box,
+.feature-box * {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+/* SIMPLE HOVER EFFECT - MOVE UP SLIGHTLY */
+.feature-box {
+  animation: none !important;
+  transition: transform 0.3s ease !important;
+  cursor: pointer !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.feature-box:hover {
+  transform: translateY(-8px) !important;
+}
+
+/* Ensure hover works on all selectors */
+section#home .feature-box {
+  animation: none !important;
+  transition: transform 0.3s ease !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+section#home .feature-box:hover {
+  transform: translateY(-8px) !important;
 }
 
 /* ============= RESPONSIVE ADJUSTMENTS ============= */

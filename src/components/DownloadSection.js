@@ -1,11 +1,20 @@
 import IphoneImg from "../assets/iPhone 13.png";
 import QRCode from "../assets/Vector.png";
 import "./Styles/DownloadSection.css";
+import ReactGA from "react-ga4";
 
 const DownloadSection = () => {
+  
   const handleDownloadClick = () => {
-    window.open("https://app-knowyourtrips.onelink.me/b0PV/rutxsmxs", "_blank");
-  };
+  ReactGA.event("download_btn"); // no need to send page manually
+
+  window.open(
+    "https://app-knowyourtrips.onelink.me/b0PV/rutxsmxs",
+    "_blank"
+  );
+};
+
+
 
   return (
     <section className="download-section">

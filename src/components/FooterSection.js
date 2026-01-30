@@ -1,11 +1,25 @@
 import React from "react";
 import "./Styles/FooterSection.css";
 import QRCode from "../assets/Vector.png";
+import ReactGA from "react-ga4";
 
 const FooterSection = () => {
-  const handleDownloadClick = () => {
-    window.open("https://app-knowyourtrips.onelink.me/b0PV/rutxsmxs", "_blank");
-  };
+const handleDownloadClick = () => {
+  // get the CURRENT URL at the time of click
+  const currentPath = window.location.pathname;
+
+  ReactGA.event("download_btn", {
+    page_path: currentPath // GA4 automatically records this
+  });
+
+  window.open(
+    "https://app-knowyourtrips.onelink.me/b0PV/rutxsmxs",
+    "_blank"
+  );
+};
+
+
+
 
   return (
     <div className="footer-wrapper">

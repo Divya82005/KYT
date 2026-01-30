@@ -2,6 +2,10 @@ import Ai_Safety from "../assets/Img1.png";
 import Security from "../assets/Img2.png";
 import Alert from "../assets/Img3.png";
 import "./Styles/HeroSection.css";
+import ReactGA from "react-ga4";
+
+
+
 
 const HeroSection = () => {
 
@@ -47,10 +51,24 @@ const HeroSection = () => {
     },
   ];
 
-  const handleDownloadClick = () => {
-    console.log("🔗 Download button clicked");
-    window.open("https://app-knowyourtrips.onelink.me/b0PV/rutxsmxs", "_blank");
-  };
+
+const handleDownloadClick = () => {
+  // get the CURRENT URL at the time of click
+  const currentPath = window.location.pathname;
+
+  ReactGA.event("download_btn", {
+    page_path: currentPath // GA4 automatically records this
+  });
+
+  window.open(
+    "https://app-knowyourtrips.onelink.me/b0PV/rutxsmxs",
+    "_blank"
+  );
+};
+
+
+
+
 
   return (
     <section className="hero-wrapper">
@@ -62,7 +80,8 @@ const HeroSection = () => {
         <p className="vision-text">Real time intelligence for peace of mind where ever you are</p>
 
         <div className="button-row">
-          <button className="download-btns" onClick={handleDownloadClick}>
+         <button className="download-btns" onClick={handleDownloadClick}>
+
             <span className="diamond-top-left">✦</span>
             <span className="diamond-bottom-right">✦</span>
             Download the App

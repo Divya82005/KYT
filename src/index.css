@@ -57,7 +57,7 @@
   backface-visibility: hidden !important;
 }
 
-/* Hero section animates immediately (only on home page) - Manager's settings: Smart animate, Ease out, 800ms */
+/* Hero section displays immediately without animations */
 section#home h1, section#home h2, section#home h3, 
 section#home h4, section#home h5, section#home h6, 
 section#home .hero-title,
@@ -66,9 +66,10 @@ section#home button, section#home .download-btns,
 section#home .download-button, section#home a,
 section#home .product-btn, section#home .product-hunt-mobile-btn, section#home .product-hunt-desktop-link,
 section#home img, section#home video, section#home .qr-code,
-section#home .feature-box, section#home .city-card {
-  animation: smartFadeIn 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-  animation-fill-mode: both !important;
+section#home .city-card {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
 }
 
 /* ALL other content starts hidden until scrolled to - Manager's settings: Smart animate, Ease out, 800ms */
@@ -98,9 +99,9 @@ section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.me
 .footer-wrapper p, .footer-wrapper span,
 .footer-wrapper button, .footer-wrapper .download-button,
 .footer-wrapper a, .footer-wrapper img, .footer-wrapper .qr-code {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  opacity: 1;
+  transform: none;
+  transition: none;
 }
 
 /* When ANY element comes into view, animate it - Manager's settings applied (EXCLUDING Mexico sections) */
@@ -133,15 +134,11 @@ section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexic
   transform: translateY(0) !important;
 }
 
-/* Smart animation keyframe */
+/* Smart animation keyframe - DISABLED */
 @keyframes smartFadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
+  0%, 100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
   }
 }
 
@@ -523,8 +520,8 @@ img {
 
 /* Add smooth transitions for image loading */
 img {
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+  transition: none;
 }
 
 img.loaded,

@@ -86,21 +86,6 @@ img {
   background-image: none;
 }
 
-/* Preload critical images using CSS */
-.hero-image::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 50%, #f5f5f5 100%);
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  z-index: -1;
-}
-
 /* Feature icons load instantly with simple placeholder */
 .feature-icon img {
   loading: eager;
@@ -144,32 +129,6 @@ video {
 .hero-right {
   position: relative;
   overflow: hidden;
-}
-
-.hero-right::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 50%, #f5f5f5 100%);
-  z-index: -1;
-  animation: pulse-loading 2s infinite;
-}
-
-@keyframes pulse-loading {
-  0%, 100% {
-    opacity: 0.6;
-  }
-  50% {
-    opacity: 0.8;
-  }
-}
-
-/* Hide background when image loads */
-.hero-right:has(.city-main-img[src]:not([src=""])) ::before {
-  display: none;
 }
 
 /* Responsive skeleton heights */

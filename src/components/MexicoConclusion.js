@@ -1,8 +1,25 @@
 import React from 'react';
+import ReactGA from 'react-ga4';
 import './Styles/MexicoConclusion.css';
 import iPhone17 from '../assets/iPhone 17.png';
 
 const MexicoConclusion = () => {
+  
+  const handleDownloadClick = () => {
+  // get the CURRENT URL at the time of click
+  const currentPath = window.location.pathname;
+
+  ReactGA.event("download_btn", {
+    page_path: currentPath // GA4 automatically records this
+  });
+
+  window.open(
+    "https://app-knowyourtrips.onelink.me/b0PV/rutxsmxs",
+    "_blank"
+  );
+};
+
+
   return (
     <div className="mexico-conclusion-container">
       {/* White Section - Conclusion Text */}
@@ -38,7 +55,7 @@ const MexicoConclusion = () => {
               Ready to Travel with<br />Confidence?
             </h2>
             
-            <button className="mexico-conclusion-download-btn">
+            <button className="mexico-conclusion-download-btn" onClick={handleDownloadClick}>
               Download the App
             </button>
           </div>

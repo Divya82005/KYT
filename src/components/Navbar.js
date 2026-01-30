@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import Company_Logo from "../assets/logo.svg";
 import "./Styles/Navbar.css";
+import ReactGA from "react-ga4";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -39,9 +40,17 @@ const Navbar = () => {
     return location.pathname === "/" && window.location.hash === "#" + sectionId;
   };
 
+  
   const handleDownloadClick = () => {
-    window.open("https://app-knowyourtrips.onelink.me/b0PV/rutxsmxs", "_blank");
-  };
+  ReactGA.event("download_btn"); // no need to send page manually
+
+  window.open(
+    "https://app-knowyourtrips.onelink.me/b0PV/rutxsmxs",
+    "_blank"
+  );
+};
+
+
 
   return (
     <>

@@ -34,8 +34,6 @@ img {
   background: transparent;
   position: relative;
   z-index: 1000;
-  transform: scale(0.95); /* Slight zoom out */
-  transform-origin: center;
 }
 
 /* ============= LOGO SECTION ============= */

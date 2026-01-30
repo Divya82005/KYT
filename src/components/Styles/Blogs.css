@@ -15,13 +15,14 @@ body {
   padding: 40px 20px;
 }
 
-/* Hero Section - Manager's settings: Smart animate, Ease out, 800ms */
+/* Hero Section - NO ANIMATIONS */
 .hero-section {
   text-align: center;
   margin-bottom: 60px;
   padding-top: 40px;
-  animation: smartFadeIn 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards !important;
-  animation-fill-mode: both !important;
+  animation: none;
+  opacity: 1;
+  transform: none;
 }
 
 .hero-section h1 {
@@ -66,16 +67,15 @@ body {
   color: #999;
 }
 
-/* Grid Layout - Manager's settings: Smart animate, Ease out, 800ms */
+/* Grid Layout - NO ANIMATIONS */
 .city-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 30px;
   margin-bottom: 40px;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-  transition-delay: 400ms !important;
+  opacity: 1;
+  transform: none;
+  transition: none;
 }
 
 .city-grid.in-view {
@@ -83,13 +83,13 @@ body {
   transform: translateY(0) !important;
 }
 
-/* Load More - Manager's settings: Smart animate, Ease out, 800ms */
+/* Load More - NO ANIMATIONS */
 .load-more-container {
   text-align: center;
   margin: 40px 0 80px 0;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  opacity: 1;
+  transform: none;
+  transition: none;
 }
 
 .load-more-container.in-view {
