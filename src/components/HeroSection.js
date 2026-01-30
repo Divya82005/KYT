@@ -3,6 +3,7 @@ import Security from "../assets/Img2.png";
 import Alert from "../assets/Img3.png";
 import "./Styles/HeroSection.css";
 import ReactGA from "react-ga4";
+import { useLocation } from "react-router-dom";
 
 
 
@@ -52,12 +53,18 @@ const HeroSection = () => {
   ];
 
 
+const location = useLocation();
+
 const handleDownloadClick = () => {
-  // get the CURRENT URL at the time of click
-  const currentPath = window.location.pathname;
+  const path = location.pathname;
+
+  let pageName = "Other";
+  if (path === "/") pageName = "Home";
+  if (path === "/blogs") pageName = "Blogs";
+  if (path === "/mexico") pageName = "Mexico";
 
   ReactGA.event("download_btn", {
-    page_path: currentPath // GA4 automatically records this
+    page_name: pageName
   });
 
   window.open(
@@ -65,6 +72,7 @@ const handleDownloadClick = () => {
     "_blank"
   );
 };
+
 
 
 

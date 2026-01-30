@@ -41,14 +41,26 @@ const Navbar = () => {
   };
 
   
-  const handleDownloadClick = () => {
-  ReactGA.event("download_btn"); // no need to send page manually
+
+
+const handleDownloadClick = () => {
+  const path = location.pathname;
+
+  let pageName = "Other";
+  if (path === "/") pageName = "Home";
+  if (path === "/blogs") pageName = "Blogs";
+  if (path === "/mexico") pageName = "Mexico";
+
+  ReactGA.event("download_btn", {
+    page_name: pageName
+  });
 
   window.open(
     "https://app-knowyourtrips.onelink.me/b0PV/rutxsmxs",
     "_blank"
   );
 };
+
 
 
 

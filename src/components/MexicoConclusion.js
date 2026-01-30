@@ -2,15 +2,22 @@ import React from 'react';
 import ReactGA from 'react-ga4';
 import './Styles/MexicoConclusion.css';
 import iPhone17 from '../assets/iPhone 17.png';
+import { useLocation } from "react-router-dom";
 
 const MexicoConclusion = () => {
   
-  const handleDownloadClick = () => {
-  // get the CURRENT URL at the time of click
-  const currentPath = window.location.pathname;
+  const location = useLocation();
+
+const handleDownloadClick = () => {
+  const path = location.pathname;
+
+  let pageName = "Other";
+  if (path === "/") pageName = "Home";
+  if (path === "/blogs") pageName = "Blogs";
+  if (path === "/mexico") pageName = "Mexico";
 
   ReactGA.event("download_btn", {
-    page_path: currentPath // GA4 automatically records this
+    page_name: pageName
   });
 
   window.open(
