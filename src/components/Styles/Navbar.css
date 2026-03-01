@@ -543,3 +543,8 @@ img {
     font-size: clamp(0.9375rem, 2.5vw, 1rem);
   }
 }
+
+/* ============= WORLD CUP PAGE NAVBAR STYLING ============= */
+body.worldcup-page .nav {
+  background: #F0EFF7 !important;
+}

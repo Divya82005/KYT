@@ -21,6 +21,7 @@ import MexicoTips from "./components/MexicoTips";
 import MexicoFemaleTravel from "./components/MexicoFemaleTravel";
 import MexicoFAQ from "./components/MexicoFAQ";
 import MexicoConclusion from "./components/MexicoConclusion";
+import WorldCupPage from "./components/2026worldcup/WorldCupPage";
 import ReactGA from "react-ga4";
 
 // Scroll Animation Hook - DISABLED - No animations
@@ -70,8 +71,8 @@ const ScrollToTop = () => {
 const ConditionalFooter = () => {
   const location = useLocation();
   
-  // Don't render footer on Mexico page
-  if (location.pathname === '/mexico') {
+  // Don't render footer on Mexico page or World Cup page
+  if (location.pathname === '/mexico' || location.pathname === '/worldcup') {
     return null;
   }
   
@@ -155,6 +156,9 @@ function App() {
             <MexicoConclusion />
           </div>
         } />
+
+        {/* WORLD CUP PAGE */}
+        <Route path="/worldcup" element={<WorldCupPage />} />
       </Routes>
 
       {/* Footer conditionally rendered (not on Mexico page) */}

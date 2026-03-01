@@ -56,9 +56,9 @@ const handleDownloadClick = () => {
   });
 
   window.open(
-    "https://app-knowyourtrips.onelink.me/b0PV/rutxsmxs",
-    "_blank"
-  );
+  "https://app-knowyourtrips.onelink.me/b0PV/rutxsmxs?pid=website&c=web_organic&af_channel=web",
+  "_blank"
+);
 };
 
 
@@ -72,6 +72,9 @@ const handleDownloadClick = () => {
             src={Company_Logo}
             alt="Company Logo"
             className="company_logo"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
           />
           <a
             href="/"
@@ -87,7 +90,7 @@ const handleDownloadClick = () => {
             }}
           >
             <span className="logo-text-mobile">Know Your <span className="highlight">Trips</span></span>
-            <span className="logo-text-desktop">KnowYour <span className="highlight">Trips</span></span>
+            <span className="logo-text-desktop">Know Your <span className="highlight">Trips</span></span>
           </a>
         </div>
 

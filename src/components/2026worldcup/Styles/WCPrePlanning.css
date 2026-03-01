@@ -1,0 +1,79 @@
+/* ============= WC PRE-PLANNING CONTAINER ============= */
+.wc-preplanning-container {
+  width: 100%;
+  background-color: white;
+  padding: clamp(10px, 2vw, 20px) clamp(20px, 4vw, 60px) clamp(10px, 2vw, 20px) clamp(20px, 4vw, 60px);
+}
+
+.wc-preplanning-content {
+  max-width: clamp(800px, 90vw, 900px);
+  margin: 0 auto;
+}
+
+/* ============= TITLE ============= */
+.wc-preplanning-title {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(22px, 3.5vw, 30px);
+  font-weight: bold;
+  color: #1a1a1a;
+  margin: 0 0 clamp(12px, 2vw, 16px) 0;
+  line-height: 1.2;
+}
+
+.wc-preplanning-divider {
+  width: 100%;
+  height: clamp(3px, 0.5vw, 4px);
+  background-color: #5D5DFF;
+  margin-bottom: clamp(15px, 2.5vw, 20px);
+}
+
+/* ============= INTRO TEXT ============= */
+.wc-preplanning-intro {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(14.5px, 1.7vw, 16.5px);
+  font-weight: 400;
+  color: #4A4A4A;
+  line-height: 1.9;
+  margin: 0 0 clamp(30px, 5vw, 40px) 0;
+  max-width: 100%;
+}
+
+/* ============= CARDS ============= */
+.wc-preplanning-card {
+  background: linear-gradient(to right, #F7F6FB 0%, #EDEAF7 100%);
+  border-left: clamp(4px, 0.55vw, 5px) solid #5D5DFF;
+  padding: clamp(24px, 3.5vw, 27px) clamp(22px, 3.2vw, 27px) clamp(32px, 4.5vw, 35px) clamp(22px, 3.2vw, 27px);
+  margin-bottom: clamp(26px, 3.8vw, 29px);
+  border-radius: clamp(9px, 1.1vw, 11px);
+}
+
+.wc-preplanning-card-title {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(17px, 2.2vw, 20px);
+  font-weight: 700;
+  color: #5D5DFF !important;
+  margin: 0 0 clamp(12px, 2vw, 15px) 0;
+  line-height: 1.3;
+}
+
+.wc-preplanning-card-text {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(14.5px, 1.7vw, 16.5px);
+  font-weight: 400;
+  color: #4A4A4A;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ============= RESPONSIVE ADJUSTMENTS ============= */
+
+/* Mobile */
+@media (max-width: 480px) {
+  .wc-preplanning-container {
+    padding: clamp(30px, 8vw, 40px) clamp(15px, 5vw, 20px);
+  }
+  
+  .wc-preplanning-card {
+    border-left-width: clamp(3px, 0.5vw, 4px);
+  }
+}

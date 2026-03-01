@@ -1,0 +1,148 @@
+/* ============= WC GLANCE CONTAINER ============= */
+.wc-glance-container {
+  width: 100%;
+  background-color: white;
+  padding: clamp(20px, 4vw, 40px) clamp(20px, 4vw, 60px) clamp(10px, 2vw, 20px) clamp(20px, 4vw, 60px);
+}
+
+.wc-glance-content {
+  max-width: clamp(800px, 90vw, 900px);
+  margin: 0 auto;
+}
+
+/* ============= TITLE ============= */
+.wc-glance-title {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(22px, 3.5vw, 30px);
+  font-weight: bold;
+  color: #1a1a1a;
+  margin: 0 0 clamp(12px, 2vw, 16px) 0;
+  line-height: 1.2;
+}
+
+.wc-glance-divider {
+  width: 100%;
+  height: clamp(3px, 0.5vw, 4px);
+  background-color: #5D5DFF;
+  margin-bottom: clamp(25px, 4vw, 35px);
+}
+
+/* ============= INTRO TEXT ============= */
+.wc-glance-intro {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(14.5px, 1.7vw, 16.5px);
+  font-weight: 400;
+  color: #4A4A4A;
+  line-height: 1.9;
+  margin: 0 0 clamp(30px, 5vw, 40px) 0;
+}
+
+.wc-glance-intro strong {
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+/* ============= TABLE ============= */
+.wc-glance-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: clamp(30px, 5vw, 40px);
+  background-color: white;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.wc-glance-table thead {
+  background-color: #5D5DFF;
+}
+
+.wc-glance-table thead tr th {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(14.5px, 1.7vw, 16.5px);
+  font-weight: 600;
+  color: white;
+  text-align: left;
+  padding: clamp(15px, 3vw, 20px) clamp(15px, 3vw, 20px);
+}
+
+.wc-glance-table tbody tr {
+  border-bottom: clamp(1px, 0.15vw, 1px) solid #E8E8E8;
+  background-color: white;
+}
+
+.wc-glance-table tbody tr:last-child {
+  border-bottom: clamp(1px, 0.15vw, 1px) solid #E8E8E8;
+}
+
+.wc-glance-table tbody tr td {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(14.5px, 1.7vw, 16.5px);
+  font-weight: 400;
+  color: #4A4A4A;
+  padding: clamp(15px, 3vw, 20px) clamp(15px, 3vw, 20px);
+  vertical-align: top;
+  line-height: 1.9;
+}
+
+.country-cell {
+  font-weight: 600 !important;
+  color: #000000 !important;
+  vertical-align: middle;
+}
+
+.cities-count-cell {
+  text-align: left;
+  font-weight: 400;
+  color: #4A4A4A;
+  vertical-align: middle;
+  padding-top: clamp(18px, 3.2vw, 22px) !important;
+  padding-bottom: clamp(12px, 2.8vw, 18px) !important;
+}
+
+.host-cities-cell {
+  line-height: 1.9;
+  color: #4A4A4A;
+}
+
+/* ============= FOOTER TEXT ============= */
+.wc-glance-footer {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(14.5px, 1.7vw, 16.5px);
+  font-weight: 400;
+  color: #4A4A4A;
+  line-height: 1.9;
+  margin: 0;
+}
+
+/* ============= RESPONSIVE ADJUSTMENTS ============= */
+
+/* Tablet */
+@media (max-width: 768px) {
+  .wc-glance-table {
+    font-size: clamp(12px, 2.5vw, 14px);
+  }
+
+  .wc-glance-table thead tr th,
+  .wc-glance-table tbody tr td {
+    padding: clamp(12px, 3vw, 15px) clamp(10px, 2vw, 12px);
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .wc-glance-container {
+    padding: clamp(30px, 8vw, 40px) clamp(15px, 5vw, 20px);
+  }
+
+  .wc-glance-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .wc-glance-table thead tr th,
+  .wc-glance-table tbody tr td {
+    padding: clamp(10px, 3vw, 12px) clamp(8px, 2vw, 10px);
+    font-size: clamp(11px, 2.5vw, 13px);
+  }
+}

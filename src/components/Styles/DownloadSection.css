@@ -2,23 +2,22 @@
 /* ============= DOWNLOAD SECTION ============= */
 /* NOTE: Desktop layout matches reference image exactly - purple gradient, QR left, phone right */
 .download-section {
-  width: calc(100vw - 120px) !important; /* Reduced width with 60px margin on each side */
-  max-width: none !important; /* Remove max-width constraint with !important */
-  height: 380px !important; /* Reduced from 420px to make the lower part smaller */
-  margin: 120px 60px 0 60px; /* Increased top margin from 80px to 120px to create more gap with promo video section */
-  padding: 50px 80px 40px 80px; /* Reduced bottom padding from 70px to 40px */
+  width: calc(100vw - clamp(80px, 10vw, 120px)) !important;
+  max-width: 1400px !important;
+  height: clamp(320px, 40vh, 380px) !important;
+  margin: clamp(10px, 1.5vw, 20px) auto 0 auto;
+  padding: clamp(40px, 5vw, 50px) clamp(60px, 8vw, 80px) clamp(30px, 4vw, 40px) clamp(60px, 8vw, 80px);
 
   background: linear-gradient(99.15deg, #6165d7 2.14%, #5351ed 99.68%);
-  border-radius: 32px; /* Increased from 20px to match reference image */
+  border-radius: clamp(24px, 3vw, 32px);
 
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Changed to center to match reference positioning */
+  align-items: center;
   position: relative;
-  overflow: visible; /* Changed back to visible so phone can extend outside */
-  margin-bottom: 40px; /* Reduced from 80px to decrease gap with Safety Intelligence section */
+  overflow: visible;
+  margin-bottom: 0;
   box-sizing: border-box;
-  /* Removed transform: scale(0.95) that was making it smaller */
   transform-origin: center;
 }
 
@@ -27,9 +26,9 @@
   flex: 1;
   position: relative;
   z-index: 2;
-  max-width: 60%; /* Reduced to give phone more space */
-  margin-left: 30px; /* Reduced margin for better balance */
-  margin-top: 0; /* Removed top margin to move content to the top */
+  max-width: 60%;
+  margin-left: clamp(20px, 3vw, 30px);
+  margin-top: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -40,12 +39,12 @@
   font-family: Poppins, sans-serif;
   font-weight: 600;
   font-style: normal;
-  font-size: 18px; /* Further reduced from 20px to prevent overlap */
-  line-height: 1.6; /* Increased from 1.5 to 1.6 for more spacing */
+  font-size: clamp(16px, 1.8vw, 18px);
+  line-height: clamp(1.5, 1.6vw, 1.6);
   letter-spacing: 0;
   color: white;
   margin: 0;
-  margin-bottom: 30px; /* Increased gap before QR section */
+  margin-bottom: clamp(25px, 3vw, 30px);
   max-width: 100%;
 }
 
@@ -54,63 +53,52 @@
   font-family: Poppins, sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 14px; /* Smaller subtext */
+  font-size: clamp(13px, 1.5vw, 14px);
   line-height: 130%;
   letter-spacing: 0;
-  color: rgba(255, 255, 255, 0.7); /* More transparent */
+  color: rgba(255, 255, 255, 0.7);
   margin: 0;
-  margin-bottom: 25px; /* Reduced gap before QR section */
-  max-width: 400px;
-  display: none !important; /* Hide subtext in desktop version */
+  margin-bottom: clamp(20px, 2.5vw, 25px);
+  max-width: clamp(350px, 40vw, 400px);
+  display: none !important;
 }
 
 /* QR AND BUTTON */
 .qr-and-button {
   display: flex;
   flex-direction: row;
-  /* UPDATED: Side by side layout like reference */
-  gap: 30px;
-  /* UPDATED: Space between QR and button */
+  gap: clamp(25px, 3vw, 30px);
   align-items: center;
-  /* UPDATED: Center align items */
-  margin-left: 0; /* Reset to 0 since parent now has margin */
+  margin-left: 0;
 }
 
 /* QR BOX */
 .qr-box {
-  width: 200px;
-  /* Increased to match reference image */
-  height: 200px;
-  /* Increased to match reference image */
+  width: clamp(180px, 20vw, 200px);
+  height: clamp(180px, 20vw, 200px);
   background: white;
-  border-radius: 12px; /* Slightly more rounded to match reference */
+  border-radius: clamp(10px, 1.2vw, 12px);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  padding: 10px; /* Small padding for minimal white space */
+  box-shadow: 0 clamp(6px, 0.8vw, 8px) clamp(20px, 2.5vw, 24px) rgba(0, 0, 0, 0.15);
+  padding: clamp(8px, 1vw, 10px);
 }
 
 .footer-qr {
-  width: 180px;
-  /* Slightly smaller to show thin white border */
-  height: 180px;
-  /* Slightly smaller to show thin white border */
+  width: clamp(160px, 18vw, 180px);
+  height: clamp(160px, 18vw, 180px);
   object-fit: contain;
   display: block;
 }
 
 /* DOWNLOAD BUTTON */
 .footer-btn {
-  width: 220px !important; /* Further reduced width to make it narrower on left and right */
-  /* Reduced from 220px */
-  height: 60px !important; /* Reduced height for better proportions */
-  /* Reduced from 65px */
-  border-radius: 20px !important; /* Moderate rounding to match reference - rounded corners but not pill-shaped */
-  /* UPDATED: More rounded for pill shape */
+  width: clamp(200px, 22vw, 220px) !important;
+  height: clamp(55px, 6vw, 60px) !important;
+  border-radius: clamp(18px, 2vw, 20px) !important;
   border: none;
-  /* UPDATED: Remove border */
   background: white;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -119,15 +107,14 @@
   justify-content: center;
   padding: 0;
   flex-shrink: 0;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  /* UPDATED: Add shadow */
+  box-shadow: 0 clamp(3px, 0.5vw, 4px) clamp(14px, 1.8vw, 16px) rgba(0, 0, 0, 0.1);
 }
 
 .btn-text {
   font-family: Poppins, sans-serif;
   font-weight: 700;
   font-style: normal;
-  font-size: 18px;
+  font-size: clamp(16px, 1.8vw, 18px);
   line-height: 100%;
   letter-spacing: 0;
   color: #5351ed;
@@ -135,29 +122,27 @@
 
 .footer-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  /* UPDATED: Enhanced hover shadow */
+  box-shadow: 0 clamp(5px, 0.7vw, 6px) clamp(18px, 2.2vw, 20px) rgba(0, 0, 0, 0.15);
 }
 
 /* RIGHT PHONE */
 .right-phone {
   position: absolute;
-  right: 50px; /* Position from right edge of blue box */
-  top: -80px; /* Negative top to make phone extend above blue box */
-  width: 300px; /* Reduced size for better proportion */
-  height: 500px; /* Adjusted height */
+  right: clamp(40px, 5vw, 50px);
+  top: clamp(-70px, -8vw, -80px);
+  width: clamp(280px, 30vw, 300px);
+  height: clamp(480px, 50vh, 500px);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10; /* Ensure it's above everything */
+  z-index: 10;
 }
 
 .iphone-img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.2));
-  /* UPDATED: Add phone shadow */
+  filter: drop-shadow(0 clamp(18px, 2vw, 20px) clamp(36px, 4vw, 40px) rgba(0, 0, 0, 0.2));
 }
 
 /* ============= RESPONSIVE DESIGN ============= */
@@ -391,7 +376,7 @@
     max-width: none;
     height: 120px !important; /* Increased height to match reference proportions */
     padding: 20px 35px; /* Increased padding for better spacing */
-    margin: -120px 10px 0 10px; /* Increased negative top margin from -80px to -120px to reduce gap even more */
+    margin: clamp(40px, 5vw, 60px) 10px 0 10px; /* Changed from negative to positive margin */
     margin-bottom: 80px;
     flex-direction: row; /* Side by side layout like reference */
     justify-content: space-between;
@@ -425,7 +410,7 @@
     color: white !important;
     font-weight: 600 !important; /* Semi-bold weight like reference */
     font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important; /* Match reference font */
-    white-space: nowrap !important; /* Force single line with !important */
+    white-space: normal !important; /* Allow text to wrap to show full content */
     overflow: visible !important; /* Ensure text is visible */
     text-overflow: clip !important; /* Don't add ellipsis */
     display: block !important; /* Ensure it displays */
@@ -608,7 +593,7 @@
     max-width: 100% !important;
     height: 250px !important;
     min-height: 250px !important;
-    padding: 40px 20px 30px 20px !important;
+    padding: 40px 10px 30px 10px !important; /* Reduced horizontal padding from 20px to 10px */
     margin: 180px 0 0 0 !important; /* Removed side margins since we're using 100% width */
     margin-bottom: 40px !important;
     flex-direction: column !important;
@@ -637,7 +622,7 @@
   }
 
   .left-contents h2 {
-    font-size: clamp(13px, 3.2vw, 16px) !important; /* Increased font size for better visibility */
+    font-size: clamp(11px, 2.8vw, 14px) !important; /* Reduced font size to fit in single line */
     line-height: 1.4 !important;
     margin-bottom: 15px !important; /* Reduced margin for closer spacing with subtext */
     margin-top: 0 !important;
@@ -739,5 +724,43 @@
     clip-path: polygon(30% 2%, 84% 7%, 83.5% 99%, 19% 97%) !important; /* Fine-tuned to hide blue - 84% top, 83.5% bottom */
     image-rendering: -webkit-optimize-contrast !important; /* Improve image sharpness */
     image-rendering: crisp-edges !important; /* Better edge rendering */
+  }
+}
+
+
+/* ============= SCROLL ANIMATIONS ============= */
+#blogs {
+  opacity: 0;
+  transform: translateY(100vh);
+  animation: slideUpFromBottom 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation-delay: 300ms;
+}
+
+@keyframes slideUpFromBottom {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Content fade in */
+#blogs .download-section > * {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: contentFadeIn 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+#blogs .download-section > *:nth-child(1) {
+  animation-delay: 500ms;
+}
+
+#blogs .download-section > *:nth-child(2) {
+  animation-delay: 600ms;
+}
+
+@keyframes contentFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

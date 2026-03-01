@@ -1,48 +1,76 @@
 /* ============= SAFETY INTELLIGENCE SECTION RESPONSIVE STYLES ============= */
 
 /* ============= FORCE TEXT ORIENTATION - MAXIMUM SPECIFICITY ============= */
-.safety-container .left-title .title-dynamic,
-.safety-container .left-title span.title-dynamic {
-  writing-mode: vertical-rl !important;
-  text-orientation: mixed !important;
-  transition: none !important;
-  white-space: nowrap !important;
+/* Desktop only - vertical text */
+@media (min-width: 1024px) {
+  .safety-container .left-title .title-dynamic,
+  .safety-container .left-title span.title-dynamic {
+    writing-mode: vertical-rl !important;
+    text-orientation: mixed !important;
+    transition: none !important;
+    white-space: nowrap !important;
+  }
+
+  .safety-container .left-title .title-safety,
+  .safety-container .left-title span.title-safety {
+    writing-mode: vertical-rl !important;
+    text-orientation: mixed !important;
+    transition: none !important;
+    white-space: nowrap !important;
+  }
 }
 
-.safety-container .left-title .title-safety,
-.safety-container .left-title span.title-safety {
-  writing-mode: vertical-rl !important;
-  text-orientation: mixed !important;
-  transition: none !important;
-  white-space: nowrap !important;
+/* Mobile - horizontal text */
+@media (max-width: 1023px) {
+  .safety-container .left-title .title-dynamic,
+  .safety-container .left-title span.title-dynamic {
+    writing-mode: horizontal-tb !important;
+    text-orientation: mixed !important;
+    transition: none !important;
+    white-space: normal !important;
+  }
+
+  .safety-container .left-title .title-safety,
+  .safety-container .left-title span.title-safety {
+    writing-mode: horizontal-tb !important;
+    text-orientation: mixed !important;
+    transition: none !important;
+    white-space: normal !important;
+  }
 }
 
-/* BOTTOM TO TOP TEXT - JAN 27 */
-.bottom-to-top-text-jan27 {
-  writing-mode: vertical-lr !important;
-  text-orientation: mixed !important;
-  transform: rotate(180deg) !important;
-  direction: ltr !important;
-  display: block !important;
-  animation: none !important;
-  transition: none !important;
+/* BOTTOM TO TOP TEXT - JAN 27 - Desktop only */
+@media (min-width: 1024px) {
+  .bottom-to-top-text-jan27 {
+    writing-mode: vertical-lr !important;
+    text-orientation: mixed !important;
+    transform: rotate(180deg) !important;
+    direction: ltr !important;
+    display: block !important;
+    animation: none !important;
+    transition: none !important;
+  }
 }
 
-/* FORCE RIGHT DIRECTION - HIGHEST PRIORITY */
-.force-right-direction-2024 {
-  writing-mode: vertical-rl !important;
-  text-orientation: mixed !important;
-  transform: rotate(180deg) !important;
-  direction: ltr !important;
+/* FORCE RIGHT DIRECTION - HIGHEST PRIORITY - Desktop only */
+@media (min-width: 1024px) {
+  .force-right-direction-2024 {
+    writing-mode: vertical-rl !important;
+    text-orientation: mixed !important;
+    transform: rotate(180deg) !important;
+    direction: ltr !important;
+  }
 }
 
-/* NUCLEAR OPTION - MAXIMUM SPECIFICITY */
-.safety-container .left-title .title-dynamic.force-right-direction-2024,
-.safety-container .left-title .title-safety.force-right-direction-2024 {
-  writing-mode: vertical-rl !important;
-  text-orientation: mixed !important;
-  transform: rotate(180deg) !important;
-  direction: ltr !important;
+/* NUCLEAR OPTION - MAXIMUM SPECIFICITY - Desktop only */
+@media (min-width: 1024px) {
+  .safety-container .left-title .title-dynamic.force-right-direction-2024,
+  .safety-container .left-title .title-safety.force-right-direction-2024 {
+    writing-mode: vertical-rl !important;
+    text-orientation: mixed !important;
+    transform: rotate(180deg) !important;
+    direction: ltr !important;
+  }
 }
 
 /* ============= MAIN SECTION CONTAINER ============= */
@@ -51,7 +79,7 @@
   max-width: 100vw; /* Use full viewport width */
   height: auto;
   min-height: clamp(25rem, 40vw, 35rem);
-  margin: -80px auto 0; /* Increased negative top margin from -40px to -80px */
+  margin: -150px auto 0; /* Increased negative top margin to reduce gap with download section */
   position: relative;
   border-radius: clamp(0.375rem, 1vw, 0.375rem);
   padding: clamp(1.5rem, 3vw, 2rem);
@@ -333,7 +361,7 @@
 @media (min-width: 1024px) and (max-width: 1366px) {
   .safety-container {
     transform: scale(0.65);
-    margin: -60px auto 0;
+    margin: -150px auto 0;
   }
   
   .left-title {
@@ -370,7 +398,7 @@
 @media (min-width: 1367px) and (max-width: 1600px) {
   .safety-container {
     transform: scale(0.7);
-    margin: -70px auto 0;
+    margin: -160px auto 0;
   }
   
   .left-title {
@@ -407,7 +435,7 @@
 @media (min-width: 1601px) {
   .safety-container {
     transform: scale(0.73);
-    margin: -80px auto 0;
+    margin: -170px auto 0;
   }
   
   .left-title {
@@ -701,5 +729,43 @@
       position: relative !important;
       z-index: 1 !important;
     }
+  }
+}
+
+
+/* ============= SCROLL ANIMATIONS ============= */
+#safety {
+  opacity: 0;
+  transform: translateY(100vh);
+  animation: slideUpFromBottom 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation-delay: 400ms;
+}
+
+@keyframes slideUpFromBottom {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Content fade in */
+#safety .safety-intelligence-section > * {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: contentFadeIn 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+#safety .safety-intelligence-section > *:nth-child(1) {
+  animation-delay: 600ms;
+}
+
+#safety .safety-intelligence-section > *:nth-child(2) {
+  animation-delay: 700ms;
+}
+
+@keyframes contentFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

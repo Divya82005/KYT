@@ -21,9 +21,9 @@ const handleDownloadClick = () => {
   });
 
   window.open(
-    "https://app-knowyourtrips.onelink.me/b0PV/rutxsmxs",
-    "_blank"
-  );
+  "https://app-knowyourtrips.onelink.me/b0PV/rutxsmxs?pid=website&c=web_organic&af_channel=web",
+  "_blank"
+);
 };
 
 

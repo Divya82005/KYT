@@ -1,0 +1,144 @@
+/* ============= WC HEALTH AND WELLNESS CONTAINER ============= */
+.wc-health-container {
+  width: 100%;
+  background-color: white;
+  padding: clamp(10px, 2vw, 20px) clamp(20px, 4vw, 60px) clamp(40px, 8vw, 80px) clamp(20px, 4vw, 60px);
+}
+
+.wc-health-content {
+  max-width: clamp(850px, 92vw, 950px);
+  margin: 0 auto;
+}
+
+/* ============= TITLE ============= */
+.wc-health-title {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(22px, 3.5vw, 30px);
+  font-weight: bold;
+  color: #1a1a1a;
+  margin: 0 0 clamp(12px, 2vw, 16px) 0;
+  line-height: 1.2;
+}
+
+.wc-health-divider {
+  width: 100%;
+  height: clamp(3.5px, 0.5vw, 4.5px);
+  background-color: #5D5DFF;
+  margin-bottom: clamp(15px, 2.5vw, 20px);
+}
+
+/* ============= INTRO TEXT ============= */
+.wc-health-intro {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(14.5px, 1.7vw, 16.5px);
+  font-weight: 400;
+  color: #4A4A4A;
+  line-height: 1.9;
+  margin: 0 0 clamp(35px, 6vw, 50px) 0;
+}
+
+/* ============= APP SECTION ============= */
+.wc-health-app-section {
+  background: linear-gradient(99.15deg, #6165D7 2.14%, #5351ED 99.68%);
+  padding: clamp(35px, 6vw, 50px) clamp(30px, 5vw, 45px);
+  border-radius: clamp(12px, 2vw, 16px);
+}
+
+.wc-health-app-title {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(20px, 3.2vw, 28px);
+  font-weight: bold;
+  color: white;
+  margin: 0 0 clamp(12px, 2vw, 16px) 0;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.wc-health-app-divider {
+  width: 90%;
+  height: clamp(2.5px, 0.4vw, 3.5px);
+  background-color: white;
+  margin: 0 auto clamp(20px, 3.5vw, 30px) auto;
+  opacity: 1;
+}
+
+.wc-health-app-intro {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(14.5px, 1.7vw, 16.5px);
+  font-weight: 400;
+  color: white;
+  line-height: 1.8;
+  margin: 0 auto clamp(30px, 5vw, 45px) auto;
+  text-align: center;
+  max-width: 90%;
+}
+
+.wc-health-app-intro strong {
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+/* ============= FEATURES GRID ============= */
+.wc-health-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(24px, 3.5vw, 35px);
+}
+
+.wc-health-feature-card {
+  background-color: rgba(93, 93, 255, 0.15);
+  border: clamp(1.5px, 0.25vw, 2px) solid rgba(255, 255, 255, 0.6);
+  border-left: clamp(5px, 0.7vw, 7px) solid #FFFFFF;
+  border-radius: clamp(8px, 1.2vw, 12px);
+  padding: clamp(32px, 5vw, 40px) clamp(26px, 4.5vw, 34px);
+  display: flex;
+  flex-direction: column;
+  min-height: clamp(280px, 38vw, 340px);
+}
+
+.wc-health-feature-icon {
+  font-size: clamp(18px, 2.5vw, 22px);
+  margin-right: clamp(6px, 1vw, 8px);
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.wc-health-feature-title {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(15px, 1.9vw, 18px);
+  font-weight: 700;
+  color: white;
+  margin: 0 0 clamp(10px, 1.8vw, 14px) 0;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+}
+
+.wc-health-feature-text {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(13px, 1.55vw, 15px);
+  font-weight: 400;
+  color: white;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ============= RESPONSIVE ADJUSTMENTS ============= */
+
+/* Tablet */
+@media (max-width: 968px) {
+  .wc-health-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .wc-health-features-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .wc-health-container {
+    padding: clamp(30px, 8vw, 40px) clamp(15px, 5vw, 20px);
+  }
+}

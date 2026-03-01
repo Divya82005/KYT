@@ -21,9 +21,9 @@ const handleDownloadClick = () => {
   });
 
   window.open(
-    "https://app-knowyourtrips.onelink.me/b0PV/rutxsmxs",
-    "_blank"
-  );
+  "https://app-knowyourtrips.onelink.me/b0PV/rutxsmxs?pid=website&c=web_organic&af_channel=web",
+  "_blank"
+);
 };
 
 
@@ -49,7 +49,14 @@ const handleDownloadClick = () => {
 
       {/* RIGHT SIDE */}
       <div className="right-phone">
-        <img src={IphoneImg} alt="App Screenshot" className="iphone-img" />
+        <img 
+          src={IphoneImg} 
+          alt="App Screenshot" 
+          className="iphone-img"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
       </div>
     </section>
   );

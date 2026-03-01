@@ -15,8 +15,8 @@
   width: 100%;
   max-width: 100vw; /* Allow full viewport width for better scaling */
   margin: 0 auto;
-  margin-top: clamp(30px, 4vw, 60px); /* Responsive top margin for all screens */
-  padding: clamp(60px, 8vw, 120px) clamp(15px, 2vw, 30px) clamp(40px, 5vw, 80px) clamp(15px, 2vw, 30px); /* Fully responsive padding */
+  margin-top: 0; /* Removed top margin */
+  padding: clamp(30px, 3.5vw, 40px) clamp(15px, 2vw, 30px) clamp(20px, 2.5vw, 40px) clamp(15px, 2vw, 30px); /* Slightly increased top padding */
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -272,9 +272,9 @@
     align-items: flex-start;
     justify-content: flex-start; /* Changed from center to flex-start to allow right expansion */
     gap: clamp(20px, 2.5vw, 25px); /* Reduced gap to bring containers closer */
-    padding: clamp(80px, 8vw, 100px) clamp(30px, 4vw, 40px) clamp(50px, 6vw, 60px) clamp(30px, 4vw, 40px); /* Responsive padding */
+    padding: clamp(30px, 3.5vw, 40px) clamp(30px, 4vw, 40px) clamp(50px, 6vw, 60px) clamp(30px, 4vw, 40px); /* Slightly increased top padding */
     margin: 0 auto;
-    margin-top: clamp(30px, 4vw, 40px); /* Responsive top margin */
+    margin-top: 0; /* Removed top margin */
     max-width: clamp(1400px, 90vw, 1600px); /* Responsive max-width */
     position: relative;
     transform: scale(0.85); /* Apply consistent scaling across all desktop sizes */
@@ -357,63 +357,68 @@
 @media (max-width: 1023px) and (min-width: 744px) {
   .promo-section {
     display: flex;
-    flex-direction: row; /* Keep row layout for larger tablets */
+    flex-direction: row;
     align-items: flex-start;
-    gap: clamp(20px, 3vw, 30px); /* Responsive gap */
-    padding: 0 clamp(30px, 4vw, 40px); /* Responsive padding */
-    margin: 0 auto 0 !important; /* Consistent zero top margin for iPad */
-    margin-bottom: 0 !important; /* Remove bottom margin to reduce gap with download section */
-    transform: scale(0.85); /* Apply consistent scaling same as desktop */
+    gap: clamp(20px, 2.5vw, 30px);
+    padding: clamp(35px, 4vw, 45px) clamp(30px, 3.5vw, 40px) clamp(45px, 5.5vw, 60px) clamp(30px, 3.5vw, 40px);
+    margin: 0 auto;
+    margin-bottom: 0;
+    transform: none;
     transform-origin: center;
-    justify-content: center; /* Center the layouts */
+    justify-content: center;
+    max-width: 100%;
   }
 
   .promo-video-box {
-    width: clamp(400px, 45vw, 500px); /* Responsive width for tablets */
-    height: clamp(280px, 32vw, 350px); /* Responsive height for tablets */
+    width: clamp(380px, 42vw, 450px);
+    height: clamp(280px, 30vw, 300px);
     flex-shrink: 0;
     margin: 0;
+    margin-top: clamp(30px, 3.5vw, 40px);
   }
 
   .promo-text-box {
-    width: clamp(550px, 60vw, 650px) !important; /* Massively increased width for tablets - extends more to the right */
-    height: clamp(280px, 32vw, 350px); /* Match video height */
-    text-align: left; /* Left align for desktop-like layout */
-    max-width: none; /* Remove max-width constraint */
-    margin-bottom: 0 !important; /* Remove bottom margin to reduce gap with download section */
-    padding: clamp(30px, 3vw, 40px);
+    width: clamp(480px, 52vw, 550px);
+    height: clamp(280px, 30vw, 300px);
+    text-align: left;
+    max-width: none;
+    margin-bottom: 0;
+    margin-top: clamp(30px, 3.5vw, 40px);
+    padding: clamp(25px, 3vw, 35px);
+    padding-top: clamp(18px, 2vw, 22px);
     background: #F4F4F4;
-    border-radius: clamp(15px, 2vw, 20px);
+    border-radius: clamp(12px, 1.3vw, 14px);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    position: relative;
+    overflow: hidden;
   }
 
   .promo-about-title {
-    font-size: clamp(36px, 4.2vw, 42px); /* Responsive font size */
-    margin-bottom: clamp(15px, 2vw, 20px); /* Responsive margin */
+    font-size: clamp(32px, 3.8vw, 38px);
+    margin: 0;
+    position: absolute;
+    top: clamp(32px, 3.8vw, 38px);
+    left: clamp(32px, 3.8vw, 38px);
   }
 
   .promo-heading {
-    font-size: clamp(24px, 2.8vw, 28px); /* Responsive font size */
-    line-height: clamp(36px, 4.2vw, 42px); /* Responsive line height */
-    margin-bottom: clamp(15px, 2vw, 20px); /* Responsive margin */
-    max-width: clamp(550px, 60vw, 600px); /* Responsive max-width */
-    margin-left: auto;
-    margin-right: auto;
+    font-size: clamp(16px, 2vw, 19px);
+    line-height: 1.3;
+    margin: 0 0 clamp(13px, 1.6vw, 16px) 0;
+    max-width: 100%;
   }
 
   .promo-heading .main-title {
-    display: block; /* Force each span to be on its own line */
+    display: inline;
   }
 
   .promo-description {
-    font-size: clamp(14px, 1.6vw, 16px); /* Responsive font size */
-    line-height: 1.7; /* Increased from 1.5 to add more line spacing */
-    max-width: clamp(500px, 55vw, 550px); /* Responsive max-width */
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 0 !important; /* Remove bottom margin to reduce gap with download section */
+    font-size: clamp(11px, 1.3vw, 12px);
+    line-height: 1.6;
+    max-width: 100%;
+    margin: 0;
   }
 }
 
@@ -635,23 +640,34 @@
   }
 }
 
-/* ============= COMPREHENSIVE IPAD OVERRIDE - ALL SIZES ============= */
-@media only screen and (min-width: 768px) and (max-width: 1366px) and (pointer: coarse) {
-  .promo-section {
-    margin-top: clamp(-50px, -3vw, -30px) !important; /* Responsive negative margin instead of fixed -40 */
-  }
+/* ============= COMPREHENSIVE IPAD OVERRIDE - REMOVED ============= */
+/* Simplified - using main media query above */
+
+
+/* ============= SCROLL ANIMATIONS ============= */
+#about {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* ============= ALTERNATIVE IPAD OVERRIDE - DEVICE DETECTION ============= */
-@media only screen and (min-device-width: 768px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 1) {
-  .promo-section {
-    margin-top: clamp(-50px, -3vw, -30px) !important; /* Responsive negative margin instead of fixed -40 */
-  }
+/* Content fade in */
+#about .promo-video-section > * {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* ============= FINAL IPAD OVERRIDE - CLEAN AND SPECIFIC ============= */
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
-  .promo-section {
-    margin-top: clamp(-50px, -3vw, -30px) !important; /* Responsive negative margin instead of fixed -40 */
-  }
+#about.visible .promo-video-section > *:nth-child(1) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 200ms;
+}
+
+#about.visible .promo-video-section > *:nth-child(2) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 300ms;
 }

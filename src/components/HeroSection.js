@@ -4,11 +4,35 @@ import Alert from "../assets/Img3.png";
 import "./Styles/HeroSection.css";
 import ReactGA from "react-ga4";
 import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 
 
 
 const HeroSection = () => {
+  const [isAboutVisible, setIsAboutVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const aboutSection = document.getElementById('about');
+      if (aboutSection) {
+        const rect = aboutSection.getBoundingClientRect();
+        // Trigger as soon as user scrolls down (when about section top is below viewport top)
+        const isVisible = rect.top < window.innerHeight;
+        setIsAboutVisible(isVisible);
+        
+        // Add visible class to about section
+        if (isVisible) {
+          aboutSection.classList.add('visible');
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check on mount
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const features = [
     {
@@ -68,9 +92,9 @@ const handleDownloadClick = () => {
   });
 
   window.open(
-    "https://app-knowyourtrips.onelink.me/b0PV/rutxsmxs",
-    "_blank"
-  );
+  "https://app-knowyourtrips.onelink.me/b0PV/rutxsmxs?pid=website&c=web_organic&af_channel=web",
+  "_blank"
+);
 };
 
 
@@ -100,15 +124,15 @@ const handleDownloadClick = () => {
               href="https://www.producthunt.com/posts/knowyourtrips?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-knowyourtrips"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ display: 'none' }}
               className="product-hunt-desktop-link"
             >
               <img
-                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=956968&theme=dark&t=1745506618137"
+                src="/product-hunt-badge.svg"
                 alt="KnowYourTrips - Your Personal Travel Assistant | Product Hunt"
                 className="product-hunt-badge"
-                loading="lazy"
-                fetchpriority="low"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
               />
             </a>
             {/* Mobile Product Hunt Button */}
@@ -145,10 +169,13 @@ const handleDownloadClick = () => {
       <div className="hero-right">
         <img
           src="/city-hero.webp"
-          className="city-main-img hero-image"
+          className={`city-main-img hero-image ${isAboutVisible ? 'slide-right' : ''}`}
           alt="City view"
           width="1200"
           height="800"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
         />
       </div>
     </section>

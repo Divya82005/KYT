@@ -6,10 +6,7 @@ import searchIcon from '../assets/searchicon.jpeg';
 
 const cities = [
   { id: 1, name: "Mexico", img: "/Mexico.webp", desc: "Mexico, a land of vibrant culture, stunning landscapes", link: "/mexico" },
-  { id: 2, name: "Sitges", img: "", desc: "A beautiful coastal town known for its beaches and festivals.", link: "#" },
-  { id: 3, name: "Mumbai", img: "", desc: "The bustling 'City of Dreams' with a vibrant nightlife.", link: "#" },
-  { id: 4, name: "Amsterdam", img: "", desc: "Famous for its artistic heritage and elaborate canal.", link: "#" },
-  // Add more city objects as needed to fill the grid
+  { id: 2, name: "2026 World Cup", img: "/2026WorldCup.webp", desc: "The FIFA World Cup 2026™ is set to", link: "/worldcup" },
 ];
 
 const Blog = () => {
@@ -26,7 +23,14 @@ const Blog = () => {
       <header className="hero-section">
         <h1>Know your safety before you go</h1>
         <div className="search-bar">
-          <img src={searchIcon} alt="Search" className="search-icon" />
+          <img 
+            src={searchIcon} 
+            alt="Search" 
+            className="search-icon"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
           <input type="text" placeholder="Search your Destination Safety Score" />
         </div>
       </header>
@@ -43,8 +47,8 @@ const Blog = () => {
                 onClick={() => handleCityClick(city.link)}
                 style={{ cursor: city.link !== "#" ? "pointer" : "default" }}
                 loading="eager"
-                fetchPriority="high"
                 decoding="async"
+                fetchpriority="high"
               />
             ) : (
               <div className="city-image"></div>
