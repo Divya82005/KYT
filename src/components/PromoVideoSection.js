@@ -1,13 +1,34 @@
 import "./Styles/PromoVideoSection.css";
+import { useEffect, useState } from "react";
 
 const PromoVideoSection = () => {
+  const [isDownloadVisible, setIsDownloadVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const downloadSection = document.querySelector('.download-section');
+      if (downloadSection) {
+        const rect = downloadSection.getBoundingClientRect();
+        // Trigger when download section starts entering viewport
+        // Remove when scrolling back up past this point
+        const isVisible = rect.top < window.innerHeight * 0.8 && rect.bottom > window.innerHeight * 0.2;
+        
+        setIsDownloadVisible(isVisible);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check on mount
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <section className="promo-section">
       {/* ABOUT TITLE - Now positioned outside containers */}
       <h3 className="promo-about-title">About</h3>
 
       {/* LEFT VIDEO BOX */}
-      <div className="promo-video-box">
+      <div className={`promo-video-box ${isDownloadVisible ? 'fade-left' : ''}`}>
         <video
           className="promo-video"
           autoPlay
@@ -23,7 +44,7 @@ const PromoVideoSection = () => {
       </div>
 
       {/* RIGHT TEXT CONTENT */}
-      <div className="promo-text-box">
+      <div className={`promo-text-box ${isDownloadVisible ? 'fade-right' : ''}`}>
         <h2 className="promo-heading">
           <span className="main-title">REAL-TIME SAFETY</span>
           <span className="main-title">INTELLIGENCE FOR TRAVELLERS</span>

@@ -3,10 +3,27 @@ import QRCode from "../assets/Vector.png";
 import "./Styles/DownloadSection.css";
 import ReactGA from "react-ga4";
 import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const DownloadSection = () => {
-  
+  const [isVisible, setIsVisible] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const downloadSection = document.querySelector('.download-section');
+      if (downloadSection) {
+        const rect = downloadSection.getBoundingClientRect();
+        // Trigger when download section starts entering viewport
+        const visible = rect.top < window.innerHeight && rect.bottom > 0;
+        setIsVisible(visible);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check on mount
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
 const handleDownloadClick = () => {
   const path = location.pathname;
@@ -30,7 +47,7 @@ const handleDownloadClick = () => {
 
 
   return (
-    <section className="download-section">
+    <section className={`download-section ${isVisible ? 'slide-up' : ''}`}>
       {/* LEFT SIDE */}
       <div className="left-contents">
         <h2>Get real-time safety alerts on your phone with our app</h2>

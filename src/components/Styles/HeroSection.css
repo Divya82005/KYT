@@ -28,7 +28,7 @@ html {
   width: 100%;
   padding: clamp(0.8rem, 1vw, 1.2rem) clamp(3rem, 2vw, 5rem);
   padding-top: clamp(3rem, 1.5vw, 4rem);
-  padding-bottom: 60px; /* Fixed consistent padding */
+  padding-bottom: 0; /* Removed bottom padding */
   display: grid;
   grid-template-columns: 1fr;
   gap: clamp(1.5rem, 1vw, 2.5rem);
@@ -43,7 +43,7 @@ html {
   .hero-wrapper {
     grid-template-columns: 1fr 1fr;
     gap: clamp(1.5rem, 1vw, 2rem);
-    padding-bottom: 60px; /* Same consistent padding */
+    padding-bottom: 0; /* Removed bottom padding */
   }
 }
 
@@ -209,6 +209,8 @@ html {
   display: flex;
   justify-content: center;
   order: 1;
+  overflow: visible;
+  position: relative;
 }
 
 @media (min-width: 1024px) {
@@ -232,6 +234,7 @@ html {
   width: 100%;
   max-width: none; /* Remove max-width constraint */
   margin-top: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: clamp(-50px, -4vw, -40px); /* Moderate negative bottom margin */
   overflow: visible;
 }
 
@@ -350,14 +353,15 @@ section#home .feature-box:hover {
 /* iPad Mini and similar tablets (744px - 1023px) */
 @media (min-width: 744px) and (max-width: 1023px) {
   .hero-wrapper {
-    /* Adjust columns to allow text to fit in 2 lines */
-    grid-template-columns: 1.3fr 1fr; /* Give more space to text for 2 lines */
-    gap: clamp(0.3rem, 0.8vw, 0.6rem); /* Significantly reduced gap */
-    padding: clamp(1rem, 2vw, 1.5rem) clamp(1.5rem, 3vw, 2rem);
+    /* Give less space to text, more to image */
+    grid-template-columns: 0.5fr 1.5fr; /* Even more space for image */
+    gap: clamp(0.2rem, 0.5vw, 0.4rem); /* Smaller gap */
+    padding: clamp(1rem, 2vw, 1.5rem) clamp(1rem, 2vw, 1.5rem); /* Reduced padding */
     padding-top: clamp(1.5rem, 2.5vw, 2rem);
-    transform: scale(1); /* No scaling for clear image */
-    align-items: start; /* Keep content aligned at top */
+    transform: scale(1);
+    align-items: start;
     min-height: auto;
+    overflow: visible;
   }
   
   .hero-left {
@@ -367,49 +371,67 @@ section#home .feature-box:hover {
   }
   
   .hero-right {
-    order: 2; /* Same as desktop */
-    padding-left: 0; /* No extra padding */
-    display: flex;
-    align-items: flex-start; /* Align image to top */
-    justify-content: center;
-    transform: translate(5%, -8%); /* Move image slightly up and right */
+    order: 2;
+    padding-left: 0;
+    display: flex !important;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: none;
+    visibility: visible !important;
+    opacity: 1 !important;
+    overflow: visible !important;
+    position: relative !important;
+    transform: translateX(0) !important; /* Start with image visible */
+    transition: transform 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 600ms; /* 600ms delay, 800ms duration - slower */
   }
   
-  /* Text sizing optimized for two lines */
+  /* When scrolling to promo section, slide image right */
+  .hero-right.slide-right {
+    transform: translateX(100vw) !important;
+  }
+  
+  /* Text sizing optimized and reduced */
   .vision-text {
-    font-size: 18px; /* Back to 18px for iPad Mini */
-    margin-bottom: clamp(0.4rem, 0.8vw, 0.6rem);
+    font-size: 14px; /* Reduced from 18px */
+    margin-bottom: clamp(1.5rem, 2.5vw, 2rem); /* Increased from 0.3rem-0.5rem for more spacing */
     text-align: left;
-    margin-left: 0; /* Ensure alignment */
-    padding-left: 0; /* Ensure alignment */
+    margin-left: 0;
+    padding-left: 0;
   }
   
   .hero-title {
-    font-size: 40px; /* Updated to 40px for iPad Mini */
-    margin-bottom: clamp(1.5rem, 3vw, 2rem);
+    font-size: 32px; /* Reduced from 40px */
+    margin-bottom: clamp(1rem, 2vw, 1.5rem);
     text-align: left;
-    line-height: 1.6; /* Much more line spacing between the two lines */
+    line-height: 2.2; /* Increased from 1.8 for even more spacing */
     word-spacing: normal;
     color: #000;
     font-weight: 700;
     max-width: none;
-    white-space: normal; /* Allow natural text wrapping */
-    margin-left: 0; /* Ensure alignment */
-    padding-left: 0; /* Ensure alignment */
+    white-space: nowrap; /* Force single line */
+    margin-left: 0;
+    padding-left: 0;
   }
   
   .button-row {
-    margin-bottom: clamp(0.8rem, 1.5vw, 1.2rem);
-    gap: clamp(0.8rem, 1.5vw, 1.2rem);
-    margin-left: 0; /* Ensure alignment */
-    padding-left: 0; /* Ensure alignment */
+    margin-bottom: clamp(0.8rem, 1.5vw, 1rem);
+    gap: clamp(0.8rem, 1.5vw, 1rem);
+    margin-left: 0;
+    padding-left: 0;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
   }
   
   .download-btns {
-    max-width: clamp(10rem, 16vw, 12rem);
-    height: clamp(3rem, 4vw, 3.5rem);
-    font-size: clamp(0.75rem, 1.5vw, 0.9rem); /* Reduced font size */
-    position: relative; /* Ensure positioning context for diamonds */
+    max-width: clamp(10rem, 18vw, 12rem);
+    height: clamp(3rem, 4.5vw, 3.5rem);
+    font-size: clamp(0.75rem, 1.4vw, 0.9rem);
+    position: relative;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
   
   /* Diamond positioning for iPad Mini - further inside corners */
@@ -432,12 +454,34 @@ section#home .feature-box:hover {
   }
   
   .product-btn {
-    max-width: clamp(12rem, 20vw, 15rem);
+    max-width: clamp(13rem, 22vw, 16rem);
+    height: clamp(3rem, 4.5vw, 3.5rem);
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
   
   .product-hunt-badge {
-    height: clamp(2.8rem, 4vw, 3.2rem);
+    height: clamp(3rem, 4.5vw, 3.5rem);
+    width: auto;
     transition: all 0.3s ease;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  /* Show desktop Product Hunt link on iPad Mini */
+  .product-hunt-desktop-link {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  /* Hide mobile Product Hunt button on iPad Mini */
+  .product-hunt-mobile-btn {
+    display: none !important;
   }
   
   /* Hover effect for Product Hunt badge on iPad Mini */
@@ -447,14 +491,18 @@ section#home .feature-box:hover {
   }
   
   .city-main-img {
-    max-width: clamp(32rem, 55vw, 38rem); /* Further increased image size */
-    width: 100%;
+    width: 110% !important;
+    max-width: none !important;
     height: auto;
-    image-rendering: -webkit-optimize-contrast; /* Keep image clarity */
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
-    image-rendering: pixelated;
     backface-visibility: hidden;
-    transform: translateZ(0);
+    position: relative;
+    left: -5%; /* Position adjustment instead of transform */
+    margin-right: -10% !important;
   }
   
   /* Hide feature cards for iPad Mini */
@@ -593,7 +641,7 @@ section#home .feature-box:hover {
   .hero-wrapper {
     padding: 1rem;
     padding-top: 2rem;
-    padding-bottom: 60px; /* Same consistent padding */
+    padding-bottom: 0; /* Removed bottom padding */
     gap: 0.8rem;
     display: flex;
     flex-direction: column;
@@ -863,8 +911,8 @@ section#home .feature-box:hover {
   min-height: auto !important;
 }
 
-/* Prevent any loading animations or transitions */
-.hero-right img, .feature-icon img {
+/* Prevent any loading animations or transitions - but allow scroll animations */
+.hero-right img:not(.city-main-img), .feature-icon img {
   opacity: 1 !important;
   transform: none !important;
   transition: none !important;
@@ -872,8 +920,7 @@ section#home .feature-box:hover {
   will-change: auto !important;
 }
 
-/* Ensure images are always visible */
-img[src*="City.png"], 
+/* Ensure feature images are always visible - exclude city hero image */
 img[src*="Img1.png"], 
 img[src*="Img2.png"], 
 img[src*="Img3.png"] {
@@ -886,7 +933,7 @@ img[src*="Img3.png"] {
 /* ============= BROAD TABLET DETECTION - SHOULD CATCH IPAD ============= */
 @media screen and (min-width: 600px) and (max-width: 1200px) {
   .hero-wrapper {
-    padding-bottom: 60px;
+    padding-bottom: 0;
   }
   
   .hero-title {
@@ -901,7 +948,7 @@ img[src*="Img3.png"] {
 /* ============= IPAD ONLY - HERO BOTTOM SPACING REDUCTION ============= */
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .hero-wrapper {
-    padding-bottom: 60px;
+    padding-bottom: 0;
   }
   
   .hero-title {
@@ -929,12 +976,11 @@ img[src*="Img3.png"] {
 }
 
 /* Hero image slide animation - triggers when about section is visible */
-.hero-image {
-  transition: transform 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  transform: translateX(0);
+.hero-right {
+  transition: transform 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  will-change: transform !important;
 }
 
-.hero-image.slide-right {
-  transform: translateX(200px);
+.hero-right.slide-right {
+  transform: translateX(100vw) !important;
 }
-

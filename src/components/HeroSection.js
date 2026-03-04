@@ -14,24 +14,51 @@ const HeroSection = () => {
 
   useEffect(() => {
     const handleScroll = () => {
+      const heroSection = document.getElementById('home');
       const aboutSection = document.getElementById('about');
-      if (aboutSection) {
-        const rect = aboutSection.getBoundingClientRect();
-        // Trigger as soon as user scrolls down (when about section top is below viewport top)
-        const isVisible = rect.top < window.innerHeight;
-        setIsAboutVisible(isVisible);
+      
+      if (heroSection && aboutSection) {
+        const isIPad = window.innerWidth >= 744 && window.innerWidth <= 1023;
         
-        // Add visible class to about section
-        if (isVisible) {
-          aboutSection.classList.add('visible');
+        if (isIPad) {
+          // iPad Mini: Trigger when about section is 30% into viewport
+          const aboutRect = aboutSection.getBoundingClientRect();
+          const threshold = window.innerHeight * 0.7;
+          const isVisible = aboutRect.top <= threshold;
+          
+          console.log('🎯 iPad Animation Check - aboutRect.top:', aboutRect.top, 'threshold (70%):', threshold, 'isVisible:', isVisible);
+          
+          setIsAboutVisible(isVisible);
+          
+          if (isVisible) {
+            aboutSection.classList.add('visible');
+          } else {
+            aboutSection.classList.remove('visible');
+          }
+        } else {
+          // Desktop: Trigger when promo section starts entering viewport
+          const rect = aboutSection.getBoundingClientRect();
+          const isVisible = rect.top <= window.innerHeight && rect.bottom > 0;
+          
+          setIsAboutVisible(isVisible);
+          
+          if (isVisible) {
+            aboutSection.classList.add('visible');
+          } else {
+            aboutSection.classList.remove('visible');
+          }
         }
       }
     };
 
     window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleScroll); // Also check on resize
     handleScroll(); // Check on mount
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
   }, []);
 
   const features = [
@@ -166,10 +193,10 @@ const handleDownloadClick = () => {
         </div>
       </div>
 
-      <div className="hero-right">
+      <div className={`hero-right ${isAboutVisible ? 'slide-right' : ''}`}>
         <img
           src="/city-hero.webp"
-          className={`city-main-img hero-image ${isAboutVisible ? 'slide-right' : ''}`}
+          className="city-main-img"
           alt="City view"
           width="1200"
           height="800"
