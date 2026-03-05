@@ -2,153 +2,152 @@
 @import url('https://fonts.cdnfonts.com/css/sf-pro-rounded');
 
 /* ============= PROMO VIDEO SECTION ============= */
-/* NOTE: Responsive container that adapts to screen size */
 .promo-container {
   width: 100%;
-  max-width: 100vw; /* Allow full viewport width for better scaling */
+  max-width: 100vw;
   margin: 0 auto;
-  margin-top: clamp(-100px, -8vw, -80px) !important; /* Moderate negative margin */
-  padding: 0 clamp(15px, 2vw, 30px); /* Responsive padding for all screens */
+  margin-top: clamp(-100px, -8vw, -80px) !important;
+  padding: 0 clamp(15px, 2vw, 30px);
   box-sizing: border-box;
+  position: relative;
+  z-index: 1;
 }
 
 .promo-section {
   width: 100%;
-  max-width: 100vw; /* Allow full viewport width for better scaling */
+  max-width: 100vw;
   margin: 0 auto;
-  margin-top: clamp(-80px, -6vw, -60px) !important; /* Moderate negative margin */
+  margin-top: clamp(-80px, -6vw, -60px) !important;
   padding: clamp(10px, 1.5vw, 20px) clamp(15px, 2vw, 30px) clamp(20px, 2.5vw, 40px) clamp(15px, 2vw, 30px);
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  gap: clamp(10px, 1.5vw, 25px); /* Responsive gap for all screens */
+  gap: clamp(10px, 1.5vw, 25px);
   box-sizing: border-box;
   overflow: visible;
   position: relative;
+  touch-action: auto !important;
+  overscroll-behavior: auto !important;
+  pointer-events: auto !important;
 }
 
-/* LEFT VIDEO BOX */
+.promo-section * {
+  pointer-events: auto !important;
+}
+
 .promo-video-box {
-  width: clamp(300px, 45vw, 600px); /* Fully responsive width for all screens */
-  height: clamp(200px, 30vw, 400px); /* Fully responsive height for all screens */
+  width: clamp(300px, 45vw, 600px);
+  height: clamp(200px, 30vw, 400px);
   background: transparent;
   overflow: hidden;
   flex-shrink: 0;
-  border-radius: clamp(8px, 1vw, 15px); /* Responsive border radius */
+  border-radius: clamp(8px, 1vw, 15px);
   position: relative;
   box-sizing: border-box;
   border: 1px solid #e0e0e0;
-  margin-left: clamp(-20px, -2vw, -30px); /* Responsive left margin */
-  margin-top: clamp(40px, 5vw, 80px); /* Responsive top margin */
+  margin-left: clamp(-20px, -2vw, -30px);
+  margin-top: clamp(40px, 5vw, 80px);
+  touch-action: auto !important;
 }
 
 .promo-video {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Video fills entire container height and width */
-  border-radius: clamp(10px, 1.2vw, 12px); /* Responsive border radius */
+  object-fit: cover;
+  border-radius: clamp(10px, 1.2vw, 12px);
   display: block;
   background: transparent;
   object-position: center center;
-  transform: none; /* Remove zoom-out to let video fit container exactly */
+  transform: none;
+  pointer-events: none;
 }
 
-/* Alternative: If you want to see the full video without cropping */
 .promo-video.contain {
   object-fit: contain;
   background: #000;
 }
 
-/* RIGHT TEXT BOX */
 .promo-text-box {
-  width: clamp(400px, 50vw, 800px); /* Fully responsive width for all screens */
-  height: clamp(200px, 30vw, 400px); /* Same responsive height as video container */
+  width: clamp(400px, 50vw, 800px);
+  height: clamp(200px, 30vw, 400px);
   min-width: 0;
-  padding: clamp(20px, 3vw, 40px); /* Fully responsive padding */
+  padding: clamp(20px, 3vw, 40px);
   background: #F4F4F4;
-  border-radius: clamp(8px, 1vw, 15px); /* Responsive border radius */
+  border-radius: clamp(8px, 1vw, 15px);
   border: none;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Center content vertically */
-  text-align: left; /* Left align text */
+  justify-content: center;
+  text-align: left;
   flex-grow: 1;
   margin-right: 0;
   margin-left: 0;
   position: relative;
   max-width: none;
-  margin-top: clamp(40px, 5vw, 80px); /* Responsive top margin */
+  margin-top: clamp(40px, 5vw, 80px);
+  touch-action: auto !important;
 }
 
-/* "ABOUT" title */
 .promo-about-title {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-style: normal;
-  font-size: clamp(24px, 4vw, 48px); /* Fully responsive font size for all screens */
+  font-size: clamp(24px, 4vw, 48px);
   line-height: 1.2;
   letter-spacing: 0;
   color: #5351ed;
   margin: 0;
   text-align: left;
   position: absolute;
-  top: clamp(10px, 2vw, 30px); /* Slightly moved up to create space */
-  left: clamp(5px, 1vw, 15px); /* Responsive left position */
+  top: clamp(10px, 2vw, 30px);
+  left: clamp(5px, 1vw, 15px);
   z-index: 10;
 }
 
-/* Main heading */
 .promo-heading {
   font-family: "SF Pro Rounded", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
   font-weight: 660;
   font-style: normal;
-  font-size: clamp(16px, 2.5vw, 28px); /* Fully responsive font size for all screens */
-  line-height: clamp(1.2, 1.3, 1.4); /* Responsive line height */
+  font-size: clamp(16px, 2.5vw, 28px);
+  line-height: clamp(1.2, 1.3, 1.4);
   letter-spacing: 0;
-  word-spacing: clamp(1px, 0.2vw, 2px); /* Responsive word spacing */
+  word-spacing: clamp(1px, 0.2vw, 2px);
   vertical-align: middle;
   text-transform: uppercase;
   color: #000000;
-  margin: 0 0 clamp(15px, 2vw, 30px) 0; /* Responsive margins */
+  margin: 0 0 clamp(15px, 2vw, 30px) 0;
   text-align: left;
 }
 
-/* Main title spans */
 .main-title {
   display: block;
 }
 
-/* First line - move up to create space */
 .main-title:first-child {
-  margin-bottom: clamp(8px, 1vw, 10px); /* Responsive space after first line */
-  transform: translateY(clamp(-6px, -0.5vw, -5px)); /* Responsive transform */
+  margin-bottom: clamp(8px, 1vw, 10px);
+  transform: translateY(clamp(-6px, -0.5vw, -5px));
 }
 
-/* Second line - keep in place */
 .main-title:last-child {
   margin-top: 0;
 }
 
-/* Description text */
 .promo-description {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: clamp(12px, 1.8vw, 18px); /* Fully responsive font size for all screens */
-  line-height: clamp(1.4, 1.5, 1.6); /* Responsive line height */
+  font-size: clamp(12px, 1.8vw, 18px);
+  line-height: clamp(1.4, 1.5, 1.6);
   letter-spacing: 0;
-  word-spacing: clamp(1px, 0.15vw, 1.5px); /* Responsive word spacing */
+  word-spacing: clamp(1px, 0.15vw, 1.5px);
   color: #333333;
   margin: 0;
   text-align: left;
   text-transform: none;
 }
 
-/* ============= UNIVERSAL RESPONSIVE DESIGN ============= */
-/* All screen sizes use the same responsive scaling approach */
-
-/* Mobile-first approach with consistent scaling */
+/* ============= MOBILE (max-width: 767px) ============= */
 @media (max-width: 767px) {
   .promo-section {
     flex-direction: column;
@@ -172,8 +171,8 @@
   }
 }
 
-/* Tablet and Desktop - consistent scaling */
-@media (min-width: 768px) {
+/* ============= TABLET (768px - 1023px) ============= */
+@media (min-width: 768px) and (max-width: 1023px) {
   .promo-section {
     flex-direction: row;
     align-items: flex-start;
@@ -181,521 +180,90 @@
   }
   
   .promo-video-box {
-    width: clamp(300px, 40vw, 500px);
-    height: clamp(200px, 25vw, 350px);
+    width: 52%;
+    height: clamp(250px, 30vw, 320px);
+    margin-left: 0;
+    margin-top: 0;
   }
   
   .promo-text-box {
-    width: clamp(400px, 45vw, 700px);
-    height: clamp(200px, 25vw, 350px);
+    width: 44%;
+    height: clamp(250px, 30vw, 320px);
+    margin-top: 0;
   }
 }
 
-/* Medium Laptops (1367px - 1600) */
-@media (min-width: 1367px) and (max-width: 1600) {
-  .promo-section {
-    gap: clamp(20px, 2.5vw, 25px); /* Reduced gap to bring containers closer */
-    padding: 0 clamp(15px, 2vw, 20px); /* Responsive padding */
-    margin: 0 auto 0; /* Consistent zero top margin */
-    transform: scale(0.85); /* Apply consistent scaling across all desktop sizes */
-    justify-content: center; /* Center the layouts */
-  }
-  
-  .promo-video-box {
-    width: clamp(590px, 54vw, 690px); /* Slightly more increased width */
-    height: clamp(460px, 33vw, 490px); /* Further decreased height */
-    margin-left: clamp(-30px, -3vw, -25px); /* Move video container more to the left */
-    border: 1px solid #e0e0e0; /* Add same border as text container */
-  }
-  
-  .promo-text-box {
-    width: clamp(950px, 78vw, 1050px) !important; /* Massively increased width for text container - extends more to the right */
-    height: clamp(460px, 33vw, 490px); /* Same height as video container */
-  }
-  
-  .promo-about-title {
-    font-size: clamp(52px, 4vw, 58px);
-    top: clamp(20px, 2.5vw, 30px) !important; /* Slightly moved up to create space */
-  }
-  
-  .promo-heading {
-    font-size: clamp(34px, 2.8vw, 38px);
-    line-height: clamp(39px, 3.2vw, 43px);
-  }
-  
-  .promo-description {
-    font-size: clamp(20px, 1.8vw, 23px);
-    line-height: 1.8;
-  }
-}
-
-/* Large Laptops and Desktops (1601px+) */
-@media (min-width: 1601px) {
-  .promo-section {
-    gap: clamp(20px, 2.5vw, 25px); /* Reduced gap to bring containers closer */
-    padding: 0 clamp(15px, 1.5vw, 20px); /* Responsive padding */
-    margin: 0 auto 0; /* Consistent zero top margin */
-    transform: scale(0.85); /* Apply consistent scaling across all desktop sizes */
-    justify-content: center; /* Center the layouts */
-  }
-  
-  .promo-video-box {
-    width: clamp(670px, 54vw, 800px); /* Slightly more increased width */
-    height: clamp(460px, 34vw, 490px); /* Further decreased height */
-    margin-left: clamp(-35px, -3.5vw, -30px); /* Move video container more to the left */
-    border: 1px solid #e0e0e0; /* Add same border as text container */
-  }
-  
-  .promo-text-box {
-    width: clamp(1000px, 76vw, 1200px) !important; /* Massively increased width for text container - extends more to the right */
-    height: clamp(460px, 34vw, 490px); /* Same height as video container */
-  }
-  
-  .promo-about-title {
-    font-size: clamp(55px, 3.5vw, 60px);
-    top: clamp(20px, 2.5vw, 30px) !important; /* Slightly moved up to create space */
-  }
-  
-  .promo-heading {
-    font-size: clamp(36px, 2.5vw, 40px);
-    line-height: clamp(41px, 2.8vw, 45px);
-  }
-  
-  .promo-description {
-    font-size: clamp(21px, 1.6vw, 23px);
-    line-height: 1.8;
-  }
-}
-
-/* ============= DESKTOP (1024px and above) - Image 1 Layout ============= */
+/* ============= DESKTOP (1024px and above) ============= */
 @media (min-width: 1024px) {
   .promo-section {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    justify-content: flex-start; /* Changed from center to flex-start to allow right expansion */
-    gap: clamp(20px, 2.5vw, 25px); /* Reduced gap to bring containers closer */
-    padding: clamp(30px, 3.5vw, 40px) clamp(30px, 4vw, 40px) clamp(50px, 6vw, 60px) clamp(30px, 4vw, 40px); /* Slightly increased top padding */
+    justify-content: flex-start;
+    gap: clamp(20px, 2.5vw, 25px);
+    padding: clamp(30px, 3.5vw, 40px) clamp(30px, 4vw, 40px) clamp(50px, 6vw, 60px) clamp(30px, 4vw, 40px);
     margin: 0 auto;
-    margin-top: 0; /* Removed top margin */
-    max-width: clamp(1400px, 90vw, 1600px); /* Responsive max-width */
+    margin-top: 0;
+    max-width: clamp(1400px, 90vw, 1600px);
     position: relative;
-    transform: scale(0.85); /* Apply consistent scaling across all desktop sizes */
+    transform: scale(0.85);
   }
 
   .promo-video-box {
-    width: clamp(650px, 56vw, 800px); /* Slightly more increased width */
-    height: clamp(480px, 37vw, 490px); /* Further decreased height */
+    width: clamp(650px, 56vw, 800px);
+    height: clamp(480px, 37vw, 490px);
     background: transparent;
     box-sizing: border-box;
     border: 1px solid #e0e0e0;
-    margin-left: clamp(-35px, -3.5vw, -30px); /* Move video container more to the left */
-    flex-shrink: 0; /* Prevent video container from shrinking */
+    margin-left: clamp(-35px, -3.5vw, -30px);
+    flex-shrink: 0;
   }
 
   .promo-text-box {
-    width: clamp(980px, 78vw, 1200px) !important; /* Massively increased width for text container - extends more to the right */
-    height: clamp(480px, 37vw, 490px); /* Same height as video container */
+    width: clamp(980px, 78vw, 1200px) !important;
+    height: clamp(480px, 37vw, 490px);
     padding: clamp(30px, 3vw, 40px) clamp(25px, 2.5vw, 30px);
-    background: #F4F4F4; /* Subtly greyish background */
-    border-radius: clamp(10px, 1.2vw, 12px); /* Responsive border radius */
+    background: #F4F4F4;
+    border-radius: clamp(10px, 1.2vw, 12px);
     border: 1px solid #e0e0e0;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    flex-grow: 1; /* Allow text container to grow and fill available space to the right */
-    margin-right: 0; /* Ensure it extends to the right edge */
+    flex-grow: 1;
+    margin-right: 0;
   }
 
   .promo-about-title {
     font-size: clamp(42px, 4vw, 48px);
-    position: absolute !important; /* Position absolutely relative to section */
-    top: clamp(20px, 2.5vw, 30px) !important; /* Slightly moved up to create space */
-    left: clamp(5px, 1vw, 10px) !important; /* Moved even more to the left */
-    z-index: 10 !important; /* Ensure it appears above other elements */
-    margin: 0 !important;
-  }
-
-  .promo-heading {
-    font-size: clamp(22px, 2.2vw, 26px); /* Responsive font size */
-    line-height: 1.3;
-    margin-bottom: clamp(15px, 2vw, 20px); /* Responsive margin */
-    margin-left: clamp(15px, 2vw, 20px); /* Responsive left margin */
-  }
-
-  .promo-description {
-    font-size: clamp(16px, 1.6vw, 18px); /* Responsive font size */
-    line-height: 1.8; /* Changed to 1.8 */
-    margin-left: clamp(15px, 2vw, 20px); /* Responsive left margin */
-  }
-}
-
-/* ============= LARGE DESKTOP (1440 and above) ============= */
-@media (min-width: 1440) {
-  .promo-section {
-    gap: clamp(25px, 3vw, 30px); /* Reduced gap to bring containers closer */
-    padding: 0 clamp(60px, 5vw, 80px);
-    margin: 0 auto 0; /* Consistent zero top margin */
-    transform: scale(0.85); /* Apply consistent scaling across all desktop sizes */
-  }
-
-  .promo-about-title {
-    font-size: clamp(58px, 4vw, 64px);
-    top: clamp(20px, 2.5vw, 30px) !important; /* Slightly moved up to create space */
-  }
-
-  .promo-heading {
-    font-size: clamp(40px, 3vw, 44px);
-    line-height: clamp(46px, 3.5vw, 50px);
-    /* Responsive line height */
-  }
-
-  .promo-description {
-    font-size: clamp(21px, 1.6vw, 23px);
-    line-height: 1.8;
-  }
-}
-
-/* ============= IPAD MINI 8.3 (744px - 1023px) - Desktop-like Layout ============= */
-@media (max-width: 1023px) and (min-width: 744px) {
-  .promo-container {
-    margin-top: clamp(-50px, -4vw, -40px) !important;
-    width: 100%;
-    max-width: 100vw;
-    overflow: visible !important;
-  }
-
-  .promo-section {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: flex-start !important;
-    justify-content: flex-start !important;
-    gap: clamp(15px, 2vw, 20px) !important;
-    padding: clamp(50px, 6vw, 60px) clamp(20px, 2.5vw, 30px) clamp(40px, 5vw, 50px) clamp(20px, 2.5vw, 30px) !important;
-    margin: 0 auto !important;
-    margin-top: 0 !important;
-    max-width: 100% !important;
-    width: 100% !important;
-    overflow: visible !important;
-    height: auto !important;
-    min-height: auto !important;
-    box-sizing: border-box !important;
-    position: relative !important; /* Keep relative for About title positioning */
-  }
-
-  .promo-video-box {
-    width: 52% !important;
-    height: clamp(250px, 30vw, 320px) !important;
-    background: transparent !important;
-    box-sizing: border-box !important;
-    border: 1px solid #e0e0e0 !important;
-    border-radius: clamp(10px, 1.2vw, 12px) !important;
-    margin-left: 0 !important;
-    margin-top: 0 !important;
-    flex-shrink: 0 !important;
-    overflow: hidden !important;
-    display: block !important;
-    opacity: 1 !important; /* Always visible */
-    transform: none !important; /* Disable transforms */
-    transition: none !important; /* Disable transitions */
-  }
-
-  .promo-video {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    border-radius: clamp(10px, 1.2vw, 12px) !important;
-  }
-
-  .promo-text-box {
-    width: 44% !important;
-    height: clamp(250px, 30vw, 320px) !important;
-    min-height: auto !important;
-    padding: clamp(20px, 2.5vw, 30px) clamp(18px, 2.2vw, 25px) !important;
-    background: #F4F4F4 !important;
-    border-radius: clamp(10px, 1.2vw, 12px) !important;
-    border: 1px solid #e0e0e0 !important;
-    box-sizing: border-box !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    flex-grow: 0 !important;
-    flex-shrink: 0 !important;
-    margin-right: 0 !important;
-    margin-top: 0 !important;
-    overflow: hidden !important;
-    text-align: left !important;
-    opacity: 1 !important; /* Always visible */
-    transform: none !important; /* Disable transforms */
-    transition: none !important; /* Disable transitions */
-  }
-
-  .promo-about-title {
-    font-size: clamp(30px, 3.6vw, 36px) !important;
-    font-family: "Poppins", sans-serif !important;
-    font-weight: 700 !important;
-    color: #5351ed !important;
     position: absolute !important;
-    top: clamp(15px, 2vw, 20px) !important;
-    left: clamp(20px, 2.5vw, 30px) !important;
+    top: clamp(20px, 2.5vw, 30px) !important;
+    left: clamp(5px, 1vw, 10px) !important;
     z-index: 10 !important;
     margin: 0 !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    display: block !important;
   }
 
   .promo-heading {
-    font-size: clamp(16px, 2vw, 19px) !important;
-    line-height: 1.3 !important;
-    margin-bottom: clamp(12px, 1.5vw, 15px) !important;
-    margin-left: 0 !important;
-    text-align: left !important;
-    color: #000000 !important;
-    text-transform: uppercase !important;
-  }
-
-  .promo-heading .main-title {
-    display: block !important;
-  }
-
-  .promo-description {
-    font-size: clamp(12px, 1.4vw, 14px) !important;
-    line-height: 1.6 !important;
-    margin-left: 0 !important;
-    text-align: left !important;
-    color: #333333 !important;
-  }
-}
-
-/* ============= IPHONE MINI (390 - 743px) - Exact Reference Image Layout ============= */
-/* NOTE: Video in white grid area above, About section below with centered text */
-@media (max-width: 743px) and (min-width: 390) {
-  .promo-container {
-    padding: 0 clamp(15px, 2vw, 20px); /* Responsive padding */
-    margin-top: clamp(30px, 4vw, 40px); /* Responsive top margin */
-  }
-
-  .promo-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: clamp(30px, 4vw, 40px); /* Responsive gap */
-    margin: 0;
-    padding: 0;
-  }
-
-  /* Video in white grid area - matches reference image */
-  .promo-video-box {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    aspect-ratio: 826 / 515;
-    min-height: clamp(180px, 40vw, 250px); /* Responsive min-height instead of fixed 200 */
-    background: #ffffff;
-    /* White background like in reference */
-    border: 1px solid #e0e0e0;
-    /* Light border for grid effect */
-    border-radius: clamp(10px, 1.5vw, 15px); /* Responsive border radius */
-    box-shadow: 0 clamp(3px, 0.5vw, 5px) clamp(10px, 1.5vw, 15px) rgba(0, 0, 0, 0.1); /* Responsive box shadow */
-    order: 1;
-    /* Video appears first */
-  }
-
-  .promo-video {
-    border-radius: clamp(10px, 1.5vw, 15px); /* Responsive border radius */
-  }
-
-  /* About section below video - matches reference image */
-  .promo-text-box {
-    width: 100%;
-    text-align: center;
-    order: 2;
-    /* Text appears second */
-    padding: clamp(15px, 3vw, 25px) 0; /* Responsive padding instead of fixed 20 */
-  }
-
-  .promo-about-title {
-    font-size: clamp(32px, 6vw, 42px); /* Responsive font size instead of fixed 36px */
-    margin-bottom: clamp(15px, 3vw, 25px); /* Responsive margin instead of fixed 20 */
-    color: #5351ED;
-  }
-
-  .promo-heading {
-    font-size: clamp(20px, 4vw, 26px); /* Responsive font size instead of fixed 22px */
-    line-height: clamp(28px, 5vw, 36px); /* Responsive line height instead of fixed 32px */
-    margin-bottom: clamp(12px, 2.5vw, 20px); /* Responsive margin instead of fixed 16px */
-    text-transform: uppercase;
-    color: #000000;
-  }
-
-  .promo-description {
-    font-size: clamp(13px, 2.5vw, 16px); /* Responsive font size instead of fixed 14px */
-    line-height: 1.7;
-    /* Good spacing for mobile */
-    color: #666666;
-    max-width: 90%;
-    margin: 0 auto;
-    text-transform: none;
-    /* Remove capitalize for better readability */
-  }
-}
-
-/* ============= MOBILE SPECIFIC GAP REDUCTION (max-width: 767px) ============= */
-@media (max-width: 767px) {
-  .promo-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: clamp(1.5rem, 4vw, 2rem);
-    padding: clamp(1rem, 4vw, 1.5rem);
-    margin: 0 auto 0; /* Remove top margin completely to close gap with hero section */
-    max-width: 100%;
-  }
-  
-  .promo-video-box {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9; /* Standard video aspect ratio */
-    min-height: clamp(200px, 50vw, 300px);
-    background: transparent;
-    border-radius: clamp(10px, 1.5vw, 15px); /* Responsive border radius */
-    overflow: hidden;
-    order: 1;
-    margin: 0 auto; /* Center the video */
-  }
-
-  .promo-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: clamp(10px, 1.5vw, 15px); /* Responsive border radius */
-    transform: none; /* Remove any scaling on mobile */
-  }
-  
-  .promo-text-box {
-    width: 100%;
-    max-width: 100%;
-    padding: clamp(1rem, 4vw, 1.5rem);
-    background: transparent; /* Remove white background on mobile */
-    border: none; /* Remove border on mobile */
-    border-radius: 0;
-    text-align: center;
-    order: 2;
-    height: auto;
-    display: block;
-  }
-
-  .promo-about-title {
-    font-size: clamp(28px, 7vw, 36px);
-    color: #5351ED;
-    margin-bottom: clamp(1rem, 3vw, 1.5rem);
-    text-align: center;
-    position: static; /* Remove absolute positioning */
-  }
-
-  .promo-heading {
-    font-size: clamp(20px, 5vw, 24px);
+    font-size: clamp(22px, 2.2vw, 26px);
     line-height: 1.3;
-    margin-bottom: clamp(1rem, 3vw, 1.5rem);
-    text-transform: uppercase;
-    color: #000000;
-    text-align: center;
-  }
-  
-  /* Show mobile title, hide desktop title */
-  .desktop-title {
-    display: none !important;
-  }
-  
-  .mobile-title {
-    display: block !important;
-  }
-  
-  .promo-description {
-    font-size: clamp(14px, 3.5vw, 16px);
-    line-height: 1.6;
-    color: #666666;
-    text-align: center;
-    max-width: 100%;
-    margin: 0;
-  }
-}
-
-/* Desktop and iPad Mini - show desktop title, hide mobile title */
-@media (min-width: 768px) {
-  .desktop-title {
-    display: block !important;
-  }
-  
-  .mobile-title {
-    display: none !important;
-  }
-}
-
-/* ============= SMALLER PHONES (320 - 389px) ============= */
-@media (max-width: 389px) {
-  .promo-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: clamp(1rem, 4vw, 1.5rem);
-    padding: clamp(0.75rem, 3vw, 1rem);
-    margin: clamp(1.5rem, 4vw, 2rem) auto 0;
-  }
-
-  .promo-video-box {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-    min-height: clamp(160px, 35vw, 220px); /* Responsive min-height instead of fixed 180 */
-    background: transparent;
-    border-radius: clamp(6px, 1vw, 10px); /* Responsive border radius instead of fixed 8px */
-  }
-
-  .promo-video {
-    transform: none; /* Remove any scaling */
-  }
-
-  .promo-text-box {
-    width: 100%;
-    text-align: center;
-    padding: clamp(0.75rem, 3vw, 1rem);
-    background: transparent;
-    border: none;
-  }
-
-  .promo-about-title {
-    font-size: clamp(24px, 6vw, 28px);
-    margin-bottom: clamp(0.75rem, 2vw, 1rem);
-    position: static;
-  }
-
-  .promo-heading {
-    font-size: clamp(18px, 4.5vw, 20px);
-    line-height: 1.3;
-    margin-bottom: clamp(0.75rem, 2vw, 1rem);
+    margin-bottom: clamp(15px, 2vw, 20px);
+    margin-left: clamp(15px, 2vw, 20px);
   }
 
   .promo-description {
-    font-size: clamp(13px, 3vw, 14px);
-    line-height: 1.5;
-    max-width: 100%;
-    margin: 0;
+    font-size: clamp(16px, 1.6vw, 18px);
+    line-height: 1.8;
+    margin-left: clamp(15px, 2vw, 20px);
   }
 }
 
-/* ============= SCROLL ANIMATIONS - DESKTOP AND IPAD ============= */
-@media (min-width: 744px) {
-  /* Promo section starts below and slides up with delay */
+/* ============= SCROLL ANIMATIONS - DESKTOP ONLY (1024px+) ============= */
+@media (min-width: 1024px) {
   .promo-section {
     position: relative;
     top: 400px;
-    opacity: 0;
-    transition: top 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 600ms,
-                opacity 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 600ms;
+    opacity: 1;
+    transition: top 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 600ms;
   }
 
   #about.visible .promo-section {
@@ -703,7 +271,6 @@
     opacity: 1;
   }
 
-  /* Video box tears to bottom-left - extends to end of download section */
   .promo-video-box {
     will-change: transform, opacity;
     transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1),
@@ -711,12 +278,11 @@
   }
 
   .promo-video-box.fade-left {
-    transform: translate(-150vw, 300vh) !important; /* Much further down - 3x viewport height */
+    transform: translate(-150vw, 300vh) !important;
     opacity: 0 !important;
-    pointer-events: none !important; /* Allow scrolling through */
+    pointer-events: none !important;
   }
 
-  /* Text box tears to bottom-right - extends to end of download section */
   .promo-text-box {
     will-change: transform, opacity;
     transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1),
@@ -724,35 +290,74 @@
   }
 
   .promo-text-box.fade-right {
-    transform: translate(150vw, 300vh) !important; /* Much further down - 3x viewport height */
+    transform: translate(150vw, 300vh) !important;
     opacity: 0 !important;
-    pointer-events: none !important; /* Allow scrolling through */
+    pointer-events: none !important;
+  }
+  
+  .promo-section:has(.promo-video-box.fade-left):has(.promo-text-box.fade-right) {
+    pointer-events: none !important;
   }
 }
 
-/* Desktop-specific promo section animation */
-@media (min-width: 1024px) {
-  .promo-section {
-    top: 400px;
-  }
-}
-
-
-/* ============= ENABLE PROMO SECTION ANIMATION ON IPAD MINI ============= */
+/* ============= IPAD MINI (744px - 1023px) - NO ANIMATIONS ============= */
 @media (max-width: 1023px) and (min-width: 744px) {
-  /* Enable promo section slide-up animation */
+  .promo-container {
+    margin-top: 0 !important;
+  }
+
   .promo-section {
-    position: relative;
-    top: 25vh;
-    opacity: 0;
-    transition: top 1200ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0ms,
-                opacity 1200ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0ms;
+    margin-top: 0 !important;
+    padding-top: clamp(60px, 8vw, 80px) !important;
+    position: relative !important;
+    top: auto !important;
+    opacity: 1 !important;
+    transition: none !important;
+    pointer-events: auto !important;
   }
-  
+
   #about.visible .promo-section {
-    top: 0;
-    opacity: 1;
+    top: auto !important;
+    opacity: 1 !important;
+  }
+
+  .promo-video-box {
+    will-change: auto !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  .promo-video-box.fade-left {
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  .promo-text-box {
+    will-change: auto !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  .promo-text-box.fade-right {
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  .promo-about-title {
+    position: absolute !important;
+    top: clamp(15px, 2vw, 20px) !important;
+    left: clamp(20px, 2.5vw, 30px) !important;
+    z-index: 10 !important;
+    margin: 0 !important;
   }
   
-  /* Tearing animations enabled - no overrides needed */
+  .promo-section:has(.promo-video-box.fade-left):has(.promo-text-box.fade-right) {
+    pointer-events: auto !important;
+  }
 }

@@ -6,11 +6,24 @@ const PromoVideoSection = () => {
 
   useEffect(() => {
     const handleScroll = () => {
+      const aboutSection = document.querySelector('#about');
       const downloadSection = document.querySelector('.download-section');
-      if (downloadSection) {
+      const promoSection = document.querySelector('.promo-section');
+      
+      if (aboutSection && downloadSection && promoSection) {
+        // Check if about section is in viewport - use 50% for better detection
+        const aboutRect = aboutSection.getBoundingClientRect();
+        const isAboutVisible = aboutRect.top < window.innerHeight * 0.5;
+        
+        // Add/remove visible class for slide-up animation
+        if (isAboutVisible) {
+          aboutSection.classList.add('visible');
+        } else {
+          aboutSection.classList.remove('visible');
+        }
+        
+        // Trigger tearing when download section starts entering viewport
         const rect = downloadSection.getBoundingClientRect();
-        // Trigger when download section starts entering viewport
-        // Remove when scrolling back up past this point
         const isVisible = rect.top < window.innerHeight * 0.8 && rect.bottom > window.innerHeight * 0.2;
         
         setIsDownloadVisible(isVisible);
@@ -23,7 +36,7 @@ const PromoVideoSection = () => {
   }, []);
 
   return (
-    <section className="promo-section">
+    <section id="about" className="promo-section">
       {/* ABOUT TITLE - Now positioned outside containers */}
       <h3 className="promo-about-title">About</h3>
 

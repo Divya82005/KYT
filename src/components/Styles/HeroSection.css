@@ -508,6 +508,7 @@ section#home .feature-box:hover {
   /* Hide feature cards for iPad Mini */
   .feature-row {
     display: none;
+    margin-bottom: 0 !important;
   }
   
   .feature-box {
