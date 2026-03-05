@@ -382,13 +382,13 @@ section#home .feature-box:hover {
     opacity: 1 !important;
     overflow: visible !important;
     position: relative !important;
-    transform: translateX(0) !important; /* Start with image visible */
-    transition: transform 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 600ms; /* 600ms delay, 800ms duration - slower */
+    transform: none !important; /* No animation - stay visible */
+    transition: none !important; /* Disable animation completely */
   }
   
-  /* When scrolling to promo section, slide image right */
+  /* Disable slide animation on iPad */
   .hero-right.slide-right {
-    transform: translateX(100vw) !important;
+    transform: none !important; /* Don't move */
   }
   
   /* Text sizing optimized and reduced */
@@ -501,7 +501,7 @@ section#home .feature-box:hover {
     image-rendering: crisp-edges;
     backface-visibility: hidden;
     position: relative;
-    left: -5%; /* Position adjustment instead of transform */
+    left: -5%; /* Position adjustment */
     margin-right: -10% !important;
   }
   
@@ -975,12 +975,14 @@ img[src*="Img3.png"] {
   }
 }
 
-/* Hero image slide animation - triggers when about section is visible */
-.hero-right {
-  transition: transform 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-  will-change: transform !important;
-}
+/* Hero image slide animation - triggers when about section is visible - DESKTOP ONLY */
+@media (min-width: 1024px) {
+  .hero-right {
+    transition: transform 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+    will-change: transform !important;
+  }
 
-.hero-right.slide-right {
-  transform: translateX(100vw) !important;
+  .hero-right.slide-right {
+    transform: translateX(100vw) !important;
+  }
 }

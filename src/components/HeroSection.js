@@ -21,12 +21,11 @@ const HeroSection = () => {
         const isIPad = window.innerWidth >= 744 && window.innerWidth <= 1023;
         
         if (isIPad) {
-          // iPad Mini: Trigger when about section is 30% into viewport
+          // iPad Mini: Trigger when promo section is 60% into viewport (middle ground)
           const aboutRect = aboutSection.getBoundingClientRect();
-          const threshold = window.innerHeight * 0.7;
-          const isVisible = aboutRect.top <= threshold;
+          const isVisible = aboutRect.top <= window.innerHeight * 0.6;
           
-          console.log('🎯 iPad Animation Check - aboutRect.top:', aboutRect.top, 'threshold (70%):', threshold, 'isVisible:', isVisible);
+          console.log('🎯 iPad Animation Check - aboutRect.top:', aboutRect.top, 'threshold (60%):', window.innerHeight * 0.6, 'isVisible:', isVisible);
           
           setIsAboutVisible(isVisible);
           
