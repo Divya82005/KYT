@@ -150,24 +150,72 @@
 /* ============= MOBILE (max-width: 767px) ============= */
 @media (max-width: 767px) {
   .promo-section {
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: column !important;
     align-items: center;
     gap: clamp(20px, 4vw, 30px);
     padding: clamp(40px, 6vw, 60px) clamp(15px, 3vw, 25px);
+    margin-top: -40px !important;
+    position: relative;
+    top: 400px !important;
+    opacity: 1;
+    transition: top 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
   }
   
-  .promo-video-box,
-  .promo-text-box {
+  #about.visible .promo-section {
+    top: 0 !important;
+    opacity: 1;
+  }
+  
+  .promo-video-box {
     width: 100%;
     max-width: 100%;
     margin-left: 0;
     margin-top: clamp(20px, 4vw, 30px);
+    order: 1 !important;
+    will-change: transform, opacity;
+    transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .promo-section .promo-video-box.fade-left {
+    transform: translate(-150vw, 300vh);
+    opacity: 0;
+    pointer-events: none;
   }
   
   .promo-about-title {
     position: static;
     margin-bottom: clamp(15px, 3vw, 25px);
     text-align: center;
+    order: 2 !important;
+  }
+  
+  .promo-text-box {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-top: clamp(20px, 4vw, 30px);
+    order: 3 !important;
+    height: auto !important;
+    overflow: visible !important;
+    will-change: transform, opacity;
+    transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .promo-section .promo-text-box.fade-right {
+    transform: translate(150vw, 300vh);
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  .promo-heading {
+    text-align: center !important;
+  }
+  
+  .promo-description {
+    text-align: justify !important;
   }
 }
 
@@ -175,7 +223,7 @@
 @media (min-width: 768px) and (max-width: 1023px) {
   .promo-section {
     flex-direction: row;
-    align-items: flex-start;
+    align-items: stretch;
     justify-content: flex-start;
   }
   
@@ -188,8 +236,21 @@
   
   .promo-text-box {
     width: 44%;
-    height: clamp(250px, 30vw, 320px);
+    height: clamp(250px, 30vw, 320px) !important;
+    overflow: visible !important;
     margin-top: 0;
+    padding: clamp(18px, 2.5vw, 25px) !important;
+  }
+  
+  .promo-heading {
+    font-size: clamp(18px, 2.2vw, 22px) !important;
+    margin-bottom: clamp(12px, 1.8vw, 18px) !important;
+    line-height: 1.25 !important;
+  }
+  
+  .promo-description {
+    font-size: clamp(13px, 1.6vw, 16px) !important;
+    line-height: 1.5 !important;
   }
 }
 
@@ -261,13 +322,13 @@
 @media (min-width: 1024px) {
   .promo-section {
     position: relative;
-    top: 400px;
+    top: 400px !important;
     opacity: 1;
-    transition: top 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 600ms;
+    transition: top 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
   }
 
   #about.visible .promo-section {
-    top: 0;
+    top: 0 !important;
     opacity: 1;
   }
 
@@ -294,13 +355,9 @@
     opacity: 0 !important;
     pointer-events: none !important;
   }
-  
-  .promo-section:has(.promo-video-box.fade-left):has(.promo-text-box.fade-right) {
-    pointer-events: none !important;
-  }
 }
 
-/* ============= IPAD MINI (744px - 1023px) - NO ANIMATIONS ============= */
+/* ============= IPAD MINI (744px - 1023px) - WITH ANIMATIONS ============= */
 @media (max-width: 1023px) and (min-width: 744px) {
   .promo-container {
     margin-top: 0 !important;
@@ -309,44 +366,45 @@
   .promo-section {
     margin-top: 0 !important;
     padding-top: clamp(60px, 8vw, 80px) !important;
-    position: relative !important;
-    top: auto !important;
-    opacity: 1 !important;
-    transition: none !important;
-    pointer-events: auto !important;
+    position: relative;
+    top: 400px !important;
+    opacity: 1;
+    transition: top 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
   }
 
   #about.visible .promo-section {
-    top: auto !important;
-    opacity: 1 !important;
+    top: 0 !important;
+    opacity: 1;
   }
 
   .promo-video-box {
-    will-change: auto !important;
-    transition: none !important;
-    transform: none !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
+    transform: translate(0, 0);
+    opacity: 1;
+    pointer-events: auto;
+    will-change: transform, opacity;
+    transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 500ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .promo-video-box.fade-left {
-    transform: none !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
+  .promo-section .promo-video-box.fade-left {
+    transform: translate(-150vw, 300vh);
+    opacity: 0;
+    pointer-events: none;
   }
 
   .promo-text-box {
-    will-change: auto !important;
-    transition: none !important;
-    transform: none !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
+    transform: translate(0, 0);
+    opacity: 1;
+    pointer-events: auto;
+    will-change: transform, opacity;
+    transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 500ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .promo-text-box.fade-right {
-    transform: none !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
+  .promo-section .promo-text-box.fade-right {
+    transform: translate(150vw, 300vh);
+    opacity: 0;
+    pointer-events: none;
   }
 
   .promo-about-title {
@@ -355,9 +413,5 @@
     left: clamp(20px, 2.5vw, 30px) !important;
     z-index: 10 !important;
     margin: 0 !important;
-  }
-  
-  .promo-section:has(.promo-video-box.fade-left):has(.promo-text-box.fade-right) {
-    pointer-events: auto !important;
   }
 }

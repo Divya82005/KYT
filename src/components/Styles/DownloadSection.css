@@ -384,6 +384,20 @@
     position: relative;
     overflow: visible; /* Allow phone to extend outside */
     border-radius: 20px; /* Moderate border radius */
+    transform: none !important;
+    opacity: 1 !important;
+    transition: transform 800ms cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 800ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .download-section.slide-up {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  
+  .download-section.shrink-right {
+    transform: translate(80vw, 40vh) scale(0) rotate(15deg) !important;
+    opacity: 0 !important;
   }
 
   .left-contents {
@@ -690,40 +704,27 @@
   .right-phone {
     display: block !important;
     position: absolute !important;
-    left: 50% !important; /* Center phone horizontally */
-    transform: translateX(-50%) !important; /* Center phone horizontally */
-    top: -180px !important; /* Move phone down slightly from previous position */
-    bottom: auto !important;
-    width: clamp(200px, 50vw, 250px) !important; /* Adjusted size */
-    height: clamp(200px, 50vw, 250px) !important; /* Make it square for perfect circle */
-    z-index: 10 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    order: 1 !important;
-    background: transparent !important; /* Remove white circular background */
-    border-radius: 0 !important; /* Remove circular background */
-    padding: 0 !important; /* Remove padding */
-    animation: none !important; /* Disable any animations */
-    transition: none !important; /* Disable any transitions */
-    will-change: auto !important; /* Prevent GPU acceleration issues */
-    transform-origin: center !important; /* Fix transform origin */
-    backface-visibility: hidden !important; /* Prevent 3D transform issues */
-    perspective: none !important; /* Disable 3D perspective */
-    pointer-events: none !important; /* Disable any interaction that might cause movement */
+    left: 50% !important;
+    top: -185px !important; /* Moved up from -170px */
+    transform: translateX(-50%) !important;
+    width: 200px !important; /* Fixed width for consistency */
+    height: auto !important; /* Auto height to maintain aspect ratio */
+    z-index: 100 !important; /* Much higher z-index */
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    pointer-events: none !important;
   }
 
   .iphone-img {
-    width: 85% !important; /* Increased size for better clarity */
+    width: 100% !important;
     height: auto !important;
     max-height: none !important;
     object-fit: contain !important;
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2)) !important;
-    background: transparent !important;
-    z-index: 15 !important; /* Higher z-index to appear above white background */
-    clip-path: polygon(30% 2%, 84% 7%, 83.5% 99%, 19% 97%) !important; /* Fine-tuned to hide blue - 84% top, 83.5% bottom */
-    image-rendering: -webkit-optimize-contrast !important; /* Improve image sharpness */
-    image-rendering: crisp-edges !important; /* Better edge rendering */
+    display: block !important;
+    clip-path: polygon(30% 2%, 84% 7%, 83.5% 99%, 19% 97%) !important;
   }
 }
 
@@ -776,4 +777,12 @@
 .download-section.slide-up {
   transform: translateY(0);
   opacity: 1;
+}
+
+/* Shrink to right animation when safety section appears */
+.download-section.shrink-right {
+  transform: translate(80vw, 40vh) scale(0) rotate(15deg);
+  opacity: 0;
+  transition: transform 800ms cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 800ms cubic-bezier(0.4, 0, 0.2, 1);
 }

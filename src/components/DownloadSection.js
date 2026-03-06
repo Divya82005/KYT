@@ -7,16 +7,30 @@ import { useEffect, useState } from "react";
 
 const DownloadSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [shouldShrink, setShouldShrink] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
       const downloadSection = document.querySelector('.download-section');
-      if (downloadSection) {
+      const safetySection = document.querySelector('.safety-container');
+      
+      if (downloadSection && safetySection) {
         const rect = downloadSection.getBoundingClientRect();
+        const safetyRect = safetySection.getBoundingClientRect();
+        
         // Trigger when download section starts entering viewport
         const visible = rect.top < window.innerHeight && rect.bottom > 0;
         setIsVisible(visible);
+        
+        // Check if we're on iPad
+        const isIPad = window.innerWidth >= 744 && window.innerWidth <= 1023;
+        
+        // Trigger shrink when safety section starts entering viewport
+        // For iPad: use stricter trigger (50%) to separate from promo animation
+        const threshold = isIPad ? 0.5 : 0.7;
+        const safetySectionEntering = safetyRect.top < window.innerHeight * threshold;
+        setShouldShrink(safetySectionEntering);
       }
     };
 
@@ -47,7 +61,7 @@ const handleDownloadClick = () => {
 
 
   return (
-    <section className={`download-section ${isVisible ? 'slide-up' : ''}`}>
+    <section className={`download-section ${isVisible ? 'slide-up' : ''} ${shouldShrink ? 'shrink-right' : ''}`}>
       {/* LEFT SIDE */}
       <div className="left-contents">
         <h2>Get real-time safety alerts on your phone with our app</h2>

@@ -1,9 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Styles/SafetyIntelligence.css';
 
 const SafetyIntelligence = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const safetySection = document.querySelector('.safety-container');
+      
+      if (safetySection) {
+        const rect = safetySection.getBoundingClientRect();
+        // Trigger when safety section starts entering viewport
+        const visible = rect.top < window.innerHeight * 0.7;
+        setIsVisible(visible);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check on mount
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <section className="safety-container">
+    <section className={`safety-container ${isVisible ? 'slide-in-left' : ''}`}>
       {/* LEFT VERTICAL TITLE */}
       <div className="left-title">
         <span className="title-dynamic bottom-to-top-text-jan27" style={{ writingMode: 'vertical-rl', textOrientation: 'mixed', transform: 'none', direction: 'ltr', display: 'block' }}>Dynamic</span>

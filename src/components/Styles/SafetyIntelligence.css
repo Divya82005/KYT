@@ -87,14 +87,25 @@
   display: flex;
   flex-direction: column;
   overflow: visible;
+  opacity: 0;
+  transition: transform 800ms cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 800ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.safety-container.slide-in-left {
+  opacity: 1;
 }
 
 /* Desktop layout */
 @media (min-width: 1024px) {
   .safety-container {
     flex-direction: row;
-    transform: scale(0.7); /* Further reduced from 0.75 to 0.7 for more zoom out */
+    transform: scale(0.7) translateX(-100vw); /* Combine scale with slide */
     transform-origin: center;
+  }
+  
+  .safety-container.slide-in-left {
+    transform: scale(0.7) translateX(0); /* Keep scale, remove slide */
   }
 }
 
@@ -360,8 +371,12 @@
 /* Small Laptops (1024px - 1366px) */
 @media (min-width: 1024px) and (max-width: 1366px) {
   .safety-container {
-    transform: scale(0.65);
+    transform: scale(0.65) translateX(-100vw);
     margin: -150px auto 0;
+  }
+  
+  .safety-container.slide-in-left {
+    transform: scale(0.65) translateX(0);
   }
   
   .left-title {
@@ -397,8 +412,12 @@
 /* Medium Laptops (1367px - 1600px) */
 @media (min-width: 1367px) and (max-width: 1600px) {
   .safety-container {
-    transform: scale(0.7);
+    transform: scale(0.7) translateX(-100vw);
     margin: -160px auto 0;
+  }
+  
+  .safety-container.slide-in-left {
+    transform: scale(0.7) translateX(0);
   }
   
   .left-title {
@@ -434,8 +453,12 @@
 /* Large Laptops and Desktops (1601px+) */
 @media (min-width: 1601px) {
   .safety-container {
-    transform: scale(0.73);
+    transform: scale(0.73) translateX(-100vw);
     margin: -170px auto 0;
+  }
+  
+  .safety-container.slide-in-left {
+    transform: scale(0.73) translateX(0);
   }
   
   .left-title {
@@ -517,9 +540,13 @@
 /* ============= IPAD MINI 8.3 (744px - 1023px) - Match Reference Image ============= */
 @media (max-width: 1023px) and (min-width: 744px) {
   .safety-container {
-    transform: scale(0.85) !important; /* Zoom out the entire section for iPad Mini */
+    transform: scale(0.85) translateX(-100vw) !important; /* Combine zoom and slide */
     transform-origin: center !important; /* Scale from center */
     margin: -40px auto 0 !important; /* Reduced negative margin to decrease gap */
+  }
+  
+  .safety-container.slide-in-left {
+    transform: scale(0.85) translateX(0) !important; /* Keep zoom, remove slide */
   }
 
   .left-title {
