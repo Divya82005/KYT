@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 
 const PromoVideoSection = () => {
   const [isDownloadVisible, setIsDownloadVisible] = useState(false);
-  const [hasAnimated, setHasAnimated] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
 
   useEffect(() => {
@@ -33,40 +32,23 @@ const PromoVideoSection = () => {
         const rect = downloadSection.getBoundingClientRect();
         const promoRect = promoSection.getBoundingClientRect();
         
-        // Check if we're on iPad
+        // Check if we're on iPad or mobile
         const isIPad = window.innerWidth >= 744 && window.innerWidth <= 1023;
         const isMobile = window.innerWidth < 744;
         
-        // Debug logging for iPad and Mobile
-        if (isIPad || isMobile) {
-          console.log('Device - Download Top:', rect.top, 'Threshold (80%):', window.innerHeight * 0.8, 'hasAnimated:', hasAnimated, 'hasScrolled:', hasScrolled, 'isDownloadVisible:', isDownloadVisible);
+        // Debug logging for iPad
+        if (isIPad) {
+          console.log('iPad - Download rect.top:', rect.top, 'Promo rect.top:', promoRect.top, 'Viewport height:', window.innerHeight, 'isDownloadVisible:', isDownloadVisible);
         }
         
-        // Animation trigger logic - same for iPad, mobile, and desktop
-        const downloadEntering = rect.top < window.innerHeight * 0.8 && ((isIPad || isMobile) ? hasScrolled : true);
-        
-        // Only trigger animation once when condition is met
-        if (downloadEntering && !hasAnimated) {
-          console.log('Triggering animation! isIPad:', isIPad, 'isMobile:', isMobile);
+        // Tear when download section enters at 80%
+        // Return when download section moves back down (rect.top increases)
+        if (rect.top < window.innerHeight * 0.8 && ((isIPad || isMobile) ? hasScrolled : true)) {
+          console.log('Setting isDownloadVisible to TRUE');
           setIsDownloadVisible(true);
-          setHasAnimated(true);
-          
-          // Automatically bring elements back after 1.5 seconds
-          setTimeout(() => {
-            console.log('Resetting isDownloadVisible to false');
-            setIsDownloadVisible(false);
-          }, 1500);
-        }
-        
-        // Reset hasAnimated when scrolling back up
-        // For both desktop and iPad: reset to allow re-animation
-        // Reset when download section is below viewport OR when promo section is back at top
-        if (rect.top > window.innerHeight || promoRect.top > window.innerHeight * 0.3) {
-          if (hasAnimated) {
-            console.log('Resetting hasAnimated - rect.top:', rect.top, 'promoRect.top:', promoRect.top);
-          }
-          setHasAnimated(false);
-          setIsDownloadVisible(false); // Also reset the visible state
+        } else if (rect.top >= window.innerHeight * 0.8) {
+          console.log('Setting isDownloadVisible to FALSE - download section moved back down');
+          setIsDownloadVisible(false);
         }
       }
     };
@@ -74,7 +56,7 @@ const PromoVideoSection = () => {
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Check on mount
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [hasAnimated, hasScrolled]);
+  }, [hasScrolled]);
 
   return (
     <section id="about" className="promo-section">

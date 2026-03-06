@@ -796,3 +796,55 @@
     transform: translateY(0);
   }
 }
+
+/* ============= TEARING EFFECT ANIMATIONS ============= */
+/* Default state - elements at original position */
+.safety-container .left-title {
+  transform: translateY(-50%);
+  transition: transform 800ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.safety-container .safety-row {
+  transform: translate(0, 0);
+  transition: transform 800ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Ensure safety-container remains scrollable */
+.safety-container {
+  pointer-events: auto !important;
+  touch-action: auto !important;
+  overflow: visible !important;
+  position: relative !important;
+  min-height: 0 !important;
+}
+
+.safety-container.slide-in-left {
+  pointer-events: auto !important;
+  overflow: visible !important;
+  min-height: 0 !important;
+}
+
+/* Tearing effect - left-title goes to bottom-left (diagonal) */
+.safety-container .left-title.tear-left {
+  transform: translate(-100vw, 100vh) !important;
+  pointer-events: none !important;
+}
+
+/* Tearing effect - row 02 (card) goes to bottom-left (diagonal) */
+.safety-container .safety-row.card.tear-left {
+  transform: translate(-100vw, 100vh) !important;
+  pointer-events: none !important;
+}
+
+/* Tearing effect - rows 01 and 03 go to bottom-right (diagonal) */
+.safety-container .safety-row.tear-right {
+  transform: translate(100vw, 100vh) !important;
+  pointer-events: none !important;
+}
+
+/* Disable pointer events on children of torn elements */
+.safety-container .left-title.tear-left *,
+.safety-container .safety-row.card.tear-left *,
+.safety-container .safety-row.tear-right * {
+  pointer-events: none !important;
+}
