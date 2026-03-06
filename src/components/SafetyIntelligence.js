@@ -36,7 +36,7 @@ const SafetyIntelligence = () => {
   }, []);
 
   return (
-    <section className={`safety-container ${isVisible ? 'slide-in-left' : ''}`}>
+    <section className={`safety-container ${isVisible ? 'slide-in-left' : ''} ${shouldTear ? 'is-torn' : ''}`}>
       {/* LEFT VERTICAL TITLE */}
       <div className={`left-title ${shouldTear ? 'tear-left' : ''}`}>
         <span className="title-dynamic bottom-to-top-text-jan27" style={{ writingMode: 'vertical-rl', textOrientation: 'mixed', transform: 'none', direction: 'ltr', display: 'block' }}>Dynamic</span>

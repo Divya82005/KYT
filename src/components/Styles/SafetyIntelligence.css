@@ -815,13 +815,29 @@
   touch-action: auto !important;
   overflow: visible !important;
   position: relative !important;
-  min-height: 0 !important;
+  z-index: 1 !important;
+  width: 100% !important;
 }
 
 .safety-container.slide-in-left {
   pointer-events: auto !important;
   overflow: visible !important;
-  min-height: 0 !important;
+  z-index: 1 !important;
+}
+
+/* When elements are torn, allow scrolling through the container */
+.safety-container.is-torn {
+  pointer-events: none !important;
+}
+
+.safety-container.is-torn * {
+  pointer-events: none !important;
+}
+
+/* Prevent horizontal scroll from torn elements */
+html, body {
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 /* Tearing effect - left-title goes to bottom-left (diagonal) */
