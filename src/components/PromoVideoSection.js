@@ -3,21 +3,14 @@ import { useEffect, useState } from "react";
 
 const PromoVideoSection = () => {
   const [isDownloadVisible, setIsDownloadVisible] = useState(false);
-  const [hasScrolled, setHasScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Mark that user has scrolled
-      if (!hasScrolled) {
-        setHasScrolled(true);
-      }
-      
       const aboutSection = document.querySelector('#about');
       const downloadSection = document.querySelector('.download-section');
-      const promoSection = document.querySelector('.promo-section');
       
-      if (aboutSection && downloadSection && promoSection) {
-        // Check if about section is in viewport - use 50% for better detection
+      if (aboutSection && downloadSection) {
+        // Check if about section is in viewport
         const aboutRect = aboutSection.getBoundingClientRect();
         const isAboutVisible = aboutRect.top < window.innerHeight * 0.5;
         
@@ -28,26 +21,15 @@ const PromoVideoSection = () => {
           aboutSection.classList.remove('visible');
         }
         
-        // Get positions
-        const rect = downloadSection.getBoundingClientRect();
-        const promoRect = promoSection.getBoundingClientRect();
+        // Get download section position
+        const downloadRect = downloadSection.getBoundingClientRect();
         
-        // Check if we're on iPad or mobile
-        const isIPad = window.innerWidth >= 744 && window.innerWidth <= 1023;
-        const isMobile = window.innerWidth < 744;
-        
-        // Debug logging for iPad
-        if (isIPad) {
-          console.log('iPad - Download rect.top:', rect.top, 'Promo rect.top:', promoRect.top, 'Viewport height:', window.innerHeight, 'isDownloadVisible:', isDownloadVisible);
-        }
-        
-        // Tear when download section enters at 80%
-        // Return when download section moves back down (rect.top increases)
-        if (rect.top < window.innerHeight * 0.8 && ((isIPad || isMobile) ? hasScrolled : true)) {
-          console.log('Setting isDownloadVisible to TRUE');
+        // Simple bidirectional logic:
+        // Tear when download section top is less than 80% of viewport (scrolling down)
+        // Return when download section top is greater than 80% of viewport (scrolling up)
+        if (downloadRect.top < window.innerHeight * 0.8) {
           setIsDownloadVisible(true);
-        } else if (rect.top >= window.innerHeight * 0.8) {
-          console.log('Setting isDownloadVisible to FALSE - download section moved back down');
+        } else {
           setIsDownloadVisible(false);
         }
       }
@@ -56,7 +38,7 @@ const PromoVideoSection = () => {
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Check on mount
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [hasScrolled]);
+  }, []);
 
   return (
     <section id="about" className="promo-section">

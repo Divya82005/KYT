@@ -1,5 +1,17 @@
 
 /* ============= FOOTER SECTION ============= */
+#footer {
+  opacity: 0;
+  transform: translateY(200px);
+  transition: opacity 1200ms cubic-bezier(0.4, 0.0, 0.2, 1), 
+              transform 1200ms cubic-bezier(0.4, 0.0, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+#footer.footer-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* ============= FOOTER WRAPPER ============= */
 .footer-wrapper {
@@ -203,12 +215,12 @@
     visibility: visible !important;
     opacity: 1 !important;
     height: auto !important;
-    max-height: 400px !important;
-    min-height: auto !important;
+    max-height: none !important;
+    min-height: 400px !important;
     background: #5351f4 !important;
-    overflow: hidden !important;
-    padding: clamp(4.5rem, 9vw, 5.5rem) clamp(3rem, 6vw, 4rem) 1rem clamp(2rem, 4vw, 2.5rem) !important;
-    margin: 0 0 -1000px 0 !important; /* Increased negative margin from -500px to -1000px */
+    overflow: visible !important;
+    padding: clamp(3rem, 6vw, 4rem) clamp(2rem, 4vw, 3rem) clamp(2rem, 4vw, 3rem) clamp(2rem, 4vw, 2.5rem) !important;
+    margin: 0 !important;
     box-sizing: border-box !important;
     position: relative !important;
     z-index: 1 !important;
@@ -222,7 +234,7 @@
     opacity: 1 !important;
     padding: 0 !important;
     position: static !important;
-    min-height: 600px !important;
+    min-height: 400px !important;
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;

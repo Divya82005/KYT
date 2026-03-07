@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Styles/FooterSection.css";
 import QRCode from "../assets/Vector.png";
 import ReactGA from "react-ga4";
@@ -6,6 +6,30 @@ import { useLocation } from "react-router-dom";
 
 const FooterSection = () => {
 const location = useLocation();
+const footerRef = useRef(null);
+const [isVisible, setIsVisible] = useState(false);
+
+useEffect(() => {
+  const handleScroll = () => {
+    const footerSection = footerRef.current;
+    
+    if (footerSection) {
+      const footerRect = footerSection.getBoundingClientRect();
+      const footerTop = footerRect.top;
+      
+      // Trigger animation when top of footer reaches 70% of viewport (later trigger)
+      if (footerTop < window.innerHeight * 0.7) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    }
+  };
+
+  window.addEventListener('scroll', handleScroll);
+  handleScroll(); // Check on mount
+  return () => window.removeEventListener('scroll', handleScroll);
+}, []);
 
 const handleDownloadClick = () => {
   const path = location.pathname;
@@ -30,8 +54,9 @@ const handleDownloadClick = () => {
 
 
   return (
-    <div className="footer-wrapper">
-      <div className="footer-container">
+    <section id="footer" ref={footerRef} className={isVisible ? 'footer-visible' : ''}>
+      <div className="footer-wrapper">
+        <div className="footer-container">
         {/* LEFT CONTENT */}
         <div className="footer-left">
           <div className="data-sources">
@@ -80,6 +105,7 @@ const handleDownloadClick = () => {
         </div>
       </div>
     </div>
+    </section>
   );
 };
 

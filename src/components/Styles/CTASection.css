@@ -10,7 +10,9 @@
   text-align: center;
   transform: scale(0.88); /* Reduced from 0.95 to zoom out slightly */
   transform-origin: center;
-  margin-bottom: clamp(3rem, 5vw, 5rem); /* Add gap between CTA and footer */
+  margin-bottom: clamp(1rem, 2vw, 2rem); /* Reduced gap between CTA and footer */
+  overflow: visible;
+  height: auto;
 }
 
 /* ============= SECTION HEADING ============= */
@@ -27,19 +29,26 @@
 .feedback-card {
   width: 100%;
   max-width: 1600px; /* Increased from 1300px to make it much wider */
-  height: 350px; /* Fixed height instead of auto */
+  min-height: 350px; /* Changed from fixed height to min-height */
+  height: auto; /* Allow height to grow with content */
   background: #ffffff;
   border: 1.5px solid #c7d2fe; /* Light blue border */
   border-radius: clamp(1.5rem, 3vw, 2.5rem);
   padding: 0;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04); /* Subtle shadow */
-  transition: all 0.3s ease;
+  transition: transform 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: relative; /* For arrow positioning */
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: visible; /* Allow arrows to show outside the card */
   margin: 0 auto; /* Center the card */
+  transform: translate(0, 0);
+}
+
+.feedback-card.tear-away {
+  transform: translate(-100vw, 100vh);
+  transition: transform 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .feedback-card:hover {
@@ -54,12 +63,12 @@
   align-items: center;
   text-align: center;
   width: 100%;
-  height: 100%;
+  height: auto;
   padding: clamp(2.5rem, 5vw, 3.5rem) clamp(2rem, 5vw, 3rem); /* Increased vertical padding */
   box-sizing: border-box;
   justify-content: center;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 @media (min-width: 768px) {
@@ -69,8 +78,12 @@
     align-items: center;
     gap: clamp(1.5rem, 3vw, 2.5rem); /* Reduced gap to bring left and right content closer */
     padding: clamp(3rem, 5vw, 4rem) clamp(2.5rem, 5vw, 3.5rem);
+    height: auto;
+    overflow: visible;
   }
 }
+
+/* ============= USER INFO SECTION ============= */
 
 /* ============= USER INFO SECTION ============= */
 .user-info {
@@ -162,10 +175,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  top: 45px; /* Increased from 25px to move it further down */
-  left: 42%; /* Positioned right where text starts on desktop */
-  transform: translateX(-50%); /* Center the icon itself */
+  position: relative;
+  margin-bottom: clamp(0.5rem, 1vw, 1rem);
   z-index: 2;
   background: transparent;
   border-radius: 0;
@@ -176,12 +187,10 @@
 
 @media (min-width: 768px) {
   .quote-icon-container {
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    position: absolute;
-    top: 50px; /* Increased from 30px to move it further down on desktop */
-    left: 42%; /* Positioned right where text starts on desktop */
-    transform: translateX(-50%); /* Center the icon itself */
+    position: relative;
+    margin-bottom: clamp(0.5rem, 1vw, 1rem);
     width: auto;
     height: auto;
   }
@@ -202,21 +211,13 @@
   color: #374151;
   margin: 0;
   text-align: center;
-  padding-top: clamp(2.5rem, 4vw, 3.5rem); /* Top padding for quote icon */
-  padding-left: clamp(1rem, 2vw, 1.5rem); /* Reduced left padding */
+  padding: 0;
 }
 
 @media (min-width: 768px) {
   .feedback-text {
     text-align: left;
-    padding-top: clamp(3rem, 4vw, 4rem); /* More top padding on desktop */
-    padding-left: clamp(1.5rem, 2vw, 2rem); /* Moderate left padding on desktop */
-  }
-}
-
-@media (min-width: 768px) {
-  .feedback-text {
-    text-align: left;
+    padding: 0;
   }
 }
 
@@ -234,10 +235,20 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: transform 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
   box-shadow: 0 4px 15px rgba(83, 81, 244, 0.3);
   z-index: 1000; /* Very high z-index to appear above everything */
   /* Position relative to the feedback-card, not the container */
+}
+
+.nav-btn.tear-away {
+  transform: translate(-100vw, 100vh);
+  transition: transform 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.nav-btn.tear-right-arrow {
+  transform: translate(50vw, 50vh);
+  transition: transform 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* Create proper chevron arrows using CSS borders */
@@ -268,6 +279,14 @@
   box-shadow: 0 6px 20px rgba(83, 81, 244, 0.4);
 }
 
+.testimonial-section .nav-btn.tear-away:hover {
+  transform: translate(-100vw, 100vh);
+}
+
+.testimonial-section .nav-btn.tear-right-arrow:hover {
+  transform: translate(50vw, 50vh);
+}
+
 .nav-btn img {
   display: none; /* Hide the image arrows since we're using CSS arrows */
 }
@@ -279,16 +298,18 @@
 /* ============= MOBILE SPECIFIC LAYOUT (max-width: 767px) ============= */
 @media (max-width: 767px) {
   .testimonial-section {
-    margin: -20px auto 0 !important; /* Negative margin to reduce gap with download section */
-    padding: clamp(1rem, 3vw, 2rem) clamp(1.5rem, 4vw, 2rem) !important; /* Moderate horizontal padding */
-    margin-bottom: clamp(3rem, 5vw, 5rem) !important;
-    transform: scale(1) !important; /* Remove scaling to show full size */
-    overflow: visible !important; /* Ensure content is not clipped */
+    margin: -20px auto 0 !important;
+    padding: clamp(0.75rem, 2.5vw, 1.5rem) clamp(0.5rem, 1.5vw, 0.75rem) !important;
+    margin-bottom: clamp(1rem, 2vw, 2rem) !important;
+    transform: scale(0.85);
+    transform-origin: center;
+    overflow: visible !important;
+    height: auto !important;
   }
 
   .section-heading {
-    font-size: clamp(2rem, 6vw, 3rem) !important; /* Much larger font size */
-    margin-bottom: clamp(2rem, 5vw, 3rem) !important;
+    font-size: clamp(1.5rem, 5vw, 2rem) !important;
+    margin-bottom: clamp(1.25rem, 3.5vw, 1.75rem) !important;
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
@@ -296,120 +317,153 @@
     font-weight: 700 !important;
     color: #5351f4 !important;
     line-height: 1.2 !important;
-    padding-top: 1rem !important; /* Add top padding to prevent cutoff */
+    padding-top: 0.5rem !important;
   }
 
   .feedback-card {
-    height: 250px !important; /* Reduced height from 350px to 250px */
-    margin: 0 auto !important; /* Center the card */
-    max-width: calc(100% - 1rem) !important; /* Slightly reduce width to make minimal space for arrows */
+    height: auto !important;
+    min-height: 180px !important;
+    margin: 0 auto !important;
+    max-width: 100% !important;
+    padding: clamp(1rem, 3vw, 1.5rem) clamp(0.3rem, 1vw, 0.5rem) !important;
+    overflow: visible !important;
+    box-sizing: border-box !important;
   }
 
   .feedback-content {
-    flex-direction: row !important; /* Change to row for left-right layout */
+    flex-direction: row !important;
     text-align: left !important;
-    align-items: center !important; /* Center vertically */
-    gap: clamp(1.5rem, 4vw, 2rem) !important;
-    padding: clamp(2rem, 4vw, 2.5rem) clamp(1.5rem, 4vw, 2rem) !important;
+    align-items: center !important;
+    gap: 0 !important;
+    padding: 0 0 0 clamp(1.5rem, 4vw, 2rem) !important;
     justify-content: space-between !important;
+    width: 100% !important;
+    height: auto !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
   }
 
   .user-info {
     display: flex !important;
     flex-direction: column !important;
-    align-items: center !important; /* Center align horizontally */
-    justify-content: center !important; /* Center vertically */
-    gap: clamp(1rem, 3vw, 1.5rem) !important; /* Increased gap between stars and name */
-    width: 35% !important; /* Left side takes 35% */
-    order: 1 !important; /* Left side */
-    height: 100% !important; /* Take full height to enable vertical centering */
+    align-items: center !important;
+    justify-content: center !important;
+    gap: clamp(0.5rem, 1.8vw, 0.75rem) !important;
+    width: 50% !important;
+    min-width: 50% !important;
+    max-width: 50% !important;
+    order: 1 !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex-shrink: 0 !important;
+    position: relative !important;
+    z-index: 10 !important;
+    overflow: visible !important;
   }
 
   .rating-container {
-    background: white !important; /* White background like reference */
-    border-radius: clamp(2rem, 5vw, 3rem) !important; /* More rounded like reference */
-    padding: clamp(0.5rem, 2vw, 0.75rem) clamp(1rem, 3vw, 1.5rem) !important;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
-    margin-bottom: 0 !important; /* Remove margin since gap handles spacing */
-    transform: none !important;
-    order: 1 !important; /* Stars at top of left side */
+    background: white !important;
+    border-radius: clamp(1rem, 3vw, 1.5rem) !important;
+    padding: clamp(0.4rem, 1.5vw, 0.6rem) clamp(0.7rem, 2.2vw, 0.9rem) !important;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1) !important;
+    margin-bottom: 0 !important;
+    transform: none;
+    order: 1 !important;
     width: fit-content !important;
   }
 
   .star-rating {
-    justify-content: center !important; /* Center stars in container */
-    gap: 4px !important;
+    justify-content: center !important;
+    gap: 2.5px !important;
   }
 
   .star {
-    font-size: clamp(1.25rem, 3.5vw, 1.5rem) !important; /* Smaller stars */
+    font-size: clamp(0.75rem, 2.3vw, 0.95rem) !important;
   }
 
   .user-details {
-    text-align: center !important; /* Center align */
-    order: 2 !important; /* Name and title below stars */
+    text-align: center !important;
+    order: 2 !important;
+    width: 100% !important;
   }
 
   .user-name {
-    text-align: center !important; /* Center align */
-    margin-bottom: clamp(0.25rem, 1vw, 0.5rem) !important;
-    font-size: clamp(1rem, 3vw, 1.25rem) !important;
+    text-align: center !important;
+    margin-bottom: clamp(0.15rem, 0.5vw, 0.25rem) !important;
+    font-size: clamp(0.75rem, 2.2vw, 0.9rem) !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+    width: 100% !important;
+    word-break: break-word !important;
   }
 
   .user-title {
-    text-align: center !important; /* Center align */
-    font-size: clamp(0.875rem, 2.5vw, 1rem) !important;
+    text-align: center !important;
+    font-size: clamp(0.65rem, 1.9vw, 0.8rem) !important;
+    line-height: 1.2 !important;
+    width: 100% !important;
+    word-break: break-word !important;
   }
 
   .feedback-text-area {
-    order: 2 !important; /* Right side */
-    max-width: 60% !important; /* Right side takes 60% */
-    margin-top: 0 !important;
+    order: 2 !important;
+    max-width: 50% !important;
+    width: 50% !important;
+    flex: 0 0 50% !important;
+    margin: 0 !important;
+    padding: 0 !important;
     display: flex !important;
     flex-direction: column !important;
-    gap: clamp(0.75rem, 2vw, 1rem) !important;
+    gap: clamp(0.4rem, 1.5vw, 0.6rem) !important;
+    flex-shrink: 0 !important;
+    position: relative !important;
+    z-index: 5 !important;
+    overflow: visible !important;
   }
 
   .quote-icon-container {
-    position: static !important; /* Remove absolute positioning */
+    position: static !important;
     display: flex !important;
     justify-content: flex-start !important;
     align-items: center !important;
-    order: 1 !important; /* Quote icon at top of right side */
+    order: 1 !important;
     margin: 0 !important;
-    transform: none !important;
+    transform: none;
   }
 
   .quote-icon {
-    width: clamp(1.5rem, 4vw, 2rem) !important; /* Reduced logo size from clamp(2rem, 5vw, 2.5rem) */
+    width: clamp(1rem, 2.5vw, 1.25rem) !important;
   }
 
   .feedback-text {
-    text-align: left !important; /* Left align text */
+    text-align: left !important;
     padding-top: 0 !important;
     padding-left: 0 !important;
-    font-size: clamp(0.7rem, 2vw, 0.85rem) !important; /* Reduced font size from clamp(0.75rem, 2.2vw, 0.9rem) */
-    line-height: 1.6 !important;
-    order: 2 !important; /* Text below quote icon */
+    font-size: clamp(0.68rem, 1.9vw, 0.8rem) !important;
+    line-height: 1.4 !important;
+    order: 2 !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
   }
 
-  /* Move navigation arrows to middle sides like reference */
+  /* Move navigation arrows to middle sides */
   .nav-btn.left {
-    left: clamp(-1.5rem, -4vw, -2rem) !important; /* Outside the card on left */
+    left: clamp(-1.25rem, -3.5vw, -1.75rem) !important;
     bottom: auto !important;
     top: 50% !important;
-    transform: translateY(-50%) !important;
-    width: clamp(2.5rem, 7vw, 3.5rem) !important; /* Reduced size */
-    height: clamp(2.5rem, 7vw, 3.5rem) !important; /* Reduced size */
+    transform: translateY(-50%);
+    width: clamp(2rem, 6vw, 2.5rem) !important;
+    height: clamp(2rem, 6vw, 2.5rem) !important;
   }
 
   .nav-btn.right {
-    right: clamp(-1.5rem, -4vw, -2rem) !important; /* Outside the card on right */
+    right: clamp(-1.25rem, -3.5vw, -1.75rem) !important;
     bottom: auto !important;
     top: 50% !important;
-    transform: translateY(-50%) !important;
-    width: clamp(2.5rem, 7vw, 3.5rem) !important; /* Reduced size */
-    height: clamp(2.5rem, 7vw, 3.5rem) !important; /* Reduced size */
+    transform: translateY(-50%);
+    width: clamp(2rem, 6vw, 2.5rem) !important;
+    height: clamp(2rem, 6vw, 2.5rem) !important;
   }
 }
 
@@ -434,10 +488,12 @@
     margin: -40px auto 0 !important;
     padding: clamp(0.75rem, 2.5vw, 1.5rem) clamp(3rem, 5vw, 4rem) !important;
     text-align: center !important;
-    transform: scale(0.88) !important;
+    transform: scale(0.88);
     transform-origin: center !important;
-    margin-bottom: clamp(3rem, 5vw, 5rem) !important;
+    margin-bottom: clamp(1rem, 2vw, 2rem) !important;
     min-height: 500px !important;
+    overflow: visible !important;
+    height: auto !important;
   }
   
   /* Ensure section heading is visible */
@@ -462,7 +518,8 @@
     position: relative !important;
     width: 100% !important;
     max-width: 1600px !important;
-    height: 350px !important;
+    min-height: 350px !important;
+    height: auto !important;
     background: #ffffff !important;
     border: 1.5px solid #c7d2fe !important;
     border-radius: clamp(1.5rem, 3vw, 2.5rem) !important;
@@ -471,6 +528,11 @@
     align-items: center !important;
     justify-content: center !important;
     margin: 0 auto !important;
+  }
+  
+  .feedback-content {
+    height: auto !important;
+    overflow: visible !important;
   }
   
   /* Adjust arrow positioning for iPad Mini */
@@ -490,6 +552,8 @@
   transform: translateY(100vh);
   animation: slideUpFromBottom 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   animation-delay: 500ms;
+  overflow: visible;
+  height: auto;
 }
 
 @keyframes slideUpFromBottom {
@@ -519,4 +583,77 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* ============= TEARING EFFECT ANIMATIONS ============= */
+.tear-wrapper-left,
+.tear-wrapper-right {
+  display: flex;
+  flex-direction: column;
+  transition: transform 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translate(0, 0);
+  flex-shrink: 0;
+}
+
+.tear-wrapper-left.tear-left {
+  transform: translate(-100vw, 100vh);
+  transition: transform 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.tear-wrapper-right.tear-right {
+  transform: translate(100vw, 100vh);
+  transition: transform 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Ensure wrappers take proper space on desktop */
+@media (min-width: 768px) {
+  .tear-wrapper-left {
+    flex-shrink: 0;
+  }
+  
+  .tear-wrapper-right {
+    flex: 1;
+    flex-shrink: 0;
+  }
+}
+
+/* Prevent content inside from shrinking */
+.user-info,
+.feedback-text-area {
+  flex-shrink: 0;
+}
+
+/* ============= PROGRESS INDICATORS ============= */
+.progress-indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+  gap: 10px;
+  z-index: 10;
+  transition: transform 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.progress-indicators.tear-away {
+  transform: translate(-100vw, 100vh);
+  transition: transform 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.progress-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #d1d5db;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.progress-dot.active {
+  background: #5351f4;
+  transform: scale(1.2);
+}
+
+.progress-dot:hover {
+  background: #9ca3af;
 }

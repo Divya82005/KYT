@@ -33,6 +33,8 @@ const CTASection = () => {
   const [index, setIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [isChanging, setIsChanging] = useState(false);
+  const [shouldTear, setShouldTear] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
 
   const nextSlide = () => {
     setIsChanging(true);
@@ -62,7 +64,7 @@ const CTASection = () => {
 
   // Auto-slide every 3 seconds, but pause when hovering
   useEffect(() => {
-    if (isPaused) return; // Don't start interval if paused
+    if (isPaused) return;
 
     const interval = setInterval(() => {
       setIsChanging(true);
@@ -70,11 +72,33 @@ const CTASection = () => {
         setIndex((prev) => (prev + 1) % feedbackList.length);
         setIsChanging(false);
       }, 200);
-    }, 3000); // 3 seconds
+    }, 3000);
 
-    // Cleanup interval on component unmount or when paused
     return () => clearInterval(interval);
   }, [isPaused, index]);
+
+  // Tearing animation when scrolling to end of CTA section
+  useEffect(() => {
+    const handleScroll = () => {
+      const ctaSection = document.querySelector('.testimonial-section');
+      
+      if (ctaSection) {
+        const ctaRect = ctaSection.getBoundingClientRect();
+        const ctaBottom = ctaRect.bottom;
+        
+        // Tear when bottom of CTA section reaches 70% of viewport (earlier trigger)
+        if (ctaBottom < window.innerHeight * 0.7) {
+          setShouldTear(true);
+        } else {
+          setShouldTear(false);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleMouseEnter = () => {
     setIsPaused(true); // Pause auto-slide when hovering
@@ -103,45 +127,49 @@ const CTASection = () => {
 
       {/* MAIN FEEDBACK CARD WITH ARROWS */}
       <div 
-        className="feedback-card"
+        className={`feedback-card ${shouldTear ? 'tear-away' : ''}`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
         {/* LEFT ARROW */}
-        <button className="nav-btn left" onClick={prevSlide}>
+        <button className={`nav-btn left ${shouldTear ? 'tear-away' : ''}`} onClick={prevSlide}>
           <img src={arrowl} alt="Previous" />
         </button>
 
         <div className={`feedback-content ${isChanging ? 'changing' : ''}`}>
           {/* LEFT SIDE - USER INFO */}
-          <div className="user-info">
-            <div className="rating-container">
-              <div className="star-rating">
-                {renderStars(currentFeedback.rating)}
+          <div className={`tear-wrapper-left ${shouldTear ? 'tear-left' : ''}`}>
+            <div className="user-info">
+              <div className="rating-container">
+                <div className="star-rating">
+                  {renderStars(currentFeedback.rating)}
+                </div>
               </div>
-            </div>
-            <div className="user-details">
-              <h3 className="user-name">{currentFeedback.name}</h3>
-              <p className="user-title">{currentFeedback.title}</p>
+              <div className="user-details">
+                <h3 className="user-name">{currentFeedback.name}</h3>
+                <p className="user-title">{currentFeedback.title}</p>
+              </div>
             </div>
           </div>
 
           {/* RIGHT SIDE - FEEDBACK TEXT */}
-          <div className="feedback-text-area">
-            <div className="quote-icon-container">
-              <img src={quote} className="quote-icon" alt="quote" />
+          <div className={`tear-wrapper-right ${shouldTear ? 'tear-right' : ''}`}>
+            <div className="feedback-text-area">
+              <div className="quote-icon-container">
+                <img src={quote} className="quote-icon" alt="quote" />
+              </div>
+              <p className="feedback-text">{currentFeedback.text}</p>
             </div>
-            <p className="feedback-text">{currentFeedback.text}</p>
           </div>
         </div>
 
         {/* RIGHT ARROW */}
-        <button className="nav-btn right" onClick={nextSlide}>
+        <button className={`nav-btn right`} onClick={nextSlide}>
           <img src={arrowr} alt="Next" />
         </button>
 
         {/* PROGRESS INDICATORS */}
-        <div className="progress-indicators">
+        <div className={`progress-indicators ${shouldTear ? 'tear-away' : ''}`}>
           {feedbackList.map((_, i) => (
             <div
               key={i}
