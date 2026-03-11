@@ -34,10 +34,10 @@
   font-family: "Poppins", sans-serif;
 }
 
-/* Desktop scaling - only for larger screens */
+/* Desktop scaling - uniform across all laptop sizes */
 @media (min-width: 1024px) {
   .footer-container {
-    transform: scale(0.85);
+    transform: scale(0.8);
     transform-origin: center;
   }
 }
@@ -444,10 +444,10 @@
   }
 }
 
-/* Medium Laptops (1367px - 1600px) */
+/* Medium Laptops (1367px - 1600px) - Same as small laptops */
 @media (min-width: 1367px) and (max-width: 1600px) {
   .footer-container {
-    transform: scale(0.83);
+    transform: scale(0.8);
     padding: clamp(3rem, 5vw, 3.8rem) clamp(2rem, 4vw, 2.8rem);
   }
   
@@ -474,10 +474,10 @@
   }
 }
 
-/* Large Laptops and Desktops (1601px+) */
+/* Large Laptops and Desktops (1601px+) - Same as small laptops */
 @media (min-width: 1601px) {
   .footer-container {
-    transform: scale(0.85);
+    transform: scale(0.8);
     padding: clamp(3rem, 6vw, 4rem) clamp(2rem, 5vw, 3rem);
   }
   

@@ -96,16 +96,16 @@
   opacity: 1;
 }
 
-/* Desktop layout */
+/* Desktop layout - uniform scale across all laptop sizes */
 @media (min-width: 1024px) {
   .safety-container {
     flex-direction: row;
-    transform: scale(0.7) translateX(-100vw); /* Combine scale with slide */
+    transform: scale(0.65) translateX(-100vw);
     transform-origin: center;
   }
   
   .safety-container.slide-in-left {
-    transform: scale(0.7) translateX(0); /* Keep scale, remove slide */
+    transform: scale(0.65) translateX(0);
   }
 }
 
@@ -409,15 +409,15 @@
   }
 }
 
-/* Medium Laptops (1367px - 1600px) */
+/* Medium Laptops (1367px - 1600px) - Same as small laptops */
 @media (min-width: 1367px) and (max-width: 1600px) {
   .safety-container {
-    transform: scale(0.7) translateX(-100vw);
-    margin: -160px auto 0;
+    transform: scale(0.65) translateX(-100vw);
+    margin: -150px auto 0;
   }
   
   .safety-container.slide-in-left {
-    transform: scale(0.7) translateX(0);
+    transform: scale(0.65) translateX(0);
   }
   
   .left-title {
@@ -450,15 +450,15 @@
   }
 }
 
-/* Large Laptops and Desktops (1601px+) */
+/* Large Laptops and Desktops (1601px+) - Same as small laptops */
 @media (min-width: 1601px) {
   .safety-container {
-    transform: scale(0.73) translateX(-100vw);
-    margin: -170px auto 0;
+    transform: scale(0.65) translateX(-100vw);
+    margin: -150px auto 0;
   }
   
   .safety-container.slide-in-left {
-    transform: scale(0.73) translateX(0);
+    transform: scale(0.65) translateX(0);
   }
   
   .left-title {
