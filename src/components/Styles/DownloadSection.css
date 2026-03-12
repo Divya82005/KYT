@@ -396,7 +396,7 @@
   }
   
   .download-section.shrink-right {
-    transform: translate(80vw, 40vh) scale(0) rotate(15deg) !important;
+    transform: translate(80vw, 40vh) scale(0.6) rotate(15deg) !important;
     opacity: 0 !important;
   }
 
@@ -772,11 +772,12 @@
   transform: none;
   transition: transform 800ms cubic-bezier(0.4, 0, 0.2, 1),
               opacity 800ms cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
 }
 
 /* Shrink to right animation when safety section appears */
 .download-section.shrink-right {
-  transform: translate(80vw, 40vh) scale(0) rotate(15deg);
+  transform: translate(80vw, 40vh) scale(0.5) rotate(15deg);
   opacity: 0;
   transition: transform 800ms cubic-bezier(0.4, 0, 0.2, 1),
               opacity 800ms cubic-bezier(0.4, 0, 0.2, 1);

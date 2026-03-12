@@ -11,6 +11,7 @@ const DownloadSection = () => {
   const location = useLocation();
 
   useEffect(() => {
+    let lastScrollY = window.scrollY;
     const handleScroll = () => {
       const downloadSection = document.querySelector('.download-section');
       const safetySection = document.querySelector('.safety-container');
@@ -26,11 +27,18 @@ const DownloadSection = () => {
         // Check if we're on iPad
         const isIPad = window.innerWidth >= 744 && window.innerWidth <= 1023;
         
-        // Trigger shrink when safety section starts entering viewport
-        // For iPad: use stricter trigger (50%) to separate from promo animation
-        const threshold = 0.5;
-        const safetySectionEntering = safetyRect.top < window.innerHeight * threshold;
-        setShouldShrink(safetySectionEntering);
+        // Shrink the download section only when the safety section is in the main viewport area.
+        const safetyEntering = safetyRect.top < window.innerHeight * 0.5 && safetyRect.bottom > 0;
+        const scrollingDown = window.scrollY > lastScrollY;
+        lastScrollY = window.scrollY;
+
+        // Only shrink if we are scrolling DOWN into the safety section
+        // If we scroll UP, we want the download section to be visible (not shrunk)
+        if (scrollingDown && safetyEntering) {
+          setShouldShrink(true);
+        } else {
+          setShouldShrink(false);
+        }
       }
     };
 
