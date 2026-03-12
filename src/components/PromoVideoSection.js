@@ -124,7 +124,9 @@ const PromoVideoSection = () => {
             
             // C. Scroll to Download Section - Reduced delay for "one scroll" feel
             setTimeout(() => {
-              downloadSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              const yOffset = -80;
+              const y = downloadSection.getBoundingClientRect().top + window.scrollY + yOffset;
+              window.scrollTo({ top: y, behavior: 'smooth' });
               
               // Reset animation lock
               setTimeout(() => {
@@ -134,26 +136,54 @@ const PromoVideoSection = () => {
             
             return;
           }
+
+          // Scroll Up to Hero Section
+          if (isPromoSettled.current && e.deltaY < 0 && !isDownloadVisible && !isExiting) {
+            if (promoRect.top >= -100) {
+              e.preventDefault();
+              isAnimating.current = true;
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              setTimeout(() => {
+                isPromoSettled.current = false;
+                isAnimating.current = false;
+                promoSection.classList.remove('visible');
+              }, 1000);
+              return;
+            }
+          }
         }
       }
 
       // 2. Download -> Safety Transition (Animation + Scroll)
-      if (downloadSection && safetySection) {
-        const rect = downloadSection.getBoundingClientRect();
-        // Check if download section is active/at top
-        if (rect.top <= 50 && rect.bottom > window.innerHeight * 0.3) {
-          if (e.deltaY > 0) {
+      if (downloadSection && safetySection && promoSection) {
+        const downloadRect = downloadSection.getBoundingClientRect();
+        const promoRect = promoSection.getBoundingClientRect();
+
+        // We are "in" the download section if its top is near 0 AND the promo section is scrolled past.
+        const inDownloadSection = downloadRect.top > -500 && downloadRect.top < 100 && promoRect.bottom < 100 && !downloadSection.classList.contains('shrink-right');
+
+        if (inDownloadSection) {
+          if (e.deltaY > 0) { // Scroll Down to Safety
             e.preventDefault();
             isAnimating.current = true;
-            
-            // Trigger animation
             downloadSection.classList.add('shrink-right');
-            
-            // Wait for animation (800ms) then scroll
             setTimeout(() => {
               safetySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
               setTimeout(() => { isAnimating.current = false; }, 1000);
             }, 800);
+            return;
+          }
+          if (e.deltaY < 0) { // Scroll Up to Promo
+            e.preventDefault();
+            isAnimating.current = true;
+            
+            // Reset animation states to ensure content is visible
+            setIsExiting(false);
+            setIsDownloadVisible(false);
+            promoSection.classList.add('visible');
+
+            promoSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            setTimeout(() => { isAnimating.current = false; }, 1000);
             return;
           }
         }
@@ -163,7 +193,7 @@ const PromoVideoSection = () => {
       if (safetySection && ctaSection) {
         const rect = safetySection.getBoundingClientRect();
         // Check if safety section is fully in view
-        if (rect.top <= 0 && rect.bottom > window.innerHeight * 0.3) {
+        if (rect.top <= 100 && rect.bottom > 0) {
           if (e.deltaY > 0) {
             e.preventDefault();
             isAnimating.current = true;
@@ -183,29 +213,73 @@ const PromoVideoSection = () => {
             }, 800);
             return;
           }
-        }
-      }
-
-      // 3. Generic Snap for Subsequent Sections
-      const checkAndSnap = (current, next) => {
-        if (current && next) {
-          const rect = current.getBoundingClientRect();
-          // If current section is in view and user scrolls down
-            if (rect.top <= 0 && rect.bottom > window.innerHeight * 0.3) {
-            if (e.deltaY > 0) {
+          if (e.deltaY < 0 && downloadSection) {
+            if (rect.top >= -10000) {
               e.preventDefault();
               isAnimating.current = true;
-              next.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              const y = downloadSection.offsetTop - 80;
+              window.scrollTo({ top: y, behavior: 'smooth' });
               setTimeout(() => { isAnimating.current = false; }, 1000);
-              return true;
+              return;
             }
           }
         }
-        return false;
-      };
+      }
 
-      // CTA -> Footer (Safety -> CTA handled above)
-      if (checkAndSnap(ctaSection, footerSection)) return;
+      // 4. CTA -> Footer (Down) & CTA -> Safety (Up)
+      if (ctaSection && footerSection) {
+        const rect = ctaSection.getBoundingClientRect();
+        if (rect.top <= 50 && rect.bottom > window.innerHeight * 0.3) {
+           if (e.deltaY > 0) {
+             e.preventDefault();
+             isAnimating.current = true;
+             footerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+             setTimeout(() => { isAnimating.current = false; }, 1000);
+             return;
+           }
+           if (e.deltaY < 0 && safetySection) {
+             if (rect.top >= -100) {
+               e.preventDefault();
+               isAnimating.current = true;
+
+               // Trigger animation on CTA elements
+               const feedbackCard = ctaSection.querySelector('.feedback-card');
+               if (feedbackCard) feedbackCard.classList.add('tear-away');
+
+               setTimeout(() => {
+                 // Remove tear classes to reset Safety section
+                 const leftTitle = safetySection.querySelector('.left-title');
+                 const rows = safetySection.querySelectorAll('.safety-row');
+                 if (leftTitle) leftTitle.classList.remove('tear-left');
+                 if (rows[0]) rows[0].classList.remove('tear-right');
+                 if (rows[1]) rows[1].classList.remove('tear-left');
+                 if (rows[2]) rows[2].classList.remove('tear-right');
+
+                 safetySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                 setTimeout(() => { 
+                   isAnimating.current = false; 
+                   if (feedbackCard) feedbackCard.classList.remove('tear-away');
+                 }, 1000);
+               }, 800);
+               return;
+             }
+           }
+        }
+      }
+
+      // 5. Footer -> CTA (Up)
+      if (footerSection && ctaSection) {
+        const rect = footerSection.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 50) {
+          if (e.deltaY < 0) {
+            e.preventDefault();
+            isAnimating.current = true;
+            ctaSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            setTimeout(() => { isAnimating.current = false; }, 1000);
+            return;
+          }
+        }
+      }
     };
 
     const handleTouchStart = (e) => {
@@ -255,37 +329,68 @@ const PromoVideoSection = () => {
 
                // Scroll to Download Section
                setTimeout(() => {
-                  downloadSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  const yOffset = -80;
+                  const y = downloadSection.getBoundingClientRect().top + window.scrollY + yOffset;
+                  window.scrollTo({ top: y, behavior: 'smooth' });
                   setTimeout(() => { isAnimating.current = false; }, 1000);
                }, 900);
                return;
             }
+
+            // Swipe Down (Scroll Up to Hero)
+            if (touchDiffY < -50 && !isDownloadVisible && !isExiting) {
+              if (isPromoSettled.current && promoRect.top >= -100) {
+                e.preventDefault();
+                isAnimating.current = true;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                setTimeout(() => {
+                  isPromoSettled.current = false;
+                  isAnimating.current = false;
+                  promoSection.classList.remove('visible');
+                }, 1000);
+                return;
+              }
+            }
           }
         }
 
-        // 2. Download -> Safety (Swipe Up)
-        if (downloadSection && safetySection) {
-           const rect = downloadSection.getBoundingClientRect();
-           if (rect.top <= 50 && rect.bottom > window.innerHeight * 0.3) {
-             if (touchDiffY > 50) { // Swipe Up
-               e.preventDefault();
-               isAnimating.current = true;
-               
-               downloadSection.classList.add('shrink-right');
-               
-               setTimeout(() => {
-                 safetySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                 setTimeout(() => { isAnimating.current = false; }, 1000);
-               }, 800);
-               return;
-             }
-           }
+        // 2. Download -> Safety (Swipe Up/Down)
+        if (downloadSection && safetySection && promoSection) {
+          const downloadRect = downloadSection.getBoundingClientRect();
+          const promoRect = promoSection.getBoundingClientRect();
+          const inDownloadSection = downloadRect.top > -500 && downloadRect.top < 100 && promoRect.bottom < 100 && !downloadSection.classList.contains('shrink-right');
+
+          if (inDownloadSection) {
+            if (touchDiffY > 50) { // Swipe Up
+              e.preventDefault();
+              isAnimating.current = true;
+              downloadSection.classList.add('shrink-right');
+              setTimeout(() => {
+                safetySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                setTimeout(() => { isAnimating.current = false; }, 1000);
+              }, 800);
+              return;
+            }
+            if (touchDiffY < -50) { // Swipe Down
+              e.preventDefault();
+              isAnimating.current = true;
+              
+              // Reset animation states to ensure content is visible
+              setIsExiting(false);
+              setIsDownloadVisible(false);
+              promoSection.classList.add('visible');
+
+              promoSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              setTimeout(() => { isAnimating.current = false; }, 1000);
+              return;
+            }
+          }
         }
 
         // 3. Safety -> CTA (Swipe Up)
         if (safetySection && ctaSection) {
            const rect = safetySection.getBoundingClientRect();
-           if (rect.top <= 0 && rect.bottom > window.innerHeight * 0.3) {
+           if (rect.top <= 100 && rect.bottom > 0) {
              if (touchDiffY > 50) { // Swipe Up
                e.preventDefault();
                isAnimating.current = true;
@@ -304,27 +409,67 @@ const PromoVideoSection = () => {
                }, 800);
                return;
              }
+             if (touchDiffY < -50 && downloadSection) { // Swipe Down (Scroll Up)
+               if (rect.top >= -10000) {
+                 e.preventDefault();
+                 isAnimating.current = true;
+                 const y = downloadSection.offsetTop - 80;
+                 window.scrollTo({ top: y, behavior: 'smooth' });
+                 setTimeout(() => { isAnimating.current = false; }, 1000);
+                 return;
+               }
+             }
            }
         }
 
-        // 3. Generic Snap for Subsequent Sections (Swipe Up)
-        const checkAndSnapTouch = (current, next) => {
-            if (current && next) {
-              const rect = current.getBoundingClientRect();
-              if (rect.top <= 0 && rect.bottom > window.innerHeight * 0.3) {
-                if (touchDiffY > 50) {
-                  e.preventDefault();
-                  isAnimating.current = true;
-                  next.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  setTimeout(() => { isAnimating.current = false; }, 1000);
-                  return true;
+        // 4. CTA -> Footer (Swipe Up) & CTA -> Safety (Swipe Down)
+        if (ctaSection && footerSection) {
+           const rect = ctaSection.getBoundingClientRect();
+           if (rect.top <= 50 && rect.bottom > window.innerHeight * 0.3) {
+              if (touchDiffY > 50) {
+                e.preventDefault();
+                isAnimating.current = true;
+                footerSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                setTimeout(() => { isAnimating.current = false; }, 1000);
+                return;
+              }
+              if (touchDiffY < -50 && safetySection) {
+                if (rect.top >= -100) {
+                   e.preventDefault();
+                   isAnimating.current = true;
+                   
+                   const feedbackCard = ctaSection.querySelector('.feedback-card');
+                   if (feedbackCard) feedbackCard.classList.add('tear-away');
+
+                   setTimeout(() => {
+                     const leftTitle = safetySection.querySelector('.left-title');
+                     const rows = safetySection.querySelectorAll('.safety-row');
+                     if (leftTitle) leftTitle.classList.remove('tear-left');
+                     if (rows[0]) rows[0].classList.remove('tear-right');
+                     if (rows[1]) rows[1].classList.remove('tear-left');
+                     if (rows[2]) rows[2].classList.remove('tear-right');
+                     safetySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                     setTimeout(() => { isAnimating.current = false; if (feedbackCard) feedbackCard.classList.remove('tear-away'); }, 1000);
+                   }, 800);
+                   return;
                 }
               }
-            }
-            return false;
-        };
+           }
+        }
 
-        if (checkAndSnapTouch(ctaSection, footerSection)) return;
+        // 5. Footer -> CTA (Swipe Down)
+        if (footerSection && ctaSection) {
+           const rect = footerSection.getBoundingClientRect();
+           if (rect.top < window.innerHeight - 50) {
+             if (touchDiffY < -50) { // Swipe Down (Scroll Up)
+               e.preventDefault();
+               isAnimating.current = true;
+               ctaSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+               setTimeout(() => { isAnimating.current = false; }, 1000);
+               return;
+             }
+           }
+        }
       }
     };
 

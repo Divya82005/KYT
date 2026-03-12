@@ -28,7 +28,7 @@ const DownloadSection = () => {
         
         // Trigger shrink when safety section starts entering viewport
         // For iPad: use stricter trigger (50%) to separate from promo animation
-        const threshold = isIPad ? 0.5 : 0.7;
+        const threshold = 0.5;
         const safetySectionEntering = safetyRect.top < window.innerHeight * threshold;
         setShouldShrink(safetySectionEntering);
       }
