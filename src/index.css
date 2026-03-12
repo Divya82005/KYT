@@ -1,5 +1,10 @@
 @import './preloader.css';
 
+/* ============= SMOOTH SCROLLING ONLY ============= */
+html {
+  scroll-behavior: smooth;
+}
+
 /* ============= MEXICO SECTION INDIVIDUAL ANIMATIONS ============= */
 /* Individual section animations are now handled in their respective CSS files */
 
@@ -58,14 +63,26 @@
 }
 
 /* Hero section displays immediately without animations */
-section#home h1, section#home h2, section#home h3, 
-section#home h4, section#home h5, section#home h6, 
+section#home h1,
+section#home h2,
+section#home h3,
+section#home h4,
+section#home h5,
+section#home h6,
 section#home .hero-title,
-section#home p, section#home span, section#home .vision-text,
-section#home button, section#home .download-btns, 
-section#home .download-button, section#home a,
-section#home .product-btn, section#home .product-hunt-mobile-btn, section#home .product-hunt-desktop-link,
-section#home img, section#home video, section#home .qr-code,
+section#home p,
+section#home span,
+section#home .vision-text,
+section#home button,
+section#home .download-btns,
+section#home .download-button,
+section#home a,
+section#home .product-btn,
+section#home .product-hunt-mobile-btn,
+section#home .product-hunt-desktop-link,
+section#home img,
+section#home video,
+section#home .qr-code,
 section#home .city-card {
   animation: none !important;
   opacity: 1 !important;
@@ -74,69 +91,87 @@ section#home .city-card {
 
 /* ALL other content starts hidden until scrolled to - Manager's settings: Smart animate, Ease out, 800ms */
 /* This applies to: Home page sections, Contact, Privacy, Footer (EXCLUDING Mexico sections) */
-section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) h1, 
-section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) h2, 
-section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) h3, 
-section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) h4, 
-section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) h5, 
-section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) h6, 
+section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) h1,
+section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) h2,
+section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) h3,
+section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) h4,
+section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) h5,
+section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) h6,
 section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) .hero-title,
-section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) p, 
-section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) span, 
+section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) p,
+section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) span,
 section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) .vision-text,
-section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) button, 
-section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) .download-btns, 
-section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) .download-button, 
+section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) button,
+section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) .download-btns,
+section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) .download-button,
 section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) a,
-section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) img, 
-section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) video, 
+section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) img,
+section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) video,
 section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) .qr-code,
-section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) .feature-box, 
+section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) .feature-box,
 section:not(#home):not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) .city-card,
 /* Footer elements */
-.footer-wrapper h1, .footer-wrapper h2, .footer-wrapper h3, 
-.footer-wrapper h4, .footer-wrapper h5, .footer-wrapper h6,
-.footer-wrapper p, .footer-wrapper span,
-.footer-wrapper button, .footer-wrapper .download-button,
-.footer-wrapper a, .footer-wrapper img, .footer-wrapper .qr-code {
+.footer-wrapper h1,
+.footer-wrapper h2,
+.footer-wrapper h3,
+.footer-wrapper h4,
+.footer-wrapper h5,
+.footer-wrapper h6,
+.footer-wrapper p,
+.footer-wrapper span,
+.footer-wrapper button,
+.footer-wrapper .download-button,
+.footer-wrapper a,
+.footer-wrapper img,
+.footer-wrapper .qr-code {
   opacity: 1;
   transform: none;
   transition: none;
 }
 
 /* When ANY element comes into view, animate it - Manager's settings applied (EXCLUDING Mexico sections) */
-section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) h1, 
-section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) h2, 
-section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) h3, 
-section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) h4, 
-section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) h5, 
-section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) h6, 
+section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) h1,
+section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) h2,
+section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) h3,
+section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) h4,
+section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) h5,
+section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) h6,
 section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) .hero-title,
-section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) p, 
-section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) span, 
+section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) p,
+section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) span,
 section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) .vision-text,
-section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) button, 
-section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) .download-btns, 
-section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) .download-button, 
+section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) button,
+section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) .download-btns,
+section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) .download-button,
 section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) a,
-section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) img, 
-section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) video, 
+section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) img,
+section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) video,
 section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) .qr-code,
-section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) .feature-box, 
+section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) .feature-box,
 section.in-view:not(.mexico-sp-container):not(.mexico-tips-container):not(.mexico-safe-container):not(.mexico-intro-container):not(.mexico-concerns-container):not(.mexico-faq-container):not(.mexico-conclusion-container):not(.mexico-female-travel-container) .city-card,
 /* Footer animations */
-.footer-wrapper.in-view h1, .footer-wrapper.in-view h2, .footer-wrapper.in-view h3, 
-.footer-wrapper.in-view h4, .footer-wrapper.in-view h5, .footer-wrapper.in-view h6,
-.footer-wrapper.in-view p, .footer-wrapper.in-view span,
-.footer-wrapper.in-view button, .footer-wrapper.in-view .download-button,
-.footer-wrapper.in-view a, .footer-wrapper.in-view img, .footer-wrapper.in-view .qr-code {
+.footer-wrapper.in-view h1,
+.footer-wrapper.in-view h2,
+.footer-wrapper.in-view h3,
+.footer-wrapper.in-view h4,
+.footer-wrapper.in-view h5,
+.footer-wrapper.in-view h6,
+.footer-wrapper.in-view p,
+.footer-wrapper.in-view span,
+.footer-wrapper.in-view button,
+.footer-wrapper.in-view .download-button,
+.footer-wrapper.in-view a,
+.footer-wrapper.in-view img,
+.footer-wrapper.in-view .qr-code {
   opacity: 1 !important;
   transform: translateY(0) !important;
 }
 
 /* Smart animation keyframe - DISABLED */
 @keyframes smartFadeIn {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
     transform: none;
   }
@@ -175,7 +210,8 @@ html {
   overflow-x: hidden;
   /* Prevent horizontal scroll on html */
   width: 100%;
-  max-width: 100%; /* Changed from 100vw to 100% for iPhone compatibility */
+  max-width: 100%;
+  /* Changed from 100vw to 100% for iPhone compatibility */
 }
 
 *,
@@ -193,25 +229,27 @@ body {
   overflow-x: hidden;
   /* Prevent horizontal scroll */
   width: 100%;
-  max-width: 100%; /* Changed from 100vw to 100% for iPhone compatibility */
+  max-width: 100%;
+  /* Changed from 100vw to 100% for iPhone compatibility */
 }
 
 /* CRITICAL: Safety net for iPhone - fixes 80% of issues */
-html, body {
+html,
+body {
   max-width: 100%;
   overflow-x: hidden;
 }
 
 /* iPad Mini specific - prevent blank space after footer */
-@media (max-width: 1023px) and (min-width: 744px), 
-       (max-width: 1200px) and (min-width: 600px) and (orientation: landscape),
-       screen and (min-device-width: 744px) and (max-device-width: 1024px) {
+@media (max-width: 1023px) and (min-width: 744px),
+(max-width: 1200px) and (min-width: 600px) and (orientation: landscape),
+screen and (min-device-width: 744px) and (max-device-width: 1024px) {
   body {
     overflow-x: hidden !important;
     overflow-y: auto !important;
     position: relative !important;
   }
-  
+
   body::after {
     content: none !important;
   }
@@ -491,6 +529,7 @@ html::-webkit-scrollbar-button:vertical:start:decrement,
 html::-webkit-scrollbar-button:vertical:end:increment {
   display: none !important;
 }
+
 /* =
 ============ IMAGE OPTIMIZATION ============= */
 /* Optimize image loading and rendering performance */
@@ -498,14 +537,14 @@ img {
   /* Enable hardware acceleration for images */
   transform: translateZ(0);
   backface-visibility: hidden;
-  
+
   /* Optimize image rendering */
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
-  
+
   /* Prevent layout shift during loading */
   height: auto;
-  
+
   /* Enable lazy loading for better performance */
   loading: lazy;
 }

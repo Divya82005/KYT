@@ -4,16 +4,23 @@ import Alert from "../assets/Img3.png";
 import "./Styles/HeroSection.css";
 import ReactGA from "react-ga4";
 import { useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 
 
 
 const HeroSection = () => {
   const [isAboutVisible, setIsAboutVisible] = useState(false);
+  const isAutoScrolling = useRef(false);
+
+  useEffect(() => {
+    // Scroll handler disabled - PromoVideoSection handles the hero->promo transition
+    return () => {};
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
+      if (isAutoScrolling.current) return;
       const heroSection = document.getElementById('home');
       const aboutSection = document.getElementById('about');
       
@@ -29,23 +36,13 @@ const HeroSection = () => {
           
           setIsAboutVisible(isVisible);
           
-          if (isVisible) {
-            aboutSection.classList.add('visible');
-          } else {
-            aboutSection.classList.remove('visible');
-          }
         } else {
-          // Desktop: Trigger when promo section starts entering viewport
+          // Desktop: Trigger when promo section is well into viewport (much later trigger)
           const rect = aboutSection.getBoundingClientRect();
-          const isVisible = rect.top <= window.innerHeight && rect.bottom > 0;
+          const isVisible = rect.top <= window.innerHeight * 0.5 && rect.bottom > 0;
           
           setIsAboutVisible(isVisible);
           
-          if (isVisible) {
-            aboutSection.classList.add('visible');
-          } else {
-            aboutSection.classList.remove('visible');
-          }
         }
       }
     };

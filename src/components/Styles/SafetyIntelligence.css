@@ -836,11 +836,19 @@ html, body {
 }
 
 /* Tearing effect - left-title goes to bottom-left (diagonal) */
+.safety-container .left-title {
+  transition: transform 800ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .safety-container .left-title.tear-left {
   transform: translate(-100vw, 100vh) !important;
 }
 
 /* Tearing effect - row 02 (card) goes to bottom-left (diagonal) */
+.safety-container .safety-row {
+  transition: transform 800ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .safety-container .safety-row.card.tear-left {
   transform: translate(-100vw, 100vh) !important;
 }

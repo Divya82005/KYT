@@ -161,12 +161,12 @@
     opacity: 1;
     transition: top 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
   }
-  
+
   #about.visible .promo-section {
     top: 0 !important;
     opacity: 1;
   }
-  
+
   .promo-video-box {
     width: 100%;
     max-width: 100%;
@@ -175,22 +175,22 @@
     order: 1 !important;
     will-change: transform, opacity;
     transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 500ms cubic-bezier(0.4, 0, 0.2, 1);
+      opacity 500ms cubic-bezier(0.4, 0, 0.2, 1);
   }
-  
+
   .promo-section .promo-video-box.fade-left {
     transform: translate(-150vw, 300vh);
     opacity: 0;
     pointer-events: none;
   }
-  
+
   .promo-about-title {
     position: static;
     margin-bottom: clamp(15px, 3vw, 25px);
     text-align: center;
     order: 2 !important;
   }
-  
+
   .promo-text-box {
     width: 100%;
     max-width: 100%;
@@ -201,19 +201,19 @@
     overflow: visible !important;
     will-change: transform, opacity;
     transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 500ms cubic-bezier(0.4, 0, 0.2, 1);
+      opacity 500ms cubic-bezier(0.4, 0, 0.2, 1);
   }
-  
+
   .promo-section .promo-text-box.fade-right {
     transform: translate(150vw, 300vh);
     opacity: 0;
     pointer-events: none;
   }
-  
+
   .promo-heading {
     text-align: center !important;
   }
-  
+
   .promo-description {
     text-align: justify !important;
   }
@@ -226,14 +226,14 @@
     align-items: stretch;
     justify-content: flex-start;
   }
-  
+
   .promo-video-box {
     width: 52%;
     height: clamp(250px, 30vw, 320px);
     margin-left: 0;
     margin-top: 0;
   }
-  
+
   .promo-text-box {
     width: 44%;
     height: clamp(250px, 30vw, 320px) !important;
@@ -241,13 +241,13 @@
     margin-top: 0;
     padding: clamp(18px, 2.5vw, 25px) !important;
   }
-  
+
   .promo-heading {
     font-size: clamp(18px, 2.2vw, 22px) !important;
     margin-bottom: clamp(12px, 1.8vw, 18px) !important;
     line-height: 1.25 !important;
   }
-  
+
   .promo-description {
     font-size: clamp(13px, 1.6vw, 16px) !important;
     line-height: 1.5 !important;
@@ -324,7 +324,7 @@
     overflow: visible !important;
     pointer-events: auto !important;
   }
-  
+
   .promo-section {
     position: relative;
     top: 400px !important;
@@ -362,40 +362,66 @@
   }
 }
 
-/* ============= IPAD MINI (744px - 1023px) - NO ANIMATIONS ============= */
+/* ============= IPAD MINI (744px - 1023px) - WITH ANIMATIONS ============= */
 @media (max-width: 1023px) and (min-width: 744px) {
   .promo-container {
     margin-top: 0 !important;
   }
 
   .promo-section {
-    margin-top: 0 !important;
-    padding-top: clamp(60px, 8vw, 80px) !important;
+    margin-top: 40px !important;
+    padding-top: clamp(30px, 4vw, 40px) !important;
     position: relative;
-    transform: none;
-    opacity: 1;
-    transition: none;
+    overflow: visible;
+    pointer-events: auto;
   }
 
   .promo-video-box {
-    transform: none;
-    opacity: 1;
-    will-change: auto;
-    transition: none;
+    transform: translate(0, 0);
+    transition: transform 600ms ease-out;
+  }
+
+  .promo-video-box.fade-left {
+    transform: translate(-100%, 200%);
   }
 
   .promo-text-box {
-    transform: none;
-    opacity: 1;
-    will-change: auto;
-    transition: none;
+    transform: translate(0, 0);
+    transition: transform 600ms ease-out;
+  }
+
+  .promo-text-box.fade-right {
+    transform: translate(100%, 200%);
   }
 
   .promo-about-title {
     position: absolute !important;
-    top: clamp(15px, 2vw, 20px) !important;
+    top: clamp(-20px, -2vw, -15px) !important;
     left: clamp(20px, 2.5vw, 30px) !important;
     z-index: 10 !important;
     margin: 0 !important;
   }
+}
+
+/* ============= ANIMATIONS & TEAR EFFECT ============= */
+
+.animate-exit-left {
+  transform: translate(-100vw, 100vh) !important;
+  opacity: 0 !important;
+  transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out !important;
+  pointer-events: none !important;
+  z-index: 20; 
+}
+
+.animate-exit-right {
+  transform: translate(100vw, 100vh) !important;
+  opacity: 0 !important;
+  transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out !important;
+  pointer-events: none !important;
+  z-index: 20;
+}
+
+/* The tearing strip animation */
+.tear-strip-active {
+  display: none;
 }

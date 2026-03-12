@@ -70,12 +70,12 @@ const ScrollToTop = () => {
 // Component to conditionally render footer
 const ConditionalFooter = () => {
   const location = useLocation();
-  
+
   // Don't render footer on Mexico page or World Cup page
   if (location.pathname === '/mexico' || location.pathname === '/worldcup') {
     return null;
   }
-  
+
   return <FooterSection />;
 };
 
