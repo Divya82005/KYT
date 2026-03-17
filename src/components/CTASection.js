@@ -167,17 +167,6 @@ const CTASection = () => {
         <button className={`nav-btn right`} onClick={nextSlide}>
           <img src={arrowr} alt="Next" />
         </button>
-
-        {/* PROGRESS INDICATORS */}
-        <div className={`progress-indicators ${shouldTear ? 'tear-away' : ''}`}>
-          {feedbackList.map((_, i) => (
-            <div
-              key={i}
-              className={`progress-dot ${i === index ? 'active' : ''}`}
-              onClick={() => goToSlide(i)}
-            />
-          ))}
-        </div>
       </div>
     </section>
   );

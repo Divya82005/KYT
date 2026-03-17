@@ -3,47 +3,60 @@
 
 /* ============= MAIN SECTION ============= */
 .testimonial-section {
-  width: 100%;
-  max-width: 2000px; /* Increased from 1600px for much wider layout */
-  margin: -40px auto 0;
-  padding: clamp(0.75rem, 2.5vw, 1.5rem) clamp(0.75rem, 3vw, 1.5rem);
+  width: clamp(80vw, 90vw, 95vw);
+  max-width: 95vw;
+  margin: 0 auto;
+  padding: clamp(12px, 2vw, 24px) clamp(12px, 2.5vw, 24px);
   text-align: center;
-  transform: scale(0.88); /* Reduced from 0.95 to zoom out slightly */
+  transform: scale(0.85);
   transform-origin: center;
-  margin-bottom: clamp(1rem, 2vw, 2rem); /* Reduced gap between CTA and footer */
   overflow: visible;
   height: auto;
+  box-sizing: border-box;
+}
+
+/* CTA section container - full viewport height */
+#cta {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  opacity: 1;
+  transform: translateY(0);
+  overflow: visible;
 }
 
 /* ============= SECTION HEADING ============= */
 .section-heading {
   font-family: "Poppins", sans-serif;
-  font-size: clamp(1.75rem, 4.5vw, 2.75rem); /* Reduced from clamp(2rem, 5vw, 3rem) */
+  font-size: clamp(28px, 4vw, 44px);
   font-weight: 700;
   color: #5351f4;
-  margin-bottom: clamp(1.5rem, 5vw, 3rem); /* Reduced margin */
+  margin-bottom: clamp(24px, 4vh, 48px);
   line-height: 1.2;
 }
 
 /* ============= MAIN FEEDBACK CARD ============= */
 .feedback-card {
-  width: 100%;
-  max-width: 1600px; /* Increased from 1300px to make it much wider */
-  min-height: 350px; /* Changed from fixed height to min-height */
-  height: auto; /* Allow height to grow with content */
+  width: 900px; /* Fixed width instead of responsive */
+  max-width: 900px; /* Fixed max-width */
+  min-height: 350px; /* Fixed height */
+  height: 350px; /* Fixed height */
   background: #ffffff;
-  border: 1.5px solid #c7d2fe; /* Light blue border */
-  border-radius: clamp(1.5rem, 3vw, 2.5rem);
+  border: 1.5px solid #c7d2fe;
+  border-radius: 40px; /* Fixed border radius */
   padding: 0;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04); /* Subtle shadow */
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04);
   transition: transform 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  position: relative; /* For arrow positioning */
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: visible; /* Allow arrows to show outside the card */
-  margin: 0 auto; /* Center the card */
+  overflow: visible;
+  margin: 0 auto;
   transform: translate(0, 0);
+  box-sizing: border-box;
 }
 
 .feedback-card.tear-away {
@@ -59,12 +72,12 @@
 .feedback-content {
   display: flex;
   flex-direction: column;
-  gap: clamp(1.25rem, 3vw, 2rem); /* Reduced gap */
+  gap: 32px; /* Fixed gap */
   align-items: center;
   text-align: center;
   width: 100%;
   height: auto;
-  padding: clamp(2.5rem, 5vw, 3.5rem) clamp(2rem, 5vw, 3rem); /* Increased vertical padding */
+  padding: 56px 48px; /* Fixed padding */
   box-sizing: border-box;
   justify-content: center;
   position: relative;
@@ -76,8 +89,8 @@
     flex-direction: row;
     text-align: left;
     align-items: center;
-    gap: clamp(1.5rem, 3vw, 2.5rem); /* Reduced gap to bring left and right content closer */
-    padding: clamp(3rem, 5vw, 4rem) clamp(2.5rem, 5vw, 3.5rem);
+    gap: 40px; /* Fixed gap */
+    padding: 64px 56px; /* Fixed padding */
     height: auto;
     overflow: visible;
   }
@@ -143,22 +156,22 @@
 
 .user-name {
   font-family: "Poppins", sans-serif;
-  font-size: clamp(1.25rem, 3vw, 1.75rem); /* 20px - 28px */
+  font-size: clamp(20px, 2.8vw, 28px);
   font-weight: 700;
   color: #1f2937;
-  margin: 0 0 clamp(0.25rem, 1vw, 0.5rem) 0; /* Keep original spacing between name and subtitle */
+  margin: 0 0 clamp(4px, 1vw, 8px) 0;
   line-height: 1.2;
-  text-align: left; /* Left-align the name */
+  text-align: left;
 }
 
 .user-title {
   font-family: "Poppins", sans-serif;
-  font-size: clamp(1rem, 2.8vw, 1.25rem); /* Increased from clamp(0.875rem, 2.5vw, 1.125rem) */
+  font-size: clamp(16px, 2.2vw, 20px);
   font-weight: 400;
   color: #6b7280;
   margin: 0;
   line-height: 1.4;
-  text-align: left; /* Left-align the subtitle */
+  text-align: left;
 }
 
 /* ============= FEEDBACK TEXT AREA ============= */
@@ -205,7 +218,7 @@
 /* ============= FEEDBACK TEXT ============= */
 .feedback-text {
   font-family: "Poppins", sans-serif;
-  font-size: clamp(0.9rem, 2.5vw, 1.1rem); /* Increased font size */
+  font-size: clamp(14px, 2.2vw, 18px);
   font-weight: 400;
   line-height: 1.6;
   color: #374151;
@@ -226,8 +239,8 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: clamp(3rem, 8vw, 4rem);
-  height: clamp(3rem, 8vw, 4rem);
+  width: 64px; /* Fixed size */
+  height: 64px; /* Fixed size */
   background: #5351f4;
   border: none;
   border-radius: 50%;
@@ -237,8 +250,7 @@
   cursor: pointer;
   transition: transform 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
   box-shadow: 0 4px 15px rgba(83, 81, 244, 0.3);
-  z-index: 1000; /* Very high z-index to appear above everything */
-  /* Position relative to the feedback-card, not the container */
+  z-index: 1000;
 }
 
 .nav-btn.tear-away {
@@ -254,8 +266,8 @@
 /* Create proper chevron arrows using CSS borders */
 .nav-btn::before {
   content: '';
-  width: 12px;
-  height: 12px;
+  width: 12px; /* Fixed size */
+  height: 12px; /* Fixed size */
   border-left: 3px solid white;
   border-bottom: 3px solid white;
   transform: rotate(45deg); /* Left arrow by default */
@@ -266,11 +278,11 @@
 }
 
 .nav-btn.left {
-  left: -40px; /* Move closer to the card */
+  left: -48px; /* Fixed position */
 }
 
 .nav-btn.right {
-  right: -40px; /* Move closer to the card */
+  right: -48px; /* Fixed position */
 }
 
 .nav-btn:hover {
@@ -546,7 +558,8 @@
 }
 
 
-/* ============= SCROLL ANIMATIONS ============= */
+/* ============= SCROLL ANIMATIONS - DISABLED ============= */
+/*
 #cta {
   opacity: 0;
   transform: translateY(100vh);
@@ -562,8 +575,10 @@
     transform: translateY(0);
   }
 }
+*/
 
-/* Content fade in */
+/* Content fade in - DISABLED */
+/*
 #cta .testimonial-section > * {
   opacity: 0;
   transform: translateY(40px);
@@ -583,6 +598,20 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+*/
+
+/* Make CTA section visible by default */
+#cta {
+  opacity: 1;
+  transform: translateY(0);
+  overflow: visible;
+  height: auto;
+}
+
+#cta .testimonial-section > * {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ============= TEARING EFFECT ANIMATIONS ============= */

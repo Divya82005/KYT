@@ -27,17 +27,23 @@ const DownloadSection = () => {
         // Check if we're on iPad
         const isIPad = window.innerWidth >= 744 && window.innerWidth <= 1023;
         
-        // Shrink the download section only when the safety section is in the main viewport area.
-        const safetyEntering = safetyRect.top < window.innerHeight * 0.5 && safetyRect.bottom > 0;
-        const scrollingDown = window.scrollY > lastScrollY;
-        lastScrollY = window.scrollY;
+        // Skip automatic shrink management on iPad to allow touch events to control it
+        if (!isIPad) {
+          // Shrink the download section only when the safety section is in the main viewport area.
+          const safetyEntering = safetyRect.top < window.innerHeight * 0.5 && safetyRect.bottom > 0;
+          const scrollingDown = window.scrollY > lastScrollY;
+          lastScrollY = window.scrollY;
 
-        // Only shrink if we are scrolling DOWN into the safety section
-        // If we scroll UP, we want the download section to be visible (not shrunk)
-        if (scrollingDown && safetyEntering) {
-          setShouldShrink(true);
+          // Only shrink if we are scrolling DOWN into the safety section
+          // If we scroll UP, we want the download section to be visible (not shrunk)
+          if (scrollingDown && safetyEntering) {
+            setShouldShrink(true);
+          } else {
+            setShouldShrink(false);
+          }
         } else {
-          setShouldShrink(false);
+          // On iPad, let touch events handle the shrink state
+          lastScrollY = window.scrollY;
         }
       }
     };

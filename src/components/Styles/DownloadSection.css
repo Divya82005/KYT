@@ -1,24 +1,30 @@
-
 /* ============= DOWNLOAD SECTION ============= */
-/* NOTE: Desktop layout matches reference image exactly - purple gradient, QR left, phone right */
+/* NOTE: Responsive design that looks consistent across all laptop sizes */
 .download-section {
-  width: calc(100vw - clamp(80px, 10vw, 120px)) !important;
-  max-width: 1400px !important;
-  height: clamp(320px, 40vh, 380px) !important;
-  margin: clamp(10px, 1.5vw, 20px) auto 0 auto;
-  padding: clamp(40px, 5vw, 50px) clamp(60px, 8vw, 80px) clamp(30px, 4vw, 40px) clamp(60px, 8vw, 80px);
+  width: clamp(800px, 90vw, 1400px) !important;
+  height: clamp(370px, 32vh, 470px) !important;
+  margin: 0 auto;
+  padding: clamp(40px, 5vh, 60px) clamp(60px, 6vw, 100px) clamp(90px, 10vh, 120px) clamp(60px, 6vw, 100px);
 
   background: linear-gradient(99.15deg, #6165d7 2.14%, #5351ed 99.68%);
-  border-radius: clamp(24px, 3vw, 32px);
+  border-radius: clamp(24px, 2.5vw, 40px);
 
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: relative;
   overflow: visible;
-  margin-bottom: 0;
   box-sizing: border-box;
   transform-origin: center;
+}
+
+/* Download section container - full viewport height */
+#blogs {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 /* LEFT CONTENTS */
@@ -26,26 +32,28 @@
   flex: 1;
   position: relative;
   z-index: 2;
-  max-width: 60%;
-  margin-left: clamp(20px, 3vw, 30px);
-  margin-top: 0;
+  max-width: 65%;
+  margin-left: clamp(20px, 2vw, 40px);
+  margin-top: clamp(40px, 6vh, 80px);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
 
-/* MAIN HEADING - First line */
+/* MAIN HEADING - Responsive text size */
 .left-contents h2 {
   font-family: Poppins, sans-serif;
   font-weight: 600;
   font-style: normal;
-  font-size: clamp(16px, 1.8vw, 18px);
-  line-height: clamp(1.5, 1.6vw, 1.6);
+  font-size: clamp(14px, 1.8vw, 22px);
+  line-height: clamp(1.2, 1.3, 1.4);
   letter-spacing: 0;
   color: white;
   margin: 0;
-  margin-bottom: clamp(25px, 3vw, 30px);
+  margin-bottom: clamp(25px, 3vh, 50px);
   max-width: 100%;
+  white-space: nowrap;
+  overflow: visible;
 }
 
 /* SUBTEXT - Second line (lighter/smaller) */
@@ -53,13 +61,13 @@
   font-family: Poppins, sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: clamp(13px, 1.5vw, 14px);
+  font-size: 14px;
   line-height: 130%;
   letter-spacing: 0;
   color: rgba(255, 255, 255, 0.7);
   margin: 0;
-  margin-bottom: clamp(20px, 2.5vw, 25px);
-  max-width: clamp(350px, 40vw, 400px);
+  margin-bottom: 25px;
+  max-width: 400px;
   display: none !important;
 }
 
@@ -67,71 +75,75 @@
 .qr-and-button {
   display: flex;
   flex-direction: row;
-  gap: clamp(25px, 3vw, 30px);
+  gap: clamp(20px, 2.5vw, 40px);
   align-items: center;
   margin-left: 0;
+  margin-top: clamp(25px, 3vh, 35px);
 }
 
-/* QR BOX */
+/* QR BOX - Responsive sizing */
 .qr-box {
-  width: clamp(180px, 20vw, 200px);
-  height: clamp(180px, 20vw, 200px);
+  width: clamp(100px, 10vw, 160px);
+  height: clamp(100px, 10vw, 160px);
   background: white;
-  border-radius: clamp(10px, 1.2vw, 12px);
+  border-radius: clamp(8px, 1vw, 16px);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 clamp(6px, 0.8vw, 8px) clamp(20px, 2.5vw, 24px) rgba(0, 0, 0, 0.15);
-  padding: clamp(8px, 1vw, 10px);
+  box-shadow: 0 clamp(4px, 0.8vw, 12px) clamp(12px, 2vw, 32px) rgba(0, 0, 0, 0.15);
+  padding: clamp(6px, 0.8vw, 12px);
 }
 
 .footer-qr {
-  width: clamp(160px, 18vw, 180px);
-  height: clamp(160px, 18vw, 180px);
+  width: clamp(80px, 8vw, 140px);
+  height: clamp(80px, 8vw, 140px);
   object-fit: contain;
   display: block;
 }
 
-/* DOWNLOAD BUTTON */
+/* DOWNLOAD BUTTON - Responsive sizing */
 .footer-btn {
-  width: clamp(200px, 22vw, 220px) !important;
-  height: clamp(55px, 6vw, 60px) !important;
-  border-radius: clamp(18px, 2vw, 20px) !important;
+  width: clamp(170px, 17vw, 220px) !important;
+  height: clamp(60px, 6vh, 80px) !important;
+  border-radius: clamp(16px, 1.8vh, 24px) !important;
   border: none;
-  background: white;
+  background: white !important;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
+  padding: clamp(14px, 1.8vh, 20px) clamp(18px, 2.2vw, 28px) !important;
   flex-shrink: 0;
-  box-shadow: 0 clamp(3px, 0.5vw, 4px) clamp(14px, 1.8vw, 16px) rgba(0, 0, 0, 0.1);
+  box-shadow: 0 clamp(3px, 0.5vw, 8px) clamp(8px, 1.5vw, 24px) rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .btn-text {
   font-family: Poppins, sans-serif;
   font-weight: 700;
   font-style: normal;
-  font-size: clamp(16px, 1.8vw, 18px);
+  font-size: clamp(12px, 1.4vw, 18px);
   line-height: 100%;
   letter-spacing: 0;
   color: #5351ed;
+  white-space: nowrap;
+  text-align: center;
 }
 
 .footer-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 clamp(5px, 0.7vw, 6px) clamp(18px, 2.2vw, 20px) rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* RIGHT PHONE */
+/* RIGHT PHONE - Responsive positioning and sizing */
 .right-phone {
   position: absolute;
-  right: clamp(40px, 5vw, 50px);
-  top: clamp(-70px, -8vw, -80px);
-  width: clamp(280px, 30vw, 300px);
-  height: clamp(480px, 50vh, 500px);
+  right: clamp(30px, 4vw, 60px);
+  top: clamp(-140px, -12vh, -80px);
+  width: clamp(280px, 28vw, 400px);
+  height: clamp(450px, 45vh, 600px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -142,248 +154,26 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 clamp(18px, 2vw, 20px) clamp(36px, 4vw, 40px) rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0 clamp(12px, 1.5vw, 24px) clamp(24px, 3vw, 48px) rgba(0, 0, 0, 0.2));
 }
 
 /* ============= RESPONSIVE DESIGN ============= */
 
-/* Small Laptops (1024px - 1366px) */
-@media (min-width: 1024px) and (max-width: 1366px) {
-  .download-section {
-    width: calc(100vw - 100px) !important; /* Consistent with main design */
-    max-width: none !important;
-    height: 380px !important; /* Match main section height */
-    margin: 120px 50px 0 50px; /* Increased top margin from 80px to 120px to create more gap with promo video section */
-    padding: 45px 65px 35px 65px; /* Consistent padding */
-    margin-bottom: 40px; /* Match reduced bottom margin */
-  }
-  
-  .left-contents h2 {
-    font-size: 17px;
-    line-height: 1.6;
-  }
-  
-  .left-contents .subtext {
-    font-size: 13px;
-  }
-  
-  .qr-box {
-    width: 130px;
-    height: 130px;
-    border-radius: 8px !important; /* Match main QR box style */
-  }
-  
-  .footer-qr {
-    width: 105px;
-    height: 105px;
-  }
-  
-  .footer-btn {
-    width: 220px !important; /* Match main button width */
-    height: 60px !important; /* Match main button height */
-    border-radius: 20px !important; /* Match main button border-radius */
-  }
-  
-  .right-phone {
-    width: 280px;
-    height: 480px;
-    right: 45px;
-    top: -75px;
-  }
-}
-
-/* Medium Laptops (1367px - 1600px) */
-@media (min-width: 1367px) and (max-width: 1600px) {
-  .download-section {
-    width: calc(100vw - 110px) !important; /* Reduced width with 55px margin on each side */
-    max-width: none !important;
-    height: 400px; /* Increased height */
-    margin: 120px 55px 0 55px; /* Increased top margin from 80px to 120px to create more gap with promo video section */
-    padding: 48px 70px 38px 70px; /* Reduced bottom padding from 68px to 38px */
-  }
-  
-  .left-contents h2 {
-    font-size: 18px;
-    line-height: 1.6;
-  }
-  
-  .left-contents .subtext {
-    font-size: 14px;
-  }
-  
-  .qr-box {
-    width: 135px;
-    height: 135px;
-  }
-  
-  .footer-qr {
-    width: 110px;
-    height: 110px;
-  }
-  
-  .footer-btn {
-    width: 195px;
-    height: 58px;
-  }
-  
-  .right-phone {
-    width: 290px;
-    height: 490px;
-    right: 48px;
-    top: -78px;
-  }
-}
-
-/* Large Laptops and Desktops (1601px+) */
-@media (min-width: 1601px) {
-  .download-section {
-    width: calc(100vw - 120px) !important; /* Reduced width with 60px margin on each side */
-    max-width: none !important;
-    height: 420px; /* Increased height */
-    margin: 120px 60px 0 60px; /* Increased top margin from 80px to 120px to create more gap with promo video section */
-    padding: 50px 80px 40px 80px; /* Reduced bottom padding from 70px to 40px */
-  }
-  
-  .left-contents h2 {
-    font-size: 18px;
-    line-height: 1.6;
-  }
-  
-  .left-contents .subtext {
-    font-size: 14px;
-  }
-  
-  .qr-box {
-    width: 140px;
-    height: 140px;
-  }
-  
-  .footer-qr {
-    width: 115px;
-    height: 115px;
-  }
-  
-  .footer-btn {
-    width: 200px;
-    height: 60px;
-  }
-  
-  .right-phone {
-    width: 300px;
-    height: 500px;
-    right: 50px;
-    top: -80px;
-  }
-}
-
-/* NOTE: Responsive breakpoints maintain the improved desktop layout proportions */
-
-@media (max-width: 1440px) {
-  .download-section {
-    width: 90%;
-    max-width: 1428px;
-    margin: 120px auto 0;
-    height: auto;
-    min-height: 320px;
-    padding: 50px 60px;
-    margin-bottom: 100px;
-    /* Reduced gap */
-  }
-
-  .left-contents {
-    max-width: 65%;
-  }
-
-  .left-contents h2 {
-    font-size: 24px; /* Reduced from 26px */
-    line-height: 1.6; /* Increased line-height for consistency */
-    margin-bottom: 40px;
-    /* Increased gap */
-  }
-
-  .left-contents .subtext {
-    font-size: 18px;
-    margin-bottom: 35px;
-  }
-
-  .qr-and-button {
-    gap: 25px;
-  }
-
-  .right-phone {
-    right: 60px;
-    top: -100px;
-    width: 350px;
-    height: 480px;
-  }
-}
-
-@media (max-width: 1200px) and (min-width: 1024px) {
-  .download-section {
-    width: 85%;
-    flex-direction: column;
-    height: 320px;
-    /* Set fixed height instead of auto */
-    padding: 50px 40px;
-    margin: 120px auto 0;
-    margin-bottom: 100px;
-    /* Reduced gap */
-  }
-
-  .left-contents {
-    max-width: 100%;
-    text-align: center;
-  }
-
-  .left-contents h2 {
-    font-size: 22px; /* Reduced from 24px */
-    line-height: 1.6; /* Increased line-height for consistency */
-    margin-bottom: 35px;
-    /* Increased gap */
-  }
-
-  .left-contents .subtext {
-    font-size: 16px;
-    margin-bottom: 30px;
-  }
-
-  .qr-and-button {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 25px;
-  }
-
-  .qr-box {
-    border-radius: 18px; /* Maintain rounded corners on smaller screens */
-  }
-
-  .right-phone {
-    position: relative;
-    right: auto;
-    top: auto;
-    transform: none;
-    width: 300px;
-    height: 412px;
-    margin-top: 40px;
-  }
-}
-
 /* ============= IPAD MINI 8.3 (744px - 1023px) - FIXED Layout ============= */
 @media (max-width: 1023px) and (min-width: 744px) {
   .download-section {
-    width: calc(100vw - 20px) !important; /* Much wider container - reduced margins from 60px to 20px */
+    width: calc(100vw - 20px) !important;
     max-width: none;
-    height: 120px !important; /* Increased height to match reference proportions */
-    padding: 20px 35px; /* Increased padding for better spacing */
-    margin: clamp(40px, 5vw, 60px) 10px 0 10px; /* Changed from negative to positive margin */
+    height: 120px !important;
+    padding: 20px 35px;
+    margin: clamp(40px, 5vw, 60px) 10px 0 10px;
     margin-bottom: 80px;
-    flex-direction: row; /* Side by side layout like reference */
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     position: relative;
-    overflow: visible; /* Allow phone to extend outside */
-    border-radius: 20px; /* Moderate border radius */
+    overflow: visible;
+    border-radius: 20px;
     transform: none !important;
     opacity: 1 !important;
     transition: transform 800ms cubic-bezier(0.4, 0, 0.2, 1),
@@ -401,39 +191,39 @@
   }
 
   .left-contents {
-    max-width: 65% !important; /* Increased from 50% to 65% to give text more space */
-    text-align: left !important; /* Left align text like reference */
+    max-width: 65% !important;
+    text-align: left !important;
     width: auto !important;
     margin-left: 0 !important;
-    z-index: 20 !important; /* Higher z-index to ensure text appears above phone */
-    position: relative !important; /* Ensure z-index works */
+    z-index: 20 !important;
+    position: relative !important;
     display: flex !important;
     flex-direction: column !important;
-    justify-content: center !important; /* Center content vertically like reference */
-    align-items: flex-start !important; /* Align items to left */
-    height: 100% !important; /* Take full height of container */
-    padding: 0 !important; /* Remove padding */
-    padding-right: 20px !important; /* Add right padding to prevent overlap with phone */
+    justify-content: center !important;
+    align-items: flex-start !important;
+    height: 100% !important;
+    padding: 0 !important;
+    padding-right: 20px !important;
   }
 
   .left-contents h2 {
-    font-size: 16px !important; /* Increased from 14px to 16px for better readability */
-    line-height: 1.2 !important; /* Tight line height like reference */
-    margin-bottom: 12px !important; /* Further reduced gap from 18px to 12px for closer spacing */
-    margin-top: 0px !important; /* Remove negative margin that was hiding text */
+    font-size: 16px !important;
+    line-height: 1.2 !important;
+    margin-bottom: 12px !important;
+    margin-top: 0px !important;
     color: white !important;
-    font-weight: 600 !important; /* Semi-bold weight like reference */
-    font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important; /* Match reference font */
-    white-space: normal !important; /* Allow text to wrap to show full content */
-    overflow: visible !important; /* Ensure text is visible */
-    text-overflow: clip !important; /* Don't add ellipsis */
-    display: block !important; /* Ensure it displays */
-    opacity: 1 !important; /* Ensure it's visible */
-    letter-spacing: 0 !important; /* Normal letter spacing like reference */
+    font-weight: 600 !important;
+    font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    display: block !important;
+    opacity: 1 !important;
+    letter-spacing: 0 !important;
   }
 
   .left-contents .subtext {
-    display: none; /* Hide subtext for iPad Mini */
+    display: none;
   }
 
   .qr-and-button {
@@ -442,13 +232,13 @@
     justify-content: flex-start;
     gap: 15px;
     width: auto;
-    margin: 0; /* Normal margin */
-    margin-top: 45px !important; /* Increased from 30px to 45px to move button further down */
+    margin: 0;
+    margin-top: 45px !important;
   }
 
   .qr-box {
-    display: block !important; /* Show QR code on iPad Mini */
-    width: 105px !important; /* Increased QR code size from 90px to 105px */
+    display: block !important;
+    width: 105px !important;
     height: 105px !important;
     background: white !important;
     border-radius: 8px !important;
@@ -460,41 +250,41 @@
   }
 
   .footer-qr {
-    width: 85px !important; /* Increased QR image size from 72px to 85px */
+    width: 85px !important;
     height: 85px !important;
     object-fit: contain !important;
     display: block !important;
   }
 
   .footer-btn {
-    width: 200px !important; /* Reduced width from 240px to 200px */
-    height: 55px !important; /* Taller to match reference */
-    border-radius: 27.5px !important; /* Half of height for curved left/right sides, square top/bottom */
+    width: 200px !important;
+    height: 55px !important;
+    border-radius: 27.5px !important;
     background: white !important;
     border: none !important;
     flex-shrink: 0 !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important; /* Add subtle shadow */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
   }
 
   .btn-text {
-    font-size: 16px !important; /* Increased text size to match reference */
+    font-size: 16px !important;
     color: #5351ed !important;
     font-weight: 600 !important;
     font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
   }
 
   .right-phone {
-    display: block; /* Show phone on iPad Mini */
+    display: block;
     position: absolute;
-    right: 15px; /* Position from edge */
-    top: -15px; /* Moved down further from -30px to -15px */
-    bottom: -40px; /* Extend below the shorter container */
-    width: 260px; /* Increased phone size from 220px to 260px */
+    right: 15px;
+    top: -15px;
+    bottom: -40px;
+    width: 260px;
     height: auto;
-    z-index: 5; /* Lower z-index so it doesn't overlap text */
+    z-index: 5;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -503,7 +293,7 @@
   .iphone-img {
     width: 100%;
     height: auto;
-    max-height: 350px; /* Increased from 300px to 350px */
+    max-height: 350px;
     object-fit: contain;
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
   }
@@ -515,12 +305,11 @@
     padding: 40px 30px;
     margin: 80px auto 0;
     margin-bottom: 80px;
-    /* Reduced gap for mobile */
   }
 
   .left-contents h2 {
-    font-size: 16px; /* Reduced from 18px */
-    line-height: 1.6; /* Increased line-height for consistency */
+    font-size: 16px;
+    line-height: 1.6;
     margin-bottom: 6px;
   }
 
@@ -560,12 +349,11 @@
     padding: 30px 20px;
     margin: 80px auto 0;
     margin-bottom: 60px;
-    /* Reduced gap for small mobile */
   }
 
   .left-contents h2 {
-    font-size: 14px; /* Reduced from 16px */
-    line-height: 1.6; /* Increased line-height for consistency */
+    font-size: 14px;
+    line-height: 1.6;
     margin-bottom: 5px;
   }
 
@@ -603,12 +391,12 @@
 /* ============= MOBILE SPECIFIC LAYOUT (max-width: 767px) ============= */
 @media (max-width: 767px) {
   .download-section {
-    width: 100% !important; /* Changed from calc(100vw - 0.5rem) to 100% to fix zoom issues */
+    width: 100% !important;
     max-width: 100% !important;
     height: 250px !important;
     min-height: 250px !important;
-    padding: 40px 10px 30px 10px !important; /* Reduced horizontal padding from 20px to 10px */
-    margin: 180px 0 0 0 !important; /* Removed side margins since we're using 100% width */
+    padding: 40px 10px 30px 10px !important;
+    margin: 180px 0 0 0 !important;
     margin-bottom: 40px !important;
     flex-direction: column !important;
     justify-content: flex-end !important;
@@ -617,50 +405,38 @@
     position: relative !important;
     overflow: visible !important;
     border-radius: 0 !important;
-    box-sizing: border-box !important; /* Ensure padding is included in width */
+    box-sizing: border-box !important;
   }
 
   .left-contents {
-    max-width: 100% !important; /* Full width to accommodate single line text */
-    text-align: center !important; /* Center align text */
-    width: 100% !important; /* Full width */
+    max-width: 100% !important;
+    text-align: center !important;
+    width: 100% !important;
     margin: 0 !important;
-    margin-top: 60px !important; /* Reduced margin to move text up */
+    margin-top: 60px !important;
     z-index: 20 !important;
     position: relative !important;
     display: flex !important;
     flex-direction: column !important;
-    justify-content: flex-start !important; /* Changed from center to flex-start */
-    align-items: center !important; /* Center align items */
-    order: 2 !important; /* Text on right side */
+    justify-content: flex-start !important;
+    align-items: center !important;
+    order: 2 !important;
   }
 
   .left-contents h2 {
-    font-size: clamp(11px, 2.8vw, 14px) !important; /* Reduced font size to fit in single line */
+    font-size: clamp(11px, 2.8vw, 14px) !important;
     line-height: 1.4 !important;
-    margin-bottom: 15px !important; /* Reduced margin for closer spacing with subtext */
+    margin-bottom: 15px !important;
     margin-top: 0 !important;
     color: white !important;
     font-weight: 600 !important;
     font-family: "Poppins", sans-serif !important;
-    white-space: nowrap !important; /* Force text to single line */
+    white-space: nowrap !important;
     text-align: center !important;
-    max-width: 100% !important; /* Full width for single line */
-    overflow: visible !important; /* Make text visible */
-    display: block !important; /* Ensure text displays */
-    width: 100% !important; /* Ensure full width */
-  }
-
-  .left-contents .subtext {
-    display: block !important; /* Show subtext in mobile */
-    font-size: clamp(14px, 3.5vw, 18px) !important; /* Slightly smaller than main text */
-    line-height: 1.4 !important;
-    margin-bottom: 25px !important;
-    color: rgba(255, 255, 255, 0.8) !important; /* Slightly transparent white */
-    font-weight: 400 !important;
-    font-family: "Poppins", sans-serif !important;
-    text-align: center !important;
-    max-width: 95% !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+    display: block !important;
+    width: 100% !important;
   }
 
   .left-contents .subtext {
@@ -681,9 +457,9 @@
   }
 
   .footer-btn {
-    width: clamp(160px, 45vw, 220px) !important; /* Slightly reduced button width */
-    height: 40px !important; /* Slightly reduced button height */
-    border-radius: 12px !important; /* Rectangular shape with moderate curved edges */
+    width: clamp(160px, 45vw, 220px) !important;
+    height: 40px !important;
+    border-radius: 12px !important;
     background: white !important;
     border: none !important;
     flex-shrink: 0 !important;
@@ -691,7 +467,7 @@
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    margin-top: 25px !important; /* Move button further down */
+    margin-top: 25px !important;
   }
 
   .btn-text {
@@ -705,11 +481,11 @@
     display: block !important;
     position: absolute !important;
     left: 50% !important;
-    top: -185px !important; /* Moved up from -170px */
+    top: -185px !important;
     transform: translateX(-50%) !important;
-    width: 200px !important; /* Fixed width for consistency */
-    height: auto !important; /* Auto height to maintain aspect ratio */
-    z-index: 100 !important; /* Much higher z-index */
+    width: 200px !important;
+    height: auto !important;
+    z-index: 100 !important;
     margin: 0 !important;
     padding: 0 !important;
     background: transparent !important;
@@ -727,7 +503,6 @@
     clip-path: polygon(30% 2%, 84% 7%, 83.5% 99%, 19% 97%) !important;
   }
 }
-
 
 /* ============= SCROLL ANIMATIONS ============= */
 #blogs {
