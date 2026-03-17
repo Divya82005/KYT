@@ -8,6 +8,8 @@ const PromoVideoSection = () => {
   const justLandedInPromo = useRef(false);
   const scrollTimeout = useRef(null);
   const isAnimating = useRef(false);
+  const lastScrollTime = useRef(0);
+  const isScrollBlocked = useRef(false); // NEW: Complete scroll blocking
 
   useEffect(() => {
     let touchStartY = 0;
@@ -60,6 +62,22 @@ const PromoVideoSection = () => {
     };
 
     const handleScroll = (e) => {
+      // NUCLEAR OPTION: Block ALL scroll handling during any transition
+      if (isScrollBlocked.current || isAnimating.current) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        return false;
+      }
+
+      const now = Date.now();
+      
+      // Reduced time-based protection for smoother experience
+      if ((now - lastScrollTime.current) < 500) {
+        e.preventDefault();
+        return false;
+      }
+
       // Clear existing timeout and set a new one to detect when scrolling stops
       if (scrollTimeout.current) {
         clearTimeout(scrollTimeout.current);
@@ -72,18 +90,79 @@ const PromoVideoSection = () => {
         }
       }, 100);
 
-      if (isAnimating.current) {
-        e.preventDefault();
-        return;
-      }
-
       const promoSection = document.getElementById('about');
       const downloadSection = document.querySelector('.download-section');
       const safetySection = document.querySelector('.safety-container');
       const ctaSection = document.querySelector('.testimonial-section');
       const footerSection = document.getElementById('footer');
 
-      // 1. Promo -> Download Transition
+      // PRIORITY 1: Download -> Safety Transition (Animation + Scroll) - MUST BE FIRST
+      if (downloadSection && safetySection && promoSection) {
+        const downloadRect = downloadSection.getBoundingClientRect();
+        const promoRect = promoSection.getBoundingClientRect();
+        
+        // BALANCED APPROACH: Work throughout download section but avoid conflicts
+        const downloadVisible = downloadRect.top < window.innerHeight && downloadRect.bottom > 0;
+        const downloadDominant = downloadRect.top < window.innerHeight * 0.6 && downloadRect.bottom > window.innerHeight * 0.4;
+        const inDownloadSection = downloadVisible && downloadDominant;
+
+        if (inDownloadSection) {
+          if (e.deltaY > 3) { // Reduced threshold for more sensitivity
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+            
+            // NUCLEAR BLOCK: Disable ALL scroll handling
+            isScrollBlocked.current = true;
+            isAnimating.current = true;
+            lastScrollTime.current = now;
+            
+            downloadSection.classList.add('shrink-right');
+            setTimeout(() => {
+              safetySection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              setTimeout(() => { 
+                isAnimating.current = false;
+                // Force reset to allow next transition
+                setTimeout(() => {
+                  isScrollBlocked.current = false; // Re-enable scroll handling
+                  lastScrollTime.current = 0;
+                }, 800); // Consistent with other transitions
+              }, 800);
+            }, 300);
+            return false;
+          }
+          if (e.deltaY < -3) { // Very sensitive scroll up detection (changed from -50 to -3)
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+            
+            // NUCLEAR BLOCK: Disable ALL scroll handling
+            isScrollBlocked.current = true;
+            isAnimating.current = true;
+            lastScrollTime.current = now;
+            
+            // Reset animation states to ensure content is visible
+            setIsExiting(false);
+            setIsDownloadVisible(false);
+            promoSection.classList.add('visible');
+
+            setTimeout(() => {
+              promoSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              setTimeout(() => { 
+                isAnimating.current = false;
+                // Force reset to allow next transition
+                setTimeout(() => {
+                  isScrollBlocked.current = false; // Re-enable scroll handling
+                  lastScrollTime.current = 0;
+                }, 800); // Consistent with other transitions
+              }, 600);
+            }, 200); // Fast timing for smooth transition
+            return false;
+          }
+        }
+      }
+
+      // 2. Promo -> Download Transition
       if (promoSection && downloadSection) {
         const promoRect = promoSection.getBoundingClientRect();
 
@@ -118,7 +197,13 @@ const PromoVideoSection = () => {
         if (!isPromoSettled.current && promoRect.top <= window.innerHeight * 1.5 && promoRect.bottom > 0) {
           if (e.deltaY > 5) {
             e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+            
+            // NUCLEAR BLOCK: Disable ALL scroll handling
+            isScrollBlocked.current = true;
             isAnimating.current = true;
+            lastScrollTime.current = now;
             justLandedInPromo.current = true;
             
             // Snap to exact top position - VIEWPORT RELATIVE
@@ -133,17 +218,28 @@ const PromoVideoSection = () => {
             setTimeout(() => {
               isPromoSettled.current = true;
               isAnimating.current = false;
+              // Reduced blocking time for smoother experience
+              setTimeout(() => {
+                isScrollBlocked.current = false; // Re-enable scroll handling
+                lastScrollTime.current = 0; // Reset to allow next transition
+              }, 800); // Reduced from 2000ms to 800ms
             }, 800);
-            return;
+            return false;
           }
         }
 
-        // Check if we are inside the promo section - MORE FLEXIBLE DETECTION
-        if (promoRect.top <= window.innerHeight * 0.2 && promoRect.bottom > window.innerHeight * 0.1) {
+        // Check if we are inside the promo section - MAXIMUM FLEXIBILITY
+        if (promoRect.top < window.innerHeight && promoRect.bottom > 0) {
           // Trigger on Scroll Down OR Scroll Right - SMOOTHER AND MORE SENSITIVE
           if (isPromoSettled.current && !justLandedInPromo.current && (e.deltaY > 3 || e.deltaX > 3) && !isDownloadVisible && !isExiting) {
             e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+            
+            // NUCLEAR BLOCK: Disable ALL scroll handling
+            isScrollBlocked.current = true;
             isAnimating.current = true;
+            lastScrollTime.current = now;
 
             // A. Trigger the separation animation (Left/Right move)
             setIsExiting(true);
@@ -157,40 +253,68 @@ const PromoVideoSection = () => {
             setTimeout(() => {
               downloadSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
               
-              // Reset animation lock
+              // Reset animation lock with shorter delay for smoother experience
               setTimeout(() => {
                 isAnimating.current = false;
-              }, 600);
+                setTimeout(() => {
+                  isScrollBlocked.current = false; // Re-enable scroll handling
+                  lastScrollTime.current = 0; // Reset to allow next transition
+                }, 800); // Reduced from 2000ms to 800ms for smoother experience
+              }, 800);
             }, 200); 
             
-            return;
+            return false;
           }
 
           // Scroll Up to Hero Section
           if (isPromoSettled.current && e.deltaY < -20 && !isDownloadVisible && !isExiting) {
             if (promoRect.top >= -window.innerHeight * 0.1) {
               e.preventDefault();
+              e.stopPropagation();
+              e.stopImmediatePropagation();
+              
+              // NUCLEAR BLOCK: Disable ALL scroll handling
+              isScrollBlocked.current = true;
               isAnimating.current = true;
+              lastScrollTime.current = now;
+              
               window.scrollTo({ top: 0, behavior: 'smooth' });
               setTimeout(() => {
                 isPromoSettled.current = false;
                 isAnimating.current = false;
                 promoSection.classList.remove('visible');
+                // Reduced blocking time for smoother experience
+                setTimeout(() => {
+                  isScrollBlocked.current = false; // Re-enable scroll handling
+                  lastScrollTime.current = 0;
+                }, 800); // Reduced from 2000ms to 800ms
               }, 800);
-              return;
+              return false;
             }
           }
         }
       }
 
-      // 2. Safety -> CTA Transition (Animation + Scroll) - SMOOTH AND SENSITIVE
+      // 3. Safety -> CTA Transition (Animation + Scroll) & Safety -> Download (Up) - SMOOTH AND SENSITIVE
       if (safetySection && ctaSection) {
         const rect = safetySection.getBoundingClientRect();
-        // Expanded detection area - work from anywhere within safety section (80% viewport height)
-        if (rect.top <= window.innerHeight * 0.8 && rect.bottom > window.innerHeight * 0.2) {
-          if (e.deltaY > 3) { // Very sensitive scroll detection (reduced from 5 to 3)
+        const ctaRect = ctaSection.getBoundingClientRect();
+        
+        // BALANCED APPROACH: Work throughout safety section but avoid conflicts
+        const safetyVisible = rect.top < window.innerHeight && rect.bottom > 0;
+        const safetyDominant = rect.top < window.innerHeight * 0.6 && rect.bottom > window.innerHeight * 0.4;
+        const inSafetySection = safetyVisible && safetyDominant;
+
+        if (inSafetySection) {
+          if (e.deltaY > 3) { // Reduced threshold for more sensitivity
             e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+            
+            // NUCLEAR BLOCK: Disable ALL scroll handling
+            isScrollBlocked.current = true;
             isAnimating.current = true;
+            lastScrollTime.current = now;
             
             // Trigger animation on Safety elements
             const leftTitle = safetySection.querySelector('.left-title');
@@ -211,61 +335,48 @@ const PromoVideoSection = () => {
                   feedbackCard.classList.remove('tear-away');
                 }
                 isAnimating.current = false;
-              }, 50);
-            }, 200); // Fast timing for smooth transition
-            return;
+                // Force reset to allow next transition
+                setTimeout(() => {
+                  isScrollBlocked.current = false; // Re-enable scroll handling
+                  lastScrollTime.current = 0;
+                }, 800); // Consistent with other transitions
+              }, 800);
+            }, 300);
+            return false;
           }
-          if (e.deltaY < -3 && downloadSection) { // Very sensitive scroll up detection (changed from -20 to -3)
+          if (e.deltaY < -3 && downloadSection) { // Very sensitive scroll up detection
             e.preventDefault();
-            isAnimating.current = true;
+            e.stopPropagation();
+            e.stopImmediatePropagation();
             
-            // First scroll to download section
+            // NUCLEAR BLOCK: Disable ALL scroll handling
+            isScrollBlocked.current = true;
+            isAnimating.current = true;
+            lastScrollTime.current = now;
+            
+            // FIRST: Remove shrink class immediately to ensure proper positioning
+            downloadSection.classList.remove('shrink-right');
+            
+            // THEN: Scroll to the blogs container for better centering
             setTimeout(() => {
-              downloadSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              const blogsContainer = document.getElementById('blogs');
+              if (blogsContainer) {
+                blogsContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              } else {
+                downloadSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }
               
-              // Remove shrink class right when scroll completes so user sees the return animation
+              // Complete animation
               setTimeout(() => {
-                downloadSection.classList.remove('shrink-right');
                 isAnimating.current = false;
+                // Force reset to allow next transition
+                setTimeout(() => {
+                  isScrollBlocked.current = false; // Re-enable scroll handling
+                  lastScrollTime.current = 0;
+                }, 800); // Consistent with other transitions
               }, 600); // Consistent timing
             }, 200); // Fast timing for smooth transition
-            return;
-          }
-        }
-      }
-
-      // 3. Download -> Safety Transition (Animation + Scroll) - SMOOTH AND SENSITIVE
-      if (downloadSection && safetySection && promoSection) {
-        const downloadRect = downloadSection.getBoundingClientRect();
-        const promoRect = promoSection.getBoundingClientRect();
-        // Expanded detection area - work from anywhere within download section (80% viewport height)
-        const inDownloadSection = downloadRect.top > -window.innerHeight * 0.8 && downloadRect.top < window.innerHeight * 0.8 && promoRect.bottom < 0;
-
-        if (inDownloadSection) {
-          if (e.deltaY > 3) { // Scroll Down to Safety - Very sensitive (reduced from higher values)
-            e.preventDefault();
-            isAnimating.current = true;
-            downloadSection.classList.add('shrink-right');
-            setTimeout(() => {
-              safetySection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-              setTimeout(() => { isAnimating.current = false; }, 600);
-            }, 200); // Fast timing for smooth transition
-            return;
-          }
-          if (e.deltaY < -3) { // Very sensitive scroll up detection (changed from -50 to -3)
-            e.preventDefault();
-            isAnimating.current = true;
-            
-            // Reset animation states to ensure content is visible
-            setIsExiting(false);
-            setIsDownloadVisible(false);
-            promoSection.classList.add('visible');
-
-            setTimeout(() => {
-              promoSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-              setTimeout(() => { isAnimating.current = false; }, 600);
-            }, 200); // Fast timing for smooth transition
-            return;
+            return false;
           }
         }
       }
@@ -280,11 +391,21 @@ const PromoVideoSection = () => {
           feedbackCard.classList.remove('tear-away');
         }
         
-        // Expanded detection area - work from anywhere within CTA section (80% viewport height)
-        if (rect.top <= window.innerHeight * 0.8 && rect.bottom > window.innerHeight * 0.2) {
+        // BALANCED APPROACH: Work throughout CTA section but avoid conflicts
+        const ctaVisible = rect.top < window.innerHeight && rect.bottom > 0;
+        const ctaDominant = rect.top < window.innerHeight * 0.6 && rect.bottom > window.innerHeight * 0.4;
+        const inCtaSection = ctaVisible && ctaDominant;
+        
+        if (inCtaSection) {
            if (e.deltaY > 3) { // Very sensitive scroll detection (reduced from 5 to 3)
              e.preventDefault();
+             e.stopPropagation();
+             e.stopImmediatePropagation();
+             
+             // NUCLEAR BLOCK: Disable ALL scroll handling
+             isScrollBlocked.current = true;
              isAnimating.current = true;
+             lastScrollTime.current = now;
              
              setTimeout(() => {
                footerSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -322,6 +443,11 @@ const PromoVideoSection = () => {
                  });
                  
                  isAnimating.current = false;
+                 // Force reset to allow next transition
+                 setTimeout(() => {
+                   isScrollBlocked.current = false; // Re-enable scroll handling
+                   lastScrollTime.current = 0;
+                 }, 800); // Consistent with other transitions
                }, 100); // Reset elements immediately after scroll starts
              }, 200); // Fast timing for smooth transition
              return;
@@ -330,6 +456,7 @@ const PromoVideoSection = () => {
              if (rect.top >= -window.innerHeight * 0.2) { // Expanded detection area
                e.preventDefault();
                isAnimating.current = true;
+               lastScrollTime.current = now;
 
                // Trigger animation on CTA elements and reset IMMEDIATELY
                const feedbackCard = ctaSection.querySelector('.feedback-card');
@@ -358,6 +485,10 @@ const PromoVideoSection = () => {
                  safetySection.scrollIntoView({ behavior: 'smooth', block: 'center' });
                  setTimeout(() => { 
                    isAnimating.current = false;
+                   // Force reset to allow next transition
+                   setTimeout(() => {
+                     lastScrollTime.current = 0;
+                   }, 500);
                  }, 600); // Consistent timing
                }, 200); // Fast timing for smooth transition
                return;
@@ -401,9 +532,17 @@ const PromoVideoSection = () => {
           if (e.deltaY < -3) { // Very sensitive scroll up detection (changed from -50 to -3)
             e.preventDefault();
             isAnimating.current = true;
+            lastScrollTime.current = now;
+            
             setTimeout(() => {
               ctaSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-              setTimeout(() => { isAnimating.current = false; }, 600);
+              setTimeout(() => { 
+                isAnimating.current = false;
+                // Force reset to allow next transition
+                setTimeout(() => {
+                  lastScrollTime.current = 0;
+                }, 500);
+              }, 600);
             }, 200); // Fast timing for smooth transition
             return;
           }
@@ -636,10 +775,9 @@ const PromoVideoSection = () => {
       <div 
         className={`promo-video-box ${isExiting ? 'animate-exit-left' : ''}`}
         style={{
-          width: 'clamp(560px, 52vw, 620px)',
-          marginLeft: 'clamp(-55px, -4vw, -45px)',
-          minWidth: 'clamp(560px, 52vw, 620px)',
-          maxWidth: 'clamp(560px, 52vw, 620px)'
+          width: '60%',
+          marginLeft: '-32px',
+          flexShrink: '0'
         }}
       >
         <video
@@ -663,7 +801,13 @@ const PromoVideoSection = () => {
       </div>
 
       {/* RIGHT TEXT CONTENT */}
-      <div className={`promo-text-box ${isExiting ? 'animate-exit-right' : ''}`}>
+      <div 
+        className={`promo-text-box ${isExiting ? 'animate-exit-right' : ''}`}
+        style={{
+          width: '36%',
+          flexGrow: '1'
+        }}
+      >
         <h2 className="promo-heading">
           <span className="main-title">REAL-TIME SAFETY</span>
           <span className="main-title">INTELLIGENCE FOR TRAVELLERS</span>
