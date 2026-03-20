@@ -63,8 +63,10 @@ const PromoVideoSection = () => {
       const now = Date.now();
       console.log('🔥 MAIN SCROLL HANDLER TRIGGERED, deltaY:', e.deltaY, 'time:', now);
       
-      // CHECK GLOBAL TRANSITION FLAGS FIRST
+      // CHECK GLOBAL TRANSITION FLAGS FIRST - BUT ALLOW FOOTER -> CTA UPWARD SCROLL
       const globalTransitionTime = now - (window.lastScrollTransitionTime || 0);
+      
+      // Simple global blocking without footer exception for now
       if (window.isScrollTransitioning || globalTransitionTime < 1000) {
         console.log('🚫 BLOCKING main scroll - global transition in progress or too recent:', globalTransitionTime, 'ms ago');
         e.preventDefault();
@@ -274,7 +276,7 @@ const PromoVideoSection = () => {
         // RELAXED CONDITIONS: Allow immediate user scroll with minimal delay
         const ctaVisible = rect.top < window.innerHeight && rect.bottom > 0;
         const notInAutoTransition = !isInAutomaticTransition.current;
-        const minimalDelay = (now - lastScrollTime.current) > 1200 || lastScrollTime.current === 0; // Increased to 1200ms to match global blocking
+        const minimalDelay = (now - lastScrollTime.current) > 800 || lastScrollTime.current === 0; // Reduced from 1200ms to 800ms
         const normalScroll = e.deltaY > 2; // Reduced threshold
         
         console.log('CTA visible:', ctaVisible);
@@ -349,11 +351,14 @@ const PromoVideoSection = () => {
         console.log('CTA rect:', ctaRect.top, ctaRect.bottom);
         console.log('DeltaY:', e.deltaY);
         
-        // When CTA is visible and scrolling up
+        // When CTA is visible and scrolling up - BUT NOT when footer is also visible
         const ctaVisible = ctaRect.top < window.innerHeight && ctaRect.bottom > 0;
+        const footerRect = footerSection.getBoundingClientRect();
+        const footerVisible = footerRect.top < window.innerHeight && footerRect.bottom > 0;
         console.log('CTA visible:', ctaVisible);
+        console.log('Footer visible:', footerVisible);
         
-        if (ctaVisible && e.deltaY < -2) { // Upward scroll
+        if (ctaVisible && e.deltaY < -2 && !footerVisible) { // Added !footerVisible condition
           console.log('🚀 CTA -> Download upward scroll TRIGGERED! (Skipping Safety)');
           
           e.preventDefault();
@@ -440,7 +445,7 @@ const PromoVideoSection = () => {
         const footerVisible = footerRect.top < window.innerHeight && footerRect.bottom > 0;
         console.log('Footer visible:', footerVisible);
         
-        if (footerVisible && e.deltaY < -2) { // Reduced threshold for easier triggering
+        if (footerVisible && e.deltaY < -2) { // Removed global transition time check
           console.log('🚀 Footer -> CTA upward scroll TRIGGERED!');
           
           e.preventDefault();

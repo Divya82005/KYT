@@ -45,7 +45,7 @@ const SafetyIntelligence = () => {
       const now = Date.now();
       const globalTransitionTime = now - (window.lastScrollTransitionTime || 0);
       
-      if (isTransitioning || window.isScrollTransitioning || globalTransitionTime < 2000) {
+      if (isTransitioning || window.isScrollTransitioning || globalTransitionTime < 1500) {
         console.log('🚫 BLOCKING Safety scroll - transition in progress or too recent:', globalTransitionTime, 'ms ago');
         e.preventDefault();
         e.stopPropagation();
@@ -96,9 +96,9 @@ const SafetyIntelligence = () => {
                   isTransitioning = false;
                   window.isScrollTransitioning = false;
                   console.log('✅ Safety -> CTA transition complete - ready for next scroll');
-                }, 800); // Normal timing
-              }, 800);
-            }, 300);
+                }, 600); // Increased from 400ms to 600ms to prevent chain reactions
+              }, 400); // Reduced from 800ms to 400ms
+            }, 150); // Reduced from 300ms to 150ms
             
             return false;
           }
