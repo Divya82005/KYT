@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./Styles/CTASection.css";
 
 import quote from "../assets/ComaImg.png";
-import arrowl from "../assets/arrow_left.png";
-import arrowr from "../assets/arrow_right.png";
 
 const feedbackList = [
   {
@@ -95,9 +93,111 @@ const CTASection = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    // REMOVE SCROLL LISTENER - Let PromoVideoSection handle all scrolling
+    // window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check on mount only
+    
+    // Set up interval to check visibility instead of scroll listener
+    const intervalId = setInterval(handleScroll, 100);
+    
+    // Add wheel event delegation to CTA section for scroll forwarding
+    const ctaWrapper = document.getElementById('cta');
+    const ctaContainer = document.querySelector('.testimonial-section');
+    
+    const forwardScrollEvent = (e) => {
+      console.log('🎯 CTA SCROLL EVENT CAPTURED!', e.deltaY);
+      
+      // CHECK GLOBAL TRANSITION FLAGS - Extended blocking to prevent chain reactions
+      const now = Date.now();
+      const globalTransitionTime = now - (window.lastScrollTransitionTime || 0);
+      
+      // Simple blocking - only during active transitions
+      if (window.isScrollTransitioning) {
+        console.log('🚫 BLOCKING CTA scroll forwarding - transition in progress');
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        return false;
+      }
+      
+      // Responsive threshold for normal user scrolls
+      if (Math.abs(e.deltaY) > 2) {
+        console.log('🚀 Forwarding CTA scroll event to window');
+        // ONLY FORWARD TO MAIN HANDLER - NO DIRECT SCROLLING
+        const newEvent = new WheelEvent('wheel', {
+          deltaY: e.deltaY,
+          deltaX: e.deltaX,
+          deltaZ: e.deltaZ,
+          deltaMode: e.deltaMode,
+          bubbles: true,
+          cancelable: true,
+          clientX: e.clientX,
+          clientY: e.clientY
+        });
+        
+        // Dispatch to window so PromoVideoSection can handle it
+        window.dispatchEvent(newEvent);
+      } else {
+        console.log('❌ CTA scroll too small, not forwarding:', e.deltaY);
+      }
+    };
+    
+    if (ctaWrapper) {
+      console.log('✅ Adding wheel listener to CTA wrapper');
+      ctaWrapper.addEventListener('wheel', forwardScrollEvent, { passive: false });
+    } else {
+      console.log('❌ CTA wrapper not found');
+    }
+    if (ctaContainer) {
+      console.log('✅ Adding wheel listener to CTA container');
+      ctaContainer.addEventListener('wheel', forwardScrollEvent, { passive: false });
+    } else {
+      console.log('❌ CTA container not found');
+    }
+    
+    // Add listeners to ALL CTA elements to ensure scroll capture
+    const feedbackCard = document.querySelector('.feedback-card');
+    const feedbackContent = document.querySelector('.feedback-content');
+    const sectionHeading = document.querySelector('.section-heading');
+    
+    if (feedbackCard) {
+      console.log('✅ Adding wheel listener to feedback card');
+      feedbackCard.addEventListener('wheel', forwardScrollEvent, { passive: false });
+    }
+    if (feedbackContent) {
+      console.log('✅ Adding wheel listener to feedback content');
+      feedbackContent.addEventListener('wheel', forwardScrollEvent, { passive: false });
+    }
+    if (sectionHeading) {
+      console.log('✅ Adding wheel listener to section heading');
+      sectionHeading.addEventListener('wheel', forwardScrollEvent, { passive: false });
+    }
+    
+    return () => {
+      clearInterval(intervalId);
+      if (ctaWrapper) {
+        ctaWrapper.removeEventListener('wheel', forwardScrollEvent);
+      }
+      if (ctaContainer) {
+        ctaContainer.removeEventListener('wheel', forwardScrollEvent);
+      }
+      
+      // Remove listeners from all elements
+      const feedbackCard = document.querySelector('.feedback-card');
+      const feedbackContent = document.querySelector('.feedback-content');
+      const sectionHeading = document.querySelector('.section-heading');
+      
+      if (feedbackCard) {
+        feedbackCard.removeEventListener('wheel', forwardScrollEvent);
+      }
+      if (feedbackContent) {
+        feedbackContent.removeEventListener('wheel', forwardScrollEvent);
+      }
+      if (sectionHeading) {
+        sectionHeading.removeEventListener('wheel', forwardScrollEvent);
+      }
+      // window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const handleMouseEnter = () => {
@@ -122,7 +222,15 @@ const CTASection = () => {
   const currentFeedback = feedbackList[index];
 
   return (
-    <section className="testimonial-section">
+    <section 
+      className="testimonial-section"
+      style={{
+        pointerEvents: 'auto',
+        touchAction: 'auto',
+        position: 'relative',
+        zIndex: 1
+      }}
+    >
       <h2 className="section-heading">User Feedback</h2>
 
       {/* MAIN FEEDBACK CARD WITH ARROWS */}
@@ -130,15 +238,37 @@ const CTASection = () => {
         className={`feedback-card ${shouldTear ? 'tear-away' : ''}`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        style={{
+          pointerEvents: 'auto',
+          touchAction: 'auto'
+        }}
       >
         {/* LEFT ARROW */}
-        <button className={`nav-btn left ${shouldTear ? 'tear-away' : ''}`} onClick={prevSlide}>
-          <img src={arrowl} alt="Previous" />
+        <button 
+          className={`nav-btn left ${shouldTear ? 'tear-away' : ''}`} 
+          onClick={prevSlide}
+          style={{
+            pointerEvents: 'auto',
+            touchAction: 'auto'
+          }}
+        >
         </button>
 
-        <div className={`feedback-content ${isChanging ? 'changing' : ''}`}>
+        <div 
+          className={`feedback-content ${isChanging ? 'changing' : ''}`}
+          style={{
+            pointerEvents: 'auto',
+            touchAction: 'auto'
+          }}
+        >
           {/* LEFT SIDE - USER INFO */}
-          <div className={`tear-wrapper-left ${shouldTear ? 'tear-left' : ''}`}>
+          <div 
+            className={`tear-wrapper-left ${shouldTear ? 'tear-left' : ''}`}
+            style={{
+              pointerEvents: 'auto',
+              touchAction: 'auto'
+            }}
+          >
             <div className="user-info">
               <div className="rating-container">
                 <div className="star-rating">
@@ -153,7 +283,13 @@ const CTASection = () => {
           </div>
 
           {/* RIGHT SIDE - FEEDBACK TEXT */}
-          <div className={`tear-wrapper-right ${shouldTear ? 'tear-right' : ''}`}>
+          <div 
+            className={`tear-wrapper-right ${shouldTear ? 'tear-right' : ''}`}
+            style={{
+              pointerEvents: 'auto',
+              touchAction: 'auto'
+            }}
+          >
             <div className="feedback-text-area">
               <div className="quote-icon-container">
                 <img src={quote} className="quote-icon" alt="quote" />
@@ -164,8 +300,14 @@ const CTASection = () => {
         </div>
 
         {/* RIGHT ARROW */}
-        <button className={`nav-btn right`} onClick={nextSlide}>
-          <img src={arrowr} alt="Next" />
+        <button 
+          className={`nav-btn right ${shouldTear ? 'tear-right-arrow' : ''}`} 
+          onClick={nextSlide}
+          style={{
+            pointerEvents: 'auto',
+            touchAction: 'auto'
+          }}
+        >
         </button>
       </div>
     </section>

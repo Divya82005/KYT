@@ -13,6 +13,13 @@
   overflow: visible;
   height: auto;
   box-sizing: border-box;
+  pointer-events: auto !important;
+  touch-action: auto !important;
+}
+
+.testimonial-section * {
+  pointer-events: auto !important;
+  touch-action: auto !important;
 }
 
 /* CTA section container - full viewport height */
@@ -25,24 +32,33 @@
   opacity: 1;
   transform: translateY(0);
   overflow: visible;
+  pointer-events: auto !important;
+  touch-action: auto !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+#cta * {
+  pointer-events: auto !important;
+  touch-action: auto !important;
 }
 
 /* ============= SECTION HEADING ============= */
 .section-heading {
   font-family: "Poppins", sans-serif;
-  font-size: clamp(28px, 4vw, 44px);
+  font-size: clamp(44px, 3.2vw, 50px); /* Increased from 40px-46px */
   font-weight: 700;
   color: #5351f4;
-  margin-bottom: clamp(24px, 4vh, 48px);
+  margin-bottom: clamp(28px, 2vh, 36px); /* Tighter range */
   line-height: 1.2;
 }
 
 /* ============= MAIN FEEDBACK CARD ============= */
 .feedback-card {
-  width: 900px; /* Fixed width instead of responsive */
-  max-width: 900px; /* Fixed max-width */
-  min-height: 350px; /* Fixed height */
-  height: 350px; /* Fixed height */
+  width: 1000px; /* Increased from 900px */
+  max-width: 1000px; /* Increased from 900px */
+  min-height: 400px; /* Increased from 350px */
+  height: 400px; /* Increased from 350px */
   background: #ffffff;
   border: 1.5px solid #c7d2fe;
   border-radius: 40px; /* Fixed border radius */
@@ -156,17 +172,17 @@
 
 .user-name {
   font-family: "Poppins", sans-serif;
-  font-size: clamp(20px, 2.8vw, 28px);
+  font-size: clamp(28px, 2.2vw, 32px); /* Increased from 26px-30px */
   font-weight: 700;
   color: #1f2937;
-  margin: 0 0 clamp(4px, 1vw, 8px) 0;
+  margin: 0 0 clamp(4px, 0.5vw, 6px) 0; /* Tighter range */
   line-height: 1.2;
   text-align: left;
 }
 
 .user-title {
   font-family: "Poppins", sans-serif;
-  font-size: clamp(16px, 2.2vw, 20px);
+  font-size: clamp(20px, 1.8vw, 24px); /* Increased from 18px-22px */
   font-weight: 400;
   color: #6b7280;
   margin: 0;
@@ -218,7 +234,7 @@
 /* ============= FEEDBACK TEXT ============= */
 .feedback-text {
   font-family: "Poppins", sans-serif;
-  font-size: clamp(14px, 2.2vw, 18px);
+  font-size: clamp(19px, 1.6vw, 22px); /* Increased from 17px-20px */
   font-weight: 400;
   line-height: 1.6;
   color: #374151;
@@ -334,7 +350,7 @@
 
   .feedback-card {
     height: auto !important;
-    min-height: 180px !important;
+    min-height: 200px !important; /* Increased from 180px to maintain proportions */
     margin: 0 auto !important;
     max-width: 100% !important;
     padding: clamp(1rem, 3vw, 1.5rem) clamp(0.3rem, 1vw, 0.5rem) !important;
@@ -482,7 +498,7 @@
 /* Large Desktop */
 @media (min-width: 1200px) {
   .feedback-card {
-    max-width: 900px;
+    max-width: 1000px; /* Updated to match new size */
   }
 }
 
