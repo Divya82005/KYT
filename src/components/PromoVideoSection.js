@@ -343,11 +343,11 @@ const PromoVideoSection = () => {
         console.log('=== END CTA DEBUG ===');
       }
 
-      // 4.5. CTA -> Download (Up) - SKIP SAFETY SECTION FOR CONSISTENT ONE-SCROLL BEHAVIOR
-      if (ctaSection && downloadSection) {
+      // 4.5. CTA -> Safety Intelligence (Up) - DIRECT TO SAFETY SECTION
+      if (ctaSection && safetySection) {
         const ctaRect = ctaSection.getBoundingClientRect();
         
-        console.log('=== CTA -> DOWNLOAD DEBUG ===');
+        console.log('=== CTA -> SAFETY DEBUG ===');
         console.log('CTA rect:', ctaRect.top, ctaRect.bottom);
         console.log('DeltaY:', e.deltaY);
         
@@ -358,8 +358,8 @@ const PromoVideoSection = () => {
         console.log('CTA visible:', ctaVisible);
         console.log('Footer visible:', footerVisible);
         
-        if (ctaVisible && e.deltaY < -2 && !footerVisible) { // Added !footerVisible condition
-          console.log('🚀 CTA -> Download upward scroll TRIGGERED! (Skipping Safety)');
+        if (ctaVisible && e.deltaY < -2 && !footerVisible) { // Upward scroll to Safety Intelligence
+          console.log('🚀 CTA -> Safety Intelligence upward scroll TRIGGERED!');
           
           e.preventDefault();
           e.stopPropagation();
@@ -389,9 +389,9 @@ const PromoVideoSection = () => {
             btn.style.cssText = 'transition: none !important; transform: translate(0, 0) !important; opacity: 1 !important; visibility: visible !important;';
           });
           
-          tearWrappers.forEach(wrapper => {
-            wrapper.classList.remove('tear-left', 'tear-right');
-            wrapper.style.cssText = 'transition: none !important; transform: translate(0, 0) !important; opacity: 1 !important; visibility: visible !important;';
+          tearWrappers.forEach(btn => {
+            btn.classList.remove('tear-left', 'tear-right');
+            btn.style.cssText = 'transition: none !important; transform: translate(0, 0) !important; opacity: 1 !important; visibility: visible !important;';
           });
           
           // Reset Safety Intelligence tear effects (in case they were applied)
@@ -403,15 +403,16 @@ const PromoVideoSection = () => {
           if (rows[1]) rows[1].classList.remove('tear-left');
           if (rows[2]) rows[2].classList.remove('tear-right');
           
-          // Reset download section animations
-          downloadSection.classList.remove('shrink-right');
-          
-          // Smooth scroll to Download section (skipping Safety) with same timing as other sections
+          // Smooth scroll to Safety Intelligence section
           setTimeout(() => {
-            downloadSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            const safetyWrapper = document.getElementById('safety');
+            const targetElement = safetyWrapper || safetySection;
+            if (targetElement) {
+              targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
             
             setTimeout(() => {
-              console.log('🎯 Download section reached from CTA upward scroll (Safety skipped)');
+              console.log('🎯 Safety Intelligence section reached from CTA upward scroll');
               
               // Same cleanup pattern as other sections
               isAnimating.current = false;
@@ -420,16 +421,16 @@ const PromoVideoSection = () => {
                 lastScrollTime.current = 0;
                 // Reset global flags
                 window.isScrollTransitioning = false;
-                console.log('✅ CTA -> Download upward transition complete');
-              }, 800);
+                console.log('✅ CTA -> Safety Intelligence upward transition complete');
+              }, 1500); // Increased to 1500ms to prevent chain reactions
             }, 800);
           }, 200);
           
           return false;
         } else {
-          console.log('❌ CTA -> Download conditions not met');
+          console.log('❌ CTA -> Safety Intelligence conditions not met');
         }
-        console.log('=== END CTA -> DOWNLOAD DEBUG ===');
+        console.log('=== END CTA -> SAFETY DEBUG ===');
       }
 
       // 5. Footer -> CTA (Up) - IMPROVED FOR CONSISTENT ONE-SCROLL BEHAVIOR
