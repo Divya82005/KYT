@@ -221,36 +221,45 @@ const PromoVideoSection = () => {
             return false;
           }
 
-          // Promo -> Hero
-          if (isPromoSettled.current && e.deltaY < -20 && !isDownloadVisible && !isExiting) {
-            if (promoRect.top >= -window.innerHeight * 0.1) {
-              e.preventDefault();
-              e.stopPropagation();
-              e.stopImmediatePropagation();
-              
-              // Set global transition flags
-              window.isScrollTransitioning = true;
-              window.lastScrollTransitionTime = now;
-              
-              isScrollBlocked.current = true;
-              isAnimating.current = true;
-              lastScrollTime.current = now;
-              
+          // Promo -> Hero - SIMPLIFIED FOR RELIABLE UPWARD SCROLL
+          if (e.deltaY < -2 && !isDownloadVisible && !isExiting) {
+            console.log('🚀 PROMO -> HERO UPWARD SCROLL TRIGGERED!');
+            
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+            
+            // Set global transition flags
+            window.isScrollTransitioning = true;
+            window.lastScrollTransitionTime = now;
+            
+            isScrollBlocked.current = true;
+            isAnimating.current = true;
+            lastScrollTime.current = now;
+            
+            // Reset promo section state
+            isPromoSettled.current = false;
+            promoSection.classList.remove('visible');
+            
+            // Smooth scroll to very top of page (to see navbar + hero)
+            setTimeout(() => {
               window.scrollTo({ top: 0, behavior: 'smooth' });
+              
               setTimeout(() => {
-                isPromoSettled.current = false;
+                console.log('✅ PROMO -> HERO UPWARD complete');
+                
                 isAnimating.current = false;
-                promoSection.classList.remove('visible');
                 setTimeout(() => {
                   isScrollBlocked.current = false;
                   lastScrollTime.current = 0;
                   // Reset global flags
                   window.isScrollTransitioning = false;
-                  console.log('✅ Promo -> Hero transition complete');
-                }, 800);
-              }, 800);
-              return false;
-            }
+                  console.log('✅ Promo -> Hero upward transition complete');
+                }, 1500); // Increased to 1500ms to prevent chain reactions
+              }, 400);
+            }, 150);
+            
+            return false;
           }
         }
       }
@@ -276,12 +285,13 @@ const PromoVideoSection = () => {
         // RELAXED CONDITIONS: Allow immediate user scroll with minimal delay
         const ctaVisible = rect.top < window.innerHeight && rect.bottom > 0;
         const notInAutoTransition = !isInAutomaticTransition.current;
-        const minimalDelay = (now - lastScrollTime.current) > 800 || lastScrollTime.current === 0; // Reduced from 1200ms to 800ms
+        const globalTransitionTime = now - (window.lastScrollTransitionTime || 0);
+        const minimalDelay = globalTransitionTime > 1200 || window.lastScrollTransitionTime === 0; // Reduced to 1200ms for faster CTA response
         const normalScroll = e.deltaY > 2; // Reduced threshold
         
         console.log('CTA visible:', ctaVisible);
         console.log('Not in auto transition:', notInAutoTransition);
-        console.log('Minimal delay:', minimalDelay, 'time since last:', now - lastScrollTime.current);
+        console.log('Minimal delay:', minimalDelay, 'global transition time:', globalTransitionTime);
         console.log('Normal scroll:', normalScroll);
         
         if (ctaVisible && notInAutoTransition && minimalDelay && normalScroll) {
@@ -300,29 +310,40 @@ const PromoVideoSection = () => {
           isAnimating.current = true;
           lastScrollTime.current = now;
           
+          // ANIMATE: Apply tear effects first
+          const feedbackCard = ctaSection.querySelector('.feedback-card');
+          const navBtns = ctaSection.querySelectorAll('.nav-btn');
+          const tearWrappers = ctaSection.querySelectorAll('.tear-wrapper-left, .tear-wrapper-right');
+          
+          if (feedbackCard) {
+            feedbackCard.classList.add('tear-away');
+          }
+          
+          navBtns.forEach(btn => {
+            btn.classList.add('tear-away');
+          });
+          
+          if (tearWrappers[0]) tearWrappers[0].classList.add('tear-left');
+          if (tearWrappers[1]) tearWrappers[1].classList.add('tear-right');
+          
           setTimeout(() => {
+            // RESET: Back to original position
+            if (feedbackCard) {
+              feedbackCard.classList.remove('tear-away');
+            }
+            
+            navBtns.forEach(btn => {
+              btn.classList.remove('tear-away', 'tear-right-arrow');
+            });
+            
+            tearWrappers.forEach(wrapper => {
+              wrapper.classList.remove('tear-left', 'tear-right');
+            });
+            
+            // SCROLL: Now move to footer
             footerSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
             
             setTimeout(() => {
-              const feedbackCard = ctaSection.querySelector('.feedback-card');
-              const navBtns = ctaSection.querySelectorAll('.nav-btn');
-              const tearWrappers = ctaSection.querySelectorAll('.tear-wrapper-left, .tear-wrapper-right');
-              
-              if (feedbackCard) {
-                feedbackCard.classList.remove('tear-away');
-                feedbackCard.style.cssText = 'transition: none !important; transform: translate(0, 0) !important; opacity: 1 !important; visibility: visible !important;';
-              }
-              
-              navBtns.forEach(btn => {
-                btn.classList.remove('tear-away', 'tear-right-arrow');
-                btn.style.cssText = 'transition: none !important; transform: translate(0, 0) !important; opacity: 1 !important; visibility: visible !important;';
-              });
-              
-              tearWrappers.forEach(wrapper => {
-                wrapper.classList.remove('tear-left', 'tear-right');
-                wrapper.style.cssText = 'transition: none !important; transform: translate(0, 0) !important; opacity: 1 !important; visibility: visible !important;';
-              });
-              
               isAnimating.current = false;
               setTimeout(() => {
                 isScrollBlocked.current = false;
@@ -332,7 +353,7 @@ const PromoVideoSection = () => {
                 console.log('✅ CTA -> Footer transition complete');
               }, 800);
             }, 100);
-          }, 200);
+          }, 300); // Wait for animation then reset and scroll
           return false;
         } else {
           console.log('❌ CTA -> Footer conditions not met');

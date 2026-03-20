@@ -41,12 +41,16 @@ const SafetyIntelligence = () => {
     const handleSafetyScroll = (e) => {
       console.log('🔥 SAFETY AREA SCROLL DETECTED!', e.deltaY, 'from:', e.target.className);
       
-      // Simple blocking - only during active transitions
+      // Simple blocking - different timing for up vs down to prevent chain reactions
       const now = Date.now();
       const globalTransitionTime = now - (window.lastScrollTransitionTime || 0);
       
-      if (isTransitioning || window.isScrollTransitioning || globalTransitionTime < 1500) {
-        console.log('🚫 BLOCKING Safety scroll - transition in progress or too recent:', globalTransitionTime, 'ms ago');
+      // For upward scroll (to download), use shorter blocking time
+      // For downward scroll (to CTA), use moderate blocking time - reduced for faster response
+      const blockingTime = e.deltaY < 0 ? 800 : 1000; // 800ms for up, 1000ms for down (reduced from 1500ms)
+      
+      if (isTransitioning || window.isScrollTransitioning || globalTransitionTime < blockingTime) {
+        console.log('🚫 BLOCKING Safety scroll - transition in progress or too recent:', globalTransitionTime, 'ms ago, needed:', blockingTime);
         e.preventDefault();
         e.stopPropagation();
         e.stopImmediatePropagation();
@@ -96,7 +100,7 @@ const SafetyIntelligence = () => {
                   isTransitioning = false;
                   window.isScrollTransitioning = false;
                   console.log('✅ Safety -> CTA transition complete - ready for next scroll');
-                }, 600); // Increased from 400ms to 600ms to prevent chain reactions
+                }, 800); // Increased to 800ms to ensure CTA blocking works
               }, 400); // Reduced from 800ms to 400ms
             }, 150); // Reduced from 300ms to 150ms
             
@@ -139,7 +143,11 @@ const SafetyIntelligence = () => {
             
             // Smooth scroll to Download section
             setTimeout(() => {
-              downloadSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              // Try to scroll to the download section wrapper first
+              const downloadWrapper = document.getElementById('blogs');
+              const targetElement = downloadWrapper || downloadSection;
+              
+              targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
               
               setTimeout(() => {
                 console.log('✅ SAFETY -> DOWNLOAD UPWARD complete from Safety Intelligence scroll');
