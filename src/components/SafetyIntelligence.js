@@ -103,6 +103,59 @@ const SafetyIntelligence = () => {
             return false;
           }
         }
+      } else if (e.deltaY < -2) {
+        // UPWARD SCROLL - Safety Intelligence -> Download
+        const safetySection = document.querySelector('.safety-container');
+        const downloadSection = document.querySelector('.download-section');
+        
+        if (safetySection && downloadSection) {
+          const safetyRect = safetySection.getBoundingClientRect();
+          
+          // Check if we're actually in the Safety Intelligence section
+          if (safetyRect.top < window.innerHeight && safetyRect.bottom > 0) {
+            console.log('🚀 SAFETY -> DOWNLOAD UPWARD SCROLL TRIGGERED from Safety Intelligence area!');
+            
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+            
+            // Set transition flags
+            isTransitioning = true;
+            lastTransitionTime = now;
+            window.isScrollTransitioning = true;
+            window.lastScrollTransitionTime = now;
+            
+            // Reset any Safety Intelligence tear effects
+            const leftTitle = safetySection.querySelector('.left-title');
+            const rows = safetySection.querySelectorAll('.safety-row');
+            
+            if (leftTitle) leftTitle.classList.remove('tear-left');
+            if (rows[0]) rows[0].classList.remove('tear-right');
+            if (rows[1]) rows[1].classList.remove('tear-left');
+            if (rows[2]) rows[2].classList.remove('tear-right');
+            
+            // Reset download section animations
+            downloadSection.classList.remove('shrink-right');
+            
+            // Smooth scroll to Download section
+            setTimeout(() => {
+              downloadSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              
+              setTimeout(() => {
+                console.log('✅ SAFETY -> DOWNLOAD UPWARD complete from Safety Intelligence scroll');
+                
+                // Reset transition flags after completion
+                setTimeout(() => {
+                  isTransitioning = false;
+                  window.isScrollTransitioning = false;
+                  console.log('✅ Safety -> Download upward transition complete - ready for next scroll');
+                }, 1500); // Increased to 1500ms to prevent chain reactions
+              }, 400);
+            }, 150);
+            
+            return false;
+          }
+        }
       } else {
         console.log('❌ Safety scroll deltaY too small or upward:', e.deltaY);
       }

@@ -55,19 +55,23 @@ const DownloadSection = () => {
     const handleDownloadScroll = (e) => {
       console.log('🔥 DOWNLOAD AREA SCROLL DETECTED!', e.deltaY, 'from:', e.target.className);
       
-      // Prevent chain reactions
+      // Prevent chain reactions - different timing for up vs down
       const now = Date.now();
       const globalTransitionTime = now - (window.lastScrollTransitionTime || 0);
       
-      if (isTransitioning || window.isScrollTransitioning || globalTransitionTime < 2000) {
-        console.log('🚫 BLOCKING Download scroll - transition in progress or too recent:', globalTransitionTime, 'ms ago');
+      // For upward scroll (to promo), use shorter blocking time
+      // For downward scroll (to safety), use longer blocking time to prevent chain reactions
+      const blockingTime = e.deltaY < 0 ? 800 : 2000; // 800ms for up, 2000ms for down
+      
+      if (isTransitioning || window.isScrollTransitioning || globalTransitionTime < blockingTime) {
+        console.log('🚫 BLOCKING Download scroll - transition in progress or too recent:', globalTransitionTime, 'ms ago, needed:', blockingTime);
         e.preventDefault();
         e.stopPropagation();
         e.stopImmediatePropagation();
         return false;
       }
       
-      // Only handle downward scrolls with sufficient threshold
+      // DOWNWARD SCROLL - Download -> Safety Intelligence
       if (e.deltaY > 1) {
         const downloadSection = document.querySelector('.download-section');
         const safetyWrapper = document.getElementById('safety');
@@ -114,8 +118,68 @@ const DownloadSection = () => {
             return false;
           }
         }
+      } else if (e.deltaY < -2) {
+        // UPWARD SCROLL - Download -> Promo Video
+        const downloadSection = document.querySelector('.download-section');
+        const promoSection = document.getElementById('about');
+        
+        if (downloadSection && promoSection) {
+          const downloadRect = downloadSection.getBoundingClientRect();
+          
+          // Check if we're actually in the Download section
+          if (downloadRect.top < window.innerHeight && downloadRect.bottom > 0) {
+            console.log('🚀 DOWNLOAD -> PROMO UPWARD SCROLL TRIGGERED from Download area!');
+            
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+            
+            // Set transition flags
+            isTransitioning = true;
+            lastTransitionTime = now;
+            
+            // GLOBAL FLAG to prevent other components from triggering
+            window.isScrollTransitioning = true;
+            window.lastScrollTransitionTime = now;
+            
+            // Reset download section animations
+            downloadSection.classList.remove('shrink-right');
+            
+            // Reset promo video section visibility and animations - PRESERVE ORIGINAL LAYOUT
+            promoSection.classList.add('visible');
+            
+            // Reset any exit animations on promo video elements - ONLY REMOVE ANIMATION CLASSES
+            const promoVideoBox = promoSection.querySelector('.promo-video-box');
+            const promoTextBox = promoSection.querySelector('.promo-text-box');
+            
+            if (promoVideoBox) {
+              promoVideoBox.classList.remove('animate-exit-left', 'fade-left');
+              // Don't override cssText - preserve original layout styles
+            }
+            
+            if (promoTextBox) {
+              promoTextBox.classList.remove('animate-exit-right', 'fade-right');
+              // Don't override cssText - preserve original layout styles
+            }
+            
+            // Smooth scroll to Promo Video section
+            setTimeout(() => {
+              promoSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              console.log('✅ DOWNLOAD -> PROMO UPWARD complete from Download area scroll');
+              
+              // Reset transition flags after completion
+              setTimeout(() => {
+                isTransitioning = false;
+                window.isScrollTransitioning = false;
+                console.log('✅ Download -> Promo upward transition complete - ready for next scroll');
+              }, 1500); // Increased to 1500ms to prevent chain reactions
+            }, 150);
+            
+            return false;
+          }
+        }
       } else {
-        console.log('❌ Download scroll deltaY too small or upward:', e.deltaY);
+        console.log('❌ Download scroll deltaY too small:', e.deltaY);
       }
     };
 
